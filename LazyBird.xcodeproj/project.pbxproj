@@ -3,28 +3,40 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B5271D952700319CD7 /* AppDelegate.swift */; };
 		A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B7271D952700319CD7 /* SceneDelegate.swift */; };
-		A89803BA271D952700319CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* ViewController.swift */; };
-		A89803BD271D952700319CD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A89803BB271D952700319CD7 /* Main.storyboard */; };
+		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
 		A89803BF271D952A00319CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A89803BE271D952A00319CD7 /* Assets.xcassets */; };
 		A89803C2271D952A00319CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A89803C0271D952A00319CD7 /* LaunchScreen.storyboard */; };
+		A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */; };
+		A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */; };
+		A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */; };
+		A8DA7ECF271F4060009976CF /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7ECE271F4060009976CF /* AppleLoginManager.swift */; };
+		A8DA7F3427270344009976CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7F3327270344009976CF /* HomeViewController.swift */; };
+		AD2B21DB18324903ABD799AE /* Pods_LazyBird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBDEB27AE26B24621A08ACD /* Pods_LazyBird.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92E82EA07E0F491E4077209A /* Pods-LazyBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazyBird.debug.xcconfig"; path = "Target Support Files/Pods-LazyBird/Pods-LazyBird.debug.xcconfig"; sourceTree = "<group>"; };
 		A89803B2271D952700319CD7 /* LazyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89803B5271D952700319CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A89803B7271D952700319CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A89803B9271D952700319CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A89803BC271D952700319CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A89803B9271D952700319CD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A89803BE271D952A00319CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A89803C1271D952A00319CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A89803C3271D952A00319CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A89803D2271DA44100319CD7 /* LazyBird.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LazyBird.entitlements; sourceTree = "<group>"; };
+		A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonContainerView.swift; sourceTree = "<group>"; };
+		A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginManager.swift; sourceTree = "<group>"; };
+		A8DA7ECE271F4060009976CF /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
+		A8DA7F3327270344009976CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BBBDEB27AE26B24621A08ACD /* Pods_LazyBird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LazyBird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB0367A31ABB7DEF9D9DEAD2 /* Pods-LazyBird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazyBird.release.xcconfig"; path = "Target Support Files/Pods-LazyBird/Pods-LazyBird.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,17 +44,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD2B21DB18324903ABD799AE /* Pods_LazyBird.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		205F1C8E77F40B2A50D75F24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				92E82EA07E0F491E4077209A /* Pods-LazyBird.debug.xcconfig */,
+				FB0367A31ABB7DEF9D9DEAD2 /* Pods-LazyBird.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A89803A9271D952700319CD7 = {
 			isa = PBXGroup;
 			children = (
 				A89803B4271D952700319CD7 /* LazyBird */,
 				A89803B3271D952700319CD7 /* Products */,
+				205F1C8E77F40B2A50D75F24 /* Pods */,
+				D275028BFDFD0F9FE77C07E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,16 +81,148 @@
 		A89803B4271D952700319CD7 /* LazyBird */ = {
 			isa = PBXGroup;
 			children = (
+				A8DA7F0B2723500E009976CF /* Applications */,
+				A8DA7EA8271EE32E009976CF /* Resource */,
+				A8DA7EC5271F3818009976CF /* Network */,
+				A8DA7F1B2723DCBA009976CF /* Sources */,
 				A89803D2271DA44100319CD7 /* LazyBird.entitlements */,
-				A89803B5271D952700319CD7 /* AppDelegate.swift */,
-				A89803B7271D952700319CD7 /* SceneDelegate.swift */,
-				A89803B9271D952700319CD7 /* ViewController.swift */,
-				A89803BB271D952700319CD7 /* Main.storyboard */,
-				A89803BE271D952A00319CD7 /* Assets.xcassets */,
-				A89803C0271D952A00319CD7 /* LaunchScreen.storyboard */,
-				A89803C3271D952A00319CD7 /* Info.plist */,
 			);
 			path = LazyBird;
+			sourceTree = "<group>";
+		};
+		A8DA7EA8271EE32E009976CF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7F1A2723DC79009976CF /* Fonts */,
+				A8DA7F192723DC70009976CF /* Extensions */,
+				A89803C3271D952A00319CD7 /* Info.plist */,
+				A89803BE271D952A00319CD7 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A8DA7EAA271EE36A009976CF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7EBE271F3213009976CF /* Login */,
+				A8DA7F30272702D5009976CF /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A8DA7EBE271F3213009976CF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7EBF271F328C009976CF /* Controllers */,
+				A8DA7EC0271F329C009976CF /* Views */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A8DA7EBF271F328C009976CF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A89803B9271D952700319CD7 /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8DA7EC0271F329C009976CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8DA7EC5271F3818009976CF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7EC6271F3826009976CF /* Login */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A8DA7EC6271F3826009976CF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */,
+				A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */,
+				A8DA7ECE271F4060009976CF /* AppleLoginManager.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A8DA7F0B2723500E009976CF /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				A89803B5271D952700319CD7 /* AppDelegate.swift */,
+				A89803B7271D952700319CD7 /* SceneDelegate.swift */,
+				A89803C0271D952A00319CD7 /* LaunchScreen.storyboard */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		A8DA7F192723DC70009976CF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A8DA7F1A2723DC79009976CF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A8DA7F1B2723DCBA009976CF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7EAA271EE36A009976CF /* Scenes */,
+				A8DA7F1F2723DD07009976CF /* Models */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A8DA7F1F2723DD07009976CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A8DA7F30272702D5009976CF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7F31272702FA009976CF /* Controllers */,
+				A8DA7F3227270305009976CF /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A8DA7F31272702FA009976CF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA7F3327270344009976CF /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8DA7F3227270305009976CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D275028BFDFD0F9FE77C07E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBBDEB27AE26B24621A08ACD /* Pods_LazyBird.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -76,9 +232,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A89803C6271D952A00319CD7 /* Build configuration list for PBXNativeTarget "LazyBird" */;
 			buildPhases = (
+				1BF5BC820F1875D6318687B2 /* [CP] Check Pods Manifest.lock */,
 				A89803AE271D952700319CD7 /* Sources */,
 				A89803AF271D952700319CD7 /* Frameworks */,
 				A89803B0271D952700319CD7 /* Resources */,
+				6520CC9E0634F26DCFAE450D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,34 +286,72 @@
 			files = (
 				A89803C2271D952A00319CD7 /* LaunchScreen.storyboard in Resources */,
 				A89803BF271D952A00319CD7 /* Assets.xcassets in Resources */,
-				A89803BD271D952700319CD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BF5BC820F1875D6318687B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LazyBird-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6520CC9E0634F26DCFAE450D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LazyBird/Pods-LazyBird-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LazyBird/Pods-LazyBird-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LazyBird/Pods-LazyBird-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A89803AE271D952700319CD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A89803BA271D952700319CD7 /* ViewController.swift in Sources */,
+				A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */,
+				A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */,
+				A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */,
+				A8DA7F3427270344009976CF /* HomeViewController.swift in Sources */,
 				A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */,
+				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
 				A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */,
+				A8DA7ECF271F4060009976CF /* AppleLoginManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A89803BB271D952700319CD7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A89803BC271D952700319CD7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A89803C0271D952A00319CD7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -285,13 +481,14 @@
 		};
 		A89803C7271D952A00319CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92E82EA07E0F491E4077209A /* Pods-LazyBird.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LazyBird/LazyBird.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W64WHVKVN;
-				INFOPLIST_FILE = LazyBird/Info.plist;
+				DEVELOPMENT_TEAM = 69F5355JYF;
+				INFOPLIST_FILE = LazyBird/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,18 +502,20 @@
 		};
 		A89803C8271D952A00319CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB0367A31ABB7DEF9D9DEAD2 /* Pods-LazyBird.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LazyBird/LazyBird.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = LazyBird/Info.plist;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69F5355JYF;
+				INFOPLIST_FILE = LazyBird/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.soongin.LazyBir;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soongin.LazyBird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

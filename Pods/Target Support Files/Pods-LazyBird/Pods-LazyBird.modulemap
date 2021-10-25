@@ -1,0 +1,6 @@
+framework module Pods_LazyBird {
+  umbrella header "Pods-LazyBird-umbrella.h"
+
+  export *
+  module * { export * }
+}
