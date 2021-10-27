@@ -11,6 +11,7 @@ import KakaoSDKAuth
 import KakaoSDKCommon
 
 class KakaoLoginManager: NSObject {
+    private var vc: UIViewController?
     
     // Kakao Login Button Pressed
     func login(){
@@ -21,8 +22,12 @@ class KakaoLoginManager: NSObject {
             }
             else {
                 print("loginWithKakaoAccount() success.")
-                //do something
+                //TODO: 서버로 토큰 보내기
                 _ = oauthToken
+                let tabbarVC = EarlyBirdViewController()
+                
+                tabbarVC.modalPresentationStyle = .fullScreen
+                self.vc?.present(tabbarVC, animated: true, completion: nil)
             }
         }
     }
@@ -57,5 +62,11 @@ class KakaoLoginManager: NSObject {
             print("로그인 필요")
             completion(false)
         }
+    }
+}
+
+extension KakaoLoginManager {
+    func setViewController(_ vc: UIViewController?){
+        self.vc = vc
     }
 }
