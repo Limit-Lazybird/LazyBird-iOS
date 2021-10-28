@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         KakaoSDKCommon.initSDK(appKey: "ed1671c07f7f99c3ad5e2640429b8dab")
+        sleep(UInt32(2.0))
 //        let appleIDProvider = ASAuthorizationAppleIDProvider()
 //        print("appDelegate")
 //        // 애플 자동 로그인

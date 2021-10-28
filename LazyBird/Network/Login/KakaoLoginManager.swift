@@ -24,7 +24,7 @@ class KakaoLoginManager: NSObject {
                 print("loginWithKakaoAccount() success.")
                 //TODO: 서버로 토큰 보내기
                 _ = oauthToken
-                let tabbarVC = EarlyBirdViewController()
+                let tabbarVC = TabBarViewController()
                 
                 tabbarVC.modalPresentationStyle = .fullScreen
                 self.vc?.present(tabbarVC, animated: true, completion: nil)

@@ -26,6 +26,8 @@ extension UIColor {
     }
     
     class Point: UIColor {
+        static let or01 = UIColor(red: 254/255, green: 107/255, blue: 0/255, alpha: 1.0)
+        static let or02 = UIColor(red: 255/255, green: 138/255, blue: 0/255, alpha: 1.0)
         static let pink = UIColor(red: 255/255, green: 87/255, blue: 87/255, alpha: 1.0)
     }
 }

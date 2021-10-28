@@ -20,6 +20,7 @@
 		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
 		A89803BF271D952A00319CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A89803BE271D952A00319CD7 /* Assets.xcassets */; };
 		A89803C2271D952A00319CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A89803C0271D952A00319CD7 /* LaunchScreen.storyboard */; };
+		A8A44FA9272B167A00807BD2 /* CarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A44FA8272B167A00807BD2 /* CarouselLayout.swift */; };
 		A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */; };
 		A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */; };
 		A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */; };
@@ -46,6 +47,7 @@
 		A89803C1271D952A00319CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A89803C3271D952A00319CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A89803D2271DA44100319CD7 /* LazyBird.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LazyBird.entitlements; sourceTree = "<group>"; };
+		A8A44FA8272B167A00807BD2 /* CarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselLayout.swift; sourceTree = "<group>"; };
 		A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonContainerView.swift; sourceTree = "<group>"; };
 		A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginManager.swift; sourceTree = "<group>"; };
@@ -122,6 +124,15 @@
 				A89803D2271DA44100319CD7 /* LazyBird.entitlements */,
 			);
 			path = LazyBird;
+			sourceTree = "<group>";
+		};
+		A8A44FA6272B0CDE00807BD2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A83AF09A27295C6900768224 /* CategoryCell.swift */,
+				A83AF0A227299CAC00768224 /* EarlyBirdCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A8DA7EA8271EE32E009976CF /* Resource */ = {
@@ -225,6 +236,7 @@
 			children = (
 				A8DA7F31272702FA009976CF /* Controllers */,
 				A8DA7F3227270305009976CF /* Views */,
+				A8A44FA6272B0CDE00807BD2 /* Cells */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -243,8 +255,7 @@
 				A83AF0942729479F00768224 /* TopContainerView.swift */,
 				A83AF0972729585C00768224 /* CategoryContainerView.swift */,
 				A83AF09F27299B7200768224 /* EarlyBirdContainerView.swift */,
-				A83AF09A27295C6900768224 /* CategoryCell.swift */,
-				A83AF0A227299CAC00768224 /* EarlyBirdCell.swift */,
+				A8A44FA8272B167A00807BD2 /* CarouselLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,6 +392,7 @@
 				A8260649272726BE00939421 /* LogoContainerView.swift in Sources */,
 				A83AF0982729585C00768224 /* CategoryContainerView.swift in Sources */,
 				A82606462727238300939421 /* UIColorExtension.swift in Sources */,
+				A8A44FA9272B167A00807BD2 /* CarouselLayout.swift in Sources */,
 				A83AF0A027299B7200768224 /* EarlyBirdContainerView.swift in Sources */,
 				A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */,
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
