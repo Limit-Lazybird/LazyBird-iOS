@@ -26,7 +26,7 @@ class EarlyBirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.Background.bgBorder
+        view.backgroundColor = UIColor.Background.darkGray01
         
         setNavigationItem()
         setUI()
@@ -40,7 +40,7 @@ class EarlyBirdViewController: UIViewController {
     private func colorToImage() -> UIImage {
         let size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 1)
         let image: UIImage = UIGraphicsImageRenderer(size: size).image { context in
-            UIColor.Background.bgBorder.setFill()
+            UIColor.Background.darkGray01.setFill()
             context.fill(CGRect(origin: .zero, size: size))
         }
         return image

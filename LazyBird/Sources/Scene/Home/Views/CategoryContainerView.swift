@@ -18,7 +18,7 @@ class CategoryContainerView: UIView {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
         $0.dataSource = self
         $0.delegate = self
-        $0.backgroundColor = UIColor.Background.bgBorder
+        $0.backgroundColor = .clear
         $0.showsHorizontalScrollIndicator = false
         $0.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }

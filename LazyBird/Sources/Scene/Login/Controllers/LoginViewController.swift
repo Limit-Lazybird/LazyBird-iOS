@@ -17,15 +17,15 @@ class LoginViewController: UIViewController {
         $0.layer.cornerRadius = 30
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         $0.layer.borderWidth = 1.0
-        $0.layer.backgroundColor = UIColor.Background.bgBlack2.cgColor
-        $0.layer.borderColor = UIColor.Background.bgBorder.cgColor
+        $0.layer.backgroundColor = UIColor.Opacity.black30.cgColor
+        $0.layer.borderColor = UIColor.Basic.gray01.cgColor
     }
     
     lazy var loginButtonContainerView: LoginButtonContainerView = LoginButtonContainerView(frame: .zero)
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.Background.bgBlack2
+        self.view.backgroundColor = UIColor.Background.black02
         
         loginButtonContainerView.setViewController(self) // containerView에 viewcontroller 주소 넘겨줌
         setupLayout()

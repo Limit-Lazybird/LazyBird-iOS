@@ -21,6 +21,13 @@
 		A89803BF271D952A00319CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A89803BE271D952A00319CD7 /* Assets.xcassets */; };
 		A89803C2271D952A00319CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A89803C0271D952A00319CD7 /* LaunchScreen.storyboard */; };
 		A8A44FA9272B167A00807BD2 /* CarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A44FA8272B167A00807BD2 /* CarouselLayout.swift */; };
+		A8A44FAD272D4BB000807BD2 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A44FAC272D4BB000807BD2 /* UIViewExtension.swift */; };
+		A8A44FB5272D50BA00807BD2 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FAF272D50B900807BD2 /* Montserrat-Regular.ttf */; };
+		A8A44FB6272D50BA00807BD2 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB0272D50B900807BD2 /* Montserrat-Bold.ttf */; };
+		A8A44FB7272D50BA00807BD2 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB1272D50BA00807BD2 /* Montserrat-SemiBold.ttf */; };
+		A8A44FB8272D50BA00807BD2 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB2272D50BA00807BD2 /* Montserrat-ExtraBold.ttf */; };
+		A8A44FB9272D50BA00807BD2 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB3272D50BA00807BD2 /* Montserrat-Medium.ttf */; };
+		A8A44FBA272D50BA00807BD2 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB4272D50BA00807BD2 /* Montserrat-Black.ttf */; };
 		A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */; };
 		A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */; };
 		A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */; };
@@ -48,6 +55,13 @@
 		A89803C3271D952A00319CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A89803D2271DA44100319CD7 /* LazyBird.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LazyBird.entitlements; sourceTree = "<group>"; };
 		A8A44FA8272B167A00807BD2 /* CarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselLayout.swift; sourceTree = "<group>"; };
+		A8A44FAC272D4BB000807BD2 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		A8A44FAF272D50B900807BD2 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		A8A44FB0272D50B900807BD2 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		A8A44FB1272D50BA00807BD2 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		A8A44FB2272D50BA00807BD2 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A8A44FB3272D50BA00807BD2 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		A8A44FB4272D50BA00807BD2 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonContainerView.swift; sourceTree = "<group>"; };
 		A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginManager.swift; sourceTree = "<group>"; };
@@ -204,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				A82606452727238300939421 /* UIColorExtension.swift */,
+				A8A44FAC272D4BB000807BD2 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -211,6 +226,12 @@
 		A8DA7F1A2723DC79009976CF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				A8A44FB4272D50BA00807BD2 /* Montserrat-Black.ttf */,
+				A8A44FB0272D50B900807BD2 /* Montserrat-Bold.ttf */,
+				A8A44FB2272D50BA00807BD2 /* Montserrat-ExtraBold.ttf */,
+				A8A44FB3272D50BA00807BD2 /* Montserrat-Medium.ttf */,
+				A8A44FAF272D50B900807BD2 /* Montserrat-Regular.ttf */,
+				A8A44FB1272D50BA00807BD2 /* Montserrat-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -327,8 +348,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8A44FB6272D50BA00807BD2 /* Montserrat-Bold.ttf in Resources */,
+				A8A44FBA272D50BA00807BD2 /* Montserrat-Black.ttf in Resources */,
+				A8A44FB8272D50BA00807BD2 /* Montserrat-ExtraBold.ttf in Resources */,
+				A8A44FB5272D50BA00807BD2 /* Montserrat-Regular.ttf in Resources */,
+				A8A44FB9272D50BA00807BD2 /* Montserrat-Medium.ttf in Resources */,
 				A89803C2271D952A00319CD7 /* LaunchScreen.storyboard in Resources */,
 				A89803BF271D952A00319CD7 /* Assets.xcassets in Resources */,
+				A8A44FB7272D50BA00807BD2 /* Montserrat-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +414,7 @@
 				A83AF09B27295C6900768224 /* CategoryCell.swift in Sources */,
 				A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */,
 				A8DA7F3427270344009976CF /* EarlyBirdViewController.swift in Sources */,
+				A8A44FAD272D4BB000807BD2 /* UIViewExtension.swift in Sources */,
 				A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */,
 				A83AF0952729479F00768224 /* TopContainerView.swift in Sources */,
 				A8260649272726BE00939421 /* LogoContainerView.swift in Sources */,

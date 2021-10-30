@@ -20,7 +20,7 @@ class EarlyBirdCell: UICollectionViewCell {
     }
     
     let blurView = UIView().then{
-        $0.backgroundColor = UIColor.Background.bgBlack2
+        $0.backgroundColor = UIColor.Opacity.black90
     }
     
     lazy var titleLabel = UILabel().then{

@@ -21,7 +21,7 @@ class LogoContainerView: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.Background.bgBlack
+        self.backgroundColor = UIColor.Opacity.black30
     
         setUI()
     }

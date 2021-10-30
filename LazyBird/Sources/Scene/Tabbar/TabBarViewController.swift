@@ -51,13 +51,13 @@ class TabBarViewController: UITabBarController {
     
     private func setTabbarUI(){
         tabBar.tintColor = UIColor.white
-        tabBar.barTintColor = UIColor.Background.bgBorder
+        tabBar.barTintColor = UIColor.Basic.gray01
         tabBar.unselectedItemTintColor = UIColor.Basic.gray04
         tabBar.isTranslucent = false
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBar.layer.borderWidth = 1.0
         tabBar.layer.cornerRadius = 20.0
-        tabBar.layer.borderColor = UIColor.Background.bgBorder2.cgColor
+        tabBar.layer.borderColor = UIColor.Basic.gray03.cgColor
         // tabbar shadow 지우기
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
