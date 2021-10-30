@@ -26,23 +26,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene) // SceneDelegate의 프로퍼티에 설정해줌
         // rootview -> splashview dispatchqueueu
-        kakaoLoginManager.autoLogin { response in
-            if response {
-                //TODO: Login 성공
+//        kakaoLoginManager.autoLogin { response in
+//            if response {
+//                //TODO: Login 성공
+//
+//                let tabbarVC = TabBarViewController()
+//                self.window?.rootViewController = tabbarVC
+//                self.window?.makeKeyAndVisible()
+//                print("자동 로그인")
+//                return
+//            }else{
+//                let loginVC = LoginViewController() // 맨 처음 보여줄 ViewController
+//
+//                self.window?.rootViewController = loginVC
+//                self.window?.makeKeyAndVisible()
+//                print("로그인 화면")
+//            }
+//        }
+        
+        let loginVC = StartOnboardingViewController() // 맨 처음 보여줄 ViewController
 
-                let tabbarVC = TabBarViewController()
-                self.window?.rootViewController = tabbarVC
-                self.window?.makeKeyAndVisible()
-                print("자동 로그인")
-                return
-            }else{
-                let loginVC = LoginViewController() // 맨 처음 보여줄 ViewController
-
-                self.window?.rootViewController = loginVC
-                self.window?.makeKeyAndVisible()
-                print("로그인 화면")
-            }
-        }
+        self.window?.rootViewController = loginVC
+        self.window?.makeKeyAndVisible()
         
         // 자동 로그인
 //        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in

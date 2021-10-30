@@ -28,6 +28,7 @@
 		A8A44FB8272D50BA00807BD2 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB2272D50BA00807BD2 /* Montserrat-ExtraBold.ttf */; };
 		A8A44FB9272D50BA00807BD2 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB3272D50BA00807BD2 /* Montserrat-Medium.ttf */; };
 		A8A44FBA272D50BA00807BD2 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB4272D50BA00807BD2 /* Montserrat-Black.ttf */; };
+		A8A44FBF272D5FE600807BD2 /* StartOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A44FBE272D5FE600807BD2 /* StartOnboardingViewController.swift */; };
 		A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */; };
 		A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */; };
 		A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */; };
@@ -62,6 +63,7 @@
 		A8A44FB2272D50BA00807BD2 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		A8A44FB3272D50BA00807BD2 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		A8A44FB4272D50BA00807BD2 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		A8A44FBE272D5FE600807BD2 /* StartOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartOnboardingViewController.swift; sourceTree = "<group>"; };
 		A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonContainerView.swift; sourceTree = "<group>"; };
 		A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginManager.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				A8DA7EBE271F3213009976CF /* Login */,
+				A8A44FBC272D598300807BD2 /* OnBoarding */,
 				A8DA7F30272702D5009976CF /* Home */,
 				A83AF08A27292B5A00768224 /* Tabbar */,
 			);
@@ -147,6 +150,22 @@
 				A83AF0A227299CAC00768224 /* EarlyBirdCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A8A44FBC272D598300807BD2 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				A8A44FC2272D601200807BD2 /* Controllers */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		A8A44FC2272D601200807BD2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8A44FBE272D5FE600807BD2 /* StartOnboardingViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A8DA7EA8271EE32E009976CF /* Resource */ = {
@@ -426,6 +445,7 @@
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
 				A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */,
 				A8DA7ECF271F4060009976CF /* AppleLoginManager.swift in Sources */,
+				A8A44FBF272D5FE600807BD2 /* StartOnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
