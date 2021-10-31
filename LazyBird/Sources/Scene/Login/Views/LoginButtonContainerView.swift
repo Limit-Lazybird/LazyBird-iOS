@@ -79,31 +79,27 @@ class LoginButtonContainerView: UIView {
     func setupLayout(){
         self.addSubview(loginLabel)
         self.addSubview(stackView)
-        stackView.addArrangedSubview(googleLoginBtn)
         stackView.addArrangedSubview(appleLoginBtn)
         stackView.addArrangedSubview(kakaoLoginBtn)
         
-        loginLabel.snp.makeConstraints{
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(21.0)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(48.0)
-        }
         
+        loginLabel.snp.makeConstraints{
+            $0.leading.equalTo(stackView.snp.leading).offset(2.0)
+            $0.centerY.equalTo(stackView).multipliedBy(0.25)
+        }
+
         stackView.snp.makeConstraints{
-            $0.centerX.equalTo(self.safeAreaLayoutGuide)
+            $0.centerX.centerY.equalTo(self.safeAreaLayoutGuide)
             $0.leading.equalTo(self.safeAreaLayoutGuide).offset(45.0)
             $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(45.0)
-            $0.bottom.equalToSuperview().inset(46.0)
         }
-        
+
         kakaoLoginBtn.snp.makeConstraints{
-            $0.height.equalTo(40.0)
-            
-        }
-        googleLoginBtn.snp.makeConstraints{
-            $0.height.equalTo(40.0)
+            $0.height.equalTo(stackView.snp.width).multipliedBy(0.14035087719)
+
         }
         appleLoginBtn.snp.makeConstraints{
-            $0.height.equalTo(40.0)
+            $0.height.equalTo(stackView.snp.width).multipliedBy(0.14035087719)
         }
     }
 }

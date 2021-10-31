@@ -28,8 +28,8 @@ class LoginViewController: UIViewController {
         self.view.backgroundColor = UIColor.Background.black02
         
         loginButtonContainerView.setViewController(self) // containerView에 viewcontroller 주소 넘겨줌
-        setupLayout()
         
+        setupLayout()
     }
     
     func setupLayout(){
@@ -38,14 +38,15 @@ class LoginViewController: UIViewController {
         
         logoContainerView.snp.makeConstraints{
             $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(self.view.frame.height * 0.6908866995)
             $0.bottom.equalTo(loginButtonContainerView.snp.top)
         }
         
         loginButtonContainerView.snp.makeConstraints{
             $0.leading.equalTo(self.view.safeAreaLayoutGuide)
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            $0.height.equalTo(self.view.frame.height * 0.30911330049)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(251.0)
         }
     }
 }

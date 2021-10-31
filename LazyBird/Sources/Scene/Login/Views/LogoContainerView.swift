@@ -19,10 +19,11 @@ class LogoContainerView: UIView {
         $0.image = UIImage(named: "loginLogo")
         $0.contentMode = .scaleAspectFill
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.Opacity.black30
-    
+        
         setUI()
     }
     
@@ -35,17 +36,18 @@ class LogoContainerView: UIView {
         self.addSubview(logoImageView)
         
         welcomLogoImageView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(135.0)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(62.0)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(62.0)
-            $0.height.equalTo(63.0)
+            $0.centerX.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(63.0)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(63.0)
+            $0.height.equalTo(welcomLogoImageView.snp.width).multipliedBy(0.252)
         }
         
         logoImageView.snp.makeConstraints{
-            $0.top.equalTo(welcomLogoImageView.snp.bottom).offset(63.0)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(112.0)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(87.0)
-            $0.height.equalTo(168.0)
+            $0.top.equalTo(welcomLogoImageView.snp.bottom).offset(70.0)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(118.0)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(118.0)
+            $0.height.equalTo(logoImageView.snp.width).multipliedBy(1.05)
+            $0.centerY.equalTo(self.safeAreaLayoutGuide).multipliedBy(1.2)
         }
     }
 }
