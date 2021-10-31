@@ -44,35 +44,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            }
 //        }
         
-        let loginVC = StartOnboardingViewController() // 맨 처음 보여줄 ViewController
+        
+        let loginVC = UINavigationController(rootViewController: StartOnboardingViewController()) // 맨 처음 보여줄 ViewController
 
         self.window?.rootViewController = loginVC
         self.window?.makeKeyAndVisible()
-        
-        // 자동 로그인
-//        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-//            if error != nil || user == nil {
-//                print("로그인 안 한 상태 -> 로그인 화면으로 이동")
-//                let viewController = ViewController()
-//                self.window?.rootViewController = viewController
-//                self.window?.makeKeyAndVisible()
-//                
-//            } else {
-//                print("이미 로그인 됨 -> 메인으로 이동")
-//                
-//                user?.authentication.do { authentication, error in
-//                    guard error == nil else { return }
-//                    guard let authentication = authentication else { return }
-////                    token 을 서버로 보내주기
-//                    authentication.idToken
-//                }
-//
-//                let homeViewController = HomeViewController()
-//                self.window?.rootViewController = homeViewController
-//                self.window?.makeKeyAndVisible()
-//            }
-//          }
-
         
         // 나중에 분기를 만들자.
         // 자동 로그인 성공이라면, homeVC

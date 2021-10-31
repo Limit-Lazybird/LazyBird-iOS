@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813977E272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift */; };
+		A8139783272F073B00C3A4B8 /* QuestionBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139782272F073B00C3A4B8 /* QuestionBtnView.swift */; };
+		A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */; };
+		A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139789272F168F00C3A4B8 /* ThirdOnboardingViewController.swift */; };
+		A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813978C272F17CC00C3A4B8 /* FourthOnboardingViewController.swift */; };
 		A82606462727238300939421 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82606452727238300939421 /* UIColorExtension.swift */; };
 		A8260649272726BE00939421 /* LogoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8260648272726BE00939421 /* LogoContainerView.swift */; };
 		A83AF09027292C5200768224 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83AF08F27292C5200768224 /* TabBarViewController.swift */; };
@@ -39,6 +44,11 @@
 
 /* Begin PBXFileReference section */
 		92E82EA07E0F491E4077209A /* Pods-LazyBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazyBird.debug.xcconfig"; path = "Target Support Files/Pods-LazyBird/Pods-LazyBird.debug.xcconfig"; sourceTree = "<group>"; };
+		A813977E272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
+		A8139782272F073B00C3A4B8 /* QuestionBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBtnView.swift; sourceTree = "<group>"; };
+		A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
+		A8139789272F168F00C3A4B8 /* ThirdOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingViewController.swift; sourceTree = "<group>"; };
+		A813978C272F17CC00C3A4B8 /* FourthOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthOnboardingViewController.swift; sourceTree = "<group>"; };
 		A82606452727238300939421 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A8260648272726BE00939421 /* LogoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoContainerView.swift; sourceTree = "<group>"; };
 		A83AF08F27292C5200768224 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +102,14 @@
 				FB0367A31ABB7DEF9D9DEAD2 /* Pods-LazyBird.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A8139781272F06C100C3A4B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8139782272F073B00C3A4B8 /* QuestionBtnView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A83AF0842729289E00768224 /* Scene */ = {
@@ -156,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A44FC2272D601200807BD2 /* Controllers */,
+				A8139781272F06C100C3A4B8 /* Views */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -164,6 +183,10 @@
 			isa = PBXGroup;
 			children = (
 				A8A44FBE272D5FE600807BD2 /* StartOnboardingViewController.swift */,
+				A813977E272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift */,
+				A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */,
+				A8139789272F168F00C3A4B8 /* ThirdOnboardingViewController.swift */,
+				A813978C272F17CC00C3A4B8 /* FourthOnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -428,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */,
+				A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */,
 				A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */,
 				A83AF09027292C5200768224 /* TabBarViewController.swift in Sources */,
 				A83AF09B27295C6900768224 /* CategoryCell.swift in Sources */,
@@ -436,10 +460,14 @@
 				A8A44FAD272D4BB000807BD2 /* UIViewExtension.swift in Sources */,
 				A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */,
 				A83AF0952729479F00768224 /* TopContainerView.swift in Sources */,
+				A8139783272F073B00C3A4B8 /* QuestionBtnView.swift in Sources */,
 				A8260649272726BE00939421 /* LogoContainerView.swift in Sources */,
 				A83AF0982729585C00768224 /* CategoryContainerView.swift in Sources */,
 				A82606462727238300939421 /* UIColorExtension.swift in Sources */,
+				A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */,
 				A8A44FA9272B167A00807BD2 /* CarouselLayout.swift in Sources */,
+				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,
+				A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */,
 				A83AF0A027299B7200768224 /* EarlyBirdContainerView.swift in Sources */,
 				A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */,
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,

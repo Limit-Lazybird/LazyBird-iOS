@@ -51,9 +51,6 @@ class StartOnboardingViewController: UIViewController {
         attributedString.addAttribute(.underlineStyle,
                                       value: NSUnderlineStyle.single.rawValue,
                                       range: NSRange(location: 0, length: text.count))
-
-
-        
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         $0.setAttributedTitle(attributedString, for: .normal)
@@ -69,18 +66,34 @@ class StartOnboardingViewController: UIViewController {
         self.view.backgroundColor = UIColor.Background.black02
         
         setUI()
+        setNavigationItem()
     }
     
     //MARK:- Functions
     
+    func setNavigationItem(){
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     @objc func moveToOnboardingVC(_ sender: UIButton){
         // TODO: 온보딩화면으로 이동
+        let firstVC = FirstOnboardingViewController()
+        self.navigationController?.pushViewController(firstVC, animated: true)
     }
     @objc func moveToHome(_ sender: UIButton){
         // TODO: 홈 화면으로 이동
+        self.dismiss(animated: true, completion: nil)
+        
+        let tabBarVC = TabBarViewController()
+        tabBarVC.modalPresentationStyle = .fullScreen
+        
+        self.present(tabBarVC, animated: true, completion: nil)
     }
     
     func setUI(){
+        let height = self.view.frame.height
+        let width = self.view.frame.width
+        
         self.view.addSubview(choiceAImageView)
         self.view.addSubview(choiceBImageView)
         self.view.addSubview(mainLabel)
@@ -89,16 +102,16 @@ class StartOnboardingViewController: UIViewController {
         self.view.addSubview(skipBtn)
         
         choiceAImageView.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(99.0)
-            $0.centerX.equalTo(self.view.safeAreaLayoutGuide)
-            $0.width.equalTo(235.0)
-            $0.height.equalTo(162.0)
+            $0.centerY.equalTo(self.view.safeAreaLayoutGuide).multipliedBy(0.5)
+            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(width * 0.18666666666)
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(width * 0.18666666666)
+            $0.height.equalTo(choiceAImageView.snp.width).multipliedBy(0.68936170212)
         }
         choiceBImageView.snp.makeConstraints{
             $0.top.equalTo(choiceAImageView.snp.bottom).offset(16.0)
-            $0.centerX.equalTo(self.view.safeAreaLayoutGuide)
-            $0.width.equalTo(235.0)
-            $0.height.equalTo(162.0)
+            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(width * 0.18666666666)
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(width * 0.18666666666)
+            $0.height.equalTo(choiceAImageView.snp.width).multipliedBy(0.68936170212)
         }
         mainLabel.snp.makeConstraints{
             $0.top.equalTo(choiceBImageView.snp.bottom).inset(22.0)
@@ -113,12 +126,12 @@ class StartOnboardingViewController: UIViewController {
             $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(17.0)
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(17.0)
             $0.height.equalTo(nextBtn.snp.width).multipliedBy(0.140)
-            $0.bottom.equalToSuperview().inset(90.0)
+            $0.bottom.equalToSuperview().inset(height * 0.11083743842)
         }
         
         skipBtn.snp.makeConstraints{
             $0.centerX.equalTo(self.view.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview().inset(53.0)
+            $0.bottom.equalToSuperview().inset(height * 0.06527093596)
         }
     }
 }
