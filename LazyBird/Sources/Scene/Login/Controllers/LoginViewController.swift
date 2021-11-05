@@ -86,6 +86,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     // Apple ID 연동 실패 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         // Handle error.
+        print("애플 id 연동 실패")
     }
 }
 
