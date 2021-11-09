@@ -6,19 +6,24 @@
 //
 
 import UIKit
+import CollectionViewPagingLayout
 
 class EarlyBirdContainerView: UIView {
     
     let dummyImageUrl: [String] = ["test","test","test","test","test","test","test","test","test"]
     
-    lazy var layout = CarouselLayout().then{
-        let testWidth = 300
-        $0.itemSize = CGSize(width: testWidth, height: 0)
-        $0.sideItemScale = 100/251
-        $0.spacing = 10
-        $0.isPagingEnabled = true
-        $0.sideItemAlpha = 0.3
+    let layout = CollectionViewPagingLayout().then{
+        $0.numberOfVisibleItems = nil
     }
+    
+//    lazy var layout = CarouselLayout().then{
+//        let testWidth = 300
+//        $0.itemSize = CGSize(width: testWidth, height: 0)
+//        $0.sideItemScale = 100/251
+//        $0.spacing = -180
+//        $0.isPagingEnabled = true
+//        $0.sideItemAlpha = 0.3
+//    }
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
         $0.dataSource = self
@@ -26,6 +31,7 @@ class EarlyBirdContainerView: UIView {
         $0.backgroundColor = .clear
         $0.decelerationRate = .fast
         $0.showsHorizontalScrollIndicator = false
+        $0.isPagingEnabled = true
         $0.register(EarlyBirdCell.self, forCellWithReuseIdentifier: EarlyBirdCell.identifier)
     }
     

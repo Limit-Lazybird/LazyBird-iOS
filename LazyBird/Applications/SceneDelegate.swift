@@ -43,14 +43,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //                print("로그인 화면")
 //            }
 //        }
-        
-        let loginVC = LoginViewController() // 맨 처음 보여줄 ViewController
-
-        self.window?.rootViewController = loginVC
+        let tabbarVC = TabBarViewController()
+        self.window?.rootViewController = tabbarVC
         self.window?.makeKeyAndVisible()
-        print("로그인 화면")
-//        let loginVC = UINavigationController(rootViewController: StartOnboardingViewController()) // 맨 처음 보여줄 ViewController
-//
+        
+        
+//        let loginVC = UINavigationController(rootViewController: StartOnboardingViewController()) // 온보딩 화면
 //        self.window?.rootViewController = loginVC
 //        self.window?.makeKeyAndVisible()
         

@@ -8,66 +8,47 @@
 import UIKit
 import SnapKit
 import Then
+import CollectionViewPagingLayout
 
 class EarlyBirdCell: UICollectionViewCell {
+    
+    //MARK: - Properties
     static let identifier: String = "earlyBirdCell"
     static let height: CGFloat = 436.0
+    
+    //MARK: - UI Components
+    let bgView = UIView().then{
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = .black
+        $0.layer.cornerRadius = 10.0
+    }
     
     let exhibitImageView = UIImageView().then{
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
-        $0.layer.cornerRadius = 20
+        $0.layer.cornerRadius = 10.0
     }
     
-    let blurView = UIView().then{
-        $0.backgroundColor = UIColor.Opacity.black90
+    let topStickView = UIView().then{
+        $0.backgroundColor = UIColor.Basic.black01
     }
     
-    lazy var titleLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 20)
+    let titleLabel = UILabel().then{
+        $0.font = UIFont.boldSystemFont(ofSize: 13)
         $0.textColor = .white
     }
-    lazy var likeBtn = UIButton().then{
-        $0.setImage(UIImage(named: "like"), for: .normal)
-        $0.tintColor = .white
-        $0.addTarget(self, action: #selector(likeBtnPressed(_:)), for: .touchUpInside)
+    
+    let circleView = UIView().then{
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = UIColor.Point.or01
+        $0.layer.cornerRadius = 50 / 2
     }
     
-    let leftStackView = UIStackView().then{
-        $0.axis = .vertical
-        $0.alignment = .fill
-        $0.distribution = .equalSpacing
-        $0.spacing = 6
+    let discountLabel = UILabel().then{
+        $0.font = UIFont.boldSystemFont(ofSize: 21)
+        $0.textColor = UIColor.Basic.black01
     }
     
-    lazy var locationLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 15)
-        $0.textColor = .white
-    }
-    lazy var dateLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 15)
-        $0.textColor = .white
-    }
-    let rightStackView = UIStackView().then{
-        $0.axis = .horizontal
-        $0.alignment = .fill
-        $0.distribution = .equalSpacing
-        $0.spacing = 4
-    }
-    
-    lazy var discountLabel = UILabel().then{
-        $0.font = UIFont.systemFont(ofSize: 17)
-        $0.textColor = UIColor.Point.pink
-    }
-    lazy var priceLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 20)
-        $0.textColor = .white
-    }
-    lazy var wonLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 15)
-        $0.textColor = UIColor.Basic.gray06
-        $0.text = "원"
-    }
     
     @objc func likeBtnPressed(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
@@ -86,7 +67,6 @@ class EarlyBirdCell: UICollectionViewCell {
 //        self.layer.masksToBounds = true
         self.clipsToBounds = true
         self.layer.cornerRadius = 20
-        self.backgroundColor = .white
         
         setUI()
     }
@@ -98,59 +78,122 @@ class EarlyBirdCell: UICollectionViewCell {
     
     func config(imageUrl: String){
         exhibitImageView.image = UIImage(named: imageUrl)
-        titleLabel.text = "살바도르 달리전"
-        locationLabel.text = "성신여대입구"
-        dateLabel.text = "2021.10.01 ~ 2021.10.11"
-        discountLabel.text = "50%"
-        priceLabel.text = "10,000"
+        titleLabel.text = "미구엘 슈발리에 제주 특별전"
+        discountLabel.text = "42%"
     }
     
     
     func setUI(){
-        self.contentView.addSubview(exhibitImageView)
-        self.contentView.addSubview(blurView)
-        self.contentView.addSubview(titleLabel)
-        self.contentView.addSubview(likeBtn)
-        self.contentView.addSubview(leftStackView)
-        self.contentView.addSubview(rightStackView)
-        self.leftStackView.addArrangedSubview(locationLabel)
-        self.leftStackView.addArrangedSubview(dateLabel)
-        self.rightStackView.addArrangedSubview(discountLabel)
-        self.rightStackView.addArrangedSubview(priceLabel)
-        self.rightStackView.addArrangedSubview(wonLabel)
+        self.contentView.addSubview(bgView)
+        bgView.addSubview(exhibitImageView)
+        bgView.addSubview(topStickView)
+        bgView.addSubview(circleView)
+        topStickView.addSubview(titleLabel)
+        circleView.addSubview(discountLabel)
         
-        exhibitImageView.snp.makeConstraints{
-            $0.edges.equalTo(self.contentView.safeAreaLayoutGuide)
+        bgView.snp.makeConstraints{
+            $0.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(32.0)
+            $0.trailing.equalTo(self.contentView.safeAreaLayoutGuide).offset(-32.0)
+            $0.top.equalTo(self.contentView.safeAreaLayoutGuide).offset(24.0)
+            $0.bottom.equalTo(self.contentView.safeAreaLayoutGuide).offset(-24.0)
         }
         
-        blurView.snp.makeConstraints{
-            $0.leading.trailing.bottom.equalTo(self.contentView.safeAreaLayoutGuide)
-            $0.height.equalTo(116.0)
+        exhibitImageView.snp.makeConstraints{
+            $0.edges.equalTo(bgView.safeAreaLayoutGuide)
+        }
+        
+        topStickView.snp.makeConstraints{
+            $0.top.leading.trailing.equalTo(bgView.safeAreaLayoutGuide)
+            $0.height.equalTo(40.0)
         }
         
         titleLabel.snp.makeConstraints{
-            $0.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(12.0)
-            $0.top.equalTo(blurView.snp.top).offset(11.0)
-            $0.trailing.equalTo(likeBtn.snp.leading).inset(15.0)
-            $0.height.equalTo(24.0)
+            $0.centerY.equalTo(topStickView.safeAreaLayoutGuide)
+            $0.leading.equalTo(topStickView.snp.leading).offset(8.0)
+            $0.trailing.equalTo(topStickView.snp.trailing).offset(-8.0)
         }
         
-        likeBtn.snp.makeConstraints{
-            $0.top.equalTo(blurView.snp.top).offset(12.0)
-            $0.trailing.equalTo(self.contentView.safeAreaLayoutGuide).inset(11.0)
-            $0.width.equalTo(22.0)
-            $0.height.equalTo(20.0)
+        circleView.snp.makeConstraints{
+            $0.top.equalTo(bgView.snp.top).offset(15.0)
+            $0.trailing.equalTo(bgView.snp.trailing).offset(-16.0)
+            $0.width.height.equalTo(50.0)
         }
         
-        leftStackView.snp.makeConstraints{
-            $0.top.equalTo(titleLabel.snp.bottom).offset(24.0)
-            $0.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(12.0)
-            $0.bottom.equalTo(self.contentView.safeAreaLayoutGuide).inset(15.0)
-        }
-        
-        rightStackView.snp.makeConstraints{
-            $0.bottom.equalTo(self.contentView.safeAreaLayoutGuide).inset(12.0)
-            $0.trailing.equalTo(self.contentView.safeAreaInsets).inset(16.0)
+        discountLabel.snp.makeConstraints{
+            $0.centerX.centerY.equalTo(circleView.safeAreaLayoutGuide)
         }
     }
 }
+
+//MARK: - Extension
+
+extension EarlyBirdCell: StackTransformView {
+    var stackOptions: StackTransformViewOptions {
+        .init(scaleFactor: 0.2,
+               minScale: 0.2,
+               maxStackSize: 20,
+               spacingFactor: 0.1,
+               alphaFactor: 0.0,
+               perspectiveRatio: 0.3,
+               shadowRadius: 5,
+               popAngle: 0,
+               popOffsetRatio: .init(width: -1.45, height: 0),
+               stackPosition: CGPoint(x: 1, y: 0)
+        )
+    }
+}
+
+
+
+
+
+//
+//    let blurView = UIView().then{
+//        $0.backgroundColor = UIColor.Opacity.black90
+//    }
+//
+//    lazy var titleLabel = UILabel().then{
+//        $0.font = UIFont.boldSystemFont(ofSize: 20)
+//        $0.textColor = .white
+//    }
+//    lazy var likeBtn = UIButton().then{
+//        $0.setImage(UIImage(named: "like"), for: .normal)
+//        $0.tintColor = .white
+//        $0.addTarget(self, action: #selector(likeBtnPressed(_:)), for: .touchUpInside)
+//    }
+//
+//    let leftStackView = UIStackView().then{
+//        $0.axis = .vertical
+//        $0.alignment = .fill
+//        $0.distribution = .equalSpacing
+//        $0.spacing = 6
+//    }
+//
+//    lazy var locationLabel = UILabel().then{
+//        $0.font = UIFont.boldSystemFont(ofSize: 15)
+//        $0.textColor = .white
+//    }
+//    lazy var dateLabel = UILabel().then{
+//        $0.font = UIFont.boldSystemFont(ofSize: 15)
+//        $0.textColor = .white
+//    }
+//    let rightStackView = UIStackView().then{
+//        $0.axis = .horizontal
+//        $0.alignment = .fill
+//        $0.distribution = .equalSpacing
+//        $0.spacing = 4
+//    }
+//
+//    lazy var discountLabel = UILabel().then{
+//        $0.font = UIFont.systemFont(ofSize: 17)
+//        $0.textColor = UIColor.Point.pink
+//    }
+//    lazy var priceLabel = UILabel().then{
+//        $0.font = UIFont.boldSystemFont(ofSize: 20)
+//        $0.textColor = .white
+//    }
+//    lazy var wonLabel = UILabel().then{
+//        $0.font = UIFont.boldSystemFont(ofSize: 15)
+//        $0.textColor = UIColor.Basic.gray06
+//        $0.text = "원"
+//    }

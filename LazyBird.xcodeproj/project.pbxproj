@@ -25,7 +25,6 @@
 		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
 		A89803BF271D952A00319CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A89803BE271D952A00319CD7 /* Assets.xcassets */; };
 		A89803C2271D952A00319CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A89803C0271D952A00319CD7 /* LaunchScreen.storyboard */; };
-		A8A44FA9272B167A00807BD2 /* CarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A44FA8272B167A00807BD2 /* CarouselLayout.swift */; };
 		A8A44FAD272D4BB000807BD2 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A44FAC272D4BB000807BD2 /* UIViewExtension.swift */; };
 		A8A44FB5272D50BA00807BD2 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FAF272D50B900807BD2 /* Montserrat-Regular.ttf */; };
 		A8A44FB6272D50BA00807BD2 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB0272D50B900807BD2 /* Montserrat-Bold.ttf */; };
@@ -65,7 +64,6 @@
 		A89803C1271D952A00319CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A89803C3271D952A00319CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A89803D2271DA44100319CD7 /* LazyBird.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LazyBird.entitlements; sourceTree = "<group>"; };
-		A8A44FA8272B167A00807BD2 /* CarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselLayout.swift; sourceTree = "<group>"; };
 		A8A44FAC272D4BB000807BD2 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		A8A44FAF272D50B900807BD2 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		A8A44FB0272D50B900807BD2 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -318,7 +316,6 @@
 				A83AF0942729479F00768224 /* TopContainerView.swift */,
 				A83AF0972729585C00768224 /* CategoryContainerView.swift */,
 				A83AF09F27299B7200768224 /* EarlyBirdContainerView.swift */,
-				A8A44FA8272B167A00807BD2 /* CarouselLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,7 +462,6 @@
 				A83AF0982729585C00768224 /* CategoryContainerView.swift in Sources */,
 				A82606462727238300939421 /* UIColorExtension.swift in Sources */,
 				A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */,
-				A8A44FA9272B167A00807BD2 /* CarouselLayout.swift in Sources */,
 				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,
 				A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */,
 				A83AF0A027299B7200768224 /* EarlyBirdContainerView.swift in Sources */,

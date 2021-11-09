@@ -11,5 +11,5 @@ pod 'SnapKit', '~> 5.0.0'
 pod 'Then'
 pod 'KakaoSDKAuth'  # 사용자 인증
 pod 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
-
+pod 'CollectionViewPagingLayout'
 end
