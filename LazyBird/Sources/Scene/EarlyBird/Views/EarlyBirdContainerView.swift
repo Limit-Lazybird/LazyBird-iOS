@@ -10,20 +10,15 @@ import CollectionViewPagingLayout
 
 class EarlyBirdContainerView: UIView {
     
+    //MARK: - Properties
     let dummyImageUrl: [String] = ["test","test","test","test","test","test","test","test","test"]
+    var vc: UIViewController?
+    
+    //MARK: - UI Components
     
     let layout = CollectionViewPagingLayout().then{
         $0.numberOfVisibleItems = nil
     }
-    
-//    lazy var layout = CarouselLayout().then{
-//        let testWidth = 300
-//        $0.itemSize = CGSize(width: testWidth, height: 0)
-//        $0.sideItemScale = 100/251
-//        $0.spacing = -180
-//        $0.isPagingEnabled = true
-//        $0.sideItemAlpha = 0.3
-//    }
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
         $0.dataSource = self
@@ -75,7 +70,13 @@ extension EarlyBirdContainerView: UICollectionViewDataSource {
 }
 
 extension EarlyBirdContainerView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = self.vc else { return }
+        
+        let ExhibitDetailVC = ExhibitDetailViewController()
+        ExhibitDetailVC.hidesBottomBarWhenPushed = true
+        vc.navigationController?.pushViewController(ExhibitDetailVC, animated: true)
+    }
 }
 
 extension EarlyBirdContainerView: UICollectionViewDelegateFlowLayout {

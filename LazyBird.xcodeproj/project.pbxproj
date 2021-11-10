@@ -33,6 +33,13 @@
 		A8A44FB9272D50BA00807BD2 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB3272D50BA00807BD2 /* Montserrat-Medium.ttf */; };
 		A8A44FBA272D50BA00807BD2 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8A44FB4272D50BA00807BD2 /* Montserrat-Black.ttf */; };
 		A8A44FBF272D5FE600807BD2 /* StartOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A44FBE272D5FE600807BD2 /* StartOnboardingViewController.swift */; };
+		A8AD0885273AE9DD003A793A /* ExhibitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD0884273AE9DD003A793A /* ExhibitDetailViewController.swift */; };
+		A8AD088C273B02E4003A793A /* ExhibitImageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD088B273B02E4003A793A /* ExhibitImageContainerView.swift */; };
+		A8AD0890273B02F5003A793A /* ExhibitInfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD088F273B02F5003A793A /* ExhibitInfoContainerView.swift */; };
+		A8AD0893273B031C003A793A /* ExhibitGuideContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD0892273B031C003A793A /* ExhibitGuideContainerView.swift */; };
+		A8AD0896273B0337003A793A /* ExhibitContentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD0895273B0337003A793A /* ExhibitContentContainerView.swift */; };
+		A8AD0899273B049D003A793A /* TicketBookContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD0898273B049D003A793A /* TicketBookContainerView.swift */; };
+		A8AD089D273B072C003A793A /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD089C273B072C003A793A /* SeparatorView.swift */; };
 		A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */; };
 		A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */; };
 		A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */; };
@@ -72,6 +79,13 @@
 		A8A44FB3272D50BA00807BD2 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		A8A44FB4272D50BA00807BD2 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		A8A44FBE272D5FE600807BD2 /* StartOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartOnboardingViewController.swift; sourceTree = "<group>"; };
+		A8AD0884273AE9DD003A793A /* ExhibitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitDetailViewController.swift; sourceTree = "<group>"; };
+		A8AD088B273B02E4003A793A /* ExhibitImageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitImageContainerView.swift; sourceTree = "<group>"; };
+		A8AD088F273B02F5003A793A /* ExhibitInfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitInfoContainerView.swift; sourceTree = "<group>"; };
+		A8AD0892273B031C003A793A /* ExhibitGuideContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitGuideContainerView.swift; sourceTree = "<group>"; };
+		A8AD0895273B0337003A793A /* ExhibitContentContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitContentContainerView.swift; sourceTree = "<group>"; };
+		A8AD0898273B049D003A793A /* TicketBookContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketBookContainerView.swift; sourceTree = "<group>"; };
+		A8AD089C273B072C003A793A /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		A8DA7EC2271F3413009976CF /* LoginButtonContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonContainerView.swift; sourceTree = "<group>"; };
 		A8DA7EC7271F383A009976CF /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginManager.swift; sourceTree = "<group>"; };
@@ -115,7 +129,8 @@
 			children = (
 				A8DA7EBE271F3213009976CF /* Login */,
 				A8A44FBC272D598300807BD2 /* OnBoarding */,
-				A8DA7F30272702D5009976CF /* Home */,
+				A8DA7F30272702D5009976CF /* EarlyBird */,
+				A8AD0882273AE99A003A793A /* ExhibitDetail */,
 				A83AF08A27292B5A00768224 /* Tabbar */,
 			);
 			path = Scene;
@@ -187,6 +202,36 @@
 				A813978C272F17CC00C3A4B8 /* FourthOnboardingViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8AD0882273AE99A003A793A /* ExhibitDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A8AD0883273AE9B0003A793A /* Controllers */,
+				A8AD088A273B02A8003A793A /* Views */,
+			);
+			path = ExhibitDetail;
+			sourceTree = "<group>";
+		};
+		A8AD0883273AE9B0003A793A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8AD0884273AE9DD003A793A /* ExhibitDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8AD088A273B02A8003A793A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8AD088B273B02E4003A793A /* ExhibitImageContainerView.swift */,
+				A8AD088F273B02F5003A793A /* ExhibitInfoContainerView.swift */,
+				A8AD0892273B031C003A793A /* ExhibitGuideContainerView.swift */,
+				A8AD0895273B0337003A793A /* ExhibitContentContainerView.swift */,
+				A8AD0898273B049D003A793A /* TicketBookContainerView.swift */,
+				A8AD089C273B072C003A793A /* SeparatorView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A8DA7EA8271EE32E009976CF /* Resource */ = {
@@ -292,14 +337,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A8DA7F30272702D5009976CF /* Home */ = {
+		A8DA7F30272702D5009976CF /* EarlyBird */ = {
 			isa = PBXGroup;
 			children = (
 				A8DA7F31272702FA009976CF /* Controllers */,
 				A8DA7F3227270305009976CF /* Views */,
 				A8A44FA6272B0CDE00807BD2 /* Cells */,
 			);
-			path = Home;
+			path = EarlyBird;
 			sourceTree = "<group>";
 		};
 		A8DA7F31272702FA009976CF /* Controllers */ = {
@@ -450,25 +495,32 @@
 				A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */,
 				A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */,
 				A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */,
+				A8AD0899273B049D003A793A /* TicketBookContainerView.swift in Sources */,
 				A83AF09027292C5200768224 /* TabBarViewController.swift in Sources */,
 				A83AF09B27295C6900768224 /* CategoryCell.swift in Sources */,
 				A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */,
+				A8AD088C273B02E4003A793A /* ExhibitImageContainerView.swift in Sources */,
 				A8DA7F3427270344009976CF /* EarlyBirdViewController.swift in Sources */,
 				A8A44FAD272D4BB000807BD2 /* UIViewExtension.swift in Sources */,
 				A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */,
+				A8AD0890273B02F5003A793A /* ExhibitInfoContainerView.swift in Sources */,
 				A83AF0952729479F00768224 /* TopContainerView.swift in Sources */,
 				A8139783272F073B00C3A4B8 /* QuestionBtnView.swift in Sources */,
 				A8260649272726BE00939421 /* LogoContainerView.swift in Sources */,
+				A8AD0896273B0337003A793A /* ExhibitContentContainerView.swift in Sources */,
 				A83AF0982729585C00768224 /* CategoryContainerView.swift in Sources */,
 				A82606462727238300939421 /* UIColorExtension.swift in Sources */,
 				A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */,
 				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,
 				A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */,
 				A83AF0A027299B7200768224 /* EarlyBirdContainerView.swift in Sources */,
+				A8AD089D273B072C003A793A /* SeparatorView.swift in Sources */,
 				A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */,
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
+				A8AD0893273B031C003A793A /* ExhibitGuideContainerView.swift in Sources */,
 				A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */,
 				A8DA7ECF271F4060009976CF /* AppleLoginManager.swift in Sources */,
+				A8AD0885273AE9DD003A793A /* ExhibitDetailViewController.swift in Sources */,
 				A8A44FBF272D5FE600807BD2 /* StartOnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

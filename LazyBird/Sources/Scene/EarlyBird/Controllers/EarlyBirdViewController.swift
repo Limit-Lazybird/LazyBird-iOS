@@ -9,12 +9,18 @@ import UIKit
 import SnapKit
 import Then
 
+protocol EarlyBirdViewDelegate{
+    
+}
+
 class EarlyBirdViewController: UIViewController {
     
     //MARK: - UI Components
     
     let topContainerView = TopContainerView()
-    let earlyBirdContainerView = EarlyBirdContainerView()
+    lazy var earlyBirdContainerView = EarlyBirdContainerView().then{
+        $0.vc = self
+    }
     
     let todayLabel = UILabel().then{
         $0.text = "today's"
@@ -60,14 +66,7 @@ class EarlyBirdViewController: UIViewController {
 //        self.navigationController?.navigationBar.shadowImage = colorToImage() -> shadow 지우기
     }
     
-    private func colorToImage() -> UIImage {
-        let size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 1)
-        let image: UIImage = UIGraphicsImageRenderer(size: size).image { context in
-            UIColor.Background.darkGray01.setFill()
-            context.fill(CGRect(origin: .zero, size: size))
-        }
-        return image
-    }
+    
     
     func setUI(){
         self.view.addSubview(topContainerView)
