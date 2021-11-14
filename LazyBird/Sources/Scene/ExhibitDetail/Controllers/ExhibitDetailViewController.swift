@@ -94,23 +94,3 @@ class ExhibitDetailViewController: UIViewController {
 
     }
 }
-
-//func setNavigationItem(){
-//        self.navigationController?.isNavigationBarHidden = false
-//        self.navigationController?.navigationBar.shadowImage = colorToImage()  //-> shadow 지우기
-//        self.navigationItem.leftBarButtonItem = self.backBtn
-//
-//        // Title 설정
-//        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        self.navigationController?.navigationBar.barTintColor = UIColor.Background.black02
-//        self.navigationController?.navigationBar.isTranslucent = false
-//    }
-//
-//    private func colorToImage() -> UIImage {
-//        let size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 1)
-//        let image: UIImage = UIGraphicsImageRenderer(size: size).image { context in
-//            UIColor.Background.black02.setFill()
-//            context.fill(CGRect(origin: .zero, size: size))
-//        }
-//        return image
-//    }

@@ -16,7 +16,7 @@ class TabBarViewController: UITabBarController {
                                      selectedImage: UIImage(named: "earlybirdOn")?.withRenderingMode(.alwaysOriginal))
         $0.navigationItem.largeTitleDisplayMode = .always
     }
-    let exhibitVC = EarlyBirdViewController().then{
+    let exhibitVC = ExhibitViewController().then{
         $0.tabBarItem = UITabBarItem(title: "전시",
                                      image: UIImage(named: "dashboardOff"),
                                      selectedImage: UIImage(named: "dashboardOn")?.withRenderingMode(.alwaysOriginal))

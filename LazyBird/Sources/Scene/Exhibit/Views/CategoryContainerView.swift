@@ -8,18 +8,22 @@
 import UIKit
 
 class CategoryContainerView: UIView {
-    var dummyCategory: [String] = ["현대미술","사진전","콘서트","무용","잡다잡다해","잡다잡다해","잡다잡다해","잡다잡다해"]
+    var dummyCategory: [String] = ["회화","조형","사진","특별전","아동전시","잡다잡다해","잡다잡다해","잡다잡다해"]
     
     private let layout = UICollectionViewFlowLayout().then{
         $0.scrollDirection = .horizontal
         $0.minimumLineSpacing = .zero
-        $0.minimumInteritemSpacing = 4
+        $0.minimumInteritemSpacing = 8
     }
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
         $0.dataSource = self
         $0.delegate = self
         $0.backgroundColor = .clear
         $0.showsHorizontalScrollIndicator = false
+        $0.contentInset = UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 0)
+        $0.register(CategoryCollectionHeaderView.self,
+                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                    withReuseIdentifier: CategoryCollectionHeaderView.identifier)
         $0.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }
     
@@ -37,8 +41,7 @@ class CategoryContainerView: UIView {
         self.addSubview(collectionView)
         
         collectionView.snp.makeConstraints{
-            $0.top.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16.0)
+            $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
@@ -61,6 +64,22 @@ extension CategoryContainerView: UICollectionViewDataSource{
         
         return cell
     }
+    
+    // header view setting
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard
+            kind == UICollectionView.elementKindSectionHeader,
+            let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: CategoryCollectionHeaderView.identifier,
+                for: indexPath
+            ) as? CategoryCollectionHeaderView
+        else { return UICollectionReusableView() }
+
+        header.setupViews()
+
+        return header
+    }
 }
 
 extension CategoryContainerView: UICollectionViewDelegateFlowLayout {
@@ -71,8 +90,14 @@ extension CategoryContainerView: UICollectionViewDelegateFlowLayout {
         return CategoryCell.fittingSize(availableHeight: CategoryCell.height,
                                         name: dummyCategory[indexPath.row])
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 16.0)
+    }
+    
+    
            // Header의 width, height 설정
-//       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//           CGSize(width: 50, height: 48.0)
-//       }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 53.0, height: CategoryCollectionHeaderView.height)
+    }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A806261D274162EB00B562A6 /* ExhibitContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806261C274162EB00B562A6 /* ExhibitContainerView.swift */; };
+		A806262027416DC300B562A6 /* CategoryCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806261F27416DC300B562A6 /* CategoryCollectionHeaderView.swift */; };
+		A806262327418F3B00B562A6 /* ExhibitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806262227418F3B00B562A6 /* ExhibitCell.swift */; };
 		A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813977E272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift */; };
 		A8139783272F073B00C3A4B8 /* QuestionBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139782272F073B00C3A4B8 /* QuestionBtnView.swift */; };
 		A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */; };
@@ -20,6 +23,8 @@
 		A83AF09B27295C6900768224 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83AF09A27295C6900768224 /* CategoryCell.swift */; };
 		A83AF0A027299B7200768224 /* EarlyBirdContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83AF09F27299B7200768224 /* EarlyBirdContainerView.swift */; };
 		A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83AF0A227299CAC00768224 /* EarlyBirdCell.swift */; };
+		A8518516274137240029B541 /* ExhibitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8518515274137240029B541 /* ExhibitViewController.swift */; };
+		A851851A2741615B0029B541 /* CustomExhibitToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85185192741615B0029B541 /* CustomExhibitToggleView.swift */; };
 		A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541BA527411588003C7F19 /* UIFontExtension.swift */; };
 		A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B5271D952700319CD7 /* AppDelegate.swift */; };
 		A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B7271D952700319CD7 /* SceneDelegate.swift */; };
@@ -51,6 +56,9 @@
 
 /* Begin PBXFileReference section */
 		92E82EA07E0F491E4077209A /* Pods-LazyBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazyBird.debug.xcconfig"; path = "Target Support Files/Pods-LazyBird/Pods-LazyBird.debug.xcconfig"; sourceTree = "<group>"; };
+		A806261C274162EB00B562A6 /* ExhibitContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitContainerView.swift; sourceTree = "<group>"; };
+		A806261F27416DC300B562A6 /* CategoryCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionHeaderView.swift; sourceTree = "<group>"; };
+		A806262227418F3B00B562A6 /* ExhibitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitCell.swift; sourceTree = "<group>"; };
 		A813977E272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
 		A8139782272F073B00C3A4B8 /* QuestionBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBtnView.swift; sourceTree = "<group>"; };
 		A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +72,8 @@
 		A83AF09A27295C6900768224 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		A83AF09F27299B7200768224 /* EarlyBirdContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyBirdContainerView.swift; sourceTree = "<group>"; };
 		A83AF0A227299CAC00768224 /* EarlyBirdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyBirdCell.swift; sourceTree = "<group>"; };
+		A8518515274137240029B541 /* ExhibitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitViewController.swift; sourceTree = "<group>"; };
+		A85185192741615B0029B541 /* CustomExhibitToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExhibitToggleView.swift; sourceTree = "<group>"; };
 		A8541BA527411588003C7F19 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		A89803B2271D952700319CD7 /* LazyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89803B5271D952700319CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +142,7 @@
 				A8DA7EBE271F3213009976CF /* Login */,
 				A8A44FBC272D598300807BD2 /* OnBoarding */,
 				A8DA7F30272702D5009976CF /* EarlyBird */,
+				A8518511274136620029B541 /* Exhibit */,
 				A8AD0882273AE99A003A793A /* ExhibitDetail */,
 				A83AF08A27292B5A00768224 /* Tabbar */,
 			);
@@ -144,6 +155,44 @@
 				A83AF08F27292C5200768224 /* TabBarViewController.swift */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		A8518511274136620029B541 /* Exhibit */ = {
+			isa = PBXGroup;
+			children = (
+				A8518512274136790029B541 /* Controllers */,
+				A85185132741367E0029B541 /* Views */,
+				A8518514274136880029B541 /* Cells */,
+			);
+			path = Exhibit;
+			sourceTree = "<group>";
+		};
+		A8518512274136790029B541 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8518515274137240029B541 /* ExhibitViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A85185132741367E0029B541 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A85185192741615B0029B541 /* CustomExhibitToggleView.swift */,
+				A83AF0972729585C00768224 /* CategoryContainerView.swift */,
+				A806261C274162EB00B562A6 /* ExhibitContainerView.swift */,
+				A806261F27416DC300B562A6 /* CategoryCollectionHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8518514274136880029B541 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A83AF09A27295C6900768224 /* CategoryCell.swift */,
+				A806262227418F3B00B562A6 /* ExhibitCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A89803A9271D952700319CD7 = {
@@ -179,7 +228,6 @@
 		A8A44FA6272B0CDE00807BD2 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A83AF09A27295C6900768224 /* CategoryCell.swift */,
 				A83AF0A227299CAC00768224 /* EarlyBirdCell.swift */,
 			);
 			path = Cells;
@@ -362,7 +410,6 @@
 			isa = PBXGroup;
 			children = (
 				A83AF0942729479F00768224 /* TopContainerView.swift */,
-				A83AF0972729585C00768224 /* CategoryContainerView.swift */,
 				A83AF09F27299B7200768224 /* EarlyBirdContainerView.swift */,
 			);
 			path = Views;
@@ -496,7 +543,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */,
+				A806262327418F3B00B562A6 /* ExhibitCell.swift in Sources */,
 				A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */,
+				A8518516274137240029B541 /* ExhibitViewController.swift in Sources */,
 				A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */,
 				A8AD0899273B049D003A793A /* TicketBookContainerView.swift in Sources */,
 				A83AF09027292C5200768224 /* TabBarViewController.swift in Sources */,
@@ -517,13 +566,16 @@
 				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,
 				A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */,
 				A83AF0A027299B7200768224 /* EarlyBirdContainerView.swift in Sources */,
+				A806262027416DC300B562A6 /* CategoryCollectionHeaderView.swift in Sources */,
 				A8AD089D273B072C003A793A /* SeparatorView.swift in Sources */,
+				A806261D274162EB00B562A6 /* ExhibitContainerView.swift in Sources */,
 				A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */,
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
 				A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */,
 				A8AD0893273B031C003A793A /* ExhibitGuideContainerView.swift in Sources */,
 				A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */,
 				A8DA7ECF271F4060009976CF /* AppleLoginManager.swift in Sources */,
+				A851851A2741615B0029B541 /* CustomExhibitToggleView.swift in Sources */,
 				A8AD0885273AE9DD003A793A /* ExhibitDetailViewController.swift in Sources */,
 				A8A44FBF272D5FE600807BD2 /* StartOnboardingViewController.swift in Sources */,
 			);

@@ -56,7 +56,7 @@ class EarlyBirdViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-            return .lightContent
+        return .lightContent
     }
 
     //MARK: - Functions

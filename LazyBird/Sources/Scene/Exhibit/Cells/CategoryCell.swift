@@ -15,13 +15,13 @@ class CategoryCell: UICollectionViewCell {
     static let height: CGFloat = 26.0
     
     lazy var categoryLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 13)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 13.0)
         $0.textColor = UIColor.Basic.gray05
     }
     
     override init(frame : CGRect) {
         super.init(frame: frame)
-        self.contentView.backgroundColor = UIColor.Basic.gray02
+        self.contentView.backgroundColor = UIColor.Background.darkGray01
         self.layer.masksToBounds = true
         self.layer.cornerRadius = frame.height / 2
         
@@ -44,7 +44,7 @@ class CategoryCell: UICollectionViewCell {
             $0.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(12.0)
             $0.trailing.equalTo(self.contentView.safeAreaLayoutGuide).inset(12.0)
             $0.top.equalTo(self.contentView.safeAreaLayoutGuide).offset(6.0)
-            $0.bottom.equalTo(self.contentView.safeAreaLayoutGuide).inset(6.0)
+            $0.bottom.equalTo(self.contentView.safeAreaLayoutGuide).inset(4.0)
         }
     }
     

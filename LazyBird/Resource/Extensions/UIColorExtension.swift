@@ -13,6 +13,7 @@ extension UIColor {
     class Background: UIColor {
         static let black02 = UIColor(red: 0.09 , green: 0.09, blue: 0.09, alpha: 1.0)
         static let darkGray01 = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+        static let darkGray02 = UIColor(red: 31/255, green: 31/255, blue: 31/255, alpha: 1.0)
     }
     
     // MARK: - Basic
