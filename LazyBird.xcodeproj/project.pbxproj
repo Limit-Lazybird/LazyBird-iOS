@@ -20,6 +20,7 @@
 		A83AF09B27295C6900768224 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83AF09A27295C6900768224 /* CategoryCell.swift */; };
 		A83AF0A027299B7200768224 /* EarlyBirdContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83AF09F27299B7200768224 /* EarlyBirdContainerView.swift */; };
 		A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83AF0A227299CAC00768224 /* EarlyBirdCell.swift */; };
+		A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541BA527411588003C7F19 /* UIFontExtension.swift */; };
 		A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B5271D952700319CD7 /* AppDelegate.swift */; };
 		A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B7271D952700319CD7 /* SceneDelegate.swift */; };
 		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
@@ -63,6 +64,7 @@
 		A83AF09A27295C6900768224 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		A83AF09F27299B7200768224 /* EarlyBirdContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyBirdContainerView.swift; sourceTree = "<group>"; };
 		A83AF0A227299CAC00768224 /* EarlyBirdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyBirdCell.swift; sourceTree = "<group>"; };
+		A8541BA527411588003C7F19 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		A89803B2271D952700319CD7 /* LazyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89803B5271D952700319CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A89803B7271D952700319CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			children = (
 				A82606452727238300939421 /* UIColorExtension.swift */,
 				A8A44FAC272D4BB000807BD2 /* UIViewExtension.swift */,
+				A8541BA527411588003C7F19 /* UIFontExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				A8AD089D273B072C003A793A /* SeparatorView.swift in Sources */,
 				A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */,
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
+				A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */,
 				A8AD0893273B031C003A793A /* ExhibitGuideContainerView.swift in Sources */,
 				A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */,
 				A8DA7ECF271F4060009976CF /* AppleLoginManager.swift in Sources */,

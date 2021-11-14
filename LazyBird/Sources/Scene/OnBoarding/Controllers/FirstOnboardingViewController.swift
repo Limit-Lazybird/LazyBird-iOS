@@ -19,13 +19,13 @@ class FirstOnboardingViewController: UIViewController {
     
     let decoLabel = UILabel().then{
         $0.text = "Q."
-        $0.font = UIFont.boldSystemFont(ofSize: 25)
+        $0.font = UIFont.TTFont(type: .MontReg, size: 25)
         $0.textColor = .white
     }
     
     let questionLabel = UILabel().then{
         $0.text = "전시회를 방문하는 목적은 ?"
-        $0.font = UIFont.boldSystemFont(ofSize: 15)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 15)
         $0.textColor = .white
     }
     

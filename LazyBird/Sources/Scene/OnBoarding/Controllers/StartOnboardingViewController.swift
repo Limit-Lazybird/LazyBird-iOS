@@ -25,14 +25,14 @@ class StartOnboardingViewController: UIViewController {
     
     let mainLabel = UILabel().then{
         $0.text = "3가지만\n선택하면"
-        $0.font = UIFont.boldSystemFont(ofSize: 30)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 30)
         $0.textColor = .white
         $0.numberOfLines = 2
     }
     
     let subLabel = UILabel().then{
         $0.text = "당신의 성향의 맞는 전시회를 추천드릴게요."
-        $0.font = UIFont.boldSystemFont(ofSize: 14)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 14)
         $0.textColor = .white
     }
     
@@ -40,7 +40,7 @@ class StartOnboardingViewController: UIViewController {
         $0.backgroundColor = UIColor.Point.or02
         $0.setTitle("전시 성향 분석하러 가기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        $0.titleLabel?.font = UIFont.TTFont(type: .SDBold, size: 17)
         $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(moveToOnboardingVC(_:)), for: .touchUpInside)
     }
@@ -52,7 +52,7 @@ class StartOnboardingViewController: UIViewController {
                                       value: NSUnderlineStyle.single.rawValue,
                                       range: NSRange(location: 0, length: text.count))
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        $0.titleLabel?.font = UIFont.TTFont(type: .SDMed, size: 16)
         $0.setAttributedTitle(attributedString, for: .normal)
         $0.addTarget(self, action: #selector(moveToHome(_:)), for: .touchUpInside)
     }

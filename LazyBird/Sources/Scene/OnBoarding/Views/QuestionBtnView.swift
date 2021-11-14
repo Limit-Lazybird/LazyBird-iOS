@@ -34,7 +34,7 @@ class QuestionBtnView: UIView {
     lazy var questionLabel = UILabel().then{
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 4
-        $0.font = UIFont.boldSystemFont(ofSize: 17)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 17)
         $0.textColor = .white
     }
     

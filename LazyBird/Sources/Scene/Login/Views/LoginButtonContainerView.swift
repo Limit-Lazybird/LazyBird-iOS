@@ -18,7 +18,7 @@ class LoginButtonContainerView: UIView {
     private let appleLoginManager = AppleLoginManager()
     
     let loginLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 17)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 17)
         $0.text = "로그인"
         $0.textColor = .white
     }
@@ -36,11 +36,7 @@ class LoginButtonContainerView: UIView {
         $0.setBackgroundImage(UIImage(named: "kakaoLoginBtn"), for: .normal)
         $0.addTarget(self, action: #selector(kakaoLogin(_:)), for: .touchUpInside)
     }
-    // 구글 로그인 버튼
-    lazy var googleLoginBtn = UIButton().then{
-        $0.setBackgroundImage(UIImage(named: "googleLoginBtn"), for: .normal)
-        $0.addTarget(self, action: #selector(googleLogin(_:)), for: .touchUpInside)
-    }
+  
     // 애플 로그인 버튼
     lazy var appleLoginBtn = UIButton().then{
         $0.setBackgroundImage(UIImage(named: "appleLoginBtn"), for: .normal)
@@ -53,12 +49,7 @@ class LoginButtonContainerView: UIView {
         kakaoLoginManager.setViewController(vc)
         kakaoLoginManager.login()
     }
-    @objc func googleLogin(_ sender: UIButton){
-        guard let vc = self.viewController else { return }
-        
-        googleLoginManager.setViewController(vc)
-        googleLoginManager.login()
-    }
+
     @objc func appleLogin(_ sender: UIButton){
         guard let vc = self.viewController else { return }
         

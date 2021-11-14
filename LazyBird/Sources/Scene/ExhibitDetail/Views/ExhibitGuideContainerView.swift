@@ -25,12 +25,12 @@ class ExhibitGuideContainerView: UIView {
     
     let warningLabel = UILabel().then{
         $0.text = "전시회 예매 전 확인하세요."
-        $0.font = UIFont.boldSystemFont(ofSize: 13)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 13)
         $0.textColor = UIColor.Point.or01
     }
     
     let alertLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 13)
+        $0.font = UIFont.TTFont(type: .SDReg, size: 13)
         $0.textColor = .white
     }
     
@@ -58,7 +58,7 @@ class ExhibitGuideContainerView: UIView {
         for message in dummyAlertMessages{
             let messageLabel = UILabel().then{
                 $0.text = "• \(message)"
-                $0.font = UIFont.boldSystemFont(ofSize: 13)
+                $0.font = UIFont.TTFont(type: .SDReg, size: 13)
                 $0.textColor = .white
             }
             messageStackView.addArrangedSubview(messageLabel)

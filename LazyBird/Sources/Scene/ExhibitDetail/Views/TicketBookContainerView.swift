@@ -14,13 +14,53 @@ import Then
  */
 
 class TicketBookContainerView: UIView {
-
+    
+    //MARK: - UI Components
+    
+    let bgView = UIView().then{
+        $0.backgroundColor = UIColor.Background.darkGray01
+    }
+    
+    lazy var bookBtn = UIButton().then{
+        $0.backgroundColor = UIColor.Point.or01
+        $0.setTitle("예매하러 가기", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont.TTFont(type: .SDBold, size: 17)
+        $0.layer.cornerRadius = 10
+        $0.addTarget(self, action: #selector(bookBtnPressed(_:)), for: .touchUpInside)
+    }
+    
+    //MARK: - Life cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    //MARK: - Functions
+    
+    @objc func bookBtnPressed(_ sender: UIButton){
+        print("book btn pressed")
+    }
+    
+    func setUI(){
+        self.addSubview(bgView)
+        bgView.addSubview(bookBtn)
+        
+        bgView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+        
+        bookBtn.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(9.0)
+            $0.leading.equalToSuperview().offset(16.0)
+            $0.trailing.equalToSuperview().offset(-16.0)
+            $0.height.equalTo(48.0)
+        }
+    }
 }

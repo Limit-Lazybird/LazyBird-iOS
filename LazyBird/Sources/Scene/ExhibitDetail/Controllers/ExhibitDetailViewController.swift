@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class ExhibitDetailViewController: UIViewController {
     
     //MARK: - UI Components
-    private let scrollView = UIScrollView()
+    private let scrollView = UIScrollView().then{
+        $0.contentInsetAdjustmentBehavior = .never
+    }
     private let contentView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -21,6 +25,8 @@ class ExhibitDetailViewController: UIViewController {
         $0.addTarget(self, action: #selector(back(_:)), for: .touchUpInside)
     }
     
+    let bookContainerView = TicketBookContainerView(frame: .zero)
+    
     lazy var stackView = UIStackView().then{
         $0.axis = .vertical
         $0.distribution = .equalSpacing
@@ -30,6 +36,8 @@ class ExhibitDetailViewController: UIViewController {
         $0.addArrangedSubview(ExhibitInfoContainerView(frame: .zero))
         $0.addArrangedSubview(SeparatorView(frame: .zero))
         $0.addArrangedSubview(ExhibitGuideContainerView(frame: .zero))
+        $0.addArrangedSubview(SeparatorView(frame: .zero))
+        $0.addArrangedSubview(ExhibitContentContainerView(frame: .zero))
         $0.addArrangedSubview(SeparatorView(frame: .zero))
     }
 
@@ -43,7 +51,7 @@ class ExhibitDetailViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-            return .lightContent
+        return .lightContent
     }
     
     //MARK: - Functions
@@ -56,6 +64,7 @@ class ExhibitDetailViewController: UIViewController {
     func setUI(){
         self.view.addSubview(scrollView)
         self.view.addSubview(backBtn)
+        self.view.addSubview(bookContainerView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         
@@ -65,7 +74,8 @@ class ExhibitDetailViewController: UIViewController {
         }
 
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.leading.trailing.top.equalToSuperview()
+            $0.bottom.equalTo(bookContainerView.snp.top)
         }
         
         contentView.snp.makeConstraints {
@@ -76,6 +86,12 @@ class ExhibitDetailViewController: UIViewController {
         stackView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
+        
+        bookContainerView.snp.makeConstraints{
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(86.0)
+        }
+
     }
 }
 

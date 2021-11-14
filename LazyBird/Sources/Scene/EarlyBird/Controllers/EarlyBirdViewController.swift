@@ -24,7 +24,7 @@ class EarlyBirdViewController: UIViewController {
     
     let todayLabel = UILabel().then{
         $0.text = "today's"
-        $0.font = UIFont.boldSystemFont(ofSize: 32)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 32)
         $0.textColor = .white
     }
     
@@ -34,7 +34,7 @@ class EarlyBirdViewController: UIViewController {
         attributedString.addAttribute(.baselineOffset, value: 0, range: (text as NSString).range(of: "lazy"))
         attributedString.addAttribute(.strikethroughStyle, value: 2, range: (text as NSString).range(of:"lazy"))
         $0.text = text
-        $0.font = UIFont.boldSystemFont(ofSize: 32)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 32)
         $0.textColor = UIColor.Background.darkGray01
         $0.attributedText = attributedString
     }
@@ -42,7 +42,7 @@ class EarlyBirdViewController: UIViewController {
     let ealryBirdLabel = UILabel().then{
         $0.text = "ealryBird"
         $0.textColor = UIColor.Point.or01
-        $0.font = UIFont.boldSystemFont(ofSize: 36)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 36)
         $0.textAlignment = .right
     }
     //MARK: - Life Cycle

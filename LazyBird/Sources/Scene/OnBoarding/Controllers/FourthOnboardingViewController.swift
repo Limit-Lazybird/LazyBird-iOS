@@ -34,7 +34,7 @@ class FourthOnboardingViewController: UIViewController {
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 3
         $0.textColor = .white
-        $0.font = UIFont.boldSystemFont(ofSize: 20)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 20)
         $0.attributedText = attributeString
     }
     

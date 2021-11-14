@@ -21,12 +21,12 @@ class ExhibitImageContainerView: UIView {
     }
     
     let earlybirdLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 13)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 13)
         $0.textColor = .white
     }
     
     let d_dayLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 13)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 13)
         $0.textColor = .white
     }
     

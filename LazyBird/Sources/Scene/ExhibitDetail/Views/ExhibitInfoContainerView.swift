@@ -24,7 +24,7 @@ import SnapKit
 class ExhibitInfoContainerView: UIView {
     
     let exhibitTitleLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 17)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 17)
         $0.textColor = .white
     }
     
@@ -35,12 +35,12 @@ class ExhibitInfoContainerView: UIView {
     
     let stationTitleLabel = UILabel().then{
         $0.text = "장소"
-        $0.font = UIFont.boldSystemFont(ofSize: 11)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 11)
         $0.textColor = UIColor.Point.or01
     }
     
     let stationLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 11)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 11)
         $0.textColor = .white
     }
     
@@ -54,12 +54,12 @@ class ExhibitInfoContainerView: UIView {
     
     let dateTitleLabel = UILabel().then{
         $0.text = "날짜"
-        $0.font = UIFont.boldSystemFont(ofSize: 11)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 11)
         $0.textColor = UIColor.Point.or01
     }
     
     let dateLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 11)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 11)
         $0.textColor = .white
     }
     
@@ -72,23 +72,23 @@ class ExhibitInfoContainerView: UIView {
     }
     
     let discountLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 17)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 17)
         $0.textColor = UIColor.Point.pink
     }
     
     let priceLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 20)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 20)
         $0.textColor = .white
     }
     
     let wonLabel = UILabel().then{
         $0.text = "원"
-        $0.font = UIFont.boldSystemFont(ofSize: 15)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 15)
         $0.textColor = UIColor.Basic.gray04
     }
     
     let postPriceLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 15)
+        $0.font = UIFont.TTFont(type: .SDReg, size: 15)
         $0.textColor = UIColor.Basic.gray04
     }
     

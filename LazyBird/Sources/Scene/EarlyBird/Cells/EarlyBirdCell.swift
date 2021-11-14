@@ -34,7 +34,7 @@ class EarlyBirdCell: UICollectionViewCell {
     }
     
     let titleLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 13)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 13)
         $0.textColor = .white
     }
     
@@ -45,7 +45,7 @@ class EarlyBirdCell: UICollectionViewCell {
     }
     
     let discountLabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 21)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 21)
         $0.textColor = UIColor.Basic.black01
     }
     

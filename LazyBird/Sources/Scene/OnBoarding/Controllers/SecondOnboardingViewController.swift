@@ -13,13 +13,13 @@ class SecondOnboardingViewController: UIViewController {
     
     let decoLabel = UILabel().then{
         $0.text = "Q."
-        $0.font = UIFont.boldSystemFont(ofSize: 25)
+        $0.font = UIFont.TTFont(type: .MontReg, size: 25)
         $0.textColor = .white
     }
     
     let questionLabel = UILabel().then{
         $0.text = "전시회에 방문해서 경험하고 싶은 것은 ?"
-        $0.font = UIFont.boldSystemFont(ofSize: 15)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 15)
         $0.textColor = .white
     }
     
