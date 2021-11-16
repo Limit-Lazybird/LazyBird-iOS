@@ -51,6 +51,10 @@
 		A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */; };
 		A8DA7ECF271F4060009976CF /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7ECE271F4060009976CF /* AppleLoginManager.swift */; };
 		A8DA7F3427270344009976CF /* EarlyBirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA7F3327270344009976CF /* EarlyBirdViewController.swift */; };
+		A8FF870D2742981A00EBC16E /* ExhibitFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF870C2742981A00EBC16E /* ExhibitFilterViewController.swift */; };
+		A8FF87102743968700EBC16E /* ExhibitFilterContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF870F2743968700EBC16E /* ExhibitFilterContainerView.swift */; };
+		A8FF8712274397E000EBC16E /* ExhibitFilterCollectionViewFlowlayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF8711274397E000EBC16E /* ExhibitFilterCollectionViewFlowlayout.swift */; };
+		A8FF87152743992500EBC16E /* ExhibitFilterTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF87142743992500EBC16E /* ExhibitFilterTypeCell.swift */; };
 		AD2B21DB18324903ABD799AE /* Pods_LazyBird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBDEB27AE26B24621A08ACD /* Pods_LazyBird.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +107,10 @@
 		A8DA7ECB271F3B56009976CF /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginManager.swift; sourceTree = "<group>"; };
 		A8DA7ECE271F4060009976CF /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		A8DA7F3327270344009976CF /* EarlyBirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyBirdViewController.swift; sourceTree = "<group>"; };
+		A8FF870C2742981A00EBC16E /* ExhibitFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitFilterViewController.swift; sourceTree = "<group>"; };
+		A8FF870F2743968700EBC16E /* ExhibitFilterContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitFilterContainerView.swift; sourceTree = "<group>"; };
+		A8FF8711274397E000EBC16E /* ExhibitFilterCollectionViewFlowlayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitFilterCollectionViewFlowlayout.swift; sourceTree = "<group>"; };
+		A8FF87142743992500EBC16E /* ExhibitFilterTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitFilterTypeCell.swift; sourceTree = "<group>"; };
 		BBBDEB27AE26B24621A08ACD /* Pods_LazyBird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LazyBird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB0367A31ABB7DEF9D9DEAD2 /* Pods-LazyBird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazyBird.release.xcconfig"; path = "Target Support Files/Pods-LazyBird/Pods-LazyBird.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +152,7 @@
 				A8DA7F30272702D5009976CF /* EarlyBird */,
 				A8518511274136620029B541 /* Exhibit */,
 				A8AD0882273AE99A003A793A /* ExhibitDetail */,
+				A8FF870A274297D900EBC16E /* ExhibitFilter */,
 				A83AF08A27292B5A00768224 /* Tabbar */,
 			);
 			path = Scene;
@@ -415,6 +424,41 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		A8FF870A274297D900EBC16E /* ExhibitFilter */ = {
+			isa = PBXGroup;
+			children = (
+				A8FF870B274297F700EBC16E /* Controllers */,
+				A8FF870E2743963900EBC16E /* Views */,
+				A8FF87132743987400EBC16E /* Cells */,
+			);
+			path = ExhibitFilter;
+			sourceTree = "<group>";
+		};
+		A8FF870B274297F700EBC16E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8FF870C2742981A00EBC16E /* ExhibitFilterViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8FF870E2743963900EBC16E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8FF870F2743968700EBC16E /* ExhibitFilterContainerView.swift */,
+				A8FF8711274397E000EBC16E /* ExhibitFilterCollectionViewFlowlayout.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8FF87132743987400EBC16E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A8FF87142743992500EBC16E /* ExhibitFilterTypeCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		D275028BFDFD0F9FE77C07E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,13 +598,17 @@
 				A8AD088C273B02E4003A793A /* ExhibitImageContainerView.swift in Sources */,
 				A8DA7F3427270344009976CF /* EarlyBirdViewController.swift in Sources */,
 				A8A44FAD272D4BB000807BD2 /* UIViewExtension.swift in Sources */,
+				A8FF870D2742981A00EBC16E /* ExhibitFilterViewController.swift in Sources */,
 				A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */,
+				A8FF8712274397E000EBC16E /* ExhibitFilterCollectionViewFlowlayout.swift in Sources */,
 				A8AD0890273B02F5003A793A /* ExhibitInfoContainerView.swift in Sources */,
 				A83AF0952729479F00768224 /* TopContainerView.swift in Sources */,
 				A8139783272F073B00C3A4B8 /* QuestionBtnView.swift in Sources */,
 				A8260649272726BE00939421 /* LogoContainerView.swift in Sources */,
+				A8FF87152743992500EBC16E /* ExhibitFilterTypeCell.swift in Sources */,
 				A8AD0896273B0337003A793A /* ExhibitContentContainerView.swift in Sources */,
 				A83AF0982729585C00768224 /* CategoryContainerView.swift in Sources */,
+				A8FF87102743968700EBC16E /* ExhibitFilterContainerView.swift in Sources */,
 				A82606462727238300939421 /* UIColorExtension.swift in Sources */,
 				A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */,
 				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,

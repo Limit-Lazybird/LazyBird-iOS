@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+protocol ExhibitViewDelegate{
+    func moveToExhibitFilter()
+    func moveToDetailView()
+}
+
 class ExhibitViewController: UIViewController {
     
     //MARK: - UI Components
@@ -24,8 +29,12 @@ class ExhibitViewController: UIViewController {
     }
     
     let toggleView = CustomExhibitToggleView(frame: .zero)
-    let categoryContainerView = CategoryContainerView(frame: .zero)
-    let exhibitContainerView = ExhibitContainerView(frame: .zero)
+    lazy var categoryContainerView = CategoryContainerView(frame: .zero).then{
+        $0.delegate = self
+    }
+    lazy var exhibitContainerView = ExhibitContainerView(frame: .zero).then{
+        $0.delegate = self
+    }
     
     //MARK: - Life cycle
     
@@ -76,14 +85,22 @@ class ExhibitViewController: UIViewController {
     
     func setNavigationItem(){
         self.navigationItem.title = "전시"
+        self.navigationController?.delegate = self
         self.navigationItem.rightBarButtonItems = [alertBtn, earlyCardBtn]
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.shadowImage = colorToImage()
-        
         // Title 설정
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.barTintColor = UIColor.Background.black02
         self.navigationController?.navigationBar.isTranslucent = false
+        // navigationbar backbutton 설정
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic_arrow")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic_arrow")
+        // Title 설정
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
     }
     
     private func colorToImage() -> UIImage {
@@ -95,3 +112,31 @@ class ExhibitViewController: UIViewController {
         return image
     }
 }
+
+
+extension ExhibitViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        //TODO: rootView가 최상단 뷰일때, navigationBar 나타내기
+        if viewController == navigationController.viewControllers.first {
+            self.navigationController?.navigationBar.isHidden = false
+        }
+    }
+}
+
+extension ExhibitViewController: ExhibitViewDelegate{
+    func moveToExhibitFilter() {
+        let exhibitFilterVC = ExhibitFilterViewController()
+        exhibitFilterVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(exhibitFilterVC, animated: true, completion: nil)
+    }
+    
+    func moveToDetailView() {
+        let ExhibitDetailVC = ExhibitDetailViewController()
+        ExhibitDetailVC.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(ExhibitDetailVC, animated: true)
+    }
+}
+
+

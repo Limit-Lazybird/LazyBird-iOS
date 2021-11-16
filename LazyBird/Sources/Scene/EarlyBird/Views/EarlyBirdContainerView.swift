@@ -12,7 +12,7 @@ class EarlyBirdContainerView: UIView {
     
     //MARK: - Properties
     let dummyImageUrl: [String] = ["test","test","test","test","test","test","test","test","test"]
-    var vc: UIViewController?
+    var delegate: EarlyBirdViewDelegate?
     
     //MARK: - UI Components
     
@@ -71,11 +71,7 @@ extension EarlyBirdContainerView: UICollectionViewDataSource {
 
 extension EarlyBirdContainerView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = self.vc else { return }
-        
-        let ExhibitDetailVC = ExhibitDetailViewController()
-        ExhibitDetailVC.hidesBottomBarWhenPushed = true
-        vc.navigationController?.pushViewController(ExhibitDetailVC, animated: true)
+        self.delegate?.moveToDetailView()
     }
 }
 

@@ -19,7 +19,12 @@ class ExhibitDetailViewController: UIViewController {
         $0.backgroundColor = .white
     }
     
-    lazy var backBtn = UIButton().then{
+    lazy var backBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(back(_:))).then{
+        $0.image = UIImage(systemName: "ic_arrow")
+        $0.tintColor = .white
+    }
+    
+    lazy var customBackBtn = UIButton().then{
         $0.setImage(UIImage(named: "ic_arrow"), for: .normal)
         $0.tintColor = .white
         $0.addTarget(self, action: #selector(back(_:)), for: .touchUpInside)
@@ -47,6 +52,7 @@ class ExhibitDetailViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.Background.black02
         
+        setNavigationItem()
         setUI()
     }
     
@@ -57,18 +63,25 @@ class ExhibitDetailViewController: UIViewController {
     //MARK: - Functions
     
     @objc func back(_ sender: UIButton){
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setNavigationItem(){
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.Background.black02
+        //test
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func setUI(){
         self.view.addSubview(scrollView)
-        self.view.addSubview(backBtn)
+        self.view.addSubview(customBackBtn)
         self.view.addSubview(bookContainerView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         
-        backBtn.snp.makeConstraints{
+        customBackBtn.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(12.0)
             $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(13.0)
         }

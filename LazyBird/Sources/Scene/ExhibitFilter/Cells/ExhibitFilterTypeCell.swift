@@ -1,39 +1,43 @@
 //
-//  CategoryCell.swift
+//  ExhibitFilterTypeCell.swift
 //  LazyBird
 //
-//  Created by 이숭인 on 2021/10/27.
+//  Created by 이숭인 on 2021/11/16.
 //
 
 import UIKit
 import SnapKit
 import Then
 
-
-class CategoryCell: UICollectionViewCell {
-    static let identifier: String = "categoryCell"
+class ExhibitFilterTypeCell: UICollectionViewCell {
+    //MARK: - Properties
+    
+    static let identifier = "exhibitFilterTypeCell"
     static let height: CGFloat = 26.0
     
     override var isSelected: Bool {
         didSet{
             if isSelected {
                 print("셀 선택 됨")
-                categoryLabel.textColor = UIColor.Basic.gray02
+                typeLabel.textColor = UIColor.Basic.gray02
                 self.contentView.backgroundColor = .white
             }
             else {
                 print("셀 선택 해제 됨")
-                categoryLabel.textColor = UIColor.Basic.gray05
+                typeLabel.textColor = UIColor.Basic.gray05
                 self.contentView.backgroundColor = UIColor.Background.darkGray01
             }
         }
     }
     
-    lazy var categoryLabel = UILabel().then{
-        $0.font = UIFont.TTFont(type: .SDBold, size: 13.0)
-        $0.textColor = UIColor.Basic.gray05
+    //MARK: - UI Components
+    
+    lazy var typeLabel = UILabel().then{
+        $0.font = UIFont.TTFont(type: .SDBold, size: 13)
+        $0.textColor = .white
     }
     
+    //MARK: - Life Cycle
     
     override init(frame : CGRect) {
         super.init(frame: frame)
@@ -49,14 +53,16 @@ class CategoryCell: UICollectionViewCell {
         
     }
     
-    func config(category: String){
-        self.categoryLabel.text = category
+    //MARK: - Functions
+    
+    func config(type: String){
+        self.typeLabel.text = type
     }
     
     func setUI(){
-        self.contentView.addSubview(categoryLabel)
-
-        categoryLabel.snp.makeConstraints{
+        self.contentView.addSubview(typeLabel)
+        
+        typeLabel.snp.makeConstraints{
             $0.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(12.0)
             $0.trailing.equalTo(self.contentView.safeAreaLayoutGuide).inset(12.0)
             $0.top.equalTo(self.contentView.safeAreaLayoutGuide).offset(6.0)
@@ -65,10 +71,10 @@ class CategoryCell: UICollectionViewCell {
     }
     
     static func fittingSize(availableHeight: CGFloat, name: String) -> CGSize {
-        let cell = CategoryCell()
+        let cell = ExhibitFilterTypeCell()
         let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: availableHeight)
         
-        cell.config(category: name)
+        cell.config(type: name)
         
         return cell.contentView.systemLayoutSizeFitting(targetSize,
                                                         withHorizontalFittingPriority: .fittingSizeLevel,

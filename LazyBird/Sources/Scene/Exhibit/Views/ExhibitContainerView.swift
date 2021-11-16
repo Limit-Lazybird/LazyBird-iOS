@@ -8,7 +8,11 @@
 import UIKit
 
 class ExhibitContainerView: UIView {
-        
+    //MARK: - Properties
+    
+    var delegate: ExhibitViewDelegate?
+    
+    
     //MARK: - UI Components
     
     private let layout = UICollectionViewFlowLayout().then{
@@ -69,7 +73,9 @@ extension ExhibitContainerView: UICollectionViewDataSource {
     
 }
 extension ExhibitContainerView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.moveToDetailView()
+    }
 }
 
 extension ExhibitContainerView: UICollectionViewDelegateFlowLayout {
