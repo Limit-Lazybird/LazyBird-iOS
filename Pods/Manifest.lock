@@ -29,6 +29,7 @@ PODS:
   - Then (2.7.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.4)
   - CollectionViewPagingLayout
   - GoogleSignIn
   - KakaoSDKAuth
@@ -63,6 +64,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 97f70ff07a81220a1c0d2cabdd1186758087edf4
+PODFILE CHECKSUM: 7f877fd1fbe00af605872939abaa6ad024733b62
 
 COCOAPODS: 1.11.2
