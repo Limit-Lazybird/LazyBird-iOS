@@ -121,6 +121,11 @@ extension ExhibitViewController: UINavigationControllerDelegate {
             self.navigationController?.navigationBar.isHidden = false
         }
     }
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        if viewController == navigationController.viewControllers.first {
+            self.navigationController?.navigationBar.isHidden = false
+        }
+    }
 }
 
 extension ExhibitViewController: ExhibitViewDelegate{

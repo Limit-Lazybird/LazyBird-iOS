@@ -123,6 +123,15 @@ class EarlyBirdViewController: UIViewController {
 extension EarlyBirdViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         //TODO: rootView가 최상단 뷰일때, navigationBar 나타내기
+        print("will show")
+        if viewController == navigationController.viewControllers.first {
+            self.navigationController?.navigationBar.isHidden = false
+        }
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        print("did show")
+        
         if viewController == navigationController.viewControllers.first {
             self.navigationController?.navigationBar.isHidden = false
         }
