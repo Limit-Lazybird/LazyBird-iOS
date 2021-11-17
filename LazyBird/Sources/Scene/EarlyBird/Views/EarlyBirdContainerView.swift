@@ -11,13 +11,14 @@ import CollectionViewPagingLayout
 class EarlyBirdContainerView: UIView {
     
     //MARK: - Properties
-    let dummyImageUrl: [String] = ["test","test","test","test","test","test","test","test","test"]
     var delegate: EarlyBirdViewDelegate?
+    var viewModel: EarlyBirdViewModelProtocol?
     
     //MARK: - UI Components
     
-    let layout = CollectionViewPagingLayout().then{
+    lazy var layout = CollectionViewPagingLayout().then{
         $0.numberOfVisibleItems = nil
+        $0.delegate = self
     }
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
@@ -30,7 +31,17 @@ class EarlyBirdContainerView: UIView {
         $0.register(EarlyBirdCell.self, forCellWithReuseIdentifier: EarlyBirdCell.identifier)
     }
     
-  
+    //MARK: - Life Cycle
+    
+    override func didMoveToSuperview() {
+        guard let viewModel = self.viewModel else { return }
+        
+        viewModel.earlyBirds.bind { exhibits in
+            self.collectionView.reloadData()
+            self.layout.invalidateLayoutInBatchUpdate() // 시이이ㅣㅇ이이이이이바라라라아아알라라라라ㅏ라라라랄라라라라이걸였냐 !
+        }
+        viewModel.fetchEarlyBirds()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,6 +52,8 @@ class EarlyBirdContainerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Functions
     
     func setUI(){
         self.addSubview(collectionView)
@@ -53,7 +66,8 @@ class EarlyBirdContainerView: UIView {
 
 extension EarlyBirdContainerView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyImageUrl.count
+        guard let viewModel = self.viewModel else { return 0 }
+        return viewModel.earlyBirds.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,7 +75,15 @@ extension EarlyBirdContainerView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.config(imageUrl: dummyImageUrl[indexPath.row])
+        if let viewModel = self.viewModel {
+            if let imageUrl = viewModel.earlyBirds.value[indexPath.row].exhbt_sn{
+                cell.config(imageUrl: imageUrl)
+            }else{
+                print("exhbt_sn is nil")
+            }
+        }else{
+            print("collectionViewCell's viewModel is nil")
+        }
         
         return cell
     }
@@ -90,5 +112,10 @@ extension EarlyBirdContainerView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     
         return UIEdgeInsets(top: 30.0 , left: 29.0, bottom: 53.0 , right: 29.0)
+    }
+}
+
+extension EarlyBirdContainerView: CollectionViewPagingLayoutDelegate{
+    func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {
     }
 }

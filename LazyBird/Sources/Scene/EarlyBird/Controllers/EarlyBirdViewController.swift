@@ -15,6 +15,9 @@ protocol EarlyBirdViewDelegate{
 
 class EarlyBirdViewController: UIViewController {
     
+    //MARK: - Properties
+    let viewModel = EarlyBirdViewModel()
+    
     //MARK: - UI Components
     lazy var backBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: nil).then{
         $0.image = UIImage(systemName: "ic_arrow")
@@ -41,8 +44,9 @@ class EarlyBirdViewController: UIViewController {
         $0.contentMode = .scaleAspectFit
     }
     
-    lazy var earlyBirdContainerView = EarlyBirdContainerView().then{
+    lazy var earlyBirdContainerView = EarlyBirdContainerView(frame: .zero).then{
         $0.delegate = self
+        $0.viewModel = self.viewModel
     }
     
     //MARK: - Life Cycle
@@ -123,15 +127,14 @@ class EarlyBirdViewController: UIViewController {
 extension EarlyBirdViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         //TODO: rootView가 최상단 뷰일때, navigationBar 나타내기
-        print("will show")
+//        print("will show")
         if viewController == navigationController.viewControllers.first {
             self.navigationController?.navigationBar.isHidden = false
         }
     }
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        print("did show")
-        
+//        print("did show")
         if viewController == navigationController.viewControllers.first {
             self.navigationController?.navigationBar.isHidden = false
         }
