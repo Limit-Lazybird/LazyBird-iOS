@@ -55,7 +55,7 @@ class ExhibitImageContainerView: UIView {
         
         exhibitImageView.snp.makeConstraints{
             $0.edges.equalToSuperview()
-            $0.height.equalTo(exhibitImageView.snp.width).multipliedBy(1.06133333333)
+            $0.height.equalTo(exhibitImageView.snp.width).multipliedBy(1.33333333333)
         }
         
         earlybirdD_dayView.snp.makeConstraints{

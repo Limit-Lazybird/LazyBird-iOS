@@ -24,12 +24,6 @@ class ExhibitDetailViewController: UIViewController {
         $0.tintColor = .white
     }
     
-    lazy var customBackBtn = UIButton().then{
-        $0.setImage(UIImage(named: "ic_arrow"), for: .normal)
-        $0.tintColor = .white
-        $0.addTarget(self, action: #selector(back(_:)), for: .touchUpInside)
-    }
-    
     let bookContainerView = TicketBookContainerView(frame: .zero)
     
     lazy var stackView = UIStackView().then{
@@ -70,21 +64,14 @@ class ExhibitDetailViewController: UIViewController {
     func setNavigationItem(){
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.Background.black02
-        //test
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.hidesBarsOnSwipe = true
     }
     
     func setUI(){
         self.view.addSubview(scrollView)
-        self.view.addSubview(customBackBtn)
         self.view.addSubview(bookContainerView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        
-        customBackBtn.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(12.0)
-            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(13.0)
-        }
 
         scrollView.snp.makeConstraints {
             $0.leading.trailing.top.equalToSuperview()
