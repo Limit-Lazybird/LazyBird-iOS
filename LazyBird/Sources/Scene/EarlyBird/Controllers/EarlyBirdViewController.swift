@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 protocol EarlyBirdViewDelegate{
-    func moveToDetailView()
+    func moveToDetailView(indexPath: IndexPath) // 해당하는 인덱스 디테일 뷰로 이동
 }
 
 class EarlyBirdViewController: UIViewController {
@@ -142,11 +142,12 @@ extension EarlyBirdViewController: UINavigationControllerDelegate {
 }
 
 extension EarlyBirdViewController: EarlyBirdViewDelegate{
-    func moveToDetailView() {
-        let ExhibitDetailVC = ExhibitDetailViewController()
-        ExhibitDetailVC.hidesBottomBarWhenPushed = true
+    func moveToDetailView(indexPath: IndexPath) {
+        let exhibitDetailVC = ExhibitDetailViewController()
+        exhibitDetailVC.hidesBottomBarWhenPushed = true
+        exhibitDetailVC.exhibitDetailViewModel.setExhibit(self.viewModel.earlyBirds.value[indexPath.row])
         
-        self.navigationController?.pushViewController(ExhibitDetailVC, animated: true)
+        self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
     }
 }
 

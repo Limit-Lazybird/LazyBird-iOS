@@ -38,7 +38,7 @@ class EarlyBirdContainerView: UIView {
         
         viewModel.earlyBirds.bind { exhibits in
             self.collectionView.reloadData()
-            self.layout.invalidateLayoutInBatchUpdate() // 시이이ㅣㅇ이이이이이바라라라아아알라라라라ㅏ라라라랄라라라라이걸였냐 !
+            self.layout.invalidateLayoutInBatchUpdate() // collectionView reload 반영하는 method
         }
         viewModel.fetchEarlyBirds()
     }
@@ -76,24 +76,18 @@ extension EarlyBirdContainerView: UICollectionViewDataSource {
         }
         
         if let viewModel = self.viewModel {
-            if let imageUrl = viewModel.earlyBirds.value[indexPath.row].exhbt_sn{
-                cell.config(imageUrl: imageUrl)
-            }else{
-                print("exhbt_sn is nil")
-            }
+            cell.config(exhibit: viewModel.earlyBirds.value[indexPath.row])
         }else{
             print("collectionViewCell's viewModel is nil")
         }
         
         return cell
     }
-    
-    
 }
 
 extension EarlyBirdContainerView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.moveToDetailView()
+        self.delegate?.moveToDetailView(indexPath: indexPath)
     }
 }
 

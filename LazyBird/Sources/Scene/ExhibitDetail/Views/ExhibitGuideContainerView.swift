@@ -17,11 +17,22 @@ import Then
  */
 
 class ExhibitGuideContainerView: UIView {
-    let dummyAlertMessages: [String] = ["매주 월요일은 휴관합니다.",
-                                        "36개월 미만은 보호자 동반 유무에 관계없이 입장이 불가합니다.",
-                                        "13세 미만 어린이는 보호자 동반이 반드시 필요합니다.",
-                                        "주차장은 제공되지 않으며 대중교통을 추천드립니다."]
+    //MARK: - Properties
+    var viewModel: ExhibitDetailViewModel?
     
+    fileprivate let changeStrFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter
+    }()
+    
+    fileprivate let changeStrFormatterTwo: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "얼리버드 티켓은 M월 d일까지 판매됩니다."
+        return dateFormatter
+    }()
+
+    //MARK: - UI Components
     
     let warningLabel = UILabel().then{
         $0.text = "전시회 예매 전 확인하세요."
@@ -40,11 +51,12 @@ class ExhibitGuideContainerView: UIView {
         $0.spacing = 4.0
     }
     
+    //MARK: - Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.Background.black02
         
-        config()
         setUI()
     }
     
@@ -52,18 +64,68 @@ class ExhibitGuideContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func config(){
-        alertLabel.text = "얼리버드 티켓은 12월 17일까지 판매됩니다."
+    //MARK: - Functions
+    
+    func config(viewModel: ExhibitDetailViewModel){
+        self.viewModel = viewModel
+        guard let vm = self.viewModel else { return }
         
-        for message in dummyAlertMessages{
+        let exhibit = vm.getExhibit().value
+        let notices = exhibit.exhbt_notice?.components(separatedBy: ".") ?? []
+        
+        alertLabel.text = getExhibitDateTwo(date: exhibit.exhbt_to_dt ?? "")
+        
+        for notice in notices{
             let messageLabel = UILabel().then{
-                $0.text = "• \(message)"
+                $0.text = "• \(notice)"
                 $0.font = UIFont.TTFont(type: .SDReg, size: 13)
+                $0.numberOfLines = 5
                 $0.textColor = .white
             }
             messageStackView.addArrangedSubview(messageLabel)
         }
+    }
+    
+    func setBind(){
+        guard let viewModel = viewModel else {
+            print("viewModel is nil")
+            return
+        }
+        let exhibit = viewModel.getExhibit().value
+        let notices = exhibit.exhbt_notice?.components(separatedBy: ".") ?? []
         
+        alertLabel.text = getExhibitDateTwo(date: exhibit.exhbt_to_dt ?? "")
+        
+        for notice in notices{
+            let messageLabel = UILabel().then{
+                $0.text = "• \(notice)"
+                $0.font = UIFont.TTFont(type: .SDReg, size: 13)
+                $0.numberOfLines = 5
+                $0.textColor = .white
+            }
+            messageStackView.addArrangedSubview(messageLabel)
+        }
+    }
+    
+    private func getExhibitDate(date: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date: Date = dateFormatter.date(from: date){
+            return changeStrFormatter.string(from: date)
+        }
+        
+        return ""
+    }
+    private func getExhibitDateTwo(date: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date: Date = dateFormatter.date(from: date){
+            return changeStrFormatterTwo.string(from: date)
+        }
+        
+        return ""
     }
     
     func setUI(){
@@ -84,6 +146,7 @@ class ExhibitGuideContainerView: UIView {
         messageStackView.snp.makeConstraints{
             $0.top.equalTo(alertLabel.snp.bottom).offset(16.0)
             $0.leading.equalToSuperview().offset(16.0)
+            $0.trailing.equalToSuperview().offset(-16.0)
             $0.bottom.equalToSuperview().offset(-20.0)
         }
     }

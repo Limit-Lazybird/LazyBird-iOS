@@ -137,10 +137,10 @@ extension ExhibitViewController: ExhibitViewDelegate{
     }
     
     func moveToDetailView() {
-        let ExhibitDetailVC = ExhibitDetailViewController()
-        ExhibitDetailVC.hidesBottomBarWhenPushed = true
+        let exhibitDetailVC = ExhibitDetailViewController()
+        exhibitDetailVC.hidesBottomBarWhenPushed = true
         
-        self.navigationController?.pushViewController(ExhibitDetailVC, animated: true)
+        self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
     }
 }
 

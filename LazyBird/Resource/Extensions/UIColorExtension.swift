@@ -39,6 +39,7 @@ extension UIColor {
     
     //MARK: - Opacity
     class Opacity: UIColor {
+        static let white90 = UIColor(red: 255/255, green: 249/255, blue: 249/255, alpha: 0.9)
         static let black90 = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.9)
         static let black70 = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7)
         static let black30 = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)

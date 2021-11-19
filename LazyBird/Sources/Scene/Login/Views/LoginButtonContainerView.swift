@@ -10,9 +10,13 @@ import Then
 import SnapKit
 import GoogleSignIn
 import AuthenticationServices
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class LoginButtonContainerView: UIView {
     var viewController: UIViewController?
+    var viewModel: LoginViewModel?
+    
     private let kakaoLoginManager = KakaoLoginManager()
     private let googleLoginManager = GoogleLoginManager()
     private let appleLoginManager = AppleLoginManager()
@@ -45,9 +49,15 @@ class LoginButtonContainerView: UIView {
     
     @objc func kakaoLogin(_ sender: UIButton){
         guard let vc = self.viewController else { return }
-        
+        guard let viewModel = viewModel else { return }
+
         kakaoLoginManager.setViewController(vc)
-        kakaoLoginManager.login()
+        // 서버로 request
+        kakaoLoginManager.login(){ response in
+            let oauthToken = response["oauthToken"] as! OAuthToken
+            let user = response["user"] as! User
+            viewModel.requestKakaoLogin(oauthToken: oauthToken, user: user)
+        }
     }
 
     @objc func appleLogin(_ sender: UIButton){
@@ -99,5 +109,9 @@ extension LoginButtonContainerView {
     // 이러케하면 뭐 문제될건 없는데 찝찝하다 결합략이 너무 강함... 좀더 느슨하게는 안될까?
     func setViewController(_ vc: UIViewController){
         self.viewController = vc
+    }
+    
+    func setLoginViewModel(_ viewModel: LoginViewModel){
+        self.viewModel = viewModel
     }
 }

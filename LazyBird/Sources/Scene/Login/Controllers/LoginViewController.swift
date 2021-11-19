@@ -13,6 +13,10 @@ import GoogleSignIn
 import KakaoSDKUser
 
 class LoginViewController: UIViewController {
+    // test
+    let apiManager = APIManager.shared
+    let loginViewModel = LoginViewModel()
+    
     lazy var logoContainerView: LogoContainerView = LogoContainerView(frame: .zero).then{
         $0.layer.cornerRadius = 30
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -28,6 +32,7 @@ class LoginViewController: UIViewController {
         self.view.backgroundColor = UIColor.Background.black02
         
         loginButtonContainerView.setViewController(self) // containerView에 viewcontroller 주소 넘겨줌
+        loginButtonContainerView.setLoginViewModel(self.loginViewModel)
         
         setupLayout()
     }
@@ -67,17 +72,26 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
                 
             // 계정 정보 가져오기
-            let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
-//            let test = appleIDCredential.identityToken // id token
-//            let test2 = appleIDCredential.realUserStatus // 사용자 상태
-//            let test3 = appleIDCredential.authorizationCode // auth code
+            let token = appleIDCredential.identityToken // id token
             
-            print("User ID : \(userIdentifier)")
-            print("User Email : \(email ?? "")")
-            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
-     
+            guard let fullName = fullName else {
+                print("fullName is nil")
+                return
+            }
+            guard let email = email else {
+                print("email is nil")
+                return
+            }
+            guard let token = token else {
+                print("token is nil")
+                return
+            }
+            
+            // 서버로 request
+            self.loginViewModel.requestAppleLogin(email: email, token: token, name: fullName)
+                
         default:
             break
         }

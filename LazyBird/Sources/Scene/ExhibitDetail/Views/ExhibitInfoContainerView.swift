@@ -22,15 +22,25 @@ import SnapKit
  */
 
 class ExhibitInfoContainerView: UIView {
+    //MARK: - Properties
+    var viewModel: ExhibitDetailViewModel?
     
+    fileprivate let changeStrFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter
+    }()
+    
+    //MARK: - UI Component
     let exhibitTitleLabel = UILabel().then{
         $0.font = UIFont.TTFont(type: .SDBold, size: 17)
         $0.textColor = .white
     }
     
     lazy var likeBtn = UIButton().then{
-        $0.setImage(UIImage(named: "like"), for: .normal)
-        $0.setImage(UIImage(named: "ic_fav_big"), for: .selected)
+        $0.setImage(UIImage(named: "ic_fav_lg_off"), for: .normal)
+        $0.setImage(UIImage(named: "ic_fav_lg_on"), for: .selected)
+        $0.addTarget(self, action: #selector(likeBtnPressed(_:)), for: .touchUpInside)
     }
     
     let stationTitleLabel = UILabel().then{
@@ -92,17 +102,20 @@ class ExhibitInfoContainerView: UIView {
         $0.textColor = UIColor.Basic.gray04
     }
     
+    //MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.Background.black02
         
         setUI()
-        config()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Functions
     
     @objc func likeBtnPressed(_ sender: UIButton){
         //TODO: 1. 상태별 버튼 이미지 변경
@@ -111,17 +124,36 @@ class ExhibitInfoContainerView: UIView {
         print("라이크 버튼 눌림 --> \(likeBtn.isSelected)")
     }
     
-    func config(){
-        exhibitTitleLabel.text = "미구엘 슈발리에 제주 특별전"
-        stationLabel.text = "아쿠아플라넷 제주"
-        dateLabel.text = "2021.11.08 ~ 2021.12.31"
-        discountLabel.text = "50%"
-        priceLabel.text = "10,000"
+    private func getExhibitDate(date: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date: Date = dateFormatter.date(from: date){
+            return changeStrFormatter.string(from: date)
+        }
         
-        let text = "20,000 원"
+        return ""
+    }
+    
+    func config(viewModel: ExhibitDetailViewModel){
+        self.viewModel = viewModel
+        guard let vm = self.viewModel else { return }
+        
+        let exhibit = vm.getExhibit().value
+        
+        self.exhibitTitleLabel.text = exhibit.exhbt_nm?.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.stationLabel.text = exhibit.exhbt_lct
+        
+        
+        self.dateLabel.text = "\(self.getExhibitDate(date: exhibit.exhbt_from_dt ?? "")) ~ \(self.getExhibitDate(date: exhibit.exhbt_to_dt ?? ""))"
+        self.discountLabel.text = exhibit.dc_percent
+        self.priceLabel.text = exhibit.dc_prc?.replacingOccurrences(of: "원", with: "")
+        
+        let text = exhibit.exhbt_prc ?? ""
         let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(.strikethroughStyle, value: 1.07, range: (text as NSString).range(of:"20,000"))
-        postPriceLabel.attributedText = attributedString
+        attributedString.addAttribute(.strikethroughStyle, value: 1.07, range: (text as NSString).range(of: text))
+        self.postPriceLabel.attributedText = attributedString
+        
     }
     
     func setUI(){
@@ -141,11 +173,12 @@ class ExhibitInfoContainerView: UIView {
         }
         
         likeBtn.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(16.0)
+//            $0.top.equalToSuperview().offset(16.0)
+            $0.center.equalTo(exhibitTitleLabel.snp.center)
             $0.trailing.equalToSuperview().offset(-16.0)
-            $0.width.equalTo(22.0)
-            $0.height.equalTo(20.0)
-            $0.bottom.equalToSuperview().offset(-103.5)
+            $0.width.equalTo(24.0)
+            $0.height.equalTo(24.0)
+//            $0.bottom.equalToSuperview().offset(-103.5)
         }
         
         stationStackView.snp.makeConstraints{

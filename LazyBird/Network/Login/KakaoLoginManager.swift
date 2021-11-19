@@ -14,16 +14,34 @@ class KakaoLoginManager: NSObject {
     private var vc: UIViewController?
     
     // Kakao Login Button Pressed
-    func login(){
-        // TODO: 나중에 카카오 계정 로그인 -> 카카오톡 로그인 으로 변경하기
-        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+    func login(completion: @escaping ([String:Any])->(Void)){
+        UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
             if let error = error {
                 print(error)
             }
             else {
                 print("loginWithKakaoAccount() success.")
                 //TODO: 서버로 토큰 보내기
-                _ = oauthToken
+    
+                UserApi.shared.me() {(user, error) in
+                    if let error = error {
+                        print(error)
+                    }
+                    else {
+                        print("me() success.")
+                        guard let oauthToken = oauthToken else {
+                            print("oauthToken is nil")
+                            return
+                        }
+                        guard let user = user else {
+                            print("user is nil")
+                            return
+                        }
+
+                        completion(["oauthToken": oauthToken, "user": user])
+                    }
+                }
+                
                 let tabbarVC = TabBarViewController()
                 
                 tabbarVC.modalPresentationStyle = .fullScreen

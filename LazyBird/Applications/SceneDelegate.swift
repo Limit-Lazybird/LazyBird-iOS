@@ -47,11 +47,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = tabbarVC
         self.window?.makeKeyAndVisible()
         
-        
-//        let loginVC = UINavigationController(rootViewController: StartOnboardingViewController()) // 온보딩 화면
-//        self.window?.rootViewController = loginVC
-//        self.window?.makeKeyAndVisible()
-        
         // 나중에 분기를 만들자.
         // 자동 로그인 성공이라면, homeVC
         // 로그인 상태가 아니라면, LoginVC

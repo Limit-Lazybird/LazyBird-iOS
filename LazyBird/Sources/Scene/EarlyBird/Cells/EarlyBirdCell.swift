@@ -65,7 +65,6 @@ class EarlyBirdCell: UICollectionViewCell {
     
     override init(frame : CGRect) {
         super.init(frame: frame)
-//        self.layer.masksToBounds = true
         self.clipsToBounds = true
         self.layer.cornerRadius = 20
         
@@ -77,12 +76,11 @@ class EarlyBirdCell: UICollectionViewCell {
         
     }
     
-    func config(imageUrl: String){
-        exhibitImageView.kf.setImage(with: URL(string: imageUrl))
-        titleLabel.text = "미구엘 슈발리에 제주 특별전"
-        discountLabel.text = "42%"
+    func config(exhibit: Exhibit){
+        exhibitImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
+        titleLabel.text = exhibit.exhbt_nm
+        discountLabel.text = exhibit.dc_percent
     }
-    
     
     func setUI(){
         self.contentView.addSubview(bgView)

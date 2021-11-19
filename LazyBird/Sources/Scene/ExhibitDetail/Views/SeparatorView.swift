@@ -13,7 +13,7 @@ import Then
 class SeparatorView: UIView {
     
     let separator = UIView().then{
-        $0.backgroundColor = UIColor.Background.darkGray01
+        $0.backgroundColor = UIColor.Background.darkGray02
     }
 
     override init(frame: CGRect) {
@@ -22,7 +22,7 @@ class SeparatorView: UIView {
         addSubview(separator)
         separator.snp.makeConstraints {
             $0.edges.equalToSuperview()
-            $0.height.equalTo(1.0)
+            $0.height.equalTo(16.0)
         }
     }
 

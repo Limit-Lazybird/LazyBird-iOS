@@ -29,4 +29,24 @@ struct Exhibit: Codable {
     let exhbt_notice: String?
     let eb_yn: String?
     let exhbt_type_cd: Int
+    
+    init(){
+        exhbt_cd = nil
+        exhbt_nm = nil
+        exhbt_sub_nm = nil
+        exhbt_sn = nil
+        exhbt_lct = nil
+        exhbt_from_dt = nil
+        exhbt_to_dt = nil
+        exhbt_age = nil
+        exhbt_prc = nil
+        dc_percent = nil
+        dc_prc = nil
+        exhbt_expnt = nil
+        dt_img = nil
+        excbt_url = nil
+        exhbt_notice = nil
+        eb_yn = nil
+        exhbt_type_cd = 0
+    }
 }

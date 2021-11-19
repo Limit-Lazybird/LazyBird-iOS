@@ -11,6 +11,9 @@ import Then
 
 class ExhibitDetailViewController: UIViewController {
     
+    //MARK: - Properties
+    var exhibitDetailViewModel = ExhibitDetailViewModel()
+    
     //MARK: - UI Components
     private let scrollView = UIScrollView().then{
         $0.contentInsetAdjustmentBehavior = .never
@@ -24,20 +27,24 @@ class ExhibitDetailViewController: UIViewController {
         $0.tintColor = .white
     }
     
+    let exhibitImageContainerView = ExhibitImageContainerView(frame: .zero)
+    let exhibitInfoContainerView = ExhibitInfoContainerView(frame: .zero)
+    let exhibitGuideContainerView = ExhibitGuideContainerView(frame: .zero)
+    let exhibitContentContainerView = ExhibitContentContainerView(frame: .zero)
     let bookContainerView = TicketBookContainerView(frame: .zero)
+    
     
     lazy var stackView = UIStackView().then{
         $0.axis = .vertical
         $0.distribution = .equalSpacing
         $0.spacing = 0.0
         $0.backgroundColor = .white
-        $0.addArrangedSubview(ExhibitImageContainerView(frame: .zero))
-        $0.addArrangedSubview(ExhibitInfoContainerView(frame: .zero))
+        $0.addArrangedSubview(exhibitImageContainerView)
+        $0.addArrangedSubview(exhibitInfoContainerView)
         $0.addArrangedSubview(SeparatorView(frame: .zero))
-        $0.addArrangedSubview(ExhibitGuideContainerView(frame: .zero))
+        $0.addArrangedSubview(exhibitContentContainerView)
         $0.addArrangedSubview(SeparatorView(frame: .zero))
-        $0.addArrangedSubview(ExhibitContentContainerView(frame: .zero))
-        $0.addArrangedSubview(SeparatorView(frame: .zero))
+        $0.addArrangedSubview(exhibitGuideContainerView)
     }
 
     //MARK: - Life Cycle
@@ -45,9 +52,12 @@ class ExhibitDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.Background.black02
-        
+        print("vc viewdidload")
+     
         setNavigationItem()
         setUI()
+        
+        setConfigure()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -65,6 +75,13 @@ class ExhibitDetailViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.Background.black02
         self.navigationController?.hidesBarsOnSwipe = true
+    }
+    
+    func setConfigure(){
+        exhibitImageContainerView.config(viewModel: self.exhibitDetailViewModel)
+        exhibitInfoContainerView.config(viewModel: self.exhibitDetailViewModel)
+        exhibitGuideContainerView.config(viewModel: self.exhibitDetailViewModel)
+        exhibitContentContainerView.config(viewModel: self.exhibitDetailViewModel, frame: self.view.frame)
     }
     
     func setUI(){

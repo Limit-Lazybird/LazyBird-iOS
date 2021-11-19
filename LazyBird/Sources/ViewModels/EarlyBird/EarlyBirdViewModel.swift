@@ -29,7 +29,7 @@ class EarlyBirdViewModel: EarlyBirdViewModelProtocol {
         return self.earlyBirds
     }
     func fetchEarlyBirds(){
-        apiManager.requestExhibitList { exhibits in
+        apiManager.requestEarlyBirdList { exhibits in
             self.earlyBirds.value.append(contentsOf: exhibits.exhbtList)
         }
     }

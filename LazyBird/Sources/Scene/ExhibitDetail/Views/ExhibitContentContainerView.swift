@@ -8,15 +8,24 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 /*
  1. content 이미지 뷰인데 이걸 어떻게 해야할지 좀 고민을 해봐야할거같음 어쩌지???
  */
 
 class ExhibitContentContainerView: UIView {
+    //MARK: - Properties
+    var viewModel: ExhibitDetailViewModel?
     
-    let testView = UIView().then{
+    //MARK: - UI Components
+    let imageBackgroundView = UIView().then{
         $0.backgroundColor = .darkGray
+    }
+    
+    let contentImageView = UIImageView().then{
+        $0.contentMode = .top
+        $0.clipsToBounds = true
     }
     
     lazy var moreBtn = UIButton().then{
@@ -33,9 +42,11 @@ class ExhibitContentContainerView: UIView {
         $0.axis = .vertical
         $0.distribution = .equalSpacing
         $0.spacing = 0.0
-        $0.addArrangedSubview(testView)
+        $0.addArrangedSubview(imageBackgroundView)
         $0.addArrangedSubview(moreBtn)
     }
+    
+    //MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,8 +59,8 @@ class ExhibitContentContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Functions
     @objc func moreBtnPressed(_ sender: UIButton){
-        print("상세정보 더보기 -> 뷰의 높이 변경해보자 여기서 ㅇㅇ")
         moreBtn.isSelected = !moreBtn.isSelected
         
         if moreBtn.isSelected {
@@ -59,15 +70,35 @@ class ExhibitContentContainerView: UIView {
         }
     }
     
+    func config(viewModel: ExhibitDetailViewModel, frame: CGRect){
+        self.viewModel = viewModel
+        guard let vm = self.viewModel else { return }
+        
+        let exhibit = vm.getExhibit().value
+        self.contentImageView.kf.setImage(with: URL(string: exhibit.dt_img ?? "")) { result in
+            switch result{
+            case .success:
+                self.contentImageView.image = self.contentImageView.image?.resize(newWidth: frame.width)
+            case .failure(let error):
+                print("error -> \(error.localizedDescription)")
+            }
+        }
+    }
+    
     func setUI(){
         self.addSubview(contentStackView)
+        imageBackgroundView.addSubview(contentImageView)
         
         contentStackView.snp.makeConstraints{
             $0.top.leading.equalToSuperview().offset(16.0)
             $0.trailing.bottom.equalToSuperview().offset(-16.0)
         }
         
-        testView.snp.makeConstraints{
+        contentImageView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+        
+        imageBackgroundView.snp.makeConstraints{
             $0.height.equalTo(300.0)
         }
         
@@ -78,14 +109,16 @@ class ExhibitContentContainerView: UIView {
     
     // content image 확장
     func expendHeight() {
-        self.testView.snp.remakeConstraints {
-            $0.height.equalTo(1000.0)
+        if let height = self.contentImageView.image?.size.height{
+            self.imageBackgroundView.snp.remakeConstraints {
+                $0.height.equalTo(height)
+            }
         }
     }
     
     // content image 축소
     func reduceHeight() {
-        self.testView.snp.remakeConstraints {
+        self.imageBackgroundView.snp.remakeConstraints {
             $0.height.equalTo(300.0)
         }
     }
