@@ -98,12 +98,9 @@ class APIManager {
             case .success:
                 do{
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
-                    
                     let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
-                    completion(json)
-//                    let jsonToString = String(data: jsonData, encoding: .utf8)
-//                    print("json -----> \(jsonToString)")
                     
+                    completion(json)
                 }catch let error {
                     print("parsing error -> \(error.localizedDescription)")
                 }

@@ -11,7 +11,7 @@ class ExhibitContainerView: UIView {
     //MARK: - Properties
     
     var delegate: ExhibitViewDelegate?
-    
+    var viewModel: ExhibitViewModel?
     
     //MARK: - UI Components
     
@@ -45,6 +45,18 @@ class ExhibitContainerView: UIView {
     
     //MARK: - Functions
     
+    func config(viewModel: ExhibitViewModel){
+        self.viewModel = viewModel
+        guard let vm = self.viewModel else { return }
+        
+        vm.getExhibits().bind { exhibits in
+            print("bind 호출됨")
+            self.collectionView.reloadData()
+        }
+        
+        vm.fetchExhibits()
+    }
+    
     func setUI(){
         self.addSubview(collectionView)
         
@@ -57,15 +69,22 @@ class ExhibitContainerView: UIView {
 
 extension ExhibitContainerView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let viewModel = self.viewModel else {
+            print("ExhibitViewModel is nil")
+            return 0
+        }
+        return viewModel.exhibits.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExhibitCell.identifier, for: indexPath) as? ExhibitCell else {
             return UICollectionViewCell()
         }
-        
-        cell.config()
+        guard let viewModel = self.viewModel else {
+            print("ExhibitViewModel is nil")
+            return UICollectionViewCell()
+        }
+        cell.config(exhibit: viewModel.exhibits.value[indexPath.row])
         
         return cell
     }
@@ -74,7 +93,7 @@ extension ExhibitContainerView: UICollectionViewDataSource {
 }
 extension ExhibitContainerView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.moveToDetailView()
+        self.delegate?.moveToDetailView(indexPath: indexPath)
     }
 }
 

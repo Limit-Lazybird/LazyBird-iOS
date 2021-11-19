@@ -11,10 +11,12 @@ import Then
 
 protocol ExhibitViewDelegate{
     func moveToExhibitFilter()
-    func moveToDetailView()
+    func moveToDetailView(indexPath: IndexPath)
 }
 
 class ExhibitViewController: UIViewController {
+    //MARK: - Properies
+    let viewModel = ExhibitViewModel()
     
     //MARK: - UI Components
     
@@ -44,6 +46,7 @@ class ExhibitViewController: UIViewController {
         
         setNavigationItem()
         setUI()
+        configure()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -51,6 +54,10 @@ class ExhibitViewController: UIViewController {
     }
     
     //MARK: - Functions
+    
+    func configure(){
+        self.exhibitContainerView.config(viewModel: self.viewModel)
+    }
     
     @objc func alertBtnPressed(_ sender: Any){
         print("alertBtn pressed")
@@ -136,10 +143,10 @@ extension ExhibitViewController: ExhibitViewDelegate{
         self.present(exhibitFilterVC, animated: true, completion: nil)
     }
     
-    func moveToDetailView() {
+    func moveToDetailView(indexPath: IndexPath) {
         let exhibitDetailVC = ExhibitDetailViewController()
         exhibitDetailVC.hidesBottomBarWhenPushed = true
-        
+        exhibitDetailVC.exhibitDetailViewModel.setExhibit(self.viewModel.getExhibits().value[indexPath.row])
         self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
     }
 }

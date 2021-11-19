@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 /*
  1. 백그라운드 이미지
@@ -23,6 +24,11 @@ class ExhibitCell: UICollectionViewCell {
     //MARK: - Properties
     
     static let identifier = "exhibitCell"
+    fileprivate let changeStrFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter
+    }()
     
     //MARK: - UI Components
     let thumbnailImageView = UIImageView().then{
@@ -31,7 +37,7 @@ class ExhibitCell: UICollectionViewCell {
     }
     
     lazy var likeBtn = UIButton().then{
-        $0.setImage(UIImage(named: "ic_fav_sm"), for: .normal)
+        $0.setImage(UIImage(named: "ic_fav_sm_off"), for: .normal)
         $0.setImage(UIImage(named: "ic_fav_sm_on"), for: .selected)
         $0.addTarget(self, action: #selector(likeBtnPressed(_:)), for: .touchUpInside)
     }
@@ -90,12 +96,24 @@ class ExhibitCell: UICollectionViewCell {
         likeBtn.isSelected = !likeBtn.isSelected
     }
     
-    func config(){
-        thumbnailImageView.image = UIImage(named: "test")
-        exhibitTitleLabel.text = "비욘더로드"
-        stationLabel.text = "더 현대서울 알트윈"
-        dateTitleLabel.text = "2021.07.08 ~ 2021.10.22"
-        priceLabel.text = "20,000"
+    func config(exhibit: Exhibit){
+        thumbnailImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
+        exhibitTitleLabel.text = exhibit.exhbt_nm
+        stationLabel.text = exhibit.exhbt_lct
+        dateTitleLabel.text = "\(self.getExhibitDate(date: exhibit.exhbt_from_dt ?? "")) ~ \(self.getExhibitDate(date: exhibit.exhbt_to_dt ?? ""))"
+        priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
+   
+    }
+    
+    private func getExhibitDate(date: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date: Date = dateFormatter.date(from: date){
+            return changeStrFormatter.string(from: date)
+        }
+        
+        return ""
     }
     
     func setUI(){

@@ -18,7 +18,9 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
     var exhibits: Observable<[Exhibit]> = Observable(value: [])
     
     func fetchExhibits() {
-        
+        apiManager.requestExhibitList { exhibits in
+            self.exhibits.value.append(contentsOf: exhibits.exhbtList)
+        }
     }
     
     //getter

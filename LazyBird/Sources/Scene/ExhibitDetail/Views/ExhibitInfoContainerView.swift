@@ -173,12 +173,10 @@ class ExhibitInfoContainerView: UIView {
         }
         
         likeBtn.snp.makeConstraints{
-//            $0.top.equalToSuperview().offset(16.0)
             $0.center.equalTo(exhibitTitleLabel.snp.center)
             $0.trailing.equalToSuperview().offset(-16.0)
             $0.width.equalTo(24.0)
             $0.height.equalTo(24.0)
-//            $0.bottom.equalToSuperview().offset(-103.5)
         }
         
         stationStackView.snp.makeConstraints{
