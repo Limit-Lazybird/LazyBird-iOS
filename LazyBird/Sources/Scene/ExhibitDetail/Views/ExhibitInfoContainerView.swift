@@ -33,7 +33,7 @@ class ExhibitInfoContainerView: UIView {
     
     //MARK: - UI Component
     let exhibitTitleLabel = UILabel().then{
-        $0.font = UIFont.TTFont(type: .SDBold, size: 17)
+        $0.font = UIFont.TTFont(type: .SDBold, size: 20)
         $0.textColor = .white
     }
     
@@ -45,12 +45,12 @@ class ExhibitInfoContainerView: UIView {
     
     let stationTitleLabel = UILabel().then{
         $0.text = "장소"
-        $0.font = UIFont.TTFont(type: .SDMed, size: 11)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 13)
         $0.textColor = UIColor.Point.or01
     }
     
     let stationLabel = UILabel().then{
-        $0.font = UIFont.TTFont(type: .SDMed, size: 11)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 13)
         $0.textColor = .white
     }
     
@@ -64,12 +64,12 @@ class ExhibitInfoContainerView: UIView {
     
     let dateTitleLabel = UILabel().then{
         $0.text = "날짜"
-        $0.font = UIFont.TTFont(type: .SDMed, size: 11)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 13)
         $0.textColor = UIColor.Point.or01
     }
     
     let dateLabel = UILabel().then{
-        $0.font = UIFont.TTFont(type: .SDMed, size: 11)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 13)
         $0.textColor = .white
     }
     
@@ -93,12 +93,12 @@ class ExhibitInfoContainerView: UIView {
     
     let wonLabel = UILabel().then{
         $0.text = "원"
-        $0.font = UIFont.TTFont(type: .SDMed, size: 15)
+        $0.font = UIFont.TTFont(type: .SDMed, size: 17)
         $0.textColor = UIColor.Basic.gray04
     }
     
     let postPriceLabel = UILabel().then{
-        $0.font = UIFont.TTFont(type: .SDReg, size: 15)
+        $0.font = UIFont.TTFont(type: .SDReg, size: 17)
         $0.textColor = UIColor.Basic.gray04
     }
     
@@ -144,8 +144,8 @@ class ExhibitInfoContainerView: UIView {
         self.exhibitTitleLabel.text = exhibit.exhbt_nm?.trimmingCharacters(in: .whitespacesAndNewlines)
         self.stationLabel.text = exhibit.exhbt_lct
         
-        
-        self.dateLabel.text = "\(self.getExhibitDate(date: exhibit.exhbt_from_dt ?? "")) ~ \(self.getExhibitDate(date: exhibit.exhbt_to_dt ?? ""))"
+        self.dateLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
+//        self.dateLabel.text = "\(self.getExhibitDate(date: exhibit.exhbt_from_dt ?? "")) ~ \(self.getExhibitDate(date: exhibit.exhbt_to_dt ?? ""))"
         self.discountLabel.text = exhibit.dc_percent
         self.priceLabel.text = exhibit.dc_prc?.replacingOccurrences(of: "원", with: "")
         
@@ -169,14 +169,15 @@ class ExhibitInfoContainerView: UIView {
         exhibitTitleLabel.snp.makeConstraints{
             $0.top.equalToSuperview().offset(13.0)
             $0.leading.equalToSuperview().offset(16.0)
+            $0.trailing.equalToSuperview().offset(-70.0)
             $0.bottom.equalToSuperview().offset(-101.5)
         }
         
         likeBtn.snp.makeConstraints{
-            $0.center.equalTo(exhibitTitleLabel.snp.center)
-            $0.trailing.equalToSuperview().offset(-16.0)
-            $0.width.equalTo(24.0)
-            $0.height.equalTo(24.0)
+            $0.top.equalToSuperview().offset(10.0)
+            $0.trailing.equalToSuperview().offset(-8.0)
+            $0.width.equalTo(30.0)
+            $0.height.equalTo(30.0)
         }
         
         stationStackView.snp.makeConstraints{

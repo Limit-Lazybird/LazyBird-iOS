@@ -100,9 +100,8 @@ class ExhibitCell: UICollectionViewCell {
         thumbnailImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
         exhibitTitleLabel.text = exhibit.exhbt_nm
         stationLabel.text = exhibit.exhbt_lct
-        dateTitleLabel.text = "\(self.getExhibitDate(date: exhibit.exhbt_from_dt ?? "")) ~ \(self.getExhibitDate(date: exhibit.exhbt_to_dt ?? ""))"
+        dateTitleLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
         priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
-   
     }
     
     private func getExhibitDate(date: String) -> String{

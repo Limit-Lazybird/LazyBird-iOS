@@ -167,12 +167,13 @@
 		A83AF0842729289E00768224 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A84E95F42748DC1900CF33C0 /* ExhibitNotice */,
 				A8DA7EBE271F3213009976CF /* Login */,
 				A8A44FBC272D598300807BD2 /* OnBoarding */,
 				A8DA7F30272702D5009976CF /* EarlyBird */,
 				A8518511274136620029B541 /* Exhibit */,
-				A8AD0882273AE99A003A793A /* ExhibitDetail */,
 				A8FF870A274297D900EBC16E /* ExhibitFilter */,
+				A8AD0882273AE99A003A793A /* ExhibitDetail */,
 				A83AF08A27292B5A00768224 /* Tabbar */,
 			);
 			path = Scene;
@@ -184,6 +185,13 @@
 				A83AF08F27292C5200768224 /* TabBarViewController.swift */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		A84E95F42748DC1900CF33C0 /* ExhibitNotice */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExhibitNotice;
 			sourceTree = "<group>";
 		};
 		A8518511274136620029B541 /* Exhibit */ = {
