@@ -82,7 +82,7 @@ class ExhibitInfoContainerView: UIView {
     }
     
     let discountLabel = UILabel().then{
-        $0.font = UIFont.TTFont(type: .MontBold, size: 17)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 20)
         $0.textColor = UIColor.Point.pink
     }
     
@@ -145,14 +145,25 @@ class ExhibitInfoContainerView: UIView {
         self.stationLabel.text = exhibit.exhbt_lct
         
         self.dateLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
-//        self.dateLabel.text = "\(self.getExhibitDate(date: exhibit.exhbt_from_dt ?? "")) ~ \(self.getExhibitDate(date: exhibit.exhbt_to_dt ?? ""))"
         self.discountLabel.text = exhibit.dc_percent
-        self.priceLabel.text = exhibit.dc_prc?.replacingOccurrences(of: "원", with: "")
         
-        let text = exhibit.exhbt_prc ?? ""
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(.strikethroughStyle, value: 1.07, range: (text as NSString).range(of: text))
-        self.postPriceLabel.attributedText = attributedString
+        if let dc_prc = exhibit.dc_prc { // 할인가가 존재할경우
+            self.priceLabel.text = dc_prc.replacingOccurrences(of: "원", with: "")
+            
+            let text = exhibit.exhbt_prc ?? ""
+            let attributedString = NSMutableAttributedString(string: text)
+            attributedString.addAttribute(.strikethroughStyle, value: 1.07, range: (text as NSString).range(of: text))
+            self.postPriceLabel.attributedText = attributedString
+        }else{ // 할인이 존재하지 않을 경우
+            self.priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
+            priceLabel.snp.remakeConstraints{
+                $0.leading.equalToSuperview().offset(16.0)
+                $0.bottom.equalToSuperview().offset(-12.0)
+            }
+        }
+        
+        
+        
         
     }
     
@@ -191,25 +202,24 @@ class ExhibitInfoContainerView: UIView {
         }
         
         discountLabel.snp.makeConstraints{
-            $0.top.equalTo(dateStackView.snp.bottom).offset(23.5)
             $0.leading.equalToSuperview().offset(16.0)
-            $0.bottom.equalToSuperview().offset(-12.0)
+            $0.bottom.equalToSuperview().offset(-14.0)
+            
         }
         
         priceLabel.snp.makeConstraints{
-            $0.top.equalTo(dateStackView.snp.bottom).offset(24.0)
             $0.leading.equalTo(discountLabel.snp.trailing).offset(8.0)
             $0.bottom.equalToSuperview().offset(-12.0)
         }
         
         wonLabel.snp.makeConstraints{
+            $0.centerY.equalTo(priceLabel.snp.centerY)
             $0.leading.equalTo(priceLabel.snp.trailing).offset(3.0)
-            $0.bottom.equalToSuperview().offset(-12.0)
         }
         
         postPriceLabel.snp.makeConstraints{
             $0.leading.equalTo(wonLabel.snp.trailing).offset(8.0)
-            $0.bottom.equalToSuperview().offset(-12.0)
+            $0.bottom.equalTo(priceLabel.snp.bottom)
         }
     }
 }

@@ -101,7 +101,13 @@ class ExhibitCell: UICollectionViewCell {
         exhibitTitleLabel.text = exhibit.exhbt_nm
         stationLabel.text = exhibit.exhbt_lct
         dateTitleLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
-        priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
+        
+        if let dc_prc = exhibit.dc_prc {
+            priceLabel.text = dc_prc.replacingOccurrences(of: "원", with: "")
+        }else{
+            priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
+        }
+        
     }
     
     private func getExhibitDate(date: String) -> String{

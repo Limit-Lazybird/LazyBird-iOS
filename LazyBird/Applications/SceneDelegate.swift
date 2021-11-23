@@ -29,7 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        kakaoLoginManager.autoLogin { response in
 //            if response {
 //                //TODO: Login 성공
-//
 //                let tabbarVC = TabBarViewController()
 //                self.window?.rootViewController = tabbarVC
 //                self.window?.makeKeyAndVisible()
@@ -43,9 +42,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //                print("로그인 화면")
 //            }
 //        }
-        let tabbarVC = TabBarViewController()
-        self.window?.rootViewController = tabbarVC
+        let loginVC = LoginViewController() // 맨 처음 보여줄 ViewController
+
+        self.window?.rootViewController = loginVC
         self.window?.makeKeyAndVisible()
+        print("로그인 화면")
+        
+//        let tabbarVC = TabBarViewController()
+//        self.window?.rootViewController = tabbarVC
+//        self.window?.makeKeyAndVisible()
         
         // 나중에 분기를 만들자.
         // 자동 로그인 성공이라면, homeVC

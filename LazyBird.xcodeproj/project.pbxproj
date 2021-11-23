@@ -58,6 +58,7 @@
 		A8E6DF38274559440080137C /* Exhibits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E6DF37274559440080137C /* Exhibits.swift */; };
 		A8E6DF3A2745598D0080137C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E6DF392745598D0080137C /* Observable.swift */; };
 		A8E6DF3D27455C880080137C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E6DF3C27455C880080137C /* APIManager.swift */; };
+		A8EAC49C274CE9CC00FC5562 /* TokenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC49B274CE9CC00FC5562 /* TokenUtils.swift */; };
 		A8FDF1422746B7CF004FB5EE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */; };
 		A8FDF1452746CB35004FB5EE /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1442746CB35004FB5EE /* LoginResponse.swift */; };
 		A8FDF1472746CE81004FB5EE /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1462746CE81004FB5EE /* LoginRequest.swift */; };
@@ -124,6 +125,7 @@
 		A8E6DF37274559440080137C /* Exhibits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exhibits.swift; sourceTree = "<group>"; };
 		A8E6DF392745598D0080137C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		A8E6DF3C27455C880080137C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A8EAC49B274CE9CC00FC5562 /* TokenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUtils.swift; sourceTree = "<group>"; };
 		A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A8FDF1442746CB35004FB5EE /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A8FDF1462746CE81004FB5EE /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				A8E6DF3C27455C880080137C /* APIManager.swift */,
+				A8EAC49B274CE9CC00FC5562 /* TokenUtils.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				A8FF87102743968700EBC16E /* ExhibitFilterContainerView.swift in Sources */,
 				A82606462727238300939421 /* UIColorExtension.swift in Sources */,
 				A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */,
+				A8EAC49C274CE9CC00FC5562 /* TokenUtils.swift in Sources */,
 				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,
 				A8E6DF36274558FF0080137C /* ExhibitViewModel.swift in Sources */,
 				A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */,

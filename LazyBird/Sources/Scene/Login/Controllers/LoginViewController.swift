@@ -90,8 +90,22 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             }
             
             // 서버로 request
-            self.loginViewModel.requestAppleLogin(email: email, token: token, name: fullName)
-                
+            self.loginViewModel.requestAppleLogin(email: email, token: token, name: fullName){ response in
+                switch response {
+                case .y:
+                    let onboardVC = StartOnboardingViewController()
+                    onboardVC.modalPresentationStyle = .overFullScreen
+                    
+                    self.present(onboardVC, animated: true, completion: nil)
+                    break
+                case .n:
+                    let tabbarVC = TabBarViewController()
+                    tabbarVC.modalPresentationStyle = .overFullScreen
+                    
+                    self.present(tabbarVC, animated: true, completion: nil)
+                    break
+                }
+            }
         default:
             break
         }

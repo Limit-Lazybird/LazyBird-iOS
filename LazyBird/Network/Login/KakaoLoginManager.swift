@@ -8,7 +8,7 @@
 import UIKit
 import KakaoSDKUser
 import KakaoSDKAuth
-import KakaoSDKCommon
+import KakaoSDKCommon 
 
 class KakaoLoginManager: NSObject {
     private var vc: UIViewController?
@@ -41,11 +41,6 @@ class KakaoLoginManager: NSObject {
                         completion(["oauthToken": oauthToken, "user": user])
                     }
                 }
-                
-                let tabbarVC = TabBarViewController()
-                
-                tabbarVC.modalPresentationStyle = .fullScreen
-                self.vc?.present(tabbarVC, animated: true, completion: nil)
             }
         }
     }
@@ -70,8 +65,16 @@ class KakaoLoginManager: NSObject {
                 else {
                     //토큰 존재 o , 토큰 유효성 체크 성공 (필요시 자동으로 토큰 갱신)
                     //TODO: 3. 로그인 성공 (토큰이 유효)
-                    print("로그인 성공")
-                    completion(true)
+                    
+                    let token = TokenUtils()
+                    if let _ = token.read("https://limit-lazybird.com", account: "access_token") {
+                        completion(true)
+                    }else{
+                        print("token 없음")
+                        //TODO: 다시 서버로 로그인 요청해야함 일단은 ㄴㅇㄱ
+                        completion(false)
+                    }
+                    
                 }
             }
         }

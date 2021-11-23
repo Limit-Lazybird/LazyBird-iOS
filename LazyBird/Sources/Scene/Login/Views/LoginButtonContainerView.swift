@@ -56,7 +56,22 @@ class LoginButtonContainerView: UIView {
         kakaoLoginManager.login(){ response in
             let oauthToken = response["oauthToken"] as! OAuthToken
             let user = response["user"] as! User
-            viewModel.requestKakaoLogin(oauthToken: oauthToken, user: user)
+            viewModel.requestKakaoLogin(oauthToken: oauthToken, user: user){ response in
+                switch response{
+                case .y:
+                    let onboardVC = StartOnboardingViewController()
+                    onboardVC.modalPresentationStyle = .overFullScreen
+                    
+                    vc.present(onboardVC, animated: true, completion: nil)
+                    break
+                case .n:
+                    let tabbarVC = TabBarViewController()
+                    tabbarVC.modalPresentationStyle = .overFullScreen
+                    
+                    vc.present(tabbarVC, animated: true, completion: nil)
+                    break
+                }
+            }
         }
     }
 
