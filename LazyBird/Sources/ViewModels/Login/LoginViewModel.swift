@@ -19,7 +19,7 @@ protocol LoginViewModelProtocol{
 }
 
 class LoginViewModel: LoginViewModelProtocol {
-    private let apiManager = APIManager.shared
+    private let loginManager = LoginAPIManager.shared
     
     //MARK: - 소셜 로그인
     func requestAppleLogin(email: String, token: Data, name: PersonNameComponents, completion: @escaping (LoginType)->(Void)){
@@ -37,7 +37,7 @@ class LoginViewModel: LoginViewModelProtocol {
         }
         let loginRequest = LoginRequest(comp_cd: "03", email: email, token: token, name: familyName + givenName)
         
-        apiManager.requestAppleLogin(loginRequest: loginRequest){ response in
+        loginManager.requestAppleLogin(loginRequest: loginRequest){ response in
             print("apple login keychain 저장 --> \(response)")
             let token = TokenUtils()
             token.create("https://limit-lazybird.com", account: "access_token", value: response.jwt.token)
@@ -74,7 +74,7 @@ class LoginViewModel: LoginViewModelProtocol {
         let loginRequest = LoginRequest(comp_cd: "01", email: email, token: token, name: name)
         print("login request result --> \(loginRequest)")
         
-        apiManager.requestKakaoLogin(loginRequest: loginRequest) { response in
+        loginManager.requestKakaoLogin(loginRequest: loginRequest) { response in
             print("kakao login keychain 저장 --> \(response)")
             let token = TokenUtils()
             token.create("https://limit-lazybird.com", account: "access_token", value: response.jwt.token)

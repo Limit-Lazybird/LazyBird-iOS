@@ -13,12 +13,12 @@ protocol ExhibitViewModelProtocol {
 }
 
 class ExhibitViewModel: ExhibitViewModelProtocol {
-    private let apiManager = APIManager.shared
+    private let exhibitManager = ExhibitAPIManager.shared
     
     var exhibits: Observable<[Exhibit]> = Observable(value: [])
     
     func fetchExhibits() {
-        apiManager.requestExhibitList { exhibits in
+        exhibitManager.requestExhibitList { exhibits in
             self.exhibits.value.append(contentsOf: exhibits.exhbtList)
         }
     }

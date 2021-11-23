@@ -20,7 +20,7 @@ protocol EarlyBirdViewModelProtocol {
 }
 
 class EarlyBirdViewModel: EarlyBirdViewModelProtocol {
-    private let apiManager = APIManager.shared
+    private let exhibitManager = ExhibitAPIManager.shared
     
     var earlyBirds: Observable<[Exhibit]> = Observable(value: [])
     
@@ -29,7 +29,7 @@ class EarlyBirdViewModel: EarlyBirdViewModelProtocol {
         return self.earlyBirds
     }
     func fetchEarlyBirds(){
-        apiManager.requestEarlyBirdList { exhibits in
+        exhibitManager.requestEarlyBirdList { exhibits in
             self.earlyBirds.value.append(contentsOf: exhibits.exhbtList)
         }
     }

@@ -14,7 +14,7 @@ import KakaoSDKUser
 
 class LoginViewController: UIViewController {
     // test
-    let apiManager = APIManager.shared
+    let apiManager = LoginAPIManager.shared
     let loginViewModel = LoginViewModel()
     
     lazy var logoContainerView: LogoContainerView = LogoContainerView(frame: .zero).then{
