@@ -65,6 +65,7 @@
 		A8EAC4A9274E39B600FC5562 /* ResetOnboardAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4A8274E39B600FC5562 /* ResetOnboardAlertViewController.swift */; };
 		A8EAC4AC274E4C0300FC5562 /* ExhibitNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4AB274E4C0300FC5562 /* ExhibitNoticeViewController.swift */; };
 		A8EAC4AE274E4C1900FC5562 /* ExhibitConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4AD274E4C1900FC5562 /* ExhibitConfirmViewController.swift */; };
+		A8EAC4B8274E7A2000FC5562 /* ExhibitSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4B7274E7A2000FC5562 /* ExhibitSearchViewController.swift */; };
 		A8FDF1422746B7CF004FB5EE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */; };
 		A8FDF1452746CB35004FB5EE /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1442746CB35004FB5EE /* LoginResponse.swift */; };
 		A8FDF1472746CE81004FB5EE /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1462746CE81004FB5EE /* LoginRequest.swift */; };
@@ -138,6 +139,7 @@
 		A8EAC4A8274E39B600FC5562 /* ResetOnboardAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetOnboardAlertViewController.swift; sourceTree = "<group>"; };
 		A8EAC4AB274E4C0300FC5562 /* ExhibitNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitNoticeViewController.swift; sourceTree = "<group>"; };
 		A8EAC4AD274E4C1900FC5562 /* ExhibitConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitConfirmViewController.swift; sourceTree = "<group>"; };
+		A8EAC4B7274E7A2000FC5562 /* ExhibitSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitSearchViewController.swift; sourceTree = "<group>"; };
 		A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A8FDF1442746CB35004FB5EE /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A8FDF1462746CE81004FB5EE /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				A8518511274136620029B541 /* Exhibit */,
 				A8FF870A274297D900EBC16E /* ExhibitFilter */,
 				A8AD0882273AE99A003A793A /* ExhibitDetail */,
+				A8EAC4B3274E79E200FC5562 /* ExhibitSearch */,
 				A83AF08A27292B5A00768224 /* Tabbar */,
 			);
 			path = Scene;
@@ -562,6 +565,38 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		A8EAC4B3274E79E200FC5562 /* ExhibitSearch */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4B6274E7A0600FC5562 /* Controllers */,
+				A8EAC4B5274E7A0000FC5562 /* Views */,
+				A8EAC4B4274E79F200FC5562 /* Cells */,
+			);
+			path = ExhibitSearch;
+			sourceTree = "<group>";
+		};
+		A8EAC4B4274E79F200FC5562 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A8EAC4B5274E7A0000FC5562 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8EAC4B6274E7A0600FC5562 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4B7274E7A2000FC5562 /* ExhibitSearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		A8FDF1402746B7B2004FB5EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +824,7 @@
 				A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */,
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
 				A8EAC4AC274E4C0300FC5562 /* ExhibitNoticeViewController.swift in Sources */,
+				A8EAC4B8274E7A2000FC5562 /* ExhibitSearchViewController.swift in Sources */,
 				A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */,
 				A86DB6142747F976000C9A6E /* UIImageExtension.swift in Sources */,
 				A8AD0893273B031C003A793A /* ExhibitGuideContainerView.swift in Sources */,

@@ -61,8 +61,13 @@ class ExhibitCell: UICollectionViewCell {
         $0.textColor = .white
     }
     
+    let discountLabel = UILabel().then{
+        $0.font = UIFont.TTFont(type: .MontSemiBold, size: 12)
+        $0.textColor = UIColor.Point.pink
+    }
+    
     let priceLabel = UILabel().then{
-        $0.font = UIFont.TTFont(type: .SDBold, size: 13)
+        $0.font = UIFont.TTFont(type: .MontBold, size: 13)
         $0.textColor = .white
     }
     
@@ -72,6 +77,10 @@ class ExhibitCell: UICollectionViewCell {
         $0.textColor = UIColor.Basic.gray05
     }
     
+    let postPriceLabel = UILabel().then{
+        $0.font = UIFont.TTFont(type: .SDReg, size: 11)
+        $0.textColor = UIColor.Basic.gray04
+    }
     
     //MARK: - Life Cycle
     
@@ -103,9 +112,19 @@ class ExhibitCell: UICollectionViewCell {
         dateTitleLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
         
         if let dc_prc = exhibit.dc_prc {
+            discountLabel.text = exhibit.dc_percent
             priceLabel.text = dc_prc.replacingOccurrences(of: "원", with: "")
+            
+            let text = exhibit.exhbt_prc ?? ""
+            let attributedString = NSMutableAttributedString(string: text)
+            attributedString.addAttribute(.strikethroughStyle, value: 1.07, range: (text as NSString).range(of: text))
+            postPriceLabel.attributedText = attributedString
         }else{
             priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
+            priceLabel.snp.remakeConstraints{
+                $0.leading.equalToSuperview().offset(8.0)
+                $0.bottom.equalToSuperview().offset(-7.0)
+            }
         }
         
     }
@@ -130,6 +149,8 @@ class ExhibitCell: UICollectionViewCell {
         bgView.addSubview(dateTitleLabel)
         bgView.addSubview(priceLabel)
         bgView.addSubview(wonLabel)
+        bgView.addSubview(discountLabel)
+        bgView.addSubview(postPriceLabel)
         
         thumbnailImageView.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -162,15 +183,24 @@ class ExhibitCell: UICollectionViewCell {
             $0.trailing.equalToSuperview().offset(-8.0)
         }
         
-        priceLabel.snp.makeConstraints{
-//            $0.top.equalTo(dateTitleLabel.snp.bottom).offset(4.0)
+        discountLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(8.0)
+            $0.bottom.equalToSuperview().offset(-7.0)
+        }
+        
+        priceLabel.snp.makeConstraints{
+            $0.leading.equalTo(discountLabel.snp.trailing).offset(4.0)
             $0.bottom.equalToSuperview().offset(-7.0)
         }
         
         wonLabel.snp.makeConstraints{
             $0.leading.equalTo(priceLabel.snp.trailing).offset(2.0)
-            $0.bottom.equalTo(priceLabel.snp.bottom).offset(-2.0)
+            $0.bottom.equalTo(priceLabel.snp.bottom).offset(-1.0)
+        }
+        
+        postPriceLabel.snp.makeConstraints{
+            $0.leading.equalTo(wonLabel.snp.trailing).offset(4.0)
+            $0.bottom.equalTo(wonLabel.snp.bottom).offset(1.0)
         }
     }
 }
