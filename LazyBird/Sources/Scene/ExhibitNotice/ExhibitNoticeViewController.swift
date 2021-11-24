@@ -60,6 +60,7 @@ class ExhibitNoticeViewController: UIViewController {
         self.view.backgroundColor = UIColor.Background.black02
         
         setUI()
+        setNavigationItem()
     }
     
     //MARK: - Functions
@@ -69,6 +70,11 @@ class ExhibitNoticeViewController: UIViewController {
     
     @objc func moveToTarget(_ sender: UIButton){
         print("예매처로 이동")
+    }
+    
+    func setNavigationItem(){
+        self.navigationItem.title = "예매하기"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     func setUI(){

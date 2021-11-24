@@ -80,7 +80,8 @@ class ExhibitDetailViewController: UIViewController {
     func setNavigationItem(){
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.Background.black02
-        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+//        self.navigationController?.hidesBarsOnSwipe = true
     }
     
     func setConfigure(){
