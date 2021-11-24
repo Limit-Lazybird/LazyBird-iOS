@@ -66,6 +66,8 @@
 		A8EAC4AC274E4C0300FC5562 /* ExhibitNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4AB274E4C0300FC5562 /* ExhibitNoticeViewController.swift */; };
 		A8EAC4AE274E4C1900FC5562 /* ExhibitConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4AD274E4C1900FC5562 /* ExhibitConfirmViewController.swift */; };
 		A8EAC4B8274E7A2000FC5562 /* ExhibitSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4B7274E7A2000FC5562 /* ExhibitSearchViewController.swift */; };
+		A8EAC4BA274E93AA00FC5562 /* ExhibitSearchResultContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4B9274E93AA00FC5562 /* ExhibitSearchResultContainerView.swift */; };
+		A8EAC4BD274E94A000FC5562 /* ExhibitSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4BC274E94A000FC5562 /* ExhibitSearchViewModel.swift */; };
 		A8FDF1422746B7CF004FB5EE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */; };
 		A8FDF1452746CB35004FB5EE /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1442746CB35004FB5EE /* LoginResponse.swift */; };
 		A8FDF1472746CE81004FB5EE /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1462746CE81004FB5EE /* LoginRequest.swift */; };
@@ -140,6 +142,8 @@
 		A8EAC4AB274E4C0300FC5562 /* ExhibitNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitNoticeViewController.swift; sourceTree = "<group>"; };
 		A8EAC4AD274E4C1900FC5562 /* ExhibitConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitConfirmViewController.swift; sourceTree = "<group>"; };
 		A8EAC4B7274E7A2000FC5562 /* ExhibitSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitSearchViewController.swift; sourceTree = "<group>"; };
+		A8EAC4B9274E93AA00FC5562 /* ExhibitSearchResultContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitSearchResultContainerView.swift; sourceTree = "<group>"; };
+		A8EAC4BC274E94A000FC5562 /* ExhibitSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitSearchViewModel.swift; sourceTree = "<group>"; };
 		A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A8FDF1442746CB35004FB5EE /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A8FDF1462746CE81004FB5EE /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -493,6 +497,7 @@
 				A8E6DF312745588F0080137C /* Exhibit */,
 				A8EAC4A3274D750F00FC5562 /* ExhibitFilter */,
 				A86DB61027479FD3000C9A6E /* ExhibitDetail */,
+				A8EAC4BB274E947D00FC5562 /* ExhibitSearch */,
 				A8E6DF392745598D0080137C /* Observable.swift */,
 			);
 			path = ViewModels;
@@ -585,6 +590,7 @@
 		A8EAC4B5274E7A0000FC5562 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A8EAC4B9274E93AA00FC5562 /* ExhibitSearchResultContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -595,6 +601,14 @@
 				A8EAC4B7274E7A2000FC5562 /* ExhibitSearchViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8EAC4BB274E947D00FC5562 /* ExhibitSearch */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4BC274E94A000FC5562 /* ExhibitSearchViewModel.swift */,
+			);
+			path = ExhibitSearch;
 			sourceTree = "<group>";
 		};
 		A8FDF1402746B7B2004FB5EE /* Login */ = {
@@ -787,6 +801,7 @@
 				A8518516274137240029B541 /* ExhibitViewController.swift in Sources */,
 				A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */,
 				A8AD0899273B049D003A793A /* TicketBookContainerView.swift in Sources */,
+				A8EAC4BA274E93AA00FC5562 /* ExhibitSearchResultContainerView.swift in Sources */,
 				A8EAC4AE274E4C1900FC5562 /* ExhibitConfirmViewController.swift in Sources */,
 				A83AF09027292C5200768224 /* TabBarViewController.swift in Sources */,
 				A83AF09B27295C6900768224 /* CategoryCell.swift in Sources */,
@@ -805,6 +820,7 @@
 				A8260649272726BE00939421 /* LogoContainerView.swift in Sources */,
 				A8E6DF38274559440080137C /* Exhibits.swift in Sources */,
 				A8FF87152743992500EBC16E /* ExhibitFilterTypeCell.swift in Sources */,
+				A8EAC4BD274E94A000FC5562 /* ExhibitSearchViewModel.swift in Sources */,
 				A8AD0896273B0337003A793A /* ExhibitContentContainerView.swift in Sources */,
 				A8EAC4A2274D5DFC00FC5562 /* ExhibitAPIManager.swift in Sources */,
 				A8EAC4A7274D8F8000FC5562 /* NoticeView.swift in Sources */,

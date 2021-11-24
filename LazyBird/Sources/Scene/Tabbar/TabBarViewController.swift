@@ -28,7 +28,7 @@ class TabBarViewController: UITabBarController {
                                      selectedImage: UIImage(named: "calendarOn")?.withRenderingMode(.alwaysOriginal))
         $0.navigationItem.largeTitleDisplayMode = .always
     }
-    let searchVC = EarlyBirdViewController().then{
+    let searchVC = ExhibitSearchViewController().then{
         $0.tabBarItem = UITabBarItem(title: "검색",
                                      image: UIImage(named: "searchOff"),
                                      selectedImage: UIImage(named: "searchOn")?.withRenderingMode(.alwaysOriginal))
