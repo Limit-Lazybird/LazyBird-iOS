@@ -63,7 +63,7 @@ class ResetOnboardAlertViewController: UIViewController {
         let onboardVC = UINavigationController(rootViewController: startOnboard)
         onboardVC.modalPresentationStyle = .overFullScreen
         
-        self.present(onboardVC, animated: true, completion: nil)
+        self.present(onboardVC, animated: true, completion: nil) // 화면 띄우고
     }
     
     @objc func emptyViewTapped(_ sender: Any){

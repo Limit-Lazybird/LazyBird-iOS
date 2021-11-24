@@ -9,6 +9,7 @@ import UIKit
 
 class SecondOnboardingViewController: UIViewController {
     //MARK: - Properties
+    var viewModel: OnboardingViewModel?
     var parentType: parentType?
     
     //MARK:- UI Components
@@ -31,9 +32,11 @@ class SecondOnboardingViewController: UIViewController {
     
     lazy var topView = QuestionBtnView().then{
         $0.delegate = self
+        $0.tag = 1
     }
     lazy var bottomView = QuestionBtnView().then{
         $0.delegate = self
+        $0.tag = 2
     }
     
     let stackView = UIStackView().then{
@@ -51,12 +54,20 @@ class SecondOnboardingViewController: UIViewController {
         
         setNavigationItem()
         setUI()
+        setConfig()
     }
     
     //MARK: - Functions
     
     @objc func back(_ sender: Any){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setConfig(){
+        guard let viewModel = viewModel else { return }
+
+        topView.config(question: viewModel.onboardManager.getAnalysisResult()[2])
+        bottomView.config(question: viewModel.onboardManager.getAnalysisResult()[3])
     }
     
     func setUI(){
@@ -117,9 +128,14 @@ class SecondOnboardingViewController: UIViewController {
 //MARK: - Extension
 
 extension SecondOnboardingViewController: OnboardingViewDelegate{
-    func moveToNext() {
+    func moveToNext(tag: Int) {
+        //TODO: 1. 화면 이동   /   2. 사용자 입력 저장
+        guard let viewModel = self.viewModel else { return }
+        viewModel.onboardManager.addUserInput(input: tag)
+        
         let thirdVC = ThirdOnboardingViewController()
         thirdVC.parentType = self.parentType
+        thirdVC.viewModel = viewModel
         
         self.navigationController?.pushViewController(thirdVC, animated: true)
     }

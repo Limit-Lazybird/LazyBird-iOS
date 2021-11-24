@@ -9,6 +9,7 @@ import UIKit
 
 class ThirdOnboardingViewController: UIViewController {
     //MARK: - Properties
+    var viewModel: OnboardingViewModel?
     var parentType: parentType?
     
     //MARK:- UI Components
@@ -31,12 +32,15 @@ class ThirdOnboardingViewController: UIViewController {
     
     lazy var topView = QuestionBtnView().then{
         $0.delegate = self
+        $0.tag = 1
     }
     lazy var centerView = QuestionBtnView().then{
         $0.delegate = self
+        $0.tag = 2
     }
     lazy var bottomView = QuestionBtnView().then{
         $0.delegate = self
+        $0.tag = 3
     }
     
     let stackView = UIStackView().then{
@@ -53,12 +57,21 @@ class ThirdOnboardingViewController: UIViewController {
         
         setNavigationItem()
         setUI()
+        setConfig()
     }
     
     //MARK: - Functions
     
     @objc func back(_ sender: Any){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setConfig(){
+        guard let viewModel = viewModel else { return }
+
+        topView.config(question: viewModel.onboardManager.getAnalysisResult()[4])
+        centerView.config(question: viewModel.onboardManager.getAnalysisResult()[5])
+        bottomView.config(question: viewModel.onboardManager.getAnalysisResult()[6])
     }
     
     func setUI(){
@@ -125,9 +138,14 @@ class ThirdOnboardingViewController: UIViewController {
 //MARK: - Extension
 
 extension ThirdOnboardingViewController: OnboardingViewDelegate{
-    func moveToNext() {
+    func moveToNext(tag: Int) {
+        //TODO: 1. 화면 이동   /   2. 사용자 입력 저장
+        guard let viewModel = self.viewModel else { return }
+        viewModel.onboardManager.addUserInput(input: tag)
+        
         let fourthVC = FourthOnboardingViewController()
         fourthVC.parentType = self.parentType
+        fourthVC.viewModel = viewModel
         
         self.navigationController?.pushViewController(fourthVC, animated: true)
     }

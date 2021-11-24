@@ -15,6 +15,7 @@ enum parentType{
 
 class StartOnboardingViewController: UIViewController {
     //MARK: - Properties
+    let viewModel = OnboardingViewModel()
     var parentType: parentType?
     
     //MARK: - UI Components
@@ -72,10 +73,17 @@ class StartOnboardingViewController: UIViewController {
         setNavigationItem()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        viewModel.requestOnboardQuestions() // 성향 질문 request
+    }
+    
     //MARK: - Functions
     @objc func moveToOnboardingVC(_ sender: UIButton){
         // TODO: 온보딩화면으로 이동
         let firstVC = FirstOnboardingViewController()
+        firstVC.viewModel = self.viewModel
         firstVC.parentType = self.parentType
         
         self.navigationController?.pushViewController(firstVC, animated: true)

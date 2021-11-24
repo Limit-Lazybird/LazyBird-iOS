@@ -11,6 +11,7 @@ import Then
 
 class FourthOnboardingViewController: UIViewController {
     //MARK: - Properties
+    var viewModel: OnboardingViewModel?
     var parentType: parentType?
     
     //MARK: - UI Components
@@ -67,6 +68,8 @@ class FourthOnboardingViewController: UIViewController {
         switch parentType{
         case .reset:
             //TODO: 그냥 돌아가기
+//            print("user Input --> \(onboardManager.getUserInput())")
+            viewModel?.requestQuestionAnswer()
             self.dismiss(animated: true, completion: nil)
             break
         default:

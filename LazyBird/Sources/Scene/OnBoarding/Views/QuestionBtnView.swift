@@ -16,9 +16,8 @@ class QuestionBtnView: UIView {
      */
     
     //MARK: - Properties
-    
     var delegate: OnboardingViewDelegate?
-    
+
     //MARK: - UI Components
     
     lazy var bgImageView = UIImageView().then{
@@ -54,10 +53,15 @@ class QuestionBtnView: UIView {
     //MARK: - Functions
     
     @objc func moveToNext(_ sender: Any){
+        //TODO: 누른거 싱글턴 매니저에 저장하기
         //TODO: delegate로 다음페이지 넘기기
         guard let delegate = self.delegate else { return }
         
-        delegate.moveToNext()
+        delegate.moveToNext(tag: self.tag)
+    }
+    
+    func config(question: String){
+        self.questionLabel.text = question
     }
     
     func setUI(){
