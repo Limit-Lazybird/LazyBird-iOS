@@ -14,9 +14,10 @@ protocol OnboardingViewDelegate{
 }
 
 class FirstOnboardingViewController: UIViewController {
+    //MARK: - Properties
+    var parentType: parentType?
     
     //MARK:- UI Components
-    
     let decoLabel = UILabel().then{
         $0.text = "Q."
         $0.font = UIFont.TTFont(type: .MontReg, size: 25)
@@ -48,7 +49,6 @@ class FirstOnboardingViewController: UIViewController {
         $0.spacing = 16
     }
     
-    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -57,6 +57,7 @@ class FirstOnboardingViewController: UIViewController {
 
         setNavigationItem()
         setUI()
+        
     }
     
     //MARK: - Functions
@@ -125,6 +126,7 @@ class FirstOnboardingViewController: UIViewController {
 extension FirstOnboardingViewController: OnboardingViewDelegate {
     func moveToNext() {
         let secondVC = SecondOnboardingViewController()
+        secondVC.parentType = self.parentType
         
         self.navigationController?.pushViewController(secondVC, animated: true)
     }

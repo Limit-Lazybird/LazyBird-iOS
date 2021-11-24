@@ -9,10 +9,15 @@ import UIKit
 import SnapKit
 import Then
 
+enum parentType{
+    case reset
+}
+
 class StartOnboardingViewController: UIViewController {
+    //MARK: - Properties
+    var parentType: parentType?
     
-    //MARK:- UI Components
-    
+    //MARK: - UI Components
     let choiceAImageView = UIImageView().then{
         $0.image = UIImage(named: "choiceA")
         $0.contentMode = .scaleAspectFit
@@ -57,9 +62,7 @@ class StartOnboardingViewController: UIViewController {
         $0.addTarget(self, action: #selector(moveToHome(_:)), for: .touchUpInside)
     }
     
-   
-    
-    //MARK:- Life Cycle
+    //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,25 +72,32 @@ class StartOnboardingViewController: UIViewController {
         setNavigationItem()
     }
     
-    //MARK:- Functions
-    
-    func setNavigationItem(){
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
+    //MARK: - Functions
     @objc func moveToOnboardingVC(_ sender: UIButton){
         // TODO: 온보딩화면으로 이동
         let firstVC = FirstOnboardingViewController()
+        firstVC.parentType = self.parentType
+        
         self.navigationController?.pushViewController(firstVC, animated: true)
     }
     @objc func moveToHome(_ sender: UIButton){
         // TODO: 홈 화면으로 이동
-        self.dismiss(animated: true, completion: nil)
-        
-        let tabBarVC = TabBarViewController()
-        tabBarVC.modalPresentationStyle = .fullScreen
-        
-        self.present(tabBarVC, animated: true, completion: nil)
+        if let _ = self.parentType {
+            //TODO: 재설정으로 온 경우
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            //TODO: 온보딩에서 넘어온 경우
+            self.dismiss(animated: true, completion: nil)
+            
+            let tabBarVC = TabBarViewController()
+            tabBarVC.modalPresentationStyle = .fullScreen
+            
+            self.present(tabBarVC, animated: true, completion: nil)
+        }
+    }
+    
+    func setNavigationItem(){
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func setUI(){

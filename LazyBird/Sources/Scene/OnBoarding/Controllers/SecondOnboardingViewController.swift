@@ -8,9 +8,10 @@
 import UIKit
 
 class SecondOnboardingViewController: UIViewController {
+    //MARK: - Properties
+    var parentType: parentType?
     
     //MARK:- UI Components
-    
     let decoLabel = UILabel().then{
         $0.text = "Q."
         $0.font = UIFont.TTFont(type: .MontReg, size: 25)
@@ -118,6 +119,7 @@ class SecondOnboardingViewController: UIViewController {
 extension SecondOnboardingViewController: OnboardingViewDelegate{
     func moveToNext() {
         let thirdVC = ThirdOnboardingViewController()
+        thirdVC.parentType = self.parentType
         
         self.navigationController?.pushViewController(thirdVC, animated: true)
     }

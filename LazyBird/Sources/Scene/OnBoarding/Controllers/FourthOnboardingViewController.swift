@@ -9,18 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
-/*
- let text = "Take\nYour EarlyBird"
- let attributeString = NSMutableAttributedString(string: text)
- attributeString.addAttribute(.foregroundColor, value: UIColor.Point.or01, range: (text as NSString).range(of: "EarlyBird"))
- $0.attributedText = attributeString
- */
-
-
 class FourthOnboardingViewController: UIViewController {
+    //MARK: - Properties
+    var parentType: parentType?
     
     //MARK: - UI Components
-    
     let mainImageView = UIImageView().then{
         $0.contentMode = .scaleAspectFit
         $0.image = UIImage(named: "ic_onb4_main")
@@ -71,12 +64,19 @@ class FourthOnboardingViewController: UIViewController {
     @objc func moveToHome(_ sender: Any){
         //TODO: Home 화면으로 넘어가기
         //TODO: 설문 결과 서버로 전송하기
-        self.dismiss(animated: true, completion: nil)
+        switch parentType{
+        case .reset:
+            //TODO: 그냥 돌아가기
+            self.dismiss(animated: true, completion: nil)
+            break
+        default:
+            //TODO: 메인으로 이동하기
+            let tabBarVC = TabBarViewController()
+            tabBarVC.modalPresentationStyle = .fullScreen
+            
+            self.present(tabBarVC, animated: true, completion: nil)
+        }
         
-        let tabBarVC = TabBarViewController()
-        tabBarVC.modalPresentationStyle = .fullScreen
-        
-        self.present(tabBarVC, animated: true, completion: nil)
     }
     
     

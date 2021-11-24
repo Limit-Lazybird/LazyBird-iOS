@@ -57,9 +57,12 @@ class ResetOnboardAlertViewController: UIViewController {
     //MARK: - Functions
     @objc func resetBtnPressed(_ sender: UIButton){
         //TODO: 화면 이동 -> 처음 온보딩 화면으로
-        let onboardVC = UINavigationController(rootViewController: FirstOnboardingViewController()) 
+        let startOnboard = StartOnboardingViewController()
+        startOnboard.parentType = .reset
         
+        let onboardVC = UINavigationController(rootViewController: startOnboard)
         onboardVC.modalPresentationStyle = .overFullScreen
+        
         self.present(onboardVC, animated: true, completion: nil)
     }
     
