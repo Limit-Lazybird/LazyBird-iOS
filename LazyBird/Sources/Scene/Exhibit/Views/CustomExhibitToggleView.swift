@@ -10,6 +10,8 @@ import SnapKit
 import Then
 
 class CustomExhibitToggleView: UIView {
+    //MARK: - Properties
+    var delegate: ExhibitViewDelegate?
     
     //MARK: - UI Components
     
@@ -50,7 +52,10 @@ class CustomExhibitToggleView: UIView {
     //MARK: - Functions
     
     @objc func resetBtnPressed(_ sender: UIButton){
-        print("reset 버튼 눌림")
+        print("reset btn pressed")
+        guard let delegate = self.delegate else { return }
+        
+        delegate.moveToResetOnboard()
     }
     
     @objc func onClickSwitch(_ sender: UISwitch){

@@ -27,6 +27,4 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
     func getExhibits() -> Observable<[Exhibit]> {
         return self.exhibits
     }
-    
-
 }

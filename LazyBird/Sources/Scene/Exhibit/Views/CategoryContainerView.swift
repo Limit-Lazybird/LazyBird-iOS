@@ -10,7 +10,7 @@ import UIKit
 class CategoryContainerView: UIView {
     //MARK: - Properties
     var delegate: ExhibitViewDelegate?
-    var dummyCategory: [String] = ["회화","조형","사진","특별전","아동전시","잡다잡다해","잡다잡다해","잡다잡다해"]
+    var dummyCategory: [String] = ["회화","조형","사진","특별전","체험전","아동전시"]
     
     //MARK: - UI Components
     
@@ -19,18 +19,25 @@ class CategoryContainerView: UIView {
         $0.minimumLineSpacing = .zero
         $0.minimumInteritemSpacing = 8
     }
+    
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
         $0.dataSource = self
         $0.delegate = self
         $0.backgroundColor = .clear
         $0.showsHorizontalScrollIndicator = false
-        $0.contentInset = UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 0)
+        $0.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 0, right: 0)
         $0.allowsMultipleSelection = true
-        $0.register(CategoryCollectionHeaderView.self,
-                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                    withReuseIdentifier: CategoryCollectionHeaderView.identifier)
         $0.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }
+    
+    lazy var filterBtn = UIButton().then{
+        $0.setImage(UIImage(named: "filter"), for: .normal)
+        $0.backgroundColor = UIColor.Background.darkGray01
+        $0.layer.cornerRadius = 26 / 2
+        $0.addTarget(self, action: #selector(filterBtnPressed(_:)), for: .touchUpInside)
+    }
+    
+    //MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,11 +49,26 @@ class CategoryContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Functions
+    
+    @objc func filterBtnPressed(_ sender: UIButton){
+        //TODO: 여기할거 까먹지말자!
+        delegate?.moveToExhibitFilter()
+    }
+    
     func setUI(){
         self.addSubview(collectionView)
+        self.addSubview(filterBtn)
+        
+        filterBtn.snp.makeConstraints{
+            $0.top.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16.0)
+            $0.width.equalTo(53.0)
+        }
         
         collectionView.snp.makeConstraints{
-            $0.edges.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.equalTo(filterBtn.snp.trailing).offset(8.0)
+            $0.top.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
@@ -74,23 +96,6 @@ extension CategoryContainerView: UICollectionViewDataSource{
         
         return cell
     }
-    
-    // header view setting
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard
-            kind == UICollectionView.elementKindSectionHeader,
-            let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: CategoryCollectionHeaderView.identifier,
-                for: indexPath
-            ) as? CategoryCollectionHeaderView
-        else { return UICollectionReusableView() }
-
-        header.setupViews()
-        header.delegate = self.delegate
-
-        return header
-    }
 }
 
 extension CategoryContainerView: UICollectionViewDelegateFlowLayout {
@@ -104,11 +109,5 @@ extension CategoryContainerView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 16.0)
-    }
-    
-    
-           // Header의 width, height 설정
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 53.0, height: CategoryCollectionHeaderView.height)
     }
 }

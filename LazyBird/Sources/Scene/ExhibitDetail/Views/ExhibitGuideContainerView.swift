@@ -71,18 +71,15 @@ class ExhibitGuideContainerView: UIView {
         guard let vm = self.viewModel else { return }
         
         let exhibit = vm.getExhibit().value
-        let notices = exhibit.exhbt_notice?.components(separatedBy: ".") ?? []
+        let notices = exhibit.exhbt_notice?.components(separatedBy: "\\n") ?? []
         
         alertLabel.text = getExhibitDateTwo(date: exhibit.exhbt_to_dt ?? "")
         
         for notice in notices{
-            let messageLabel = UILabel().then{
-                $0.text = "• \(notice)"
-                $0.font = UIFont.TTFont(type: .SDReg, size: 13)
-                $0.numberOfLines = 5
-                $0.textColor = .white
+            let noticeLabel = NoticeView().then{
+                $0.config(notice: notice)
             }
-            messageStackView.addArrangedSubview(messageLabel)
+            messageStackView.addArrangedSubview(noticeLabel)
         }
     }
     
@@ -92,7 +89,7 @@ class ExhibitGuideContainerView: UIView {
             return
         }
         let exhibit = viewModel.getExhibit().value
-        let notices = exhibit.exhbt_notice?.components(separatedBy: ".") ?? []
+        let notices = exhibit.exhbt_notice?.components(separatedBy: "\n") ?? []
         
         alertLabel.text = getExhibitDateTwo(date: exhibit.exhbt_to_dt ?? "")
         

@@ -10,6 +10,7 @@ import SnapKit
 import Then
 
 protocol ExhibitViewDelegate{
+    func moveToResetOnboard()
     func moveToExhibitFilter()
     func moveToDetailView(indexPath: IndexPath)
 }
@@ -30,7 +31,9 @@ class ExhibitViewController: UIViewController {
         $0.tintColor = .white
     }
     
-    let toggleView = CustomExhibitToggleView(frame: .zero)
+    lazy var toggleView = CustomExhibitToggleView(frame: .zero).then{
+        $0.delegate = self
+    }
     lazy var categoryContainerView = CategoryContainerView(frame: .zero).then{
         $0.delegate = self
     }
@@ -136,6 +139,13 @@ extension ExhibitViewController: UINavigationControllerDelegate {
 }
 
 extension ExhibitViewController: ExhibitViewDelegate{
+    func moveToResetOnboard() {
+        let resetOnboardingVC = ResetOnboardAlertViewController()
+        resetOnboardingVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(resetOnboardingVC, animated: true, completion: nil)
+    }
+    
     func moveToExhibitFilter() {
         let exhibitFilterVC = ExhibitFilterViewController()
         exhibitFilterVC.modalPresentationStyle = .overFullScreen

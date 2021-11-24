@@ -83,7 +83,7 @@ class ExhibitFilterViewController: UIViewController {
     
     @objc func applyBtnTapped(_ sender: UIButton){
         //TODO: 필터 적용
-        print("필터 적용 완료")
+        
     }
     
     @objc func emptyViewTapped(_ sender: Any){
