@@ -47,6 +47,7 @@ class NoticeView: UIView {
         
         dotLabel.snp.makeConstraints{
             $0.leading.top.equalToSuperview()
+            $0.width.height.equalTo(10.0)
         }
         
         noticeLabel.snp.makeConstraints{

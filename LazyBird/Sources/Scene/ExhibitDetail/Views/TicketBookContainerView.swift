@@ -14,9 +14,10 @@ import Then
  */
 
 class TicketBookContainerView: UIView {
+    //MARK: - Properties
+    var delegate: ExhibitDetailViewControllerDelegate?
     
     //MARK: - UI Components
-    
     let bgView = UIView().then{
         $0.backgroundColor = UIColor.Background.darkGray01
     }
@@ -45,7 +46,7 @@ class TicketBookContainerView: UIView {
     //MARK: - Functions
     
     @objc func bookBtnPressed(_ sender: UIButton){
-        print("book btn pressed")
+        self.delegate?.moveToNotice()
     }
     
     func setUI(){

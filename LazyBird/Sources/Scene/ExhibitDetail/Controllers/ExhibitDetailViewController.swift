@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import Then
 
+protocol ExhibitDetailViewControllerDelegate{
+    func moveToNotice() // 예매 공지 화면으로 이동
+}
+
 class ExhibitDetailViewController: UIViewController {
     
     //MARK: - Properties
@@ -31,7 +35,9 @@ class ExhibitDetailViewController: UIViewController {
     let exhibitInfoContainerView = ExhibitInfoContainerView(frame: .zero)
     let exhibitGuideContainerView = ExhibitGuideContainerView(frame: .zero)
     let exhibitContentContainerView = ExhibitContentContainerView(frame: .zero)
-    let bookContainerView = TicketBookContainerView(frame: .zero)
+    lazy var bookContainerView = TicketBookContainerView(frame: .zero).then {
+        $0.delegate = self
+    }
     
     
     lazy var stackView = UIStackView().then{
@@ -109,5 +115,13 @@ class ExhibitDetailViewController: UIViewController {
             $0.height.equalTo(86.0)
         }
 
+    }
+}
+
+extension ExhibitDetailViewController: ExhibitDetailViewControllerDelegate{
+    func moveToNotice() {
+        let exhibitNoticeVC = ExhibitNoticeViewController()
+        
+        self.navigationController?.pushViewController(exhibitNoticeVC, animated: true)
     }
 }
