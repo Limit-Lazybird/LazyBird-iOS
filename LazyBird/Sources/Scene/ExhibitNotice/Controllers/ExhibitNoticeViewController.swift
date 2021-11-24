@@ -8,8 +8,12 @@
 import UIKit
 import SnapKit
 import Then
+import SafariServices
 
 class ExhibitNoticeViewController: UIViewController {
+    //MARK: - Properties
+    var currentExhibit: Exhibit?
+    
     //MARK: - UI Components
     let infoImageView = UIImageView().then{
         $0.image = UIImage(named: "ic_info")
@@ -69,12 +73,21 @@ class ExhibitNoticeViewController: UIViewController {
     }
     
     @objc func moveToTarget(_ sender: UIButton){
-        print("예매처로 이동")
+        //TODO: 화면이동
+        guard let url = URL(string: self.currentExhibit?.excbt_url ?? "") else { return }
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true, completion: nil)
+
+        //TODO: 컨펌 뷰 띄우기
+        let exhibitConfirmVC = ExhibitConfirmViewController()
+        exhibitConfirmVC.currentExhibit = self.currentExhibit
+        self.navigationController?.pushViewController(exhibitConfirmVC, animated: true)
     }
     
     func setNavigationItem(){
         self.navigationItem.title = "예매하기"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     func setUI(){

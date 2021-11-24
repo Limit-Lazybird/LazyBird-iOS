@@ -122,6 +122,7 @@ class ExhibitDetailViewController: UIViewController {
 extension ExhibitDetailViewController: ExhibitDetailViewControllerDelegate{
     func moveToNotice() {
         let exhibitNoticeVC = ExhibitNoticeViewController()
+        exhibitNoticeVC.currentExhibit = exhibitDetailViewModel.getExhibit().value
         
         self.navigationController?.pushViewController(exhibitNoticeVC, animated: true)
     }
