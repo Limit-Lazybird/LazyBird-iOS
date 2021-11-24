@@ -11,6 +11,7 @@ import Then
 
 class CustomExhibitToggleView: UIView {
     //MARK: - Properties
+    var viewModel: ExhibitViewModel?
     var delegate: ExhibitViewDelegate?
     
     //MARK: - UI Components
@@ -59,11 +60,21 @@ class CustomExhibitToggleView: UIView {
     }
     
     @objc func onClickSwitch(_ sender: UISwitch){
+        guard let viewModel = self.viewModel else { return }
+
         if sender.isOn{
+            //TODO: custom 리스트 불러오기
+            viewModel.fetchCustomExhibits()
             resetAlertBtn.isHidden = false
         }else{
+            //TODO: 전체 리스트 불러오기
+            viewModel.fetchExhibits()
             resetAlertBtn.isHidden = true
         }
+    }
+    
+    func config(viewModel: ExhibitViewModel){
+        self.viewModel = viewModel
     }
     
     func setUI(){

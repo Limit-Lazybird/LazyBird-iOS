@@ -60,6 +60,7 @@ class ExhibitViewController: UIViewController {
     
     func configure(){
         self.exhibitContainerView.config(viewModel: self.viewModel)
+        self.toggleView.config(viewModel: self.viewModel)
     }
     
     @objc func alertBtnPressed(_ sender: Any){

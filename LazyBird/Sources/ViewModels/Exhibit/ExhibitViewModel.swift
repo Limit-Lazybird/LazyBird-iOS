@@ -19,6 +19,14 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
     
     func fetchExhibits() {
         exhibitManager.requestExhibitList { exhibits in
+            self.exhibits.value.removeAll()
+            self.exhibits.value.append(contentsOf: exhibits.exhbtList)
+        }
+    }
+    
+    func fetchCustomExhibits() {
+        exhibitManager.requestCustomExhibitList { exhibits in
+            self.exhibits.value.removeAll()
             self.exhibits.value.append(contentsOf: exhibits.exhbtList)
         }
     }
