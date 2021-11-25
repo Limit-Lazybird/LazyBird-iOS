@@ -82,7 +82,9 @@
 		A8EAC4DF274F93AD00FC5562 /* MyBirdReservedExhibitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4DE274F93AD00FC5562 /* MyBirdReservedExhibitionView.swift */; };
 		A8EAC4E1274F93D600FC5562 /* MyBirdFavoriteExhibitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4E0274F93D600FC5562 /* MyBirdFavoriteExhibitionView.swift */; };
 		A8EAC4E3274FA06C00FC5562 /* MyBirdExhibitPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4E2274FA06C00FC5562 /* MyBirdExhibitPreview.swift */; };
-		A8EAC4E5274FB7BA00FC5562 /* ReservedExhibitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4E4274FB7BA00FC5562 /* ReservedExhibitDetailViewController.swift */; };
+		A8EAC4E5274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4E4274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift */; };
+		A8EAC4E8274FFE9A00FC5562 /* MyBirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4E7274FFE9A00FC5562 /* MyBirdViewModel.swift */; };
+		A8EAC4EB274FFEE700FC5562 /* MyBirdAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4EA274FFEE700FC5562 /* MyBirdAPIManager.swift */; };
 		A8FDF1422746B7CF004FB5EE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */; };
 		A8FDF1452746CB35004FB5EE /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1442746CB35004FB5EE /* LoginResponse.swift */; };
 		A8FDF1472746CE81004FB5EE /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1462746CE81004FB5EE /* LoginRequest.swift */; };
@@ -173,7 +175,9 @@
 		A8EAC4DE274F93AD00FC5562 /* MyBirdReservedExhibitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirdReservedExhibitionView.swift; sourceTree = "<group>"; };
 		A8EAC4E0274F93D600FC5562 /* MyBirdFavoriteExhibitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirdFavoriteExhibitionView.swift; sourceTree = "<group>"; };
 		A8EAC4E2274FA06C00FC5562 /* MyBirdExhibitPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirdExhibitPreview.swift; sourceTree = "<group>"; };
-		A8EAC4E4274FB7BA00FC5562 /* ReservedExhibitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedExhibitDetailViewController.swift; sourceTree = "<group>"; };
+		A8EAC4E4274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteExhibitDetailViewController.swift; sourceTree = "<group>"; };
+		A8EAC4E7274FFE9A00FC5562 /* MyBirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirdViewModel.swift; sourceTree = "<group>"; };
+		A8EAC4EA274FFEE700FC5562 /* MyBirdAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirdAPIManager.swift; sourceTree = "<group>"; };
 		A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A8FDF1442746CB35004FB5EE /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A8FDF1462746CE81004FB5EE /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -532,6 +536,7 @@
 				A8EAC4A3274D750F00FC5562 /* ExhibitFilter */,
 				A86DB61027479FD3000C9A6E /* ExhibitDetail */,
 				A8EAC4BB274E947D00FC5562 /* ExhibitSearch */,
+				A8EAC4E6274FFE8000FC5562 /* MyBird */,
 				A8E6DF392745598D0080137C /* Observable.swift */,
 			);
 			path = ViewModels;
@@ -569,6 +574,7 @@
 				A8EAC4A0274D5DDE00FC5562 /* Exhibit */,
 				A8EAC4D3274F7C4D00FC5562 /* ExhibitFilter */,
 				A8EAC4CD274ED0C700FC5562 /* Search */,
+				A8EAC4E9274FFECC00FC5562 /* MyBird */,
 				A8EAC49B274CE9CC00FC5562 /* TokenUtils.swift */,
 			);
 			path = API;
@@ -731,9 +737,25 @@
 			isa = PBXGroup;
 			children = (
 				A8EAC4DA274F908000FC5562 /* MyBirdViewController.swift */,
-				A8EAC4E4274FB7BA00FC5562 /* ReservedExhibitDetailViewController.swift */,
+				A8EAC4E4274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8EAC4E6274FFE8000FC5562 /* MyBird */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4E7274FFE9A00FC5562 /* MyBirdViewModel.swift */,
+			);
+			path = MyBird;
+			sourceTree = "<group>";
+		};
+		A8EAC4E9274FFECC00FC5562 /* MyBird */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4EA274FFEE700FC5562 /* MyBirdAPIManager.swift */,
+			);
+			path = MyBird;
 			sourceTree = "<group>";
 		};
 		A8FDF1402746B7B2004FB5EE /* Login */ = {
@@ -918,6 +940,7 @@
 				A8EAC4E1274F93D600FC5562 /* MyBirdFavoriteExhibitionView.swift in Sources */,
 				A8EAC4D5274F7C6F00FC5562 /* ExhibitFilterAPIManager.swift in Sources */,
 				A8FDF1422746B7CF004FB5EE /* LoginViewModel.swift in Sources */,
+				A8EAC4EB274FFEE700FC5562 /* MyBirdAPIManager.swift in Sources */,
 				A8E6DF3A2745598D0080137C /* Observable.swift in Sources */,
 				A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */,
 				A806262327418F3B00B562A6 /* ExhibitCell.swift in Sources */,
@@ -931,7 +954,7 @@
 				A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */,
 				A8EAC4CA274EA7E200FC5562 /* OnboardingRequest.swift in Sources */,
 				A8AD0899273B049D003A793A /* TicketBookContainerView.swift in Sources */,
-				A8EAC4E5274FB7BA00FC5562 /* ReservedExhibitDetailViewController.swift in Sources */,
+				A8EAC4E5274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift in Sources */,
 				A8EAC4BA274E93AA00FC5562 /* ExhibitSearchResultContainerView.swift in Sources */,
 				A8EAC4C8274EA72100FC5562 /* OnboardingAPIManager.swift in Sources */,
 				A8EAC4AE274E4C1900FC5562 /* ExhibitConfirmViewController.swift in Sources */,
@@ -986,6 +1009,7 @@
 				A8AD0893273B031C003A793A /* ExhibitGuideContainerView.swift in Sources */,
 				A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */,
 				A8DA7ECF271F4060009976CF /* AppleLoginManager.swift in Sources */,
+				A8EAC4E8274FFE9A00FC5562 /* MyBirdViewModel.swift in Sources */,
 				A851851A2741615B0029B541 /* CustomExhibitToggleView.swift in Sources */,
 				A8AD0885273AE9DD003A793A /* ExhibitDetailViewController.swift in Sources */,
 				A8EAC4A9274E39B600FC5562 /* ResetOnboardAlertViewController.swift in Sources */,

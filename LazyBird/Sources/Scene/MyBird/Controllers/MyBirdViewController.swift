@@ -15,6 +15,9 @@ protocol MyBirdViewControllerProtocol{
 }
 
 class MyBirdViewController: UIViewController {
+    //MARK: - Properties
+    let viewModel = MyBirdViewModel()
+    
     //MARK: - UI Components
     lazy var earlyCardBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(earlyCardPressed(_:))).then{
         $0.image = UIImage(named: "earlyCard")
@@ -51,6 +54,13 @@ class MyBirdViewController: UIViewController {
         setNavigationItem()
         setUI()
         setConfig()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.viewModel.requestFavoriteExhibits()
+        self.viewModel.requestReservationExhibits()
     }
     
     //MARK: - Functions
@@ -112,10 +122,15 @@ extension MyBirdViewController: MyBirdViewControllerProtocol{
     func moveToFavoriteExhibitDetail() {
         //TODO: 찜한 전시로 이동
         print("찜한 전시로 이동")
+        let reservationVC = FavoriteExhibitDetailViewController()
+        reservationVC.viewModel = self.viewModel
+        
+        self.navigationController?.pushViewController(reservationVC, animated: true)
     }
     
     func moveToReservedExhibitDetail() {
         //TODO: 예매한 전시로 이동
         print("예매한 전시로 이동")
+        
     }
 }
