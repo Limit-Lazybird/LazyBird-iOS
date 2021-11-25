@@ -34,7 +34,7 @@ class TabBarViewController: UITabBarController {
                                      selectedImage: UIImage(named: "searchOn")?.withRenderingMode(.alwaysOriginal))
         $0.navigationItem.largeTitleDisplayMode = .always
     }
-    let mybirdVC = EarlyBirdViewController().then{
+    let mybirdVC = MyBirdViewController().then{
         $0.tabBarItem = UITabBarItem(title: "마이버드",
                                      image: UIImage(named: "mybirdOff"),
                                      selectedImage: UIImage(named: "mybirdOn")?.withRenderingMode(.alwaysOriginal))

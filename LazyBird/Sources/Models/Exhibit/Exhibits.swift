@@ -29,6 +29,8 @@ struct Exhibit: Codable {
     let exhbt_notice: String?
     let eb_yn: String?
     let exhbt_type_cd: Int
+    let exhbt_type_cd_sub: String?
+    let like_yn: String?
     
     init(){
         exhbt_cd = nil
@@ -48,5 +50,7 @@ struct Exhibit: Codable {
         exhbt_notice = nil
         eb_yn = nil
         exhbt_type_cd = 0
+        exhbt_type_cd_sub = nil
+        like_yn = nil
     }
 }

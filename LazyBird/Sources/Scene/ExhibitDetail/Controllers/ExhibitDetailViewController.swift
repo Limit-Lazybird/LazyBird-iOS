@@ -115,7 +115,6 @@ class ExhibitDetailViewController: UIViewController {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(86.0)
         }
-
     }
 }
 

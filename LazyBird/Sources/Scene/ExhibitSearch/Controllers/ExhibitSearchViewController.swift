@@ -263,6 +263,7 @@ extension ExhibitSearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //TODO: 검색 api 사용
         self.viewModel.fetchSearchedExhibit(word: textField.text ?? "")
+        self.view.endEditing(true)
         return true
       }
 }
