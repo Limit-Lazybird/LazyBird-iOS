@@ -85,6 +85,8 @@
 		A8EAC4E5274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4E4274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift */; };
 		A8EAC4E8274FFE9A00FC5562 /* MyBirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4E7274FFE9A00FC5562 /* MyBirdViewModel.swift */; };
 		A8EAC4EB274FFEE700FC5562 /* MyBirdAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4EA274FFEE700FC5562 /* MyBirdAPIManager.swift */; };
+		A8EAC4ED27500C1700FC5562 /* ReservedExhibitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4EC27500C1700FC5562 /* ReservedExhibitViewController.swift */; };
+		A8EAC4EF27500D9200FC5562 /* ReservedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4EE27500D9200FC5562 /* ReservedCell.swift */; };
 		A8FDF1422746B7CF004FB5EE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */; };
 		A8FDF1452746CB35004FB5EE /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1442746CB35004FB5EE /* LoginResponse.swift */; };
 		A8FDF1472746CE81004FB5EE /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1462746CE81004FB5EE /* LoginRequest.swift */; };
@@ -178,6 +180,8 @@
 		A8EAC4E4274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteExhibitDetailViewController.swift; sourceTree = "<group>"; };
 		A8EAC4E7274FFE9A00FC5562 /* MyBirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirdViewModel.swift; sourceTree = "<group>"; };
 		A8EAC4EA274FFEE700FC5562 /* MyBirdAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirdAPIManager.swift; sourceTree = "<group>"; };
+		A8EAC4EC27500C1700FC5562 /* ReservedExhibitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedExhibitViewController.swift; sourceTree = "<group>"; };
+		A8EAC4EE27500D9200FC5562 /* ReservedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedCell.swift; sourceTree = "<group>"; };
 		A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A8FDF1442746CB35004FB5EE /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A8FDF1462746CE81004FB5EE /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -718,6 +722,7 @@
 		A8EAC4D7274F900A00FC5562 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A8EAC4EE27500D9200FC5562 /* ReservedCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -738,6 +743,7 @@
 			children = (
 				A8EAC4DA274F908000FC5562 /* MyBirdViewController.swift */,
 				A8EAC4E4274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift */,
+				A8EAC4EC27500C1700FC5562 /* ReservedExhibitViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -969,6 +975,7 @@
 				A8A44FAD272D4BB000807BD2 /* UIViewExtension.swift in Sources */,
 				A8FF870D2742981A00EBC16E /* ExhibitFilterViewController.swift in Sources */,
 				A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */,
+				A8EAC4EF27500D9200FC5562 /* ReservedCell.swift in Sources */,
 				A8FF8712274397E000EBC16E /* ExhibitFilterCollectionViewFlowlayout.swift in Sources */,
 				A8AD0890273B02F5003A793A /* ExhibitInfoContainerView.swift in Sources */,
 				A83AF0952729479F00768224 /* TopContainerView.swift in Sources */,
@@ -989,6 +996,7 @@
 				A8EAC49C274CE9CC00FC5562 /* TokenUtils.swift in Sources */,
 				A8EAC4D2274ED12900FC5562 /* SearchedExhibits.swift in Sources */,
 				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,
+				A8EAC4ED27500C1700FC5562 /* ReservedExhibitViewController.swift in Sources */,
 				A8E6DF36274558FF0080137C /* ExhibitViewModel.swift in Sources */,
 				A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */,
 				A8E6DF34274558F10080137C /* EarlyBirdViewModel.swift in Sources */,

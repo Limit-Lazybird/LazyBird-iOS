@@ -122,15 +122,18 @@ extension MyBirdViewController: MyBirdViewControllerProtocol{
     func moveToFavoriteExhibitDetail() {
         //TODO: 찜한 전시로 이동
         print("찜한 전시로 이동")
-        let reservationVC = FavoriteExhibitDetailViewController()
-        reservationVC.viewModel = self.viewModel
+        let favoriteVC = FavoriteExhibitDetailViewController()
+        favoriteVC.viewModel = self.viewModel
         
-        self.navigationController?.pushViewController(reservationVC, animated: true)
+        self.navigationController?.pushViewController(favoriteVC, animated: true)
     }
     
     func moveToReservedExhibitDetail() {
         //TODO: 예매한 전시로 이동
         print("예매한 전시로 이동")
+        let reservationVC = ReservedExhibitViewController()
+        reservationVC.viewModel = self.viewModel
         
+        self.navigationController?.pushViewController(reservationVC, animated: true)
     }
 }
