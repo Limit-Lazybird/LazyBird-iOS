@@ -58,17 +58,17 @@ class LoginButtonContainerView: UIView {
             let user = response["user"] as! User
             viewModel.requestKakaoLogin(oauthToken: oauthToken, user: user){ response in
                 switch response{
-                case .y:
-                    let onboardVC = StartOnboardingViewController()
-                    onboardVC.modalPresentationStyle = .overFullScreen
-                    
-                    vc.present(onboardVC, animated: true, completion: nil)
-                    break
-                case .n:
+                case .y: // 성향분석이 완료 된 유저
                     let tabbarVC = TabBarViewController()
                     tabbarVC.modalPresentationStyle = .overFullScreen
                     
                     vc.present(tabbarVC, animated: true, completion: nil)
+                    break
+                case .n: // 성향분석이 완료되지 않은 유저
+                    let onboardVC = UINavigationController(rootViewController: StartOnboardingViewController()) 
+                    onboardVC.modalPresentationStyle = .overFullScreen
+                    
+                    vc.present(onboardVC, animated: true, completion: nil)
                     break
                 }
             }

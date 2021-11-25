@@ -10,15 +10,19 @@ import Alamofire
 
 class ExhibitAPIManager {
     static let shared = ExhibitAPIManager()
-    
     private init() { }
+    let tokenUtils = TokenUtils.shared
     
     // MARK: - 얼리버드 리스트 Request
     func requestEarlyBirdList(completion: @escaping (Exhibits)->(Void)){
-        let testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wX2NkIjoiMDEiLCJlbWFpbCI6IndsZG5qczk5MUBnbWFpbC5jb20iLCJuYW1lIjoiamVvbmppd29uIiwiaWF0IjoxNjM2ODE3MDYwfQ.2xn78SSB1Jxt6hofsUQst-VZQiNNLsstudVqhO4LCbo"
+        guard let token = tokenUtils.read(account: .access_token) else {
+            print("requestEarlyBirdList  token read is nil")
+            return
+        }
+        print("test wldnfrjdo !!!!!---> \(tokenUtils.read(account: .access_token))")
         let requestURL = "https://limit-lazybird.com/exhibit/earlyList"
        
-        AF.request(requestURL, method: .post, parameters: ["token":testToken], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {
             case .success:
                 do{
@@ -26,9 +30,6 @@ class ExhibitAPIManager {
                     
                     let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
                     completion(json)
-//                    let jsonToString = String(data: jsonData, encoding: .utf8)
-//                    print("json -----> \(jsonToString)")
-                    
                 }catch let error {
                     print("parsing error -> \(error.localizedDescription)")
                 }
@@ -40,10 +41,13 @@ class ExhibitAPIManager {
     
     // MARK: - 전시회 리스트 Request
     func requestExhibitList(completion: @escaping (Exhibits)->(Void)){
-        let testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wX2NkIjoiMDEiLCJlbWFpbCI6IndsZG5qczk5MUBnbWFpbC5jb20iLCJuYW1lIjoiamVvbmppd29uIiwiaWF0IjoxNjM2ODE3MDYwfQ.2xn78SSB1Jxt6hofsUQst-VZQiNNLsstudVqhO4LCbo"
+        guard let token = tokenUtils.read(account: .access_token) else {
+            print("requestExhibitList token read is nil")
+            return
+        }
         let requestURL = "https://limit-lazybird.com/exhibit/list"
        
-        AF.request(requestURL, method: .post, parameters: ["token":testToken], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {
             case .success:
                 do{
@@ -60,11 +64,15 @@ class ExhibitAPIManager {
         }
     }//reqeust
     
+    // 전시 성향 맞춘 커스텀 전시 리스트
     func requestCustomExhibitList(completion: @escaping (Exhibits)->(Void)){
-        let testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wX2NkIjoiMDEiLCJlbWFpbCI6IndsZG5qczk5MUBnbWFpbC5jb20iLCJuYW1lIjoiamVvbmppd29uIiwiaWF0IjoxNjM2ODE3MDYwfQ.2xn78SSB1Jxt6hofsUQst-VZQiNNLsstudVqhO4LCbo"
+        guard let token = tokenUtils.read(account: .access_token) else{
+            print("requestCustomExhibitList  token read is nil")
+            return
+        }
         let requestURL = "https://limit-lazybird.com/exhibit/customList"
        
-        AF.request(requestURL, method: .post, parameters: ["token":testToken], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {
             case .success:
                 do{

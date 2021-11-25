@@ -120,26 +120,16 @@ class ExhibitCell: UICollectionViewCell {
             postPriceLabel.attributedText = attributedString
         }else{
             priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
+            discountLabel.text = ""
+            postPriceLabel.text = ""
         }
-    }
-    
-    func configForCustom(exhibit: SearchedExhibit){
-        thumbnailImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
-        exhibitTitleLabel.text = exhibit.exhbt_nm
-        stationLabel.text = exhibit.exhbt_lct
-        dateTitleLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
         
-        if let dc_prc = exhibit.dc_prc {
-            discountLabel.text = exhibit.dc_percent
-            priceLabel.text = dc_prc.replacingOccurrences(of: "원", with: "")
-            
-            let text = exhibit.exhbt_prc ?? ""
-            let attributedString = NSMutableAttributedString(string: text)
-            attributedString.addAttribute(.strikethroughStyle, value: 1.07, range: (text as NSString).range(of: text))
-            postPriceLabel.attributedText = attributedString
+        if exhibit.like_yn == "Y" {
+            self.likeBtn.isSelected = true
         }else{
-            priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
+            self.likeBtn.isSelected = false
         }
+    
     }
     
     private func getExhibitDate(date: String) -> String{

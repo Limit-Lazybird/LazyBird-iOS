@@ -14,17 +14,17 @@ protocol ExhibitSearchViewModelProtocol{
 
 class ExhibitSearchViewModel {
     private let searchAPIManager = SearchAPIManager.shared
-    var exhibits: Observable<[SearchedExhibit]> = Observable(value: [])
+    var exhibits: Observable<[Exhibit]> = Observable(value: [])
     
     func fetchSearchedExhibit(word: String){
-        searchAPIManager.requestSearchedExhibitList(word: word) { searchedExhibits in
+        searchAPIManager.requestSearchedExhibitList(word: word) { exhibits in
             self.exhibits.value.removeAll()
-            self.exhibits.value.append(contentsOf: searchedExhibits.searchList)
+            self.exhibits.value.append(contentsOf: exhibits.exhbtList)
         }
     }
 
     //getter
-    func getExhibits() -> Observable<[SearchedExhibit]> {
+    func getExhibits() -> Observable<[Exhibit]> {
         return self.exhibits
     }
 }

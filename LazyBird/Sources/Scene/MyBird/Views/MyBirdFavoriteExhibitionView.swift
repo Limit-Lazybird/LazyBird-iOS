@@ -10,6 +10,9 @@ import SnapKit
 import Then
 
 class MyBirdFavoriteExhibitionView: UIView {
+    //MARK: - Properties
+    var delegate: MyBirdViewControllerProtocol?
+    
     //MARK: - UI Components
     let ticketingTitleLabel = UILabel().then{
         $0.text = "찜한 전시"
@@ -25,6 +28,7 @@ class MyBirdFavoriteExhibitionView: UIView {
     
     lazy var moreBtn = UIButton().then{
         $0.setImage(UIImage(named: "ic_expand_light"), for: .normal)
+        $0.addTarget(self, action: #selector(moreBtnPressed(_:)), for: .touchUpInside)
     }
     
     let leftExhibitPreview = MyBirdExhibitPreview()
@@ -37,6 +41,9 @@ class MyBirdFavoriteExhibitionView: UIView {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 10
         
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                       action: #selector(moveToDetail(_:))))
+        
         setUI()
     }
     
@@ -45,6 +52,14 @@ class MyBirdFavoriteExhibitionView: UIView {
     }
 
     //MARK: - Functions
+    @objc func moveToDetail(_ sender: Any){
+        self.delegate?.moveToFavoriteExhibitDetail()
+    }
+    
+    @objc func moreBtnPressed(_ sender: UIButton){
+        self.delegate?.moveToFavoriteExhibitDetail()
+    }
+    
     func setUI(){
         self.addSubview(ticketingTitleLabel)
         self.addSubview(moreBtn)

@@ -77,7 +77,8 @@ extension ExhibitSearchResultContainerView: UICollectionViewDataSource{
             print("ExhibitSearchViewModel is nil")
             return UICollectionViewCell()
         }
-        cell.configForCustom(exhibit: viewModel.exhibits.value[indexPath.row])
+        
+        cell.config(exhibit: viewModel.exhibits.value[indexPath.row])
         
         return cell
     }

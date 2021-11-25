@@ -254,6 +254,7 @@ extension ExhibitSearchViewController: ExhibitSearchViewControllerDelegate{
         //TODO: 디테일뷰로 이동 ⭐ 여기 응답 부분이 달라서 안됨 나중에 수정해야한다 ⭐
         let exhibitDetailVC = ExhibitDetailViewController()
         exhibitDetailVC.hidesBottomBarWhenPushed = true
+        exhibitDetailVC.exhibitDetailViewModel.setExhibit(self.viewModel.getExhibits().value[indexPath.row])
         
         self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
     }

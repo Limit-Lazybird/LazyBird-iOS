@@ -31,6 +31,11 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
         }
     }
     
+    func updateFilteredExhibits(exhibits: Exhibits){
+        self.exhibits.value.removeAll()
+        self.exhibits.value.append(contentsOf: exhibits.exhbtList)
+    }
+    
     //getter
     func getExhibits() -> Observable<[Exhibit]> {
         return self.exhibits

@@ -61,11 +61,13 @@ class ExhibitFilterViewModel {
         self.region.insert(category)
     }
     
-    func requestExhibitDTL(){
+    func requestExhibitDTL(completion: @escaping (Exhibits)->(Void)){
         selectedCategory.append(contentsOf: self.classification)
         selectedCategory.append(contentsOf: self.additionalInformation)
         selectedCategory.append(contentsOf: self.region)
         
-        exhibitFilterManager.requestExhibitDTL(searchList: selectedCategory.joined(separator: ","))
+        exhibitFilterManager.requestExhibitDTL(searchList: selectedCategory.joined(separator: ",")){ response in
+            completion(response)
+        }
     }
 }

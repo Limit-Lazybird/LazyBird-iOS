@@ -13,6 +13,7 @@ protocol ExhibitViewDelegate{
     func moveToResetOnboard()
     func moveToExhibitFilter()
     func moveToDetailView(indexPath: IndexPath)
+    func updateFilteredExhibit(filteredExhibit: Exhibits)
 }
 
 class ExhibitViewController: UIViewController {
@@ -149,6 +150,7 @@ extension ExhibitViewController: ExhibitViewDelegate{
     
     func moveToExhibitFilter() {
         let exhibitFilterVC = ExhibitFilterViewController()
+        exhibitFilterVC.delegate = self
         exhibitFilterVC.modalPresentationStyle = .overFullScreen
         
         self.present(exhibitFilterVC, animated: true, completion: nil)
@@ -159,6 +161,10 @@ extension ExhibitViewController: ExhibitViewDelegate{
         exhibitDetailVC.hidesBottomBarWhenPushed = true
         exhibitDetailVC.exhibitDetailViewModel.setExhibit(self.viewModel.getExhibits().value[indexPath.row])
         self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
+    }
+    
+    func updateFilteredExhibit(filteredExhibit: Exhibits){
+        self.viewModel.updateFilteredExhibits(exhibits: filteredExhibit)
     }
 }
 

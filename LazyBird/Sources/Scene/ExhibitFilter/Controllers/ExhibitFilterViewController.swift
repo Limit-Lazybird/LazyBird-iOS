@@ -18,6 +18,7 @@ enum categotyType{
 class ExhibitFilterViewController: UIViewController {
     //MARK: - Properties
     let viewModel = ExhibitFilterViewModel()
+    var delegate: ExhibitViewDelegate?
     
     //MARK: - UI Components
     lazy var bgView = UIView().then{
@@ -96,7 +97,11 @@ class ExhibitFilterViewController: UIViewController {
     
     @objc func applyBtnTapped(_ sender: UIButton){
         //TODO: 필터 적용 여기서 request // 이 밑에 카테고리로 request하자. 일단은 테스트 ㄱ
-        viewModel.requestExhibitDTL()
+        viewModel.requestExhibitDTL(){ response in
+            //TODO: exhibit 리스트 수정하자
+            self.delegate?.updateFilteredExhibit(filteredExhibit: response)
+            self.dismiss(animated: false, completion: nil)
+        }
     }
     
     @objc func emptyViewTapped(_ sender: Any){

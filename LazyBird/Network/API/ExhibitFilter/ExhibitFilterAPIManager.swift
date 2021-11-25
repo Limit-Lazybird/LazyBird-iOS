@@ -10,27 +10,28 @@ import Alamofire
 
 class ExhibitFilterAPIManager {
     static let shared = ExhibitFilterAPIManager()
-    
     private init() { }
+    let tokenUtils = TokenUtils.shared
     
-    func requestExhibitDTL(searchList: String){
-        let testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wX2NkIjoiMDEiLCJlbWFpbCI6ImthbjUwMTZAbmF2ZXIuY29tIiwibmFtZSI6IuyghOqzhOybkCIsImlhdCI6MTYzNzc1NTUxMCwiZXhwIjoxNjM3ODM4MzEwLCJpc3MiOiJqZW9uaml3b24ifQ.BXYAmVumtuLFoq90y-den6o3cGUOC3Atca9aFBzSWcU"
+    func requestExhibitDTL(searchList: String, completion: @escaping (Exhibits)->(Void)){
+        guard let token = tokenUtils.read(account: .access_token) else {
+            print("requestExhibitDTL token read is nil")
+            return
+        }
+        
         let requestURL = "https://limit-lazybird.com/exhibit/detailList"
-        let testparameter = ["token": testToken,
+        let parameter = ["token": token,
                              "searchList": searchList]
+        print("serach Items --> \(searchList)")
         
-        
-        AF.request(requestURL, method: .post, parameters: testparameter, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: parameter, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {
             case .success:
                 do{
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
+                    let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
                     
-//                    let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
-//                    completion(json)
-                    let jsonToString = String(data: jsonData, encoding: .utf8)
-                    print("json -----> \(jsonToString)")
-                    
+                    completion(json)
                 }catch let error {
                     print("parsing error -> \(error.localizedDescription)")
                 }

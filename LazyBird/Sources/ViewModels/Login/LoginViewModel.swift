@@ -35,12 +35,17 @@ class LoginViewModel: LoginViewModelProtocol {
             print("familyName is nil")
             return
         }
+        
+        TokenUtils.shared.create(account: .name, value: familyName + givenName)
+        TokenUtils.shared.create(account: .email, value: email)
+        TokenUtils.shared.create(account: .comp_cd, value: "03")
+        
         let loginRequest = LoginRequest(comp_cd: "03", email: email, token: token, name: familyName + givenName)
         
         loginManager.requestAppleLogin(loginRequest: loginRequest){ response in
             print("apple login keychain 저장 --> \(response)")
-            let token = TokenUtils()
-            token.create("https://limit-lazybird.com", account: "access_token", value: response.jwt.token)
+            let token = TokenUtils.shared
+            token.create(account: .access_token, value: response.jwt.token)
             
             if response.useYN == "Y"{
                 completion(.y)
@@ -70,14 +75,18 @@ class LoginViewModel: LoginViewModelProtocol {
         }
         
         let token = oauthToken.accessToken
-        
         let loginRequest = LoginRequest(comp_cd: "01", email: email, token: token, name: name)
         print("login request result --> \(loginRequest)")
         
+        TokenUtils.shared.create(account: .comp_cd, value: "01")
+        TokenUtils.shared.create(account: .email, value: email)
+        TokenUtils.shared.create(account: .name, value: name)
+        
         loginManager.requestKakaoLogin(loginRequest: loginRequest) { response in
             print("kakao login keychain 저장 --> \(response)")
-            let token = TokenUtils()
-            token.create("https://limit-lazybird.com", account: "access_token", value: response.jwt.token)
+            let token = TokenUtils.shared
+            
+            token.create(account: .access_token, value: response.jwt.token)
             
             if response.useYN == "Y"{
                 completion(.y)

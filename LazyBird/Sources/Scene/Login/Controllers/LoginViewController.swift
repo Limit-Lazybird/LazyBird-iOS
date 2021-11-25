@@ -84,6 +84,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 print("email is nil")
                 return
             }
+            
             guard let token = token else {
                 print("token is nil")
                 return
@@ -93,16 +94,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             self.loginViewModel.requestAppleLogin(email: email, token: token, name: fullName){ response in
                 switch response {
                 case .y:
-                    let onboardVC = StartOnboardingViewController()
-                    onboardVC.modalPresentationStyle = .overFullScreen
-                    
-                    self.present(onboardVC, animated: true, completion: nil)
-                    break
-                case .n:
                     let tabbarVC = TabBarViewController()
                     tabbarVC.modalPresentationStyle = .overFullScreen
                     
                     self.present(tabbarVC, animated: true, completion: nil)
+                    break
+                case .n:
+                    let onboardVC = UINavigationController(rootViewController: StartOnboardingViewController())
+                    onboardVC.modalPresentationStyle = .overFullScreen
+                    
+                    self.present(onboardVC, animated: true, completion: nil)
                     break
                 }
             }

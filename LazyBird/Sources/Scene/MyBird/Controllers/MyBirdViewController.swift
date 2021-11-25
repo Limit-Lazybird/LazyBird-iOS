@@ -22,8 +22,12 @@ class MyBirdViewController: UIViewController {
     }
     
     let mybirdUserInfoView = MyBirdUserInfoView() // 유저정보 뷰
-    let mybirdReservedExhibitionView = MyBirdReservedExhibitionView()
-    let myBirdFavoriteExhibitionView = MyBirdFavoriteExhibitionView()
+    lazy var mybirdReservedExhibitionView = MyBirdReservedExhibitionView().then{
+        $0.delegate = self
+    }
+    lazy var myBirdFavoriteExhibitionView = MyBirdFavoriteExhibitionView().then{
+        $0.delegate = self
+    }
     
     private let scrollView = UIScrollView().then{
         $0.showsVerticalScrollIndicator = false
@@ -107,9 +111,11 @@ class MyBirdViewController: UIViewController {
 extension MyBirdViewController: MyBirdViewControllerProtocol{
     func moveToFavoriteExhibitDetail() {
         //TODO: 찜한 전시로 이동
+        print("찜한 전시로 이동")
     }
     
     func moveToReservedExhibitDetail() {
         //TODO: 예매한 전시로 이동
+        print("예매한 전시로 이동")
     }
 }

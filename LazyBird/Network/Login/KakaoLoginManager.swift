@@ -66,8 +66,8 @@ class KakaoLoginManager: NSObject {
                     //토큰 존재 o , 토큰 유효성 체크 성공 (필요시 자동으로 토큰 갱신)
                     //TODO: 3. 로그인 성공 (토큰이 유효)
                     
-                    let token = TokenUtils()
-                    if let _ = token.read("https://limit-lazybird.com", account: "access_token") {
+                    let token = TokenUtils.shared
+                    if let _ = token.read(account: .access_token) {
                         completion(true)
                     }else{
                         print("token 없음")

@@ -8,7 +8,7 @@
 import UIKit
 
 class OnboardingViewModel {
-    private let onboardAPIManager = OnboardingAPIManager() // api manager
+    private let onboardAPIManager = OnboardingAPIManager.shared // api manager
     let onboardManager = OnboardManager.shared // 받아온 질문리스트, 보낼 선택리스트 저장
     
     func requestOnboardQuestions(){

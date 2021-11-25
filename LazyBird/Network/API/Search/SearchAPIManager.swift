@@ -12,7 +12,7 @@ class SearchAPIManager{
     static let shared = SearchAPIManager()
     private init() {}
     
-    func requestSearchedExhibitList(word: String, completion: @escaping (SearchedExhibits)->(Void)){
+    func requestSearchedExhibitList(word: String, completion: @escaping (Exhibits)->(Void)){
         let testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wX2NkIjoiMDEiLCJlbWFpbCI6IndsZG5qczk5MUBnbWFpbC5jb20iLCJuYW1lIjoiamVvbmppd29uIiwiaWF0IjoxNjM2ODE3MDYwfQ.2xn78SSB1Jxt6hofsUQst-VZQiNNLsstudVqhO4LCbo"
         let requestURL = "https://limit-lazybird.com/exhibit/searchList"
         let testParameter = ["token": testToken,
@@ -24,7 +24,7 @@ class SearchAPIManager{
                 do{
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
                     
-                    let json = try JSONDecoder().decode(SearchedExhibits.self, from: jsonData)
+                    let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
                     completion(json)
                 }catch let error {
                     print("parsing error -> \(error.localizedDescription)")
