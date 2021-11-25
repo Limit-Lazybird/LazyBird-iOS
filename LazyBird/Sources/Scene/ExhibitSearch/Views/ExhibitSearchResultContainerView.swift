@@ -42,7 +42,13 @@ class ExhibitSearchResultContainerView: UIView {
     
     //MARK: - Functions
     func config(viewModel: ExhibitSearchViewModel){
-        //TODO: 여기서 아이템 바인딩해야할듯
+        //TODO: 데이터 바인딩 (in CollectionView)
+        self.viewModel = viewModel
+        
+        viewModel.exhibits.bind { searchedExhibits in
+            print("bind 호출됨")
+            self.collectionView.reloadData()
+        }
     }
     
     func setUI(){
@@ -56,18 +62,34 @@ class ExhibitSearchResultContainerView: UIView {
 
 extension ExhibitSearchResultContainerView: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        guard let viewModel = self.viewModel else {
+            print("viewModel is nil")
+            return 0
+        }
+        return viewModel.getExhibits().value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExhibitCell.identifier, for: indexPath) as? ExhibitCell else {
+            return UICollectionViewCell()
+        }
+        guard let viewModel = self.viewModel else {
+            print("ExhibitSearchViewModel is nil")
+            return UICollectionViewCell()
+        }
+        cell.configForCustom(exhibit: viewModel.exhibits.value[indexPath.row])
+        
+        return cell
     }
     
     
 }
 
 extension ExhibitSearchResultContainerView: UICollectionViewDelegate{
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("터치됨~~~")
+        self.delegate?.moveToDetail(indexPath: indexPath)
+    }
 }
 
 extension ExhibitSearchResultContainerView: UICollectionViewDelegateFlowLayout {

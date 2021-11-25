@@ -19,7 +19,6 @@ import Kingfisher
  6. 가격 원
  */
 
-
 class ExhibitCell: UICollectionViewCell {
     //MARK: - Properties
     
@@ -126,7 +125,29 @@ class ExhibitCell: UICollectionViewCell {
                 $0.bottom.equalToSuperview().offset(-7.0)
             }
         }
+    }
+    
+    func configForCustom(exhibit: SearchedExhibit){
+        thumbnailImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
+        exhibitTitleLabel.text = exhibit.exhbt_nm
+        stationLabel.text = exhibit.exhbt_lct
+        dateTitleLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
         
+        if let dc_prc = exhibit.dc_prc {
+            discountLabel.text = exhibit.dc_percent
+            priceLabel.text = dc_prc.replacingOccurrences(of: "원", with: "")
+            
+            let text = exhibit.exhbt_prc ?? ""
+            let attributedString = NSMutableAttributedString(string: text)
+            attributedString.addAttribute(.strikethroughStyle, value: 1.07, range: (text as NSString).range(of: text))
+            postPriceLabel.attributedText = attributedString
+        }else{
+            priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
+            priceLabel.snp.remakeConstraints{
+                $0.leading.equalToSuperview().offset(8.0)
+                $0.bottom.equalToSuperview().offset(-7.0)
+            }
+        }
     }
     
     private func getExhibitDate(date: String) -> String{

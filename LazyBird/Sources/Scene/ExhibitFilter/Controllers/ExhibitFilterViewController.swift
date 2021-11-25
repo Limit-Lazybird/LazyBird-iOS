@@ -9,10 +9,17 @@ import UIKit
 import SnapKit
 import Then
 
-class ExhibitFilterViewController: UIViewController {
+enum categotyType{
+    case classification
+    case additionalInformation
+    case region
+}
 
-    //MARK: - UI Components
+class ExhibitFilterViewController: UIViewController {
+    //MARK: - Properties
+    let viewModel = ExhibitFilterViewModel()
     
+    //MARK: - UI Components
     lazy var bgView = UIView().then{
         $0.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         $0.addGestureRecognizer(UITapGestureRecognizer(target: self,
@@ -35,18 +42,24 @@ class ExhibitFilterViewController: UIViewController {
         $0.setImage(UIImage(named: "refresh"), for: .normal)
     }
     
-    let exhibitClassView = ExhibitFilterContainerView(frame: .zero).then{
+    lazy var exhibitClassView = ExhibitFilterContainerView(frame: .zero).then{
         $0.config(typeLabel: "전시 분류")
+        $0.viewModel = self.viewModel
+        $0.categoryType = .classification
         $0.filterItem.append(contentsOf: ["회화","조형","사진","특별전","체험전","아동전시"])
     }
     
-    let exhibitAdditionalInfomationView = ExhibitFilterContainerView(frame: .zero).then{
+    lazy var exhibitAdditionalInfomationView = ExhibitFilterContainerView(frame: .zero).then{
         $0.config(typeLabel: "전시 부가 정보")
+        $0.viewModel = self.viewModel
+        $0.categoryType = .additionalInformation
         $0.filterItem.append(contentsOf: ["사진 촬영 가능", "주차공간 제공", "오디오 제공", "무료", "온라인 관람", "공휴일 운영", "18시 이후 운영"])
     }
     
-    let exhibitRegionView = ExhibitFilterContainerView(frame: .zero).then{
+    lazy var exhibitRegionView = ExhibitFilterContainerView(frame: .zero).then{
         $0.config(typeLabel: "지역")
+        $0.viewModel = self.viewModel
+        $0.categoryType = .region
         $0.filterItem.append(contentsOf: ["서울", "경기•인천", "강원", "부산•울산•경남", "대구•경북", "광주•전라", "대전•충청•세종", "제주"])
     }
     
@@ -82,8 +95,8 @@ class ExhibitFilterViewController: UIViewController {
     }
     
     @objc func applyBtnTapped(_ sender: UIButton){
-        //TODO: 필터 적용
-        
+        //TODO: 필터 적용 여기서 request // 이 밑에 카테고리로 request하자. 일단은 테스트 ㄱ
+        viewModel.requestExhibitDTL()
     }
     
     @objc func emptyViewTapped(_ sender: Any){
@@ -152,3 +165,4 @@ class ExhibitFilterViewController: UIViewController {
         }
     }
 }
+

@@ -21,4 +21,5 @@ class ExhibitDetailViewModel: ExhibitDetailViewModelProtocol {
     func setExhibit(_ exhibit: Exhibit){
         self.exhibit.value = exhibit
     }
+    
 }

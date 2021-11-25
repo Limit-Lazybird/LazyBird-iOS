@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 protocol ExhibitSearchViewControllerDelegate{
-    func moveToDetail()  // detail view로 이동
+    func moveToDetail(indexPath: IndexPath)  // detail view로 이동
 }
 
 class ExhibitSearchViewController: UIViewController {
@@ -250,15 +250,19 @@ class ExhibitSearchViewController: UIViewController {
 }
 
 extension ExhibitSearchViewController: ExhibitSearchViewControllerDelegate{
-    func moveToDetail() {
-        //TODO: 디테일뷰로 이동
-        print("디테일뷰로 이동")
+    func moveToDetail(indexPath: IndexPath) {
+        //TODO: 디테일뷰로 이동 ⭐ 여기 응답 부분이 달라서 안됨 나중에 수정해야한다 ⭐
+        let exhibitDetailVC = ExhibitDetailViewController()
+        exhibitDetailVC.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
     }
 }
 
 extension ExhibitSearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //TODO: 검색 api 사용
+        self.viewModel.fetchSearchedExhibit(word: textField.text ?? "")
         return true
       }
 }

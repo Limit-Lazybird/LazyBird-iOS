@@ -10,10 +10,12 @@ import SnapKit
 import Then
 
 class ExhibitFilterContainerView: UIView {
-
-    //test
+    //MARK: - Properties
+    var viewModel: ExhibitFilterViewModel?
     var filterItem: [String] = [String]()
+    var categoryType: categotyType?
     
+    //MARK: - UI Components
     let filterTypeLabel = UILabel().then{
         $0.font = UIFont.TTFont(type: .SDBold, size: 15)
         $0.textColor = .white
@@ -37,6 +39,8 @@ class ExhibitFilterContainerView: UIView {
                     forCellWithReuseIdentifier: ExhibitFilterTypeCell.identifier)
     }
     
+    
+    //MARK: - Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.Background.darkGray02
@@ -48,10 +52,11 @@ class ExhibitFilterContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Functions
     func config(typeLabel: String){
         self.filterTypeLabel.text = typeLabel
     }
-    
+
     func setUI(){
         self.addSubview(filterTypeLabel)
         self.addSubview(collectionView)
@@ -102,5 +107,24 @@ extension ExhibitFilterContainerView: UICollectionViewDelegateFlowLayout{
 
 
 extension ExhibitFilterContainerView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewModel = self.viewModel else {
+            print("viewModel is nil")
+            return
+        }
+        guard let type = self.categoryType else{
+            print("type is nil")
+            return
+        }
+        
+        switch type {
+        case .classification:
+            viewModel.addClassification("\(indexPath.row)")
+            break
+        case .additionalInformation:
+            viewModel.addAdditionalInformation("\(indexPath.row)")
+        case .region:
+            viewModel.addRegion("\(indexPath.row)")
+        }
+    }
 }
