@@ -120,10 +120,6 @@ class ExhibitCell: UICollectionViewCell {
             postPriceLabel.attributedText = attributedString
         }else{
             priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
-            priceLabel.snp.remakeConstraints{
-                $0.leading.equalToSuperview().offset(8.0)
-                $0.bottom.equalToSuperview().offset(-7.0)
-            }
         }
     }
     
@@ -143,10 +139,6 @@ class ExhibitCell: UICollectionViewCell {
             postPriceLabel.attributedText = attributedString
         }else{
             priceLabel.text = exhibit.exhbt_prc?.replacingOccurrences(of: "원", with: "")
-            priceLabel.snp.remakeConstraints{
-                $0.leading.equalToSuperview().offset(8.0)
-                $0.bottom.equalToSuperview().offset(-7.0)
-            }
         }
     }
     
