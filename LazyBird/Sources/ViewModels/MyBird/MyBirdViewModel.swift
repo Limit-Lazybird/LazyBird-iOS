@@ -9,8 +9,13 @@ import UIKit
 
 class MyBirdViewModel {
     let apiManager = MyBirdAPIManager.shared
+    let userInfoManager = UserInfoAPIManager.shared
+    
     var favoriteExhibits: Observable<[Exhibit]> = Observable(value: [])
     var reservationExhibits: Observable<[Exhibit]> = Observable(value: [])
+    
+    var userInfo: Observable<UserInfo> = Observable(value: UserInfo())
+    
     
     func requestFavoriteExhibits(){
         apiManager.requestFavoriteExhibitList { exhibits in
@@ -27,6 +32,12 @@ class MyBirdViewModel {
             print("re exhibits ----> \(exhibits)")
             self.reservationExhibits.value.removeAll()
             self.reservationExhibits.value.append(contentsOf: exhibits.exhbtList)
+        }
+    }
+    
+    func requestUserInfo(){
+        userInfoManager.requestUserInfo { userInfo in
+            self.userInfo.value = userInfo
         }
     }
 }

@@ -13,6 +13,7 @@ import Kingfisher
 class ExhibitConfirmViewController: UIViewController {
     //MARK: - Properties
     var currentExhibit: Exhibit?
+    let viewModel = ExhibitConfirmViewModel()
     
     //MARK: - UI Components
     let exhibitTypeLabel = UILabel().then{
@@ -96,6 +97,7 @@ class ExhibitConfirmViewController: UIViewController {
     //MARK: - Functions
     @objc func completeBtnPressed(_ sender: UIButton){
         //TODO: root  VC 로 가자
+        self.viewModel.requestReserve(exhbt_cd: self.currentExhibit?.exhbt_cd ?? "")
         self.navigationController?.popToRootViewController(animated: true)
     }
     

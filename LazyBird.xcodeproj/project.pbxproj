@@ -87,6 +87,21 @@
 		A8EAC4EB274FFEE700FC5562 /* MyBirdAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4EA274FFEE700FC5562 /* MyBirdAPIManager.swift */; };
 		A8EAC4ED27500C1700FC5562 /* ReservedExhibitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4EC27500C1700FC5562 /* ReservedExhibitViewController.swift */; };
 		A8EAC4EF27500D9200FC5562 /* ReservedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4EE27500D9200FC5562 /* ReservedCell.swift */; };
+		A8EAC4F227501CBA00FC5562 /* LikeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4F127501CBA00FC5562 /* LikeAPIManager.swift */; };
+		A8EAC4F5275036EB00FC5562 /* ReservedAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4F4275036EB00FC5562 /* ReservedAPIManager.swift */; };
+		A8EAC4FA27503D4000FC5562 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4F927503D4000FC5562 /* SettingViewController.swift */; };
+		A8EAC4FC27503D7900FC5562 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4FB27503D7900FC5562 /* SettingItemView.swift */; };
+		A8EAC4FE2750473600FC5562 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4FD2750473600FC5562 /* NoticeViewController.swift */; };
+		A8EAC5002750477B00FC5562 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC4FF2750477B00FC5562 /* PrivacyViewController.swift */; };
+		A8EAC502275047D200FC5562 /* TermOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC501275047D200FC5562 /* TermOfUseViewController.swift */; };
+		A8EAC5052750E6CC00FC5562 /* ExhibitConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC5042750E6CC00FC5562 /* ExhibitConfirmViewModel.swift */; };
+		A8EAC5082750E70100FC5562 /* ExhibitConfirmAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC5072750E70100FC5562 /* ExhibitConfirmAPIManager.swift */; };
+		A8EAC50B2750F28E00FC5562 /* LogoutAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC50A2750F28E00FC5562 /* LogoutAlertViewController.swift */; };
+		A8EAC50D2750F72900FC5562 /* WithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC50C2750F72900FC5562 /* WithdrawalViewController.swift */; };
+		A8EAC50F2750FD4300FC5562 /* NoticeViewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC50E2750FD4300FC5562 /* NoticeViewItemView.swift */; };
+		A8EAC5112751024B00FC5562 /* NoticeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC5102751024B00FC5562 /* NoticeContentView.swift */; };
+		A8EAC5142751193100FC5562 /* UserInfoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC5132751193100FC5562 /* UserInfoAPIManager.swift */; };
+		A8EAC51627511A3B00FC5562 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAC51527511A3B00FC5562 /* UserInfo.swift */; };
 		A8FDF1422746B7CF004FB5EE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */; };
 		A8FDF1452746CB35004FB5EE /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1442746CB35004FB5EE /* LoginResponse.swift */; };
 		A8FDF1472746CE81004FB5EE /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF1462746CE81004FB5EE /* LoginRequest.swift */; };
@@ -182,6 +197,21 @@
 		A8EAC4EA274FFEE700FC5562 /* MyBirdAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirdAPIManager.swift; sourceTree = "<group>"; };
 		A8EAC4EC27500C1700FC5562 /* ReservedExhibitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedExhibitViewController.swift; sourceTree = "<group>"; };
 		A8EAC4EE27500D9200FC5562 /* ReservedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedCell.swift; sourceTree = "<group>"; };
+		A8EAC4F127501CBA00FC5562 /* LikeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAPIManager.swift; sourceTree = "<group>"; };
+		A8EAC4F4275036EB00FC5562 /* ReservedAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedAPIManager.swift; sourceTree = "<group>"; };
+		A8EAC4F927503D4000FC5562 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A8EAC4FB27503D7900FC5562 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
+		A8EAC4FD2750473600FC5562 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
+		A8EAC4FF2750477B00FC5562 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		A8EAC501275047D200FC5562 /* TermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermOfUseViewController.swift; sourceTree = "<group>"; };
+		A8EAC5042750E6CC00FC5562 /* ExhibitConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitConfirmViewModel.swift; sourceTree = "<group>"; };
+		A8EAC5072750E70100FC5562 /* ExhibitConfirmAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitConfirmAPIManager.swift; sourceTree = "<group>"; };
+		A8EAC50A2750F28E00FC5562 /* LogoutAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAlertViewController.swift; sourceTree = "<group>"; };
+		A8EAC50C2750F72900FC5562 /* WithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalViewController.swift; sourceTree = "<group>"; };
+		A8EAC50E2750FD4300FC5562 /* NoticeViewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewItemView.swift; sourceTree = "<group>"; };
+		A8EAC5102751024B00FC5562 /* NoticeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeContentView.swift; sourceTree = "<group>"; };
+		A8EAC5132751193100FC5562 /* UserInfoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoAPIManager.swift; sourceTree = "<group>"; };
+		A8EAC51527511A3B00FC5562 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		A8FDF1412746B7CF004FB5EE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A8FDF1442746CB35004FB5EE /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A8FDF1462746CE81004FB5EE /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -234,6 +264,7 @@
 				A8AD0882273AE99A003A793A /* ExhibitDetail */,
 				A8EAC4B3274E79E200FC5562 /* ExhibitSearch */,
 				A8EAC4D6274F8FFC00FC5562 /* MyBird */,
+				A8EAC4F627503C3500FC5562 /* Setting */,
 				A83AF08A27292B5A00768224 /* Tabbar */,
 			);
 			path = Scene;
@@ -541,6 +572,7 @@
 				A86DB61027479FD3000C9A6E /* ExhibitDetail */,
 				A8EAC4BB274E947D00FC5562 /* ExhibitSearch */,
 				A8EAC4E6274FFE8000FC5562 /* MyBird */,
+				A8EAC5032750E69F00FC5562 /* ExhibitConfirm */,
 				A8E6DF392745598D0080137C /* Observable.swift */,
 			);
 			path = ViewModels;
@@ -573,12 +605,16 @@
 		A8E6DF3B27455C780080137C /* API */ = {
 			isa = PBXGroup;
 			children = (
+				A8EAC5122751191100FC5562 /* UserInfo */,
 				A8EAC49F274D5D9500FC5562 /* Login */,
 				A8EAC4C6274EA6E900FC5562 /* Onboarding */,
 				A8EAC4A0274D5DDE00FC5562 /* Exhibit */,
 				A8EAC4D3274F7C4D00FC5562 /* ExhibitFilter */,
 				A8EAC4CD274ED0C700FC5562 /* Search */,
 				A8EAC4E9274FFECC00FC5562 /* MyBird */,
+				A8EAC4F027501C9E00FC5562 /* Like */,
+				A8EAC4F3275036C100FC5562 /* Reservation */,
+				A8EAC5062750E6E000FC5562 /* ExhibitConfirm */,
 				A8EAC49B274CE9CC00FC5562 /* TokenUtils.swift */,
 			);
 			path = API;
@@ -764,6 +800,78 @@
 			path = MyBird;
 			sourceTree = "<group>";
 		};
+		A8EAC4F027501C9E00FC5562 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4F127501CBA00FC5562 /* LikeAPIManager.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		A8EAC4F3275036C100FC5562 /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4F4275036EB00FC5562 /* ReservedAPIManager.swift */,
+			);
+			path = Reservation;
+			sourceTree = "<group>";
+		};
+		A8EAC4F627503C3500FC5562 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4F827503D2B00FC5562 /* Controllers */,
+				A8EAC4F727503D2400FC5562 /* Views */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		A8EAC4F727503D2400FC5562 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4FB27503D7900FC5562 /* SettingItemView.swift */,
+				A8EAC50E2750FD4300FC5562 /* NoticeViewItemView.swift */,
+				A8EAC5102751024B00FC5562 /* NoticeContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8EAC4F827503D2B00FC5562 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC4F927503D4000FC5562 /* SettingViewController.swift */,
+				A8EAC4FD2750473600FC5562 /* NoticeViewController.swift */,
+				A8EAC4FF2750477B00FC5562 /* PrivacyViewController.swift */,
+				A8EAC501275047D200FC5562 /* TermOfUseViewController.swift */,
+				A8EAC50A2750F28E00FC5562 /* LogoutAlertViewController.swift */,
+				A8EAC50C2750F72900FC5562 /* WithdrawalViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8EAC5032750E69F00FC5562 /* ExhibitConfirm */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC5042750E6CC00FC5562 /* ExhibitConfirmViewModel.swift */,
+			);
+			path = ExhibitConfirm;
+			sourceTree = "<group>";
+		};
+		A8EAC5062750E6E000FC5562 /* ExhibitConfirm */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC5072750E70100FC5562 /* ExhibitConfirmAPIManager.swift */,
+			);
+			path = ExhibitConfirm;
+			sourceTree = "<group>";
+		};
+		A8EAC5122751191100FC5562 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC5132751193100FC5562 /* UserInfoAPIManager.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
 		A8FDF1402746B7B2004FB5EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +885,7 @@
 			children = (
 				A8FDF1462746CE81004FB5EE /* LoginRequest.swift */,
 				A8FDF1442746CB35004FB5EE /* LoginResponse.swift */,
+				A8EAC51527511A3B00FC5562 /* UserInfo.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -953,6 +1062,7 @@
 				A8FDF1452746CB35004FB5EE /* LoginResponse.swift in Sources */,
 				A8EAC4A5274D759E00FC5562 /* ExhibitFilterViewModel.swift in Sources */,
 				A86DB6122747A02E000C9A6E /* ExhibitDetailViewModel.swift in Sources */,
+				A8EAC4FE2750473600FC5562 /* NoticeViewController.swift in Sources */,
 				A8EAC4C5274EA61C00FC5562 /* AnalysisQuestions.swift in Sources */,
 				A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */,
 				A8EAC4DF274F93AD00FC5562 /* MyBirdReservedExhibitionView.swift in Sources */,
@@ -976,6 +1086,8 @@
 				A8FF870D2742981A00EBC16E /* ExhibitFilterViewController.swift in Sources */,
 				A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */,
 				A8EAC4EF27500D9200FC5562 /* ReservedCell.swift in Sources */,
+				A8EAC5112751024B00FC5562 /* NoticeContentView.swift in Sources */,
+				A8EAC4F5275036EB00FC5562 /* ReservedAPIManager.swift in Sources */,
 				A8FF8712274397E000EBC16E /* ExhibitFilterCollectionViewFlowlayout.swift in Sources */,
 				A8AD0890273B02F5003A793A /* ExhibitInfoContainerView.swift in Sources */,
 				A83AF0952729479F00768224 /* TopContainerView.swift in Sources */,
@@ -984,15 +1096,19 @@
 				A8139783272F073B00C3A4B8 /* QuestionBtnView.swift in Sources */,
 				A8260649272726BE00939421 /* LogoContainerView.swift in Sources */,
 				A8E6DF38274559440080137C /* Exhibits.swift in Sources */,
+				A8EAC4F227501CBA00FC5562 /* LikeAPIManager.swift in Sources */,
 				A8FF87152743992500EBC16E /* ExhibitFilterTypeCell.swift in Sources */,
+				A8EAC5142751193100FC5562 /* UserInfoAPIManager.swift in Sources */,
 				A8EAC4BD274E94A000FC5562 /* ExhibitSearchViewModel.swift in Sources */,
 				A8AD0896273B0337003A793A /* ExhibitContentContainerView.swift in Sources */,
 				A8EAC4A2274D5DFC00FC5562 /* ExhibitAPIManager.swift in Sources */,
 				A8EAC4A7274D8F8000FC5562 /* NoticeView.swift in Sources */,
+				A8EAC5082750E70100FC5562 /* ExhibitConfirmAPIManager.swift in Sources */,
 				A83AF0982729585C00768224 /* CategoryContainerView.swift in Sources */,
 				A8FF87102743968700EBC16E /* ExhibitFilterContainerView.swift in Sources */,
 				A82606462727238300939421 /* UIColorExtension.swift in Sources */,
 				A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */,
+				A8EAC50F2750FD4300FC5562 /* NoticeViewItemView.swift in Sources */,
 				A8EAC49C274CE9CC00FC5562 /* TokenUtils.swift in Sources */,
 				A8EAC4D2274ED12900FC5562 /* SearchedExhibits.swift in Sources */,
 				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,
@@ -1000,15 +1116,18 @@
 				A8E6DF36274558FF0080137C /* ExhibitViewModel.swift in Sources */,
 				A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */,
 				A8E6DF34274558F10080137C /* EarlyBirdViewModel.swift in Sources */,
+				A8EAC50B2750F28E00FC5562 /* LogoutAlertViewController.swift in Sources */,
 				A83AF0A027299B7200768224 /* EarlyBirdContainerView.swift in Sources */,
 				A8EAC4DD274F935900FC5562 /* MyBirdUserInfoView.swift in Sources */,
 				A806262027416DC300B562A6 /* CategoryCollectionHeaderView.swift in Sources */,
 				A8AD089D273B072C003A793A /* SeparatorView.swift in Sources */,
 				A806261D274162EB00B562A6 /* ExhibitContainerView.swift in Sources */,
+				A8EAC50D2750F72900FC5562 /* WithdrawalViewController.swift in Sources */,
 				A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */,
 				A8EAC4C2274EA50900FC5562 /* OnboardManager.swift in Sources */,
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
 				A8EAC4CC274EC5EE00FC5562 /* QuestionInsertRequest.swift in Sources */,
+				A8EAC4FC27503D7900FC5562 /* SettingItemView.swift in Sources */,
 				A8EAC4AC274E4C0300FC5562 /* ExhibitNoticeViewController.swift in Sources */,
 				A8EAC4B8274E7A2000FC5562 /* ExhibitSearchViewController.swift in Sources */,
 				A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */,
@@ -1020,7 +1139,12 @@
 				A8EAC4E8274FFE9A00FC5562 /* MyBirdViewModel.swift in Sources */,
 				A851851A2741615B0029B541 /* CustomExhibitToggleView.swift in Sources */,
 				A8AD0885273AE9DD003A793A /* ExhibitDetailViewController.swift in Sources */,
+				A8EAC502275047D200FC5562 /* TermOfUseViewController.swift in Sources */,
+				A8EAC4FA27503D4000FC5562 /* SettingViewController.swift in Sources */,
+				A8EAC5002750477B00FC5562 /* PrivacyViewController.swift in Sources */,
 				A8EAC4A9274E39B600FC5562 /* ResetOnboardAlertViewController.swift in Sources */,
+				A8EAC5052750E6CC00FC5562 /* ExhibitConfirmViewModel.swift in Sources */,
+				A8EAC51627511A3B00FC5562 /* UserInfo.swift in Sources */,
 				A8A44FBF272D5FE600807BD2 /* StartOnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,6 +31,8 @@ class MyBirdFavoriteExhibitionView: UIView {
         $0.addTarget(self, action: #selector(moreBtnPressed(_:)), for: .touchUpInside)
     }
     
+    
+    
     let leftExhibitPreview = MyBirdExhibitPreview()
     let rightExhibitPreview = MyBirdExhibitPreview()
     
@@ -60,11 +62,38 @@ class MyBirdFavoriteExhibitionView: UIView {
         self.delegate?.moveToFavoriteExhibitDetail()
     }
     
+    func config(exhibit: [Exhibit]){
+        switch exhibit.count{
+        case 0:
+            print("값이 하나도 없습니당")
+            self.noResultLabel.isHidden = false
+            self.leftExhibitPreview.config(exhibit: nil)
+            self.rightExhibitPreview.config(exhibit: nil)
+            break
+        case 1:
+            self.noResultLabel.isHidden = true
+            self.leftExhibitPreview.config(exhibit: exhibit[0])
+            self.rightExhibitPreview.config(exhibit: nil)
+            break
+        case 2:
+            self.noResultLabel.isHidden = true
+            self.leftExhibitPreview.config(exhibit: exhibit[0])
+            self.rightExhibitPreview.config(exhibit: exhibit[1])
+            break
+        default:
+            self.noResultLabel.isHidden = true
+            self.leftExhibitPreview.config(exhibit: exhibit[0])
+            self.rightExhibitPreview.config(exhibit: exhibit[1])
+            print("이 이상 필요 없습니다.")
+        }
+    }
+    
     func setUI(){
         self.addSubview(ticketingTitleLabel)
         self.addSubview(moreBtn)
         self.addSubview(leftExhibitPreview)
         self.addSubview(rightExhibitPreview)
+        self.addSubview(noResultLabel)
         
         ticketingTitleLabel.snp.makeConstraints{
             $0.top.equalToSuperview().offset(16.0)
@@ -88,6 +117,10 @@ class MyBirdFavoriteExhibitionView: UIView {
             $0.leading.equalTo(leftExhibitPreview.snp.trailing).offset(16.0)
             $0.trailing.equalToSuperview().offset(-28.0)
             $0.width.equalTo(leftExhibitPreview.snp.width)
+        }
+        
+        noResultLabel.snp.makeConstraints{
+            $0.center.equalToSuperview()
         }
     }
 }

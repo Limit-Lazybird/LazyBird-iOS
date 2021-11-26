@@ -36,6 +36,7 @@ class ExhibitViewController: UIViewController {
         $0.delegate = self
     }
     lazy var categoryContainerView = CategoryContainerView(frame: .zero).then{
+        $0.viewModel = self.viewModel
         $0.delegate = self
     }
     lazy var exhibitContainerView = ExhibitContainerView(frame: .zero).then{
@@ -98,7 +99,7 @@ class ExhibitViewController: UIViewController {
     func setNavigationItem(){
         self.navigationItem.title = "전시"
         self.navigationController?.delegate = self
-        self.navigationItem.rightBarButtonItems = [alertBtn, earlyCardBtn]
+//        self.navigationItem.rightBarButtonItems = [alertBtn, earlyCardBtn]
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.shadowImage = colorToImage()
         // Title 설정

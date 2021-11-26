@@ -15,17 +15,19 @@ class LoginAPIManager {
     private init() { }
     
     //MARK: - 소셜 로그인
-    func requestAppleLogin(loginRequest: LoginRequest, completion: @escaping (LoginResponse)->(Void)){
+    func requestAppleLogin(logReq: LoginRequest, completion: @escaping (LoginResponse)->(Void)){
         let requestURL = "https://limit-lazybird.com/oauth/apple"
-        let query : [String: Any] = ["comp_cd":loginRequest.comp_cd,
-                                     "email":loginRequest.email,
-                                     "token":loginRequest.token,
-                                     "name":loginRequest.name]
-        
+        let query : [String: Any] = ["comp_cd":logReq.comp_cd,
+                                     "email":logReq.email,
+                                     "token":logReq.token,
+                                     "name":logReq.name]
+
+        print("=-=-==-=--=--=-=-=-=-=-=-=-=-==-=-=")
         AF.request(requestURL, method: .post, parameters: query, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {
             case .success:
                 do{
+                    
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
                     let json = try JSONDecoder().decode(LoginResponse.self, from: jsonData)
                     completion(json)

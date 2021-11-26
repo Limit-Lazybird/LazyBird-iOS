@@ -7,6 +7,9 @@
 
 import UIKit
 
-class ExhibitConfirmAPIManager: NSObject {
-
+class ExhibitConfirmAPIManager {
+    static let shared = ExhibitConfirmAPIManager()
+    private init(){}
+    
+    
 }

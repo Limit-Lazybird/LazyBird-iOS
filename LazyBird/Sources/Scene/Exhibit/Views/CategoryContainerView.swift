@@ -10,6 +10,8 @@ import UIKit
 class CategoryContainerView: UIView {
     //MARK: - Properties
     var delegate: ExhibitViewDelegate?
+    var viewModel: ExhibitViewModel?
+    
     var dummyCategory: [String] = ["회화","조형","사진","특별전","체험전","아동전시"]
     
     //MARK: - UI Components
@@ -26,7 +28,6 @@ class CategoryContainerView: UIView {
         $0.backgroundColor = .clear
         $0.showsHorizontalScrollIndicator = false
         $0.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 0, right: 0)
-        $0.allowsMultipleSelection = true
         $0.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }
     
@@ -77,8 +78,9 @@ extension CategoryContainerView: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: 1. 서버에서 필터링 해줄건지?
         // TODO: 2. 그냥 전체 리스트를 받아와서 내가 스스로 필터링을 할건지?? <- 아마 이 방법으로 하지 않을까 싶다
-        // let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell
-        // cell?.selectedCell()
+        let category = String(indexPath.row + 1)
+        print("호출되나?")
+        self.viewModel?.requestCategoryFilteredExhibits(category: category)
     }
 }
 

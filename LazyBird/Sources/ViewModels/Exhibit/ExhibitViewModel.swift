@@ -14,6 +14,8 @@ protocol ExhibitViewModelProtocol {
 
 class ExhibitViewModel: ExhibitViewModelProtocol {
     private let exhibitManager = ExhibitAPIManager.shared
+    private let likeManager = LikeAPIManager.shared
+    let exhibitFilterManager = ExhibitFilterAPIManager.shared
     
     var exhibits: Observable<[Exhibit]> = Observable(value: [])
     
@@ -34,6 +36,18 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
     func updateFilteredExhibits(exhibits: Exhibits){
         self.exhibits.value.removeAll()
         self.exhibits.value.append(contentsOf: exhibits.exhbtList)
+    }
+    
+    func requestLike(exhbt_cd: String, like_yn: String){
+        likeManager.requestLike(exhbt_cd: exhbt_cd, like_yn: like_yn)
+    }
+    
+    func requestCategoryFilteredExhibits(category: String){
+        exhibitFilterManager.requestExhibitDTL(searchList: category) { exhibits in
+            print("카테고리 필터링 --> \(exhibits)")
+            self.exhibits.value.removeAll()
+            self.exhibits.value.append(contentsOf: exhibits.exhbtList)
+        }
     }
     
     //getter

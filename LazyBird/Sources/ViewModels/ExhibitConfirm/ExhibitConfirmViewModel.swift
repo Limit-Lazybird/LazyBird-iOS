@@ -7,6 +7,10 @@
 
 import UIKit
 
-class ExhibitConfirmViewModel: NSObject {
-
+class ExhibitConfirmViewModel {
+    let reservedAPIManager = ReservedAPIManager.shared
+    
+    func requestReserve(exhbt_cd: String){
+        reservedAPIManager.requestReserved(exhbt_cd: exhbt_cd, state_cd: "20")
+    }
 }

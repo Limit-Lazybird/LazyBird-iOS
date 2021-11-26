@@ -89,9 +89,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 print("token is nil")
                 return
             }
-            
             // 서버로 request
-            self.loginViewModel.requestAppleLogin(email: email, token: token, name: fullName){ response in
+            
+            
+            self.loginViewModel.requestAppleLogin(email: email, name: fullName, token: token){ response in
+                print("request??")
                 switch response {
                 case .y:
                     let tabbarVC = TabBarViewController()

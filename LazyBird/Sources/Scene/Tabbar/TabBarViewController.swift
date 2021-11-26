@@ -67,12 +67,11 @@ class TabBarViewController: UITabBarController {
     private func setTabBarLink() {
         let earlybiard = UINavigationController(rootViewController: earlybirdVC)
         let exhibit = UINavigationController(rootViewController: exhibitVC)
-        let calender = UINavigationController(rootViewController: calenderVC)
+//        let calender = UINavigationController(rootViewController: calenderVC)
         let search = UINavigationController(rootViewController: searchVC)
         let mybird = UINavigationController(rootViewController: mybirdVC)
         viewControllers = [earlybiard,
                            exhibit,
-                           calender,
                            search,
                            mybird]
         

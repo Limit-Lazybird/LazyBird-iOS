@@ -60,7 +60,8 @@ class QuestionBtnView: UIView {
         delegate.moveToNext(tag: self.tag)
     }
     
-    func config(question: String){
+    func config(question: String, url: String){
+        self.bgImageView.kf.setImage(with: URL(string: url))
         self.questionLabel.text = question
     }
     

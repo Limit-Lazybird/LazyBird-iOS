@@ -42,14 +42,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //                print("로그인 화면")
 //            }
 //        }
-//        let loginVC = LoginViewController() // 맨 처음 보여줄 ViewController
-//        self.window?.rootViewController = loginVC
-//        self.window?.makeKeyAndVisible()
-//        print("로그인 화면")
+        let token = TokenUtils.shared.read(account: .access_token)
         
-        let tabbarVC = TabBarViewController()
-        self.window?.rootViewController = tabbarVC
-        self.window?.makeKeyAndVisible()
+        if let _ = token{
+            //TODO: 유효하면 로그인 ㄱ
+            let tabbarVC = TabBarViewController()
+            self.window?.rootViewController = tabbarVC
+            self.window?.makeKeyAndVisible()
+        }else{
+            let loginVC = LoginViewController() // 맨 처음 보여줄 ViewController
+            self.window?.rootViewController = loginVC
+            self.window?.makeKeyAndVisible()
+            print("로그인 화면")
+        }
+        
         
         // 나중에 분기를 만들자.
         // 자동 로그인 성공이라면, homeVC

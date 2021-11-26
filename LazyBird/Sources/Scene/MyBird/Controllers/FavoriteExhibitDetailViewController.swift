@@ -52,7 +52,25 @@ class FavoriteExhibitDetailViewController: UIViewController {
         config()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        checkExhibit()
+    }
+    
     //MARK: - Functions
+    func checkExhibit(){
+        guard let viewModel = self.viewModel else {
+            print("FavoriteExhibitDetailViewController is nil")
+            return
+        }
+        if viewModel.favoriteExhibits.value.count == 0{
+            self.noResultLabel.isHidden = false
+        }else{
+            self.noResultLabel.isHidden = true
+        }
+    }
+    
     func config(){
         guard let viewModel = self.viewModel else {
             print("FavoriteExhibitDetailViewController is nil")
@@ -62,19 +80,13 @@ class FavoriteExhibitDetailViewController: UIViewController {
         viewModel.favoriteExhibits.bind { exhibits in
             print("favorite bind 호출")
             self.collectionView.reloadData()
-            
-            if exhibits.count == 0{
-                self.noResultLabel.isHidden = false
-            }else{
-                self.noResultLabel.isHidden = true
-            }
         }
     }
     
     func setUI(){
         self.view.addSubview(favoriteLabel)
-        self.view.addSubview(collectionView)
         self.view.addSubview(noResultLabel)
+        self.view.addSubview(collectionView)
         
         favoriteLabel.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(24.0)
@@ -83,8 +95,7 @@ class FavoriteExhibitDetailViewController: UIViewController {
         
         collectionView.snp.makeConstraints{
             $0.top.equalTo(favoriteLabel.snp.bottom).offset(24.0)
-            $0.leading.equalToSuperview().offset(16.0)
-            $0.trailing.equalToSuperview().offset(-16.0)
+            $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
@@ -100,6 +111,7 @@ extension FavoriteExhibitDetailViewController: UICollectionViewDataSource{
             print("FavoriteExhibitDetailViewController is nil")
             return 0
         }
+        print("count _-------> \(viewModel.favoriteExhibits.value.count)")
         return viewModel.favoriteExhibits.value.count
     }
     
@@ -112,7 +124,7 @@ extension FavoriteExhibitDetailViewController: UICollectionViewDataSource{
             print("FavoriteExhibitDetailViewController is nil")
             return UICollectionViewCell()
         }
-        
+        print("favorite --> \(viewModel.favoriteExhibits.value[indexPath.row])")
         cell.config(exhibit: viewModel.favoriteExhibits.value[indexPath.row])
         
         return cell

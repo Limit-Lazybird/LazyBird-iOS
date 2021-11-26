@@ -76,7 +76,7 @@ class ExhibitImageContainerView: UIView {
         //TODO: 전시종료일짜 - 현재날짜 계산해서 return [o]
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         if let date: Date = dateFormatter.date(from: exhbt_to_dt){
             return "D - \(Int(date.timeIntervalSince(Date()))/86400 + 1)"
         }

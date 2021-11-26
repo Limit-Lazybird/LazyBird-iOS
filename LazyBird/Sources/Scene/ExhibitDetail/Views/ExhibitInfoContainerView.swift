@@ -120,8 +120,21 @@ class ExhibitInfoContainerView: UIView {
     @objc func likeBtnPressed(_ sender: UIButton){
         //TODO: 1. 상태별 버튼 이미지 변경
         //TODO: 2. 서버로 request, response
-        likeBtn.isSelected = !likeBtn.isSelected
-        print("라이크 버튼 눌림 --> \(likeBtn.isSelected)")
+        guard let viewModel = viewModel else {
+            print("likeBtnPressed viewModel is nil")
+            return
+        }
+        
+        if likeBtn.isSelected{
+            LikeAPIManager.shared.requestLikeCancel(exhbt_cd: viewModel.getExhibit().value.exhbt_cd ?? "")
+            likeBtn.isSelected = !likeBtn.isSelected
+        }else{
+            LikeAPIManager.shared.requestLike(exhbt_cd: viewModel.getExhibit().value.exhbt_cd ?? "",
+                                              like_yn: viewModel.getExhibit().value.like_yn ?? "")
+            likeBtn.isSelected = !likeBtn.isSelected
+        }
+        
+        
     }
     
     private func getExhibitDate(date: String) -> String{
@@ -160,6 +173,12 @@ class ExhibitInfoContainerView: UIView {
                 $0.leading.equalToSuperview().offset(16.0)
                 $0.bottom.equalToSuperview().offset(-12.0)
             }
+        }
+        
+        if exhibit.like_yn == "Y"{
+            likeBtn.isSelected = true
+        }else{
+            likeBtn.isSelected = false
         }
         
         

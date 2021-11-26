@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Alamofire
 
 protocol MyBirdViewControllerProtocol{
     func moveToReservedExhibitDetail() // 예매한 전시로 이동
@@ -19,12 +20,12 @@ class MyBirdViewController: UIViewController {
     let viewModel = MyBirdViewModel()
     
     //MARK: - UI Components
-    lazy var earlyCardBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(earlyCardPressed(_:))).then{
-        $0.image = UIImage(named: "earlyCard")
+    lazy var settingBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(settingBtnPressed(_:))).then{
+        $0.image = UIImage(named: "ic_setting")
         $0.tintColor = .white
     }
     
-    let mybirdUserInfoView = MyBirdUserInfoView() // 유저정보 뷰
+    lazy var mybirdUserInfoView = MyBirdUserInfoView()
     lazy var mybirdReservedExhibitionView = MyBirdReservedExhibitionView().then{
         $0.delegate = self
     }
@@ -53,7 +54,7 @@ class MyBirdViewController: UIViewController {
         
         setNavigationItem()
         setUI()
-        setConfig()
+        setBind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,15 +62,37 @@ class MyBirdViewController: UIViewController {
         
         self.viewModel.requestFavoriteExhibits()
         self.viewModel.requestReservationExhibits()
+        self.viewModel.requestUserInfo()
+//        setConfig()
     }
     
     //MARK: - Functions
-    @objc func earlyCardPressed(_ sender: Any){
-        print("earlyCardBtn pressed")
+    @objc func settingBtnPressed(_ sender: Any){
+        let settingVC = SettingViewController()
+        self.navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
+    func setBind(){
+        self.viewModel.favoriteExhibits.bind { exhibits in
+            print("favoriteExhibits bind 호출")
+            self.setConfig()
+        }
+        
+        self.viewModel.reservationExhibits.bind { exhibits in
+            print("reservationExhibits bind 호출")
+            self.setConfig()
+        }
+        
+        self.viewModel.userInfo.bind { userInfo in
+            print("userInfo bind 호출")
+            self.setConfig()
+        }
     }
     
     func setConfig(){
-        mybirdUserInfoView.config()
+        mybirdUserInfoView.config(viewModel: self.viewModel)
+        myBirdFavoriteExhibitionView.config(exhibit: self.viewModel.favoriteExhibits.value)
+        mybirdReservedExhibitionView.config(exhibit: self.viewModel.reservationExhibits.value)
     }
     
     func setUI(){
@@ -90,13 +113,14 @@ class MyBirdViewController: UIViewController {
         }
         
         stackView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview().offset(32.0)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     func setNavigationItem(){
         self.navigationItem.title = "마이버드"
-        self.navigationItem.rightBarButtonItems = [earlyCardBtn]
+        self.navigationItem.rightBarButtonItems = [settingBtn]
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.barTintColor = UIColor.Background.black02
         self.navigationController?.navigationBar.shadowImage = colorToImage()

@@ -13,12 +13,13 @@ class ReservedCell: UICollectionViewCell {
     static let identifier = "reservedCell"
     
     //MARK: - UI Components
-    let dDayLabel = UILabel().then{
-        $0.font = UIFont.TTFont(type: .MontBold, size: 11)
-        $0.textColor = .white
+    let dDayBtn = UIButton().then{
+        $0.titleLabel?.font = UIFont.TTFont(type: .MontBold, size: 11)
+        $0.setTitleColor(UIColor.white, for: .normal)
         $0.backgroundColor = UIColor.Point.or01
         $0.layer.masksToBounds = true
-        $0.layer.cornerRadius = 21 / 2
+        $0.layer.cornerRadius = 22 / 2
+        $0.titleEdgeInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
     }
     
     let exhibitTitleLabel = UILabel().then{
@@ -64,7 +65,7 @@ class ReservedCell: UICollectionViewCell {
         
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20.0
-        self.backgroundColor = .brown
+        self.backgroundColor = UIColor.Background.darkGray02
         
         setUI()
     }
@@ -75,12 +76,31 @@ class ReservedCell: UICollectionViewCell {
     }
     
     //MARK: - Functions
-    func config(exhibit: Exhibit){
+    private func getDDayText(exhbt_to_dt: String) -> String{
+        //TODO: 전시종료일짜 - 현재날짜 계산해서 return [o]
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let date: Date = dateFormatter.date(from: exhbt_to_dt){
+            return "D - \(Int(date.timeIntervalSince(Date()))/86400 + 1)"
+        }
         
+        return ""
+    }
+    
+    func config(exhibit: Exhibit){
+        dDayBtn.setTitle(getDDayText(exhbt_to_dt: exhibit.exhbt_to_dt ?? ""),
+                         for: .normal)
+        dDayBtn.titleEdgeInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+        exhibitTitleLabel.text = exhibit.exhbt_nm
+        locationLabel.text = exhibit.exhbt_lct
+        dateLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
+        priceLabel.text = exhibit.exhbt_prc
+        exhibitImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
     }
     
     func setUI(){
-        self.addSubview(dDayLabel)
+        self.addSubview(dDayBtn)
         self.addSubview(exhibitTitleLabel)
         self.addSubview(locationLabel)
         self.addSubview(dateLabel)
@@ -89,35 +109,37 @@ class ReservedCell: UICollectionViewCell {
         self.addSubview(priceLabel)
         self.addSubview(exhibitImageView)
         
-        dDayLabel.snp.makeConstraints{
+        dDayBtn.snp.makeConstraints{
             $0.top.equalToSuperview().offset(14.0)
             $0.leading.equalToSuperview().offset(15.0)
+            $0.width.equalTo(60.0)
+            $0.height.equalTo(22.0)
         }
         
         exhibitTitleLabel.snp.makeConstraints{
-            $0.top.equalTo(dDayLabel.snp.bottom).offset(14.0)
-            $0.leading.equalTo(dDayLabel.snp.leading)
+            $0.top.equalTo(dDayBtn.snp.bottom).offset(14.0)
+            $0.leading.equalTo(dDayBtn.snp.leading)
             $0.trailing.equalTo(exhibitImageView.snp.trailing).offset(-16.0)
         }
         
         locationLabel.snp.makeConstraints{
             $0.top.equalTo(exhibitTitleLabel.snp.bottom).offset(5.0)
-            $0.leading.equalTo(dDayLabel.snp.leading)
+            $0.leading.equalTo(dDayBtn.snp.leading)
         }
         
         dateLabel.snp.makeConstraints{
             $0.top.equalTo(locationLabel.snp.bottom).offset(5.0)
-            $0.leading.equalTo(dDayLabel.snp.leading)
+            $0.leading.equalTo(dDayBtn.snp.leading)
         }
         
         postPriceLabel.snp.makeConstraints{
             $0.top.equalTo(dateLabel.snp.bottom).offset(10.0)
-            $0.leading.equalTo(dDayLabel.snp.leading)
+            $0.leading.equalTo(dDayBtn.snp.leading)
         }
         
         discountLabel.snp.makeConstraints{
             $0.top.equalTo(postPriceLabel.snp.bottom).offset(1.0)
-            $0.leading.equalTo(dDayLabel.snp.leading)
+            $0.leading.equalTo(dDayBtn.snp.leading)
         }
         
         priceLabel.snp.makeConstraints{

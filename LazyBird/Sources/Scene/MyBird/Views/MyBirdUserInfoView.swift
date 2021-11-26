@@ -10,6 +10,8 @@ import SnapKit
 import Then
 
 class MyBirdUserInfoView: UIView {
+    var viewModel: MyBirdViewModel?
+    
     //MARK: - UI Components
     let nameTitleLabel = UILabel().then{
         $0.text = "name"
@@ -48,10 +50,10 @@ class MyBirdUserInfoView: UIView {
     }
 
     //MARK: - Functions
-    func config(){
-        //TODO: 유저 정보 받아와서 바인딩하자 일단은 더미
-        self.nameLabel.text = "무무"
-        self.emailLabel.text = "tnddls2ek@naver.com"
+    func config(viewModel: MyBirdViewModel){
+        //TODO: 유저 정보 받아와서 바인딩하자 일단은 더미     
+        self.nameLabel.text = viewModel.userInfo.value.user_nm
+        self.emailLabel.text = viewModel.userInfo.value.user_email
     }
     
     func setUI(){

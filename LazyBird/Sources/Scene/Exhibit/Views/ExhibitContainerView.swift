@@ -84,6 +84,7 @@ extension ExhibitContainerView: UICollectionViewDataSource {
             print("ExhibitViewModel is nil")
             return UICollectionViewCell()
         }
+        
         cell.config(exhibit: viewModel.exhibits.value[indexPath.row])
         
         return cell

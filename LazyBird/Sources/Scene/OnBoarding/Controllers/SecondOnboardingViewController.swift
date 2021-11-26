@@ -66,8 +66,10 @@ class SecondOnboardingViewController: UIViewController {
     func setConfig(){
         guard let viewModel = viewModel else { return }
 
-        topView.config(question: viewModel.onboardManager.getAnalysisResult()[2])
-        bottomView.config(question: viewModel.onboardManager.getAnalysisResult()[3])
+        topView.config(question: viewModel.onboardManager.getAnalysisResult()[2],
+                       url: "https://limit-lazybird.com/customized/image/onb2_opt1.png")
+        bottomView.config(question: viewModel.onboardManager.getAnalysisResult()[3],
+                          url: "https://limit-lazybird.com/customized/image/onb2_opt2.png")
     }
     
     func setUI(){

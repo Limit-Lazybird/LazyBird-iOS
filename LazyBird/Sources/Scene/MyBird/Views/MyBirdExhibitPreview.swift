@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import SnapKit
+import Then
+import Kingfisher
 
 class MyBirdExhibitPreview: UIView {
+    //MARK: - Properties
+    
     //MARK: - UI Components
     let exhibitImageView = UIImageView().then{
         $0.contentMode = .scaleAspectFill
@@ -31,7 +36,7 @@ class MyBirdExhibitPreview: UIView {
         super.init(frame: frame)
         
         setUI()
-        config()
+//        config()
     }
     
     required init?(coder: NSCoder) {
@@ -39,11 +44,19 @@ class MyBirdExhibitPreview: UIView {
     }
 
     //MARK: - Functions
-    func config(){
+    func config(exhibit: Exhibit?){
         //TODO: 바인딩하자
-        self.exhibitImageView.image = UIImage(named: "test")
-        self.exhibitTitleLabel.text = "내맘쏙 모두의 그림책"
-        self.dateLabel.text = "2021.12.24 ~ 2022.03.27"
+        if let exhibit = exhibit {
+            self.exhibitImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
+            self.exhibitTitleLabel.text = exhibit.exhbt_nm
+            self.dateLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
+        }else{
+            self.exhibitImageView.image = nil
+            self.exhibitTitleLabel.text = ""
+            self.dateLabel.text = ""
+        }
+        
+        
     }
     
     func setUI(){

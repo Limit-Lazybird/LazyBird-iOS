@@ -59,7 +59,7 @@ class ExhibitSearchViewController: UIViewController {
     lazy var recommandBtnTwo = UIButton().then{
         $0.tag = 1
         $0.setTitle("조형", for: .normal)
-       $0.titleEdgeInsets = UIEdgeInsets(top: 6, left: 12, bottom: 4, right: 12)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 6, left: 12, bottom: 4, right: 12)
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = UIColor.Background.darkGray01
         $0.titleLabel?.font = UIFont.TTFont(type: .SDBold, size: 13)
@@ -136,14 +136,19 @@ class ExhibitSearchViewController: UIViewController {
         print("버튼 눌리는 중")
         switch sender.tag {
         case 0:
+            self.viewModel.fetchSearchedExhibit(word: "1")
             break
         case 1:
+            self.viewModel.fetchSearchedExhibit(word: "2")
             break
         case 2:
+            self.viewModel.fetchSearchedExhibit(word: "3")
             break
         case 3:
+            self.viewModel.fetchSearchedExhibit(word: "4")
             break
         case 4:
+            self.viewModel.fetchSearchedExhibit(word: "5")
             break
         default:
             print("잘못된 입력입니다.")

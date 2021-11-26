@@ -40,6 +40,7 @@ class ReservedExhibitViewController: UIViewController {
         $0.text = "에매한 전시가 없어요."
         $0.font = UIFont.TTFont(type: .SDBold, size: 17)
         $0.textColor = UIColor.Basic.gray03
+        $0.isHidden = true
     }
     
     //MARK: - Life Cycle
@@ -48,17 +49,35 @@ class ReservedExhibitViewController: UIViewController {
         self.view.backgroundColor = UIColor.Background.black02
         
         setUI()
-        config()
+//        config()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        checkExhibit()
     }
     
     //MARK: - Functions
+    func checkExhibit(){
+        guard let viewModel = self.viewModel else {
+            print("FavoriteExhibitDetailViewController is nil")
+            return
+        }
+        if viewModel.favoriteExhibits.value.count == 0{
+            self.noResultLabel.isHidden = false
+        }else{
+            self.noResultLabel.isHidden = true
+        }
+    }
+    
     func config(){
         guard let viewModel = self.viewModel else {
             print("ReservedExhibitViewController is nil")
             return
         }
         
-        viewModel.favoriteExhibits.bind { exhibits in
+        viewModel.reservationExhibits.bind { exhibits in
             print("Reserved bind 호출")
             self.collectionView.reloadData()
             
@@ -73,6 +92,7 @@ class ReservedExhibitViewController: UIViewController {
     func setUI(){
         self.view.addSubview(reservedLabel)
         self.view.addSubview(noResultLabel)
+        self.view.addSubview(collectionView)
         
         reservedLabel.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(24.0)
@@ -81,6 +101,12 @@ class ReservedExhibitViewController: UIViewController {
         
         noResultLabel.snp.makeConstraints{
             $0.centerX.centerY.equalToSuperview()
+        }
+        
+        collectionView.snp.makeConstraints{
+            $0.top.equalTo(reservedLabel.snp.bottom).offset(24.0)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
 }
@@ -109,8 +135,6 @@ extension ReservedExhibitViewController: UICollectionViewDataSource{
         
         return cell
     }
-    
-    
 }
 
 extension ReservedExhibitViewController: UICollectionViewDelegate{
@@ -121,7 +145,7 @@ extension ReservedExhibitViewController: UICollectionViewDelegateFlowLayout {
 
     // cell의 width, height 설정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.frame.width - 16) / 2
+        let width: CGFloat = (collectionView.frame.width - 32) 
         let height: CGFloat = width * 0.5730994152
         
         return CGSize(width: width, height: height)

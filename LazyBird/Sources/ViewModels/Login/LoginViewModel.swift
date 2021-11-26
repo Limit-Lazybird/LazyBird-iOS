@@ -15,34 +15,21 @@ enum LoginType{
 }
 
 protocol LoginViewModelProtocol{
-    func requestAppleLogin(email: String, token: Data, name: PersonNameComponents, completion: @escaping (LoginType)->(Void))
+    func requestAppleLogin(email: String, name: PersonNameComponents, token: Data, completion: @escaping (LoginType)->(Void))
 }
 
 class LoginViewModel: LoginViewModelProtocol {
     private let loginManager = LoginAPIManager.shared
     
     //MARK: - 소셜 로그인
-    func requestAppleLogin(email: String, token: Data, name: PersonNameComponents, completion: @escaping (LoginType)->(Void)){
-        guard let token = String(data: token, encoding: .utf8) else {
+    func requestAppleLogin(email: String, name: PersonNameComponents, token: Data, completion: @escaping (LoginType)->(Void)){
+        guard let tokenToString = String(data: token, encoding: .utf8) else {
             print("token is nil")
             return
         }
-        guard let givenName = name.givenName else {
-            print("givenName is nil")
-            return
-        }
-        guard let familyName = name.familyName else {
-            print("familyName is nil")
-            return
-        }
+        let logReq = LoginRequest(comp_cd: "03", email: email, token: tokenToString, name: name.givenName ?? "")
         
-        TokenUtils.shared.create(account: .name, value: familyName + givenName)
-        TokenUtils.shared.create(account: .email, value: email)
-        TokenUtils.shared.create(account: .comp_cd, value: "03")
-        
-        let loginRequest = LoginRequest(comp_cd: "03", email: email, token: token, name: familyName + givenName)
-        
-        loginManager.requestAppleLogin(loginRequest: loginRequest){ response in
+        loginManager.requestAppleLogin(logReq: logReq){ response in
             print("apple login keychain 저장 --> \(response)")
             let token = TokenUtils.shared
             token.create(account: .access_token, value: response.jwt.token)

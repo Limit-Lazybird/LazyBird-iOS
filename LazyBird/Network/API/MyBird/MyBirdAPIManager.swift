@@ -45,7 +45,8 @@ class MyBirdAPIManager {
             return
         }
         let requestURL = "https://limit-lazybird.com/status/reservationList"
-        let parameter = ["token": token]
+        let parameter = ["token": token,
+                         "state_cd": "20"]
        
         AF.request(requestURL, method: .post, parameters: parameter, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {

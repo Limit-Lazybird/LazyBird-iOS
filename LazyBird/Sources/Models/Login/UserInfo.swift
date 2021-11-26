@@ -7,6 +7,14 @@
 
 import UIKit
 
-class UserInfo: NSObject {
-
+struct UserInfo: Codable {
+    let user_email: String?
+    let user_nm: String?
+    let comp_cd: String?
+    
+    init(){
+        user_email = nil
+        user_nm = nil
+        comp_cd = nil
+    }
 }

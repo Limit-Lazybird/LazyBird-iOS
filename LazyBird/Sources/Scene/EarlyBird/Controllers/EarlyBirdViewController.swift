@@ -90,7 +90,7 @@ class EarlyBirdViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = colorToImage()
         // navigationbar left, right 버튼 설정
         self.navigationItem.leftBarButtonItem = logoBtn
-        self.navigationItem.rightBarButtonItems = [alertBtn, earlyCardBtn]
+//        self.navigationItem.rightBarButtonItems = [alertBtn, earlyCardBtn]
         // navigationbar backbutton 설정
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationController?.navigationBar.tintColor = .white

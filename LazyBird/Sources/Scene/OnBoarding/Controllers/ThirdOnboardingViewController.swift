@@ -69,9 +69,12 @@ class ThirdOnboardingViewController: UIViewController {
     func setConfig(){
         guard let viewModel = viewModel else { return }
 
-        topView.config(question: viewModel.onboardManager.getAnalysisResult()[4])
-        centerView.config(question: viewModel.onboardManager.getAnalysisResult()[5])
-        bottomView.config(question: viewModel.onboardManager.getAnalysisResult()[6])
+        topView.config(question: viewModel.onboardManager.getAnalysisResult()[4],
+                       url: "")
+        centerView.config(question: viewModel.onboardManager.getAnalysisResult()[5],
+                          url: "")
+        bottomView.config(question: viewModel.onboardManager.getAnalysisResult()[6],
+                          url: "")
     }
     
     func setUI(){

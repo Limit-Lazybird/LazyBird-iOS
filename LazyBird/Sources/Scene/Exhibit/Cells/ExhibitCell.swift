@@ -28,6 +28,7 @@ class ExhibitCell: UICollectionViewCell {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter
     }()
+    var exhibit: Exhibit?
     
     //MARK: - UI Components
     let thumbnailImageView = UIImageView().then{
@@ -98,13 +99,29 @@ class ExhibitCell: UICollectionViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
     //MARK: - Functions
     
     @objc func likeBtnPressed(_ sender: UIButton){
-        likeBtn.isSelected = !likeBtn.isSelected
+        guard let exhibit = exhibit else {
+            print("likeBtnPressed exhibit is nil")
+            return
+        }
+        if self.likeBtn.isSelected{
+            LikeAPIManager.shared.requestLikeCancel(exhbt_cd: exhibit.exhbt_cd ?? "")
+            likeBtn.isSelected = !likeBtn.isSelected
+        }else{
+            LikeAPIManager.shared.requestLike(exhbt_cd: exhibit.exhbt_cd ?? "", like_yn: "Y")
+            likeBtn.isSelected = !likeBtn.isSelected
+        }
     }
     
     func config(exhibit: Exhibit){
+        print("이거 계속 불리는거 아ㅣ니지??")
+        self.exhibit = exhibit
         thumbnailImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
         exhibitTitleLabel.text = exhibit.exhbt_nm
         stationLabel.text = exhibit.exhbt_lct
