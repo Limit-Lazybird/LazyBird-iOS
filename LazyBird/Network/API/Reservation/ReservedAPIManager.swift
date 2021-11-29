@@ -23,8 +23,7 @@ class ReservedAPIManager {
                          "exhbt_cd": exhbt_cd,
                          "state_cd": state_cd]
        
-        
-        AF.request(requestURL, method: .post, parameters: parameter, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: parameter, encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
             switch response.result {
             case .success:
                 print("예약 요청 전송 성공")

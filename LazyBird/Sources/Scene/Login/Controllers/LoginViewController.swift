@@ -78,6 +78,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 print("token is nil")
                 return
             }
+
             
             self.loginViewModel.requestAppleLogin(token: token){ response in
                 print("request??")

@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor.Background.black02
             tabBar.standardAppearance = appearance;
-            UITabBar.appearance().scrollEdgeAppearance = appearance
+//            UITabBar.appearance().scrollEdgeAppearance = appearance
         }
         
         // 네비게이션바 iOS 15 대응
