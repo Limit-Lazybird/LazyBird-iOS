@@ -72,36 +72,23 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
                 
             // 계정 정보 가져오기
-//            let fullName = appleIDCredential.fullName
-//            let email = appleIDCredential.email
             let token = appleIDCredential.identityToken // id token
-            
-//            guard let fullName = fullName else {
-//                print("fullName is nil")
-//                return
-//            }
-//            guard let email = email else {
-//                print("email is nil")
-//                return
-//            }
             
             guard let token = token else {
                 print("token is nil")
                 return
             }
-            // 서버로 request
-            print("token --> \(String(data: token, encoding: .utf8))")
             
             self.loginViewModel.requestAppleLogin(token: token){ response in
                 print("request??")
                 switch response {
-                case .y:
+                case .y:  // 이미 성향 분석이 되어있다면
                     let tabbarVC = TabBarViewController()
                     tabbarVC.modalPresentationStyle = .overFullScreen
                     
                     self.present(tabbarVC, animated: true, completion: nil)
                     break
-                case .n:
+                case .n: // 성향 분석이 되어있지 않다면
                     let onboardVC = UINavigationController(rootViewController: StartOnboardingViewController())
                     onboardVC.modalPresentationStyle = .overFullScreen
                     

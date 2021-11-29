@@ -95,8 +95,6 @@ class StartOnboardingViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }else{
             //TODO: 온보딩에서 넘어온 경우
-            self.dismiss(animated: true, completion: nil)
-            
             let tabBarVC = TabBarViewController()
             tabBarVC.modalPresentationStyle = .fullScreen
             

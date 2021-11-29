@@ -53,10 +53,8 @@ class LoginButtonContainerView: UIView {
 
         kakaoLoginManager.setViewController(vc)
         // 서버로 request
-        kakaoLoginManager.login(){ response in
-            let oauthToken = response["oauthToken"] as! OAuthToken
-            let user = response["user"] as! User
-            viewModel.requestKakaoLogin(oauthToken: oauthToken, user: user){ response in
+        kakaoLoginManager.login(){ oauthToken in
+            viewModel.requestKakaoLogin(oauthToken: oauthToken){ response in
                 switch response{
                 case .y: // 성향분석이 완료 된 유저
                     let tabbarVC = TabBarViewController()

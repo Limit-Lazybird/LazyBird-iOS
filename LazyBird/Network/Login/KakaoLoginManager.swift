@@ -14,7 +14,7 @@ class KakaoLoginManager: NSObject {
     private var vc: UIViewController?
     
     // Kakao Login Button Pressed
-    func login(completion: @escaping ([String:Any])->(Void)){
+    func login(completion: @escaping (OAuthToken)->(Void)){
         UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
             if let error = error {
                 print(error)
@@ -22,25 +22,11 @@ class KakaoLoginManager: NSObject {
             else {
                 print("loginWithKakaoAccount() success.")
                 //TODO: 서버로 토큰 보내기
-    
-                UserApi.shared.me() {(user, error) in
-                    if let error = error {
-                        print(error)
-                    }
-                    else {
-                        print("me() success.")
-                        guard let oauthToken = oauthToken else {
-                            print("oauthToken is nil")
-                            return
-                        }
-                        guard let user = user else {
-                            print("user is nil")
-                            return
-                        }
-
-                        completion(["oauthToken": oauthToken, "user": user])
-                    }
+                guard let oauthToken = oauthToken else{
+                    print("KakaoLoginManager oauthToken is nil")
+                    return
                 }
+                completion(oauthToken)
             }
         }
     }

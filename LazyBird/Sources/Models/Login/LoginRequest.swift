@@ -8,8 +8,6 @@
 import UIKit
 
 struct LoginRequest {
-    let comp_cd: String
-//    let email: String
-    let token: String
-//    let name: String
+    let comp_cd: String  // 어떤 로그인인지
+    let token: String   // 소셜 로그인의 success Token
 }

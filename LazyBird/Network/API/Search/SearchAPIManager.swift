@@ -13,17 +13,19 @@ class SearchAPIManager{
     private init() {}
     
     func requestSearchedExhibitList(word: String, completion: @escaping (Exhibits)->(Void)){
-        let testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wX2NkIjoiMDEiLCJlbWFpbCI6IndsZG5qczk5MUBnbWFpbC5jb20iLCJuYW1lIjoiamVvbmppd29uIiwiaWF0IjoxNjM2ODE3MDYwfQ.2xn78SSB1Jxt6hofsUQst-VZQiNNLsstudVqhO4LCbo"
+        guard let token = TokenUtils.shared.read(account: .access_token) else {
+            print("requestSearchedExhibitList token is nil")
+            return
+        }
         let requestURL = "https://limit-lazybird.com/exhibit/searchList"
-        let testParameter = ["token": testToken,
-                             "words": word]
+        let query = ["token": token,
+                     "words": word]
         
-        AF.request(requestURL, method: .post, parameters: testParameter, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: query, encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
             switch response.result {
             case .success:
                 do{
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
-                    
                     let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
                     completion(json)
                 }catch let error {

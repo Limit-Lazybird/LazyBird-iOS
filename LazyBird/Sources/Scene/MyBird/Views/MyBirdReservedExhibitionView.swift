@@ -35,24 +35,24 @@ class MyBirdReservedExhibitionView: UIView {
     let leftDDayBtn = UIButton().then{
         $0.backgroundColor = UIColor.Point.or01
         $0.titleLabel?.font = UIFont.TTFont(type: .MontBold, size: 11)
-//        $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 22 / 2
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowRadius = 2.0
         $0.layer.shadowOpacity = 0.5
         $0.layer.shadowOffset = CGSize(width: 1, height: 1)
+        $0.isHidden = true
     }
     
     let rightDDayBtn = UIButton().then{
         $0.backgroundColor = UIColor.Point.or01
         $0.titleLabel?.font = UIFont.TTFont(type: .MontBold, size: 11)
-//        $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 22 / 2
         $0.layer.cornerRadius = 22 / 2
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowRadius = 3.0
         $0.layer.shadowOpacity = 1.0
         $0.layer.shadowOffset = CGSize(width: 1, height: 1)
+        $0.isHidden = true
     }
     
     let rightExhibitPreview = MyBirdExhibitPreview()

@@ -22,12 +22,11 @@ class ExhibitAPIManager {
         print("test wldnfrjdo !!!!!---> \(tokenUtils.read(account: .access_token))")
         let requestURL = "https://limit-lazybird.com/exhibit/earlyList"
        
-        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
             switch response.result {
             case .success:
                 do{
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
-                    
                     let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
                     completion(json)
                 }catch let error {
@@ -47,7 +46,7 @@ class ExhibitAPIManager {
         }
         let requestURL = "https://limit-lazybird.com/exhibit/list"
        
-        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
             switch response.result {
             case .success:
                 do{
@@ -72,11 +71,13 @@ class ExhibitAPIManager {
         }
         let requestURL = "https://limit-lazybird.com/exhibit/customList"
        
-        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 200..<600).responseJSON { response in
             switch response.result {
             case .success:
                 do{
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
+                    let jsonToString = String(data: jsonData, encoding: .utf8)
+                    print("json to string --> \(jsonToString)")
                     let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
                     
                     completion(json)

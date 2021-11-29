@@ -10,6 +10,7 @@ import Alamofire
 
 enum accountType: String{
     case access_token = "access_token"
+    case refresh_token = "refresh_token"
     case comp_cd = "comp_cd"
     case email = "email"
     case name = "name"

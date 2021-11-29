@@ -16,23 +16,20 @@ class LoginAPIManager {
     
     //MARK: - 소셜 로그인
     func requestAppleLogin(logReq: LoginRequest, completion: @escaping (LoginResponse)->(Void)){
-        let requestURL = "https://limit-lazybird.com/oauth/login/apple"
+        let requestURL = "https://limit-lazybird.com/oauth/login"
         let query: [String: String] = ["comp_cd": logReq.comp_cd,
                                        "token": logReq.token]
-//        let query : [String: Any] = ["comp_cd":logReq.comp_cd,
-//                                     "email":logReq.email,
-//                                     "token":logReq.token,
-//                                     "name":logReq.name]
 
+        print("logReq token ---> \(logReq.token)")
         print("=-=-==-=--=--=-=-=-=-=-=-=-=-==-=-=")
-        AF.request(requestURL, method: .post, parameters: query, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: query, encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
             switch response.result {
             case .success:
                 do{
                     
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
                     let jsonToString = String(data: jsonData, encoding: .utf8)
-                    print("json to string --> \(jsonToString)")
+                    print("json TO String --> \(jsonToString)")
                     let json = try JSONDecoder().decode(LoginResponse.self, from: jsonData)
                     completion(json)
                 }catch let error {
@@ -45,15 +42,11 @@ class LoginAPIManager {
     }
     
     func requestKakaoLogin(loginRequest: LoginRequest, completion: @escaping (LoginResponse)->(Void)){
-        let requestURL = "https://limit-lazybird.com/oauth/login/kakao"
+        let requestURL = "https://limit-lazybird.com/oauth/login"
         let query: [String: String] = ["comp_cd": loginRequest.comp_cd,
                                        "token": loginRequest.token]
-//        let query: [String: Any] = ["comp_cd":loginRequest.comp_cd,
-//                                    "email":loginRequest.email,
-//                                    "token":loginRequest.token,
-//                                    "name":loginRequest.name]
         
-        AF.request(requestURL, method: .post, parameters: query, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+        AF.request(requestURL, method: .post, parameters: query, encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
             switch response.result {
             case .success:
                 do{
