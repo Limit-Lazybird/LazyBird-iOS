@@ -1303,6 +1303,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LazyBird/LazyBird.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 69F5355JYF;
 				INFOPLIST_FILE = LazyBird/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1312,7 +1313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.soongin.LazyBird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1325,6 +1326,7 @@
 				CODE_SIGN_ENTITLEMENTS = LazyBird/LazyBird.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 69F5355JYF;
 				INFOPLIST_FILE = LazyBird/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1335,7 +1337,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
