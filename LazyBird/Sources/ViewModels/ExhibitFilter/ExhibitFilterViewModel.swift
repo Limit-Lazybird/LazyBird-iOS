@@ -66,6 +66,9 @@ class ExhibitFilterViewModel {
         selectedCategory.append(contentsOf: self.additionalInformation)
         selectedCategory.append(contentsOf: self.region)
         
+        if selectedCategory.count == 0 {
+            return
+        }
         exhibitFilterManager.requestExhibitDTL(searchList: selectedCategory.joined(separator: ",")){ response in
             completion(response)
         }

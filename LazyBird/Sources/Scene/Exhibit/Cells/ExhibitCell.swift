@@ -178,7 +178,7 @@ class ExhibitCell: UICollectionViewCell {
         
         bgView.snp.makeConstraints{
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(self.snp.height).multipliedBy(0.34836065573)
+            $0.height.equalTo(self.snp.height).multipliedBy(0.436065573)
         }
         
         likeBtn.snp.makeConstraints{
