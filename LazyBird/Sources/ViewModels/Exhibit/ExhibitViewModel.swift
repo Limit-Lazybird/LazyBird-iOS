@@ -7,8 +7,9 @@
 
 import UIKit
 
-protocol ExhibitViewModelProtocol {
+protocol ExhibitViewModelProtocol{
     var exhibits: Observable<[Exhibit]> { get set } // 얼리버드 리스트
+    var fluidExhibits: [Exhibit] { get set }
     func fetchExhibits() // server <-> client 통신,
 }
 
@@ -16,12 +17,16 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
     private let exhibitManager = ExhibitAPIManager.shared
     private let likeManager = LikeAPIManager.shared
     let exhibitFilterManager = ExhibitFilterAPIManager.shared
+    var fluidExhibits: [Exhibit] = [Exhibit]()
+//    let variousExhibitionManager = VariousExhibitionManagers.shared
     
     var exhibits: Observable<[Exhibit]> = Observable(value: [])
     
     func fetchExhibits() {
         exhibitManager.requestExhibitList { exhibits in
             self.exhibits.value.removeAll()
+            self.fluidExhibits.removeAll()
+            self.fluidExhibits.append(contentsOf: exhibits.exhbtList)
             self.exhibits.value.append(contentsOf: exhibits.exhbtList)
         }
     }
@@ -29,12 +34,16 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
     func fetchCustomExhibits() {
         exhibitManager.requestCustomExhibitList { exhibits in
             self.exhibits.value.removeAll()
+            self.fluidExhibits.removeAll()
+            self.fluidExhibits.append(contentsOf: exhibits.exhbtList)
             self.exhibits.value.append(contentsOf: exhibits.exhbtList)
         }
     }
     
     func updateFilteredExhibits(exhibits: Exhibits){
         self.exhibits.value.removeAll()
+        self.fluidExhibits.removeAll()
+        self.fluidExhibits.append(contentsOf: exhibits.exhbtList)
         self.exhibits.value.append(contentsOf: exhibits.exhbtList)
     }
     
@@ -46,6 +55,8 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
         exhibitFilterManager.requestExhibitDTL(searchList: category) { exhibits in
             print("카테고리 필터링 --> \(exhibits)")
             self.exhibits.value.removeAll()
+            self.fluidExhibits.removeAll()
+            self.fluidExhibits.append(contentsOf: exhibits.exhbtList)
             self.exhibits.value.append(contentsOf: exhibits.exhbtList)
         }
     }

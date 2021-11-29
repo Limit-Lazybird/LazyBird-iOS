@@ -30,6 +30,7 @@ class EarlyBirdViewModel: EarlyBirdViewModelProtocol {
     }
     func fetchEarlyBirds(){
         exhibitManager.requestEarlyBirdList { exhibits in
+            self.earlyBirds.value.removeAll()
             self.earlyBirds.value.append(contentsOf: exhibits.exhbtList)
         }
     }

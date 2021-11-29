@@ -15,30 +15,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         KakaoSDKCommon.initSDK(appKey: "ed1671c07f7f99c3ad5e2640429b8dab")
-        sleep(UInt32(2.0))
-//        let appleIDProvider = ASAuthorizationAppleIDProvider()
-//        print("appDelegate")
-//        // 애플 자동 로그인
-//
-//
-//        appleIDProvider.getCredentialState(forUserID: "apple id credential") { (credentialState, error) in
-//            switch credentialState {
-//            case .authorized:
-//                // The Apple ID credential is valid.
-//                print("해당 ID는 연동되어있습니다.")
-//                break
-//            case .revoked:
-//                // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
-//                print("해당 ID는 연동되어있지않습니다.")
-//                break
-//            case .notFound:
-//                // The Apple ID credential is either was not found, so show the sign-in UI.
-//                print("해당 ID를 찾을 수 없습니다.")
-//                break
-//            default:
-//                break
-//            }
-//        }
+        
+        // 바텀 탭바 iOS 15 대응
+        if #available(iOS 15, *) {
+            let appearance = UITabBarAppearance()
+            let tabBar = UITabBar()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.Background.black02
+            tabBar.standardAppearance = appearance;
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
+        // 네비게이션바 iOS 15 대응
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.Background.black02
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
         return true
     }
 
@@ -54,6 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        // 세로로 고정
+        return UIInterfaceOrientationMask.portrait
     }
 
 

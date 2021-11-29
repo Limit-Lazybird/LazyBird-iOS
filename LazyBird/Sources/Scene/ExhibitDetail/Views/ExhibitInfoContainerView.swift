@@ -130,7 +130,7 @@ class ExhibitInfoContainerView: UIView {
             likeBtn.isSelected = !likeBtn.isSelected
         }else{
             LikeAPIManager.shared.requestLike(exhbt_cd: viewModel.getExhibit().value.exhbt_cd ?? "",
-                                              like_yn: viewModel.getExhibit().value.like_yn ?? "")
+                                              like_yn: "Y")
             likeBtn.isSelected = !likeBtn.isSelected
         }
         

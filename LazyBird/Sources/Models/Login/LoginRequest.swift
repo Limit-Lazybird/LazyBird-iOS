@@ -9,7 +9,7 @@ import UIKit
 
 struct LoginRequest {
     let comp_cd: String
-    let email: String
+//    let email: String
     let token: String
-    let name: String
+//    let name: String
 }

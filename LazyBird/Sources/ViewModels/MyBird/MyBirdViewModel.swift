@@ -12,6 +12,8 @@ class MyBirdViewModel {
     let userInfoManager = UserInfoAPIManager.shared
     
     var favoriteExhibits: Observable<[Exhibit]> = Observable(value: [])
+    var fluidExhibits: [Exhibit] = [Exhibit]()
+    
     var reservationExhibits: Observable<[Exhibit]> = Observable(value: [])
     
     var userInfo: Observable<UserInfo> = Observable(value: UserInfo())

@@ -57,11 +57,13 @@ class EarlyBirdViewController: UIViewController {
         
         setNavigationItem()
         setUI()
+        config() // 먼저 바인딩
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        print("EarlyBirdViewController view will appear")
+        self.viewModel.fetchEarlyBirds() // 화면 초기화 될 때마다 정보 호출
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -98,6 +100,10 @@ class EarlyBirdViewController: UIViewController {
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic_arrow")
         // Title 설정
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
+    func config(){
+        self.earlyBirdContainerView.config(viewModel: self.viewModel)
     }
     
     func setUI(){

@@ -119,7 +119,7 @@ class ReservedCell: UICollectionViewCell {
         exhibitTitleLabel.snp.makeConstraints{
             $0.top.equalTo(dDayBtn.snp.bottom).offset(14.0)
             $0.leading.equalTo(dDayBtn.snp.leading)
-            $0.trailing.equalTo(exhibitImageView.snp.trailing).offset(-16.0)
+            $0.trailing.equalTo(exhibitImageView.snp.leading).offset(-16.0)
         }
         
         locationLabel.snp.makeConstraints{

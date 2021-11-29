@@ -85,7 +85,9 @@ extension ExhibitContainerView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+//        cell.testConfig(viewModel: viewModel as! ExhibitionHandlerProtocol, type: .exhibit)
         cell.config(exhibit: viewModel.exhibits.value[indexPath.row])
+//        cell.config(viewModel: viewModel, index: indexPath.row)
         
         return cell
     }

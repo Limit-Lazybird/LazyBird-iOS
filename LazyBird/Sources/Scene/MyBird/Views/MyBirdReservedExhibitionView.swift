@@ -32,6 +32,29 @@ class MyBirdReservedExhibitionView: UIView {
     }
     
     let leftExhibitPreview = MyBirdExhibitPreview()
+    let leftDDayBtn = UIButton().then{
+        $0.backgroundColor = UIColor.Point.or01
+        $0.titleLabel?.font = UIFont.TTFont(type: .MontBold, size: 11)
+//        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 22 / 2
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowRadius = 2.0
+        $0.layer.shadowOpacity = 0.5
+        $0.layer.shadowOffset = CGSize(width: 1, height: 1)
+    }
+    
+    let rightDDayBtn = UIButton().then{
+        $0.backgroundColor = UIColor.Point.or01
+        $0.titleLabel?.font = UIFont.TTFont(type: .MontBold, size: 11)
+//        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 22 / 2
+        $0.layer.cornerRadius = 22 / 2
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowRadius = 3.0
+        $0.layer.shadowOpacity = 1.0
+        $0.layer.shadowOffset = CGSize(width: 1, height: 1)
+    }
+    
     let rightExhibitPreview = MyBirdExhibitPreview()
     
     //MARK: - Life Cycle
@@ -65,23 +88,36 @@ class MyBirdReservedExhibitionView: UIView {
         case 0:
             print("값이 하나도 없습니당")
             self.noResultLabel.isHidden = false
+            self.leftDDayBtn.isHidden = true
+            self.rightDDayBtn.isHidden = true
             self.leftExhibitPreview.config(exhibit: nil)
             self.rightExhibitPreview.config(exhibit: nil)
             break
         case 1:
             self.noResultLabel.isHidden = true
+            self.leftDDayBtn.isHidden = false
+            self.rightDDayBtn.isHidden = true
             self.leftExhibitPreview.config(exhibit: exhibit[0])
             self.rightExhibitPreview.config(exhibit: nil)
+            self.leftDDayBtn.setTitle(getDDayText(exhbt_to_dt: exhibit[0].exhbt_to_dt ?? ""), for: .normal)
             break
         case 2:
             self.noResultLabel.isHidden = true
+            self.leftDDayBtn.isHidden = false
+            self.rightDDayBtn.isHidden = false
             self.leftExhibitPreview.config(exhibit: exhibit[0])
             self.rightExhibitPreview.config(exhibit: exhibit[1])
+            self.leftDDayBtn.setTitle(getDDayText(exhbt_to_dt: exhibit[0].exhbt_to_dt ?? ""), for: .normal)
+            self.rightDDayBtn.setTitle(getDDayText(exhbt_to_dt: exhibit[1].exhbt_to_dt ?? ""), for: .normal)
             break
         default:
-            self.noResultLabel.isHidden = true
+            self.leftDDayBtn.isHidden = false
+            self.rightDDayBtn.isHidden = false
+            self.noResultLabel.isHidden = false
             self.leftExhibitPreview.config(exhibit: exhibit[0])
             self.rightExhibitPreview.config(exhibit: exhibit[1])
+            self.leftDDayBtn.setTitle(getDDayText(exhbt_to_dt: exhibit[0].exhbt_to_dt ?? ""), for: .normal)
+            self.rightDDayBtn.setTitle(getDDayText(exhbt_to_dt: exhibit[1].exhbt_to_dt ?? ""), for: .normal)
             print("두개 이상이니까 그냥 다")
         }
     }
@@ -91,6 +127,8 @@ class MyBirdReservedExhibitionView: UIView {
         self.addSubview(moreBtn)
         self.addSubview(leftExhibitPreview)
         self.addSubview(rightExhibitPreview)
+        self.addSubview(leftDDayBtn)
+        self.addSubview(rightDDayBtn)
         self.addSubview(noResultLabel)
         
         ticketingTitleLabel.snp.makeConstraints{
@@ -110,6 +148,13 @@ class MyBirdReservedExhibitionView: UIView {
             $0.bottom.equalToSuperview().offset(-28.0)
         }
         
+        leftDDayBtn.snp.makeConstraints{
+            $0.top.equalTo(leftExhibitPreview.snp.top).offset(-10.0)
+            $0.leading.equalTo(leftExhibitPreview.snp.leading).offset(-12.0)
+            $0.width.equalTo(48.0)
+            $0.height.equalTo(22.0)
+        }
+        
         rightExhibitPreview.snp.makeConstraints{
             $0.top.equalTo(leftExhibitPreview.snp.top)
             $0.leading.equalTo(leftExhibitPreview.snp.trailing).offset(16.0)
@@ -117,8 +162,27 @@ class MyBirdReservedExhibitionView: UIView {
             $0.width.equalTo(leftExhibitPreview.snp.width)
         }
         
+        rightDDayBtn.snp.makeConstraints{
+            $0.top.equalTo(rightExhibitPreview.snp.top).offset(-10.0)
+            $0.leading.equalTo(rightExhibitPreview.snp.leading).offset(-12.0)
+            $0.width.equalTo(48.0)
+            $0.height.equalTo(22.0)
+        }
+        
         noResultLabel.snp.makeConstraints{
             $0.center.equalToSuperview()
         }
+    }
+    
+    private func getDDayText(exhbt_to_dt: String) -> String{
+        //TODO: 전시종료일짜 - 현재날짜 계산해서 return [o]
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let date: Date = dateFormatter.date(from: exhbt_to_dt){
+            return "D - \(Int(date.timeIntervalSince(Date()))/86400 + 1)"
+        }
+        
+        return ""
     }
 }

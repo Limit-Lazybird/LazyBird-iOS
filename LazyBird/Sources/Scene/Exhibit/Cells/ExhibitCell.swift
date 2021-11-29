@@ -21,6 +21,8 @@ import Kingfisher
 
 class ExhibitCell: UICollectionViewCell {
     //MARK: - Properties
+    var viewModel: ExhibitionHandlerProtocol?
+    var exhibit: Exhibit?
     
     static let identifier = "exhibitCell"
     fileprivate let changeStrFormatter: DateFormatter = {
@@ -28,7 +30,6 @@ class ExhibitCell: UICollectionViewCell {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter
     }()
-    var exhibit: Exhibit?
     
     //MARK: - UI Components
     let thumbnailImageView = UIImageView().then{
@@ -120,12 +121,12 @@ class ExhibitCell: UICollectionViewCell {
     }
     
     func config(exhibit: Exhibit){
-        print("이거 계속 불리는거 아ㅣ니지??")
         self.exhibit = exhibit
-        thumbnailImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
+
         exhibitTitleLabel.text = exhibit.exhbt_nm
         stationLabel.text = exhibit.exhbt_lct
         dateTitleLabel.text = "\(exhibit.exhbt_from_dt ?? "") ~ \(exhibit.exhbt_to_dt ?? "")"
+        thumbnailImageView.kf.setImage(with: URL(string: exhibit.exhbt_sn ?? ""))
         
         if let dc_prc = exhibit.dc_prc {
             discountLabel.text = exhibit.dc_percent
@@ -140,13 +141,12 @@ class ExhibitCell: UICollectionViewCell {
             discountLabel.text = ""
             postPriceLabel.text = ""
         }
-        
+
         if exhibit.like_yn == "Y" {
             self.likeBtn.isSelected = true
         }else{
             self.likeBtn.isSelected = false
         }
-    
     }
     
     private func getExhibitDate(date: String) -> String{

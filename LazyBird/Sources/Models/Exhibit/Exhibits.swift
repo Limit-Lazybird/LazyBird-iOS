@@ -30,7 +30,7 @@ struct Exhibit: Codable {
     let eb_yn: String?
     let exhbt_type_cd: Int
     let exhbt_type_cd_sub: String?
-    let like_yn: String?
+    var like_yn: String?
     
     init(){
         exhbt_cd = nil
@@ -52,5 +52,9 @@ struct Exhibit: Codable {
         exhbt_type_cd = 0
         exhbt_type_cd_sub = nil
         like_yn = nil
+    }
+    
+    mutating func setLike_yn(like_yn: String){
+        self.like_yn = like_yn
     }
 }

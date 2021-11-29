@@ -61,7 +61,7 @@ class TabBarViewController: UITabBarController {
         // tabbar shadow 지우기
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
-        UITabBar.appearance().backgroundColor = UIColor.white
+//        UITabBar.appearance().backgroundColor = UIColor.white
     }
     
     private func setTabBarLink() {

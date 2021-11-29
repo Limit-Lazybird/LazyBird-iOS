@@ -33,15 +33,15 @@ class EarlyBirdContainerView: UIView {
     
     //MARK: - Life Cycle
     
-    override func didMoveToSuperview() {
-        guard let viewModel = self.viewModel else { return }
-        
-        viewModel.earlyBirds.bind { exhibits in
-            self.collectionView.reloadData()
-            self.layout.invalidateLayoutInBatchUpdate() // collectionView reload 반영하는 method
-        }
-        viewModel.fetchEarlyBirds()
-    }
+//    override func didMoveToSuperview() {
+//        guard let viewModel = self.viewModel else { return }
+//        
+//        viewModel.earlyBirds.bind { exhibits in
+//            self.collectionView.reloadData()
+//            self.layout.invalidateLayoutInBatchUpdate() // collectionView reload 반영하는 method
+//        }
+//        viewModel.fetchEarlyBirds()
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,6 +54,19 @@ class EarlyBirdContainerView: UIView {
     }
     
     //MARK: - Functions
+    func config(viewModel: EarlyBirdViewModelProtocol){
+        self.viewModel = viewModel
+        guard let viewModel = self.viewModel else {
+            print("EarlyBirdContainerView viewModel is nil")
+            return
+        }
+        
+        viewModel.earlyBirds.bind { exhibits in
+            print("EarlyBirdContainerView binding 호출됨")
+            self.collectionView.reloadData()
+            self.layout.invalidateLayoutInBatchUpdate() // collectionView reload 반영하는 method
+        }
+    }
     
     func setUI(){
         self.addSubview(collectionView)

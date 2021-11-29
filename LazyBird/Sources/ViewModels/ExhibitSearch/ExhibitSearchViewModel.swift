@@ -15,6 +15,7 @@ protocol ExhibitSearchViewModelProtocol{
 class ExhibitSearchViewModel {
     private let searchAPIManager = SearchAPIManager.shared
     var exhibits: Observable<[Exhibit]> = Observable(value: [])
+    var fluidExhibits: [Exhibit] = [Exhibit]()
     
     func fetchSearchedExhibit(word: String){
         searchAPIManager.requestSearchedExhibitList(word: word) { exhibits in
