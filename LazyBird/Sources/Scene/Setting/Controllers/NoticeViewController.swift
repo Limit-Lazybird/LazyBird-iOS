@@ -45,7 +45,7 @@ class NoticeViewController: UIViewController {
     func config(){
         noticeItemOne.config(secText: "2021년 11월 23일", titleText: "레이지 버드 1.0.0 버전 출시")
         noticeItemTwo.config(secText: "2021년 11월 21일", titleText: "공지사항이니까 꼭 보세요.")
-        contentTextOne.config(contentText: "안녕하세요 레이지버드에서 알립니다. 레이지버드 어플의 1.0.1 버전이 앱스토어와 플레이스토어에 정식 출시되었습니다. 편리한 어떤 기능과 그런 기능을 추가했습니다. 지금 바로 다운받아보실 수 있습니다. 꼭 다운받아보세요. 잘부탁드립니다. 언제나 화이팅입니다 아자아자 화이팅 ~")
+        contentTextOne.config(contentText: "안녕하세요 레이지버드에서 알립니다.\n레이지버드 어플이 정식 출시되었습니다.\n많은 이용 바랍니다.")
         contentTextTwo.config(contentText: "공지사항입니다. !!\n 화이팅!")
     }
     
@@ -107,7 +107,7 @@ extension NoticeViewController: NoticeViewControllerProtocol{
             contentTextOne.snp.remakeConstraints{
                 $0.top.equalTo(noticeItemOne.snp.bottom)
                 $0.leading.trailing.equalToSuperview()
-                $0.height.equalTo(150.0)
+                $0.height.equalTo(80.0)
             }
 //            contentTextTwo.snp.makeConstraints{
 //                $0.top.equalTo(noticeItemTwo.snp.bottom)

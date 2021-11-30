@@ -126,6 +126,17 @@ class ExhibitSearchViewController: UIViewController {
         setConfig()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+//        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+//        self.navigationController?.navigationBar.isHidden = false
+    }
     //MARK: - Functions
     @objc func emptyViewTapped(_ sender: Any){
         print("터어어어치")
@@ -160,7 +171,9 @@ class ExhibitSearchViewController: UIViewController {
     }
     
     func setNavigationItem(){
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
+//        self.navigationItem.title = "검색"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     func setConfig(){
@@ -192,7 +205,7 @@ class ExhibitSearchViewController: UIViewController {
         }
         
         searchBarContainerView.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(32.0)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.equalToSuperview().offset(16.0)
             $0.trailing.equalToSuperview().offset(-16.0)
             $0.height.equalTo(38.0)

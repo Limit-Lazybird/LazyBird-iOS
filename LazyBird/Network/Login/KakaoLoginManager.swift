@@ -15,18 +15,35 @@ class KakaoLoginManager: NSObject {
     
     // Kakao Login Button Pressed
     func login(completion: @escaping (OAuthToken)->(Void)){
-        UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-            if let error = error {
-                print(error)
-            }
-            else {
-                print("loginWithKakaoAccount() success.")
-                //TODO: 서버로 토큰 보내기
-                guard let oauthToken = oauthToken else{
-                    print("KakaoLoginManager oauthToken is nil")
-                    return
+        if (UserApi.isKakaoTalkLoginAvailable()) { // 카카오톡이 설치되어 있는 경우
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
                 }
-                completion(oauthToken)
+                else {
+                    print("loginWithKakaoAccount() success.")
+                    //TODO: 서버로 토큰 보내기
+                    guard let oauthToken = oauthToken else{
+                        print("KakaoLoginManager oauthToken is nil")
+                        return
+                    }
+                    completion(oauthToken)
+                }
+            }
+        }else{  // 카카오톡이 설치되어있지 않은 경우
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoAccount() success.")
+                    
+                    guard let oauthToken = oauthToken else{
+                        print("KakaoLoginManager oauthToken is nil")
+                        return
+                    }
+                    completion(oauthToken)
+                }
             }
         }
     }
