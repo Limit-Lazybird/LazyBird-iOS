@@ -68,12 +68,12 @@ class FourthOnboardingViewController: UIViewController {
         switch parentType{
         case .reset:
             //TODO: 그냥 돌아가기
-//            print("user Input --> \(onboardManager.getUserInput())")
             viewModel?.requestQuestionAnswer()
             self.dismiss(animated: true, completion: nil)
             break
         default:
             //TODO: 메인으로 이동하기
+            viewModel?.requestQuestionAnswer()
             let tabBarVC = TabBarViewController()
             tabBarVC.modalPresentationStyle = .fullScreen
             

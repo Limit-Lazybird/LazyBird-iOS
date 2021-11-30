@@ -14,5 +14,5 @@ pod 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
 pod 'CollectionViewPagingLayout'
 pod 'Alamofire', '~> 5.4'
 pod 'Kingfisher', '~> 7.0'
-
+pod 'FSCalendar'
 end
