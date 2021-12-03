@@ -116,6 +116,9 @@ class CalendarViewController: UIViewController {
     
     @objc func scheduleBtnPressed(_ sender: UIButton){
         //TODO: 전시 추가 일정으로 이동
+        let addExhibitionScheduleVC = AddExhibitionScheduleViewController()
+        addExhibitionScheduleVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(addExhibitionScheduleVC, animated: true)
     }
     
     func setNavigationItem(){

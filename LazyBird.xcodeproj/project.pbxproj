@@ -28,6 +28,8 @@
 		A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541BA527411588003C7F19 /* UIFontExtension.swift */; };
 		A86DB6122747A02E000C9A6E /* ExhibitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6112747A02E000C9A6E /* ExhibitDetailViewModel.swift */; };
 		A86DB6142747F976000C9A6E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6132747F976000C9A6E /* UIImageExtension.swift */; };
+		A8841305275A0B6200DC764B /* AddExhibitionScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */; };
+		A8841307275A150500DC764B /* CalendarCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8841306275A150500DC764B /* CalendarCustomTextField.swift */; };
 		A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B5271D952700319CD7 /* AppDelegate.swift */; };
 		A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B7271D952700319CD7 /* SceneDelegate.swift */; };
 		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
@@ -143,6 +145,8 @@
 		A8541BA527411588003C7F19 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		A86DB6112747A02E000C9A6E /* ExhibitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitDetailViewModel.swift; sourceTree = "<group>"; };
 		A86DB6132747F976000C9A6E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExhibitionScheduleViewController.swift; sourceTree = "<group>"; };
+		A8841306275A150500DC764B /* CalendarCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCustomTextField.swift; sourceTree = "<group>"; };
 		A89803B2271D952700319CD7 /* LazyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89803B5271D952700319CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A89803B7271D952700319CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -476,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				A8F803DC27567511001C784B /* CalendarViewController.swift */,
+				A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				A8B8E8C4275906520008E4C1 /* UnregisteredExhibitionAlertView.swift */,
+				A8841306275A150500DC764B /* CalendarCustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1154,6 +1160,8 @@
 				A8EAC4C5274EA61C00FC5562 /* AnalysisQuestions.swift in Sources */,
 				A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */,
 				A8EAC4DF274F93AD00FC5562 /* MyBirdReservedExhibitionView.swift in Sources */,
+				A8841307275A150500DC764B /* CalendarCustomTextField.swift in Sources */,
+				A8841305275A0B6200DC764B /* AddExhibitionScheduleViewController.swift in Sources */,
 				A8518516274137240029B541 /* ExhibitViewController.swift in Sources */,
 				A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */,
 				A8EAC4CA274EA7E200FC5562 /* OnboardingRequest.swift in Sources */,
