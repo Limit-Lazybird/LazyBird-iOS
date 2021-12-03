@@ -22,7 +22,7 @@ class TabBarViewController: UITabBarController {
                                      selectedImage: UIImage(named: "dashboardOn")?.withRenderingMode(.alwaysOriginal))
         $0.navigationItem.largeTitleDisplayMode = .always
     }
-    let calenderVC = EarlyBirdViewController().then{
+    let calenderVC = CalendarViewController().then{
         $0.tabBarItem = UITabBarItem(title: "캘린더",
                                      image: UIImage(named: "calendarOff"),
                                      selectedImage: UIImage(named: "calendarOn")?.withRenderingMode(.alwaysOriginal))
@@ -67,11 +67,12 @@ class TabBarViewController: UITabBarController {
     private func setTabBarLink() {
         let earlybiard = UINavigationController(rootViewController: earlybirdVC)
         let exhibit = UINavigationController(rootViewController: exhibitVC)
-//        let calender = UINavigationController(rootViewController: calenderVC)
+        let calender = UINavigationController(rootViewController: calenderVC)
         let search = UINavigationController(rootViewController: searchVC)
         let mybird = UINavigationController(rootViewController: mybirdVC)
         viewControllers = [earlybiard,
                            exhibit,
+                           calender,
                            search,
                            mybird]
         

@@ -1,4 +1,3 @@
-//
 //  AppDelegate.swift
 //  LazyBird
 //
@@ -22,10 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tabBar = UITabBar()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor.Background.black02
-            tabBar.standardAppearance = appearance;
-//            UITabBar.appearance().scrollEdgeAppearance = appearance
+            tabBar.standardAppearance = appearance
         }
-        
+
         // 네비게이션바 iOS 15 대응
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
@@ -34,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            UINavigationBar.appearance().shadowImage = colorToImage()
         }
-        
         return true
     }
 
@@ -57,7 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 세로로 고정
         return UIInterfaceOrientationMask.portrait
     }
-
-
+    
+    private func colorToImage() -> UIImage {
+        let size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 1)
+        let image: UIImage = UIGraphicsImageRenderer(size: size).image { context in
+            UIColor.Background.darkGray02.setFill()
+            context.fill(CGRect(origin: .zero, size: size))
+        }
+        return image
+    }
 }
 

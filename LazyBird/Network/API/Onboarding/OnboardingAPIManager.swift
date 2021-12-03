@@ -50,8 +50,7 @@ class OnboardingAPIManager {
             case .success:
                 do{
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
-                    let jsonToString = String(data: jsonData, encoding: .utf8)
-                    print("json To Strign ----- > \(jsonToString)")
+                    
 //                    let json = try JSONDecoder().decode(AnalysisQuestions.self, from: jsonData)
 //                    completion(json)
                 }catch let error {

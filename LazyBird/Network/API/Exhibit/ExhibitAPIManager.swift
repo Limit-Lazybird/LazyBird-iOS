@@ -19,7 +19,7 @@ class ExhibitAPIManager {
             print("requestEarlyBirdList  token read is nil")
             return
         }
-        print("test wldnfrjdo !!!!!---> \(tokenUtils.read(account: .access_token))")
+    
         let requestURL = "https://limit-lazybird.com/exhibit/earlyList"
        
         AF.request(requestURL, method: .post, parameters: ["token":token], encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
@@ -76,8 +76,7 @@ class ExhibitAPIManager {
             case .success:
                 do{
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
-                    let jsonToString = String(data: jsonData, encoding: .utf8)
-                    print("json to string --> \(jsonToString)")
+                    
                     let json = try JSONDecoder().decode(Exhibits.self, from: jsonData)
                     
                     completion(json)
