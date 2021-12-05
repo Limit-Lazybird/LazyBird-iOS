@@ -63,6 +63,33 @@ class CalendarManager {
                 print("fail , statusCode --> \(response.result)")
             }
         }
+    }
+    
+    /* 직접 등록하는 일정 전시 캘린더에 등록 */
+    func requestSaveCustomSchedule(customSchedule: CustomInfoSaveRequest){
+        guard let token = TokenUtils.shared.read(account: .access_token) else{
+            print("requestLike  token read is nil")
+            return
+        }
+        let requestURL = "https://limit-lazybird.com/calender/customInfoSave"
+        var schedule = customSchedule
+        schedule.updateDict(token: token)
+        let parameter = schedule.toDict
         
+        AF.request(requestURL, method: .post, parameters: parameter, encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
+            switch response.result {
+            case .success:
+                do{
+                    let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
+                    let jsonToString = String(data: jsonData, encoding: .utf8)
+                    print("requestSaveCustomSchedule result -> \(jsonToString ?? "")")
+//                    let json = try JSONDecoder().decode(Schedules.self, from: jsonData)
+                }catch let error {
+                    print("parsing error -> \(error.localizedDescription)")
+                }
+            case .failure:
+                print("fail , statusCode --> \(response.result)")
+            }
+        }
     }
 }

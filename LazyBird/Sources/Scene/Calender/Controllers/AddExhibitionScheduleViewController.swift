@@ -13,6 +13,9 @@ protocol AddExhibitionScheduleViewDelegate{
 }
 
 class AddExhibitionScheduleViewController: UIViewController {
+    //MARK: - Properties
+    let viewModel = AddExhibitionScheduleViewModel()
+    
     //MARK: - UI Components
     let alertLabel = UILabel().then{
         $0.text = "일정 등록을 위해\n전시회 정보를 입력해주세요."
@@ -126,6 +129,7 @@ class AddExhibitionScheduleViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.TTFont(type: .SDBold, size: 17)
         $0.layer.cornerRadius = 10
+        $0.addTarget(self, action: #selector(registBtnPressed(_:)), for: .touchUpInside)
     }
     
     //MARK: - Life Cycle
@@ -141,6 +145,25 @@ class AddExhibitionScheduleViewController: UIViewController {
     //MARK: - Functions
     @objc func moveToAddSchedule(_ sender: Any){
         self.view.endEditing(true)
+    }
+    
+    @objc func registBtnPressed(_ sender: UIButton){
+        //TODO: 서버로 일정 등록 api 전송하기
+        //TODO: 필요한 정보 - 1. 이름 / 2. 장소 / 3. 날짜 / 4. 시작시간 / 5. 끝시간
+        if checkRequestParameter(){ // parameter 유효한지 check
+            //TODO: request
+            let customInfo = CustomInfoSaveRequest(exhbt_nm: exhibitionInputTextField.text ?? "",
+                                  exhbt_lct: stationInputTextField.text ?? "",
+                                  reser_dt: dateSettingBtn.titleLabel?.text ?? "",
+                                  start_time: startTimeBtn.titleLabel?.text ?? "",
+                                  end_time: endTimeBtn.titleLabel?.text ?? "")
+            
+            self.viewModel.requestSaveCustomSchedule(customSchedule: customInfo)
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            //TODO: 경고창 띄우거나 request 안함
+            print("경고 !! parameter가 유효하지 안타!!")
+        }
     }
     
     @objc func dateSettingBtnPressed(_ sender: Any){
@@ -296,6 +319,29 @@ class AddExhibitionScheduleViewController: UIViewController {
             context.fill(CGRect(origin: .zero, size: size))
         }
         return image
+    }
+    
+    private func checkRequestParameter() -> Bool{
+        guard let _ =  self.exhibitionInputTextField.text else { return false }
+        guard let _ = self.stationInputTextField.text else { return false }
+        if let checkedTitle = self.dateSettingBtn.titleLabel {
+            if checkedTitle.text == "선택"{ // setting 전 이라면
+                return false
+            }
+        }
+        if let checkedStartTime = self.startTimeBtn.titleLabel {
+            if checkedStartTime.text == "선택"{
+                return false
+            }
+        }
+        
+        if let checkedEndTime = self.endTimeBtn.titleLabel {
+            if checkedEndTime.text == "선택" {
+                return false
+            }
+        }
+        
+        return true
     }
 }
 

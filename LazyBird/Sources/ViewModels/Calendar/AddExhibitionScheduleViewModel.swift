@@ -7,6 +7,11 @@
 
 import UIKit
 
-class AddExhibitionScheduleViewModel: NSObject {
-
+class AddExhibitionScheduleViewModel {
+    let calendarManager = CalendarManager.shared // 캘린더 api manager
+    
+    /* 직접 등록하는 일정 전시 캘린더에 등록 */
+    func requestSaveCustomSchedule(customSchedule: CustomInfoSaveRequest){
+        calendarManager.requestSaveCustomSchedule(customSchedule: customSchedule)
+    }
 }

@@ -35,6 +35,8 @@
 		A8844DEC275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DEB275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift */; };
 		A8844DEE275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DED275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift */; };
 		A8844DF0275CDD0B0092A71A /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DEF275CDD0A0092A71A /* CustomPickerView.swift */; };
+		A8844DF2275CF51D0092A71A /* CustomInfoSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */; };
+		A8844DF4275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF3275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift */; };
 		A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B5271D952700319CD7 /* AppDelegate.swift */; };
 		A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B7271D952700319CD7 /* SceneDelegate.swift */; };
 		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
@@ -157,6 +159,8 @@
 		A8844DEB275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionTimeSelectViewController.swift; sourceTree = "<group>"; };
 		A8844DED275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionTimeSelectViewModel.swift; sourceTree = "<group>"; };
 		A8844DEF275CDD0A0092A71A /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoSaveRequest.swift; sourceTree = "<group>"; };
+		A8844DF3275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExhibitionScheduleViewModel.swift; sourceTree = "<group>"; };
 		A89803B2271D952700319CD7 /* LazyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89803B5271D952700319CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A89803B7271D952700319CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A203A1275954770068FBB7 /* Schedules.swift */,
+				A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				A8B8E8BD2758C6890008E4C1 /* CalendarViewModel.swift */,
+				A8844DF3275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift */,
 				A8844DE9275CB2DC0092A71A /* ExhibitionDateSelectViewModel.swift */,
 				A8844DED275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift */,
 			);
@@ -1234,6 +1240,7 @@
 				A8B8E8BE2758C6890008E4C1 /* CalendarViewModel.swift in Sources */,
 				A8C718482754126D00477A9A /* ExhibitionHandlerProtocol.swift in Sources */,
 				A8E6DF36274558FF0080137C /* ExhibitViewModel.swift in Sources */,
+				A8844DF2275CF51D0092A71A /* CustomInfoSaveRequest.swift in Sources */,
 				A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */,
 				A8E6DF34274558F10080137C /* EarlyBirdViewModel.swift in Sources */,
 				A8EAC50B2750F28E00FC5562 /* LogoutAlertViewController.swift in Sources */,
@@ -1250,6 +1257,7 @@
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
 				A8EAC4CC274EC5EE00FC5562 /* QuestionInsertRequest.swift in Sources */,
 				A8EAC4FC27503D7900FC5562 /* SettingItemView.swift in Sources */,
+				A8844DF4275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift in Sources */,
 				A8EAC4AC274E4C0300FC5562 /* ExhibitNoticeViewController.swift in Sources */,
 				A8EAC4B8274E7A2000FC5562 /* ExhibitSearchViewController.swift in Sources */,
 				A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */,
