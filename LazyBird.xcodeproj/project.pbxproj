@@ -37,6 +37,7 @@
 		A8844DF0275CDD0B0092A71A /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DEF275CDD0A0092A71A /* CustomPickerView.swift */; };
 		A8844DF2275CF51D0092A71A /* CustomInfoSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */; };
 		A8844DF4275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF3275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift */; };
+		A8844DF6275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF5275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift */; };
 		A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B5271D952700319CD7 /* AppDelegate.swift */; };
 		A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B7271D952700319CD7 /* SceneDelegate.swift */; };
 		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
@@ -161,6 +162,7 @@
 		A8844DEF275CDD0A0092A71A /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoSaveRequest.swift; sourceTree = "<group>"; };
 		A8844DF3275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExhibitionScheduleViewModel.swift; sourceTree = "<group>"; };
+		A8844DF5275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUnregisteredExhibitionViewController.swift; sourceTree = "<group>"; };
 		A89803B2271D952700319CD7 /* LazyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89803B5271D952700319CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A89803B7271D952700319CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			children = (
 				A8F803DC27567511001C784B /* CalendarViewController.swift */,
 				A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */,
+				A8844DF5275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift */,
 				A81D0731275A6F1B00740276 /* ExhibitionDateSelectViewController.swift */,
 				A8844DEB275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift */,
 			);
@@ -1197,6 +1200,7 @@
 				A8EAC4CF274ED0DD00FC5562 /* SearchAPIManager.swift in Sources */,
 				A83AF09B27295C6900768224 /* CategoryCell.swift in Sources */,
 				A8DA7ECC271F3B56009976CF /* GoogleLoginManager.swift in Sources */,
+				A8844DF6275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift in Sources */,
 				A8AD088C273B02E4003A793A /* ExhibitImageContainerView.swift in Sources */,
 				A8DA7F3427270344009976CF /* EarlyBirdViewController.swift in Sources */,
 				A8E6DF3D27455C880080137C /* LoginAPIManager.swift in Sources */,

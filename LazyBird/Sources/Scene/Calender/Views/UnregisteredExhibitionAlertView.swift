@@ -10,7 +10,9 @@ import SnapKit
 import Then
 
 class UnregisteredExhibitionAlertView: UIView {
-    //TODO: 라벨하나, 버튼하나 넣을 예정
+    //MARK: - Properties
+    var delegate: CalendarViewDelegate?
+    
     //MARK: - UI Components
     let contentView = UIView().then{
         $0.backgroundColor = UIColor.Background.darkGray01
@@ -23,7 +25,7 @@ class UnregisteredExhibitionAlertView: UIView {
     
     lazy var moreBtn = UIButton().then{
         $0.setImage(UIImage(named: "ic_expand_light"), for: .normal)
-        $0.addTarget(self, action: #selector(moreBtnPressend(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(moveToAddSchedule(_:)), for: .touchUpInside)
     }
     
     //MARK: - Life Cycle
@@ -43,12 +45,12 @@ class UnregisteredExhibitionAlertView: UIView {
     //MARK: - Functions
     @objc func moveToAddSchedule(_ sender: Any){
         //TODO: 전시 일정 추가화면으로 이동
-        print("//TODO: 전시 일정 추가화면으로 이동")
-    }
-    
-    @objc func moreBtnPressend(_ sender: UIButton){
-        //TODO: 전시 일정 추가화면으로 이동
-        print("//TODO: 전시 일정 추가화면으로 이동")
+        guard let delegate = delegate else {
+            print("UnregisteredExhibitionAlertView moveToAddSchedule delegate is nil")
+            return
+        }
+        
+        delegate.moveToSelectUnregisteredExhibition()
     }
     
     func config(alertCnt: String){

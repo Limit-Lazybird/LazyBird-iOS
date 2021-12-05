@@ -10,6 +10,10 @@ import SnapKit
 import Then
 import FSCalendar
 
+protocol CalendarViewDelegate{
+    func moveToSelectUnregisteredExhibition() // 캘린더에 저장되지 않은 예약 전시 리스트 선택 화면으로 이동
+}
+
 class CalendarViewController: UIViewController {
     //MARK: - Properties
     let viewModel = CalendarViewModel()
@@ -44,7 +48,9 @@ class CalendarViewController: UIViewController {
         $0.backgroundColor = UIColor.Background.darkGray01
     }
     
-    let unregisteredExhibitionAlertView = UnregisteredExhibitionAlertView()
+    lazy var unregisteredExhibitionAlertView = UnregisteredExhibitionAlertView().then{
+        $0.delegate = self
+    }
     
     let yearLabel = UILabel().then{
         $0.font = UIFont.TTFont(type: .MontReg, size: 20)
@@ -275,4 +281,15 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
         return UITableView.automaticDimension
     }
     
+}
+
+extension CalendarViewController: CalendarViewDelegate{
+    /* 캘린더에 저장되지 않은 예약 전시 리스트 선택 화면으로 이동 */
+    func moveToSelectUnregisteredExhibition() {
+        //TODO: 화면 이동
+        let selectUnregisteredExhibitionVC = SelectUnregisteredExhibitionViewController()
+        selectUnregisteredExhibitionVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(selectUnregisteredExhibitionVC, animated: true, completion: nil)
+    }
 }

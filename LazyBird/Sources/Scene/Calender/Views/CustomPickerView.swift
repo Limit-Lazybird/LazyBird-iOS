@@ -12,6 +12,7 @@ class CustomPickerView: UIView {
     var titles: [String] = [String]()
     var pickerType: PickerType?
     var delegate: ExhibitionTimeSelectViewDelegate?
+    var selectExbihitionDelegate: SelectUnregisteredExhibitionViewDelegate?
     
     //MARK: UI Components
     lazy var pickerView = UIPickerView().then{
@@ -65,6 +66,10 @@ class CustomPickerView: UIView {
         self.pickerType = type
     }
     
+    func selectExhibitionViewConfig(titles: [String]){
+        self.titles = titles
+    }
+    
     func setUI(){
         self.addSubview(pickerView)
         
@@ -112,10 +117,19 @@ extension CustomPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     
     /* 피커뷰 선택되었을때 */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let delegate = self.delegate else {
+        if let delegate = self.delegate{
+            delegate.setSelectedTitle(title: titles[row], type: self.pickerType!)
+        }else{
             print("pickerView didSelectRow delegate is nil")
-            return
         }
-        delegate.setSelectedTitle(title: titles[row], type: self.pickerType!)
+        
+        if let delegate = self.selectExbihitionDelegate{
+            //TODO: 선택된 text 세팅해주기
+            delegate.setSelectedExhibition(title: titles[row])
+        }else{
+            print("pickerView didSelectRow selectExbihitionDelegate is nil")
+        }
+        
+        
     }
 }
