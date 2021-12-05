@@ -246,8 +246,8 @@ extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        self.viewModel.setCurrentPage(currentPage: calendar.currentPage)
-        self.viewModel.requestSchedules(reser_dt: dateFormatterForAPI.string(from: calendar.currentPage))
+        self.viewModel.setCurrentPage(currentPage: calendar.currentPage) // 현재 페이지에서 넘겼을때, 페이지 set
+        self.viewModel.requestSchedules(reser_dt: dateFormatterForAPI.string(from: calendar.currentPage)) // 현재 달의 리스트 정보들을 request
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {

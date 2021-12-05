@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol AddExhibitionScheduleViewDelegate{
+    func getSelectedDate(date: String) // 캘린더에서 받아온 날짜 받아와서 넣어주기
+    func getSelectedTime(time: String, type: TimeSelectType) // 시간 받아와서 세팅
+}
+
 class AddExhibitionScheduleViewController: UIViewController {
     //MARK: - UI Components
     let alertLabel = UILabel().then{
@@ -57,9 +62,16 @@ class AddExhibitionScheduleViewController: UIViewController {
     }
     
     lazy var dateSettingBtn = UIButton().then{
+        $0.setTitle("선택", for: .normal)
+        $0.setImage(UIImage(named: "ic_expand_down_light")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = UIColor.Basic.gray03
+        $0.setTitleColor(UIColor.Basic.gray03, for: .normal)
         $0.backgroundColor = UIColor.Background.darkGray01
-        $0.layer.cornerRadius = 5
+        $0.semanticContentAttribute = .forceRightToLeft
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: -122, bottom: 0, right: 122.0)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: -130)
         $0.addTarget(self, action: #selector(dateSettingBtnPressed(_:)), for: .touchUpInside)
+        $0.layer.cornerRadius = 5
     }
     
     let timeLabel = UILabel().then{
@@ -69,7 +81,14 @@ class AddExhibitionScheduleViewController: UIViewController {
     }
     
     lazy var startTimeBtn = UIButton().then{
+        $0.semanticContentAttribute = .forceRightToLeft
+        $0.setTitle("선택", for: .normal)
+        $0.setImage(UIImage(named: "ic_expand_down_light")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = UIColor.Basic.gray03
+        $0.setTitleColor(UIColor.Basic.gray03, for: .normal)
         $0.backgroundColor = UIColor.Background.darkGray01
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: -36, bottom: 0, right: 36.0)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 42, bottom: 0, right: -42)
         $0.layer.cornerRadius = 5
         $0.addTarget(self, action: #selector(startTimeBtnPressed(_:)), for: .touchUpInside)
     }
@@ -81,11 +100,33 @@ class AddExhibitionScheduleViewController: UIViewController {
     }
     
     lazy var endTimeBtn = UIButton().then{
+        $0.semanticContentAttribute = .forceRightToLeft
+        $0.setTitle("선택", for: .normal)
+        $0.setImage(UIImage(named: "ic_expand_down_light")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = UIColor.Basic.gray03
+        $0.setTitleColor(UIColor.Basic.gray03, for: .normal)
         $0.backgroundColor = UIColor.Background.darkGray01
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: -36, bottom: 0, right: 36.0)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 42, bottom: 0, right: -42)
         $0.layer.cornerRadius = 5
         $0.addTarget(self, action: #selector(endTimeBtnPressed(_:)), for: .touchUpInside)
     }
-
+    
+    lazy var deleteBtn = UIButton().then{
+        $0.backgroundColor = UIColor.Basic.gray01
+        $0.setTitle("삭제", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont.TTFont(type: .SDBold, size: 17)
+        $0.layer.cornerRadius = 10
+    }
+    
+    lazy var registBtn = UIButton().then{
+        $0.backgroundColor = UIColor.Point.or01
+        $0.setTitle("등록", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont.TTFont(type: .SDBold, size: 17)
+        $0.layer.cornerRadius = 10
+    }
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -104,14 +145,31 @@ class AddExhibitionScheduleViewController: UIViewController {
     
     @objc func dateSettingBtnPressed(_ sender: Any){
         //TODO: 캘린더 또 띄워야함 ㅅㅂ..
+        let exhibitionDateSelectVC = ExhibitionDateSelectViewController()
+        exhibitionDateSelectVC.delegate = self
+        exhibitionDateSelectVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(exhibitionDateSelectVC, animated: true, completion: nil)
     }
     
     @objc func startTimeBtnPressed(_ sender: UIButton){
         //TODO: 시작날짜
+        let exhibitionTimeSelectVC = ExhibitionTimeSelectViewController()
+        exhibitionTimeSelectVC.delegate = self
+        exhibitionTimeSelectVC.timeSelectType = .startTime
+        exhibitionTimeSelectVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(exhibitionTimeSelectVC, animated: true, completion: nil)
     }
     
     @objc func endTimeBtnPressed(_ sender: UIButton){
         //TODO: 끝 날짜
+        let exhibitionTimeSelectVC = ExhibitionTimeSelectViewController()
+        exhibitionTimeSelectVC.delegate = self
+        exhibitionTimeSelectVC.timeSelectType = .endTime
+        exhibitionTimeSelectVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(exhibitionTimeSelectVC, animated: true, completion: nil)
     }
     
     func setNavigationItem(){
@@ -141,6 +199,8 @@ class AddExhibitionScheduleViewController: UIViewController {
         self.view.addSubview(startTimeBtn)
         self.view.addSubview(waveLabel)
         self.view.addSubview(endTimeBtn)
+        self.view.addSubview(deleteBtn)
+        self.view.addSubview(registBtn)
         
         alertLabel.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(24.0)
@@ -213,6 +273,20 @@ class AddExhibitionScheduleViewController: UIViewController {
             $0.width.equalTo(dateSettingBtn.snp.width).multipliedBy(0.45259938837)
             $0.height.equalTo(48.0)
         }
+        
+        registBtn.snp.makeConstraints{
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-24.0)
+            $0.bottom.equalToSuperview().offset(-38.0)
+            $0.width.equalTo(self.view.frame.width * 0.536)
+            $0.height.equalTo(48.0)
+        }
+        
+        deleteBtn.snp.makeConstraints{
+            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(24.0)
+            $0.trailing.equalTo(registBtn.snp.leading).offset(-8.0)
+            $0.bottom.equalToSuperview().offset(-38.0)
+            $0.height.equalTo(48.0)
+        }
     }
     
     private func colorToImage() -> UIImage {
@@ -222,5 +296,33 @@ class AddExhibitionScheduleViewController: UIViewController {
             context.fill(CGRect(origin: .zero, size: size))
         }
         return image
+    }
+}
+
+extension AddExhibitionScheduleViewController: AddExhibitionScheduleViewDelegate{
+    /* 캘린더에서 받아온 날짜 받아와서 넣어주기 */
+    func getSelectedDate(date: String){
+        //TODO: 받아온 값으로 버튼의 텍스트, 색 변경하기
+        self.dateSettingBtn.setTitle(date, for: .normal)
+        self.dateSettingBtn.setTitleColor(.white, for: .normal)
+        self.dateSettingBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -92, bottom: 0, right: 92.0)
+        self.dateSettingBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: -100)
+    }
+    /* 시간 받아와서 세팅 */
+    func getSelectedTime(time: String, type: TimeSelectType){
+        print("time -> \(time), type -> \(type)")
+        //TODO: 시작 시간 설정이면 startBtn 텍스트, 색 변경 / 끝 시간 설정이어도 endBtn에 동일 적용
+        switch type {
+        case .startTime:
+            self.startTimeBtn.setTitle(time, for: .normal)
+            self.startTimeBtn.setTitleColor(.white, for: .normal)
+            self.startTimeBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -24, bottom: 0, right: 24)
+            self.startTimeBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: -32)
+        case .endTime:
+            self.endTimeBtn.setTitle(time, for: .normal)
+            self.endTimeBtn.setTitleColor(.white, for: .normal)
+            self.endTimeBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -24, bottom: 0, right: 24)
+            self.endTimeBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: -32)
+        }
     }
 }

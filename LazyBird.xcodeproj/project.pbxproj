@@ -15,6 +15,7 @@
 		A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */; };
 		A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139789272F168F00C3A4B8 /* ThirdOnboardingViewController.swift */; };
 		A813978D272F17CC00C3A4B8 /* FourthOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813978C272F17CC00C3A4B8 /* FourthOnboardingViewController.swift */; };
+		A81D0732275A6F1B00740276 /* ExhibitionDateSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81D0731275A6F1B00740276 /* ExhibitionDateSelectViewController.swift */; };
 		A82606462727238300939421 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82606452727238300939421 /* UIColorExtension.swift */; };
 		A8260649272726BE00939421 /* LogoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8260648272726BE00939421 /* LogoContainerView.swift */; };
 		A83AF09027292C5200768224 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83AF08F27292C5200768224 /* TabBarViewController.swift */; };
@@ -30,6 +31,10 @@
 		A86DB6142747F976000C9A6E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6132747F976000C9A6E /* UIImageExtension.swift */; };
 		A8841305275A0B6200DC764B /* AddExhibitionScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */; };
 		A8841307275A150500DC764B /* CalendarCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8841306275A150500DC764B /* CalendarCustomTextField.swift */; };
+		A8844DEA275CB2DC0092A71A /* ExhibitionDateSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DE9275CB2DC0092A71A /* ExhibitionDateSelectViewModel.swift */; };
+		A8844DEC275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DEB275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift */; };
+		A8844DEE275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DED275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift */; };
+		A8844DF0275CDD0B0092A71A /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DEF275CDD0A0092A71A /* CustomPickerView.swift */; };
 		A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B5271D952700319CD7 /* AppDelegate.swift */; };
 		A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B7271D952700319CD7 /* SceneDelegate.swift */; };
 		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
@@ -132,6 +137,7 @@
 		A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
 		A8139789272F168F00C3A4B8 /* ThirdOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingViewController.swift; sourceTree = "<group>"; };
 		A813978C272F17CC00C3A4B8 /* FourthOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthOnboardingViewController.swift; sourceTree = "<group>"; };
+		A81D0731275A6F1B00740276 /* ExhibitionDateSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionDateSelectViewController.swift; sourceTree = "<group>"; };
 		A82606452727238300939421 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A8260648272726BE00939421 /* LogoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoContainerView.swift; sourceTree = "<group>"; };
 		A83AF08F27292C5200768224 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,10 @@
 		A86DB6132747F976000C9A6E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExhibitionScheduleViewController.swift; sourceTree = "<group>"; };
 		A8841306275A150500DC764B /* CalendarCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCustomTextField.swift; sourceTree = "<group>"; };
+		A8844DE9275CB2DC0092A71A /* ExhibitionDateSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionDateSelectViewModel.swift; sourceTree = "<group>"; };
+		A8844DEB275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionTimeSelectViewController.swift; sourceTree = "<group>"; };
+		A8844DED275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionTimeSelectViewModel.swift; sourceTree = "<group>"; };
+		A8844DEF275CDD0A0092A71A /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		A89803B2271D952700319CD7 /* LazyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89803B5271D952700319CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A89803B7271D952700319CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -464,6 +474,8 @@
 			isa = PBXGroup;
 			children = (
 				A8B8E8BD2758C6890008E4C1 /* CalendarViewModel.swift */,
+				A8844DE9275CB2DC0092A71A /* ExhibitionDateSelectViewModel.swift */,
+				A8844DED275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -481,6 +493,8 @@
 			children = (
 				A8F803DC27567511001C784B /* CalendarViewController.swift */,
 				A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */,
+				A81D0731275A6F1B00740276 /* ExhibitionDateSelectViewController.swift */,
+				A8844DEB275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -490,6 +504,7 @@
 			children = (
 				A8B8E8C4275906520008E4C1 /* UnregisteredExhibitionAlertView.swift */,
 				A8841306275A150500DC764B /* CalendarCustomTextField.swift */,
+				A8844DEF275CDD0A0092A71A /* CustomPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1168,7 +1183,9 @@
 				A8AD0899273B049D003A793A /* TicketBookContainerView.swift in Sources */,
 				A8EAC4E5274FB7BA00FC5562 /* FavoriteExhibitDetailViewController.swift in Sources */,
 				A8EAC4BA274E93AA00FC5562 /* ExhibitSearchResultContainerView.swift in Sources */,
+				A8844DEC275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift in Sources */,
 				A8EAC4C8274EA72100FC5562 /* OnboardingAPIManager.swift in Sources */,
+				A8844DEA275CB2DC0092A71A /* ExhibitionDateSelectViewModel.swift in Sources */,
 				A8EAC4AE274E4C1900FC5562 /* ExhibitConfirmViewController.swift in Sources */,
 				A83AF09027292C5200768224 /* TabBarViewController.swift in Sources */,
 				A8EAC4CF274ED0DD00FC5562 /* SearchAPIManager.swift in Sources */,
@@ -1188,9 +1205,11 @@
 				A8AD0890273B02F5003A793A /* ExhibitInfoContainerView.swift in Sources */,
 				A83AF0952729479F00768224 /* TopContainerView.swift in Sources */,
 				A8EAC4E3274FA06C00FC5562 /* MyBirdExhibitPreview.swift in Sources */,
+				A81D0732275A6F1B00740276 /* ExhibitionDateSelectViewController.swift in Sources */,
 				A8EAC4C0274EA4EF00FC5562 /* OnboardingViewModel.swift in Sources */,
 				A8139783272F073B00C3A4B8 /* QuestionBtnView.swift in Sources */,
 				A8260649272726BE00939421 /* LogoContainerView.swift in Sources */,
+				A8844DF0275CDD0B0092A71A /* CustomPickerView.swift in Sources */,
 				A8E6DF38274559440080137C /* Exhibits.swift in Sources */,
 				A8EAC4F227501CBA00FC5562 /* LikeAPIManager.swift in Sources */,
 				A8FF87152743992500EBC16E /* ExhibitFilterTypeCell.swift in Sources */,
@@ -1211,6 +1230,7 @@
 				A813978A272F168F00C3A4B8 /* ThirdOnboardingViewController.swift in Sources */,
 				A8A2039F275952BC0068FBB7 /* CalendarManager.swift in Sources */,
 				A8EAC4ED27500C1700FC5562 /* ReservedExhibitViewController.swift in Sources */,
+				A8844DEE275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift in Sources */,
 				A8B8E8BE2758C6890008E4C1 /* CalendarViewModel.swift in Sources */,
 				A8C718482754126D00477A9A /* ExhibitionHandlerProtocol.swift in Sources */,
 				A8E6DF36274558FF0080137C /* ExhibitViewModel.swift in Sources */,

@@ -28,8 +28,6 @@ class LoginAPIManager {
                 do{
                     
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
-                    let jsonToString = String(data: jsonData, encoding: .utf8)
-                    print("json TO String --> \(jsonToString)")
                     let json = try JSONDecoder().decode(LoginResponse.self, from: jsonData)
                     completion(json)
                 }catch let error {
