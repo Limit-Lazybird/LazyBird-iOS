@@ -322,8 +322,18 @@ class AddExhibitionScheduleViewController: UIViewController {
     }
     
     private func checkRequestParameter() -> Bool{
-        guard let _ =  self.exhibitionInputTextField.text else { return false }
-        guard let _ = self.stationInputTextField.text else { return false }
+        if let exhibitTitle =  self.exhibitionInputTextField.text{
+            if exhibitTitle == "" {
+                return false
+            }
+        }
+        
+        if let stationTitle = self.stationInputTextField.text{
+            if stationTitle == ""{
+                return false
+            }
+        
+        }
         if let checkedTitle = self.dateSettingBtn.titleLabel {
             if checkedTitle.text == "선택"{ // setting 전 이라면
                 return false
