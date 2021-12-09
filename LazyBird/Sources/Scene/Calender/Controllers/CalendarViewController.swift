@@ -88,6 +88,8 @@ class CalendarViewController: UIViewController {
         $0.appearance.todayColor = UIColor.Basic.gray02 // 오늘 컬러
         $0.appearance.todaySelectionColor = UIColor.Point.or01
         $0.appearance.headerMinimumDissolvedAlpha = 0
+        $0.appearance.eventDefaultColor = UIColor.Point.or01 // 이벤트 default color
+        $0.appearance.eventSelectionColor = UIColor.Point.green01 // 이벤트 selection Color
         $0.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase // 월화수목금토일 -> S M T ....
         $0.backgroundColor = UIColor.Background.darkGray02
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -159,6 +161,7 @@ class CalendarViewController: UIViewController {
         self.viewModel.monthlySchedules.bind { schedules in
             print("monthlySchedules bind called")
             self.tableView.reloadData()
+            self.calender.reloadData()
         }
         self.viewModel.requestMonthlySchedules(reser_dt: dateFormatterForAPI.string(from: self.calender.currentPage)) // 현재 달의 스케줄 리스트 세팅
         
@@ -259,9 +262,10 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance{
     //이벤트가 존재한다면, 이벤트 표시. return은  이벤트의 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if self.events.contains(date) {
-            return 3
-        } else {
+        if self.viewModel.events.value.contains(date){
+            //TODO: 해당하는 날짜에 몇개의 이벤트가 있는지 판별
+            return self.viewModel.events.value.filter{ $0 == date }.count
+        }else{
             return 0
         }
     }

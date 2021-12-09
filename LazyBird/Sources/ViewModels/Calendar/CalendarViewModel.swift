@@ -15,8 +15,9 @@ class CalendarViewModel {
     var monthlySchedules: Observable<[Schedule]> = Observable(value: [Schedule]()) // 캘린더에 저장된 전시 예약 정보(스케쥴)
     var dummyMonthlySchedules: Observable<[Schedule]> = Observable(value: [Schedule]())
     
-    var customMonthlySchedules: Observable<[Schedule]> = Observable(value: [Schedule]()) //
     var unregistedSchedules: Observable<[Schedule]> = Observable(value: [Schedule]()) //예약이 된 전시지만 캘린더에 등록이 안된 전시
+    
+    var events: Observable<[Date]> = Observable(value: [Date]())
     
     lazy var dateFormatter: DateFormatter = DateFormatter().then{
         $0.locale = Locale(identifier: "ko_KR")
@@ -42,6 +43,10 @@ class CalendarViewModel {
                 self.monthlySchedules.value = self.dummyMonthlySchedules.value.sorted(by: {
                     self.strToDate(str: $0.reser_dt)! < self.strToDate(str: $1.reser_dt)!
                 })
+                //TODO: 스케쥴이 등록된 일자에 이벤트 등록하기
+                self.events.value = self.monthlySchedules.value.map{
+                    self.strToDate(str: $0.reser_dt) ?? Date()
+                }
             }
         }
         
