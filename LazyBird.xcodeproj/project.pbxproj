@@ -38,6 +38,8 @@
 		A8844DF2275CF51D0092A71A /* CustomInfoSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */; };
 		A8844DF4275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF3275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift */; };
 		A8844DF6275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF5275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift */; };
+		A8844DF8275E1FB70092A71A /* SelectUnregisteredExhibitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF7275E1FB70092A71A /* SelectUnregisteredExhibitionViewModel.swift */; };
+		A8844DFA275E35BD0092A71A /* BookedInfoSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8844DF9275E35BD0092A71A /* BookedInfoSaveRequest.swift */; };
 		A89803B6271D952700319CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B5271D952700319CD7 /* AppDelegate.swift */; };
 		A89803B8271D952700319CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B7271D952700319CD7 /* SceneDelegate.swift */; };
 		A89803BA271D952700319CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89803B9271D952700319CD7 /* LoginViewController.swift */; };
@@ -163,6 +165,8 @@
 		A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoSaveRequest.swift; sourceTree = "<group>"; };
 		A8844DF3275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExhibitionScheduleViewModel.swift; sourceTree = "<group>"; };
 		A8844DF5275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUnregisteredExhibitionViewController.swift; sourceTree = "<group>"; };
+		A8844DF7275E1FB70092A71A /* SelectUnregisteredExhibitionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUnregisteredExhibitionViewModel.swift; sourceTree = "<group>"; };
+		A8844DF9275E35BD0092A71A /* BookedInfoSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedInfoSaveRequest.swift; sourceTree = "<group>"; };
 		A89803B2271D952700319CD7 /* LazyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89803B5271D952700319CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A89803B7271D952700319CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 			children = (
 				A8A203A1275954770068FBB7 /* Schedules.swift */,
 				A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */,
+				A8844DF9275E35BD0092A71A /* BookedInfoSaveRequest.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 			children = (
 				A8B8E8BD2758C6890008E4C1 /* CalendarViewModel.swift */,
 				A8844DF3275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift */,
+				A8844DF7275E1FB70092A71A /* SelectUnregisteredExhibitionViewModel.swift */,
 				A8844DE9275CB2DC0092A71A /* ExhibitionDateSelectViewModel.swift */,
 				A8844DED275CC70F0092A71A /* ExhibitionTimeSelectViewModel.swift */,
 			);
@@ -1277,8 +1283,10 @@
 				A8EAC502275047D200FC5562 /* TermOfUseViewController.swift in Sources */,
 				A8EAC4FA27503D4000FC5562 /* SettingViewController.swift in Sources */,
 				A8EAC5002750477B00FC5562 /* PrivacyViewController.swift in Sources */,
+				A8844DF8275E1FB70092A71A /* SelectUnregisteredExhibitionViewModel.swift in Sources */,
 				A8B8E8C12758DE590008E4C1 /* CalendarCell.swift in Sources */,
 				A8EAC4A9274E39B600FC5562 /* ResetOnboardAlertViewController.swift in Sources */,
+				A8844DFA275E35BD0092A71A /* BookedInfoSaveRequest.swift in Sources */,
 				A8EAC5052750E6CC00FC5562 /* ExhibitConfirmViewModel.swift in Sources */,
 				A8EAC51627511A3B00FC5562 /* UserInfo.swift in Sources */,
 				A8A44FBF272D5FE600807BD2 /* StartOnboardingViewController.swift in Sources */,

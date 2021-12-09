@@ -12,9 +12,15 @@ protocol AddExhibitionScheduleViewDelegate{
     func getSelectedTime(time: String, type: TimeSelectType) // 시간 받아와서 세팅
 }
 
+enum AdditionalTypesOfExhibition{
+    case custom
+    case bookedExhibition
+}
+
 class AddExhibitionScheduleViewController: UIViewController {
     //MARK: - Properties
     let viewModel = AddExhibitionScheduleViewModel()
+    var additionalType: AdditionalTypesOfExhibition?
     
     //MARK: - UI Components
     let alertLabel = UILabel().then{
@@ -139,6 +145,7 @@ class AddExhibitionScheduleViewController: UIViewController {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                        action: #selector(moveToAddSchedule(_:))))
         setUI()
+        setBind()
         setNavigationItem()
     }
     
@@ -152,13 +159,8 @@ class AddExhibitionScheduleViewController: UIViewController {
         //TODO: 필요한 정보 - 1. 이름 / 2. 장소 / 3. 날짜 / 4. 시작시간 / 5. 끝시간
         if checkRequestParameter(){ // parameter 유효한지 check
             //TODO: request
-            let customInfo = CustomInfoSaveRequest(exhbt_nm: exhibitionInputTextField.text ?? "",
-                                  exhbt_lct: stationInputTextField.text ?? "",
-                                  reser_dt: dateSettingBtn.titleLabel?.text ?? "",
-                                  start_time: startTimeBtn.titleLabel?.text ?? "",
-                                  end_time: endTimeBtn.titleLabel?.text ?? "")
+            requestSaveSchedule() // 스케줄 저장 request
             
-            self.viewModel.requestSaveCustomSchedule(customSchedule: customInfo)
             self.navigationController?.popViewController(animated: true)
         }else{
             //TODO: 경고창 띄우거나 request 안함
@@ -207,6 +209,16 @@ class AddExhibitionScheduleViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic_arrow")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic_arrow")
+    }
+    
+    func setBind(){
+        guard let currentExhibition = self.viewModel.currentExhibition else{
+            print("AddExhibitionScheduleViewController setBind currentExhibition is nil")
+            return
+        }
+        
+        self.exhibitionInputTextField.text = currentExhibition.exhbt_nm
+        self.stationInputTextField.text = currentExhibition.exhbt_lct
     }
     
     func setUI(){
@@ -319,6 +331,37 @@ class AddExhibitionScheduleViewController: UIViewController {
             context.fill(CGRect(origin: .zero, size: size))
         }
         return image
+    }
+    
+    private func requestSaveSchedule(){
+        guard let additionalType = self.additionalType else {
+            print("requestSaveSchedule additionalType is nil")
+            return
+        }
+        
+        switch additionalType{
+        case .bookedExhibition:
+            guard let currentExhibition = self.viewModel.currentExhibition else {
+                print("requestSaveSchedule currentExhibition is nil")
+                return
+            }
+            
+            let bookedInfo = BookedInfoSaveRequest(exhbt_cd: currentExhibition.exhbt_cd,
+                                                   reser_dt: dateSettingBtn.titleLabel?.text?.replacingOccurrences(of: "-", with: "") ?? "",
+                                                   start_time: startTimeBtn.titleLabel?.text ?? "",
+                                                   end_time: endTimeBtn.titleLabel?.text ?? "")
+            self.viewModel.requestSaveBookedSchedule(bookedSchedule: bookedInfo)
+        case .custom:
+            let customInfo = CustomInfoSaveRequest(exhbt_nm: exhibitionInputTextField.text ?? "",
+                                  exhbt_lct: stationInputTextField.text ?? "",
+                                  reser_dt: dateSettingBtn.titleLabel?.text?.replacingOccurrences(of: "-", with: "") ?? "",
+                                  start_time: startTimeBtn.titleLabel?.text ?? "",
+                                  end_time: endTimeBtn.titleLabel?.text ?? "")
+            
+            print("여기 테스트 어어어어어어어어어어어엉")
+            self.viewModel.requestSaveCustomSchedule(customSchedule: customInfo)
+        }
+        
     }
     
     private func checkRequestParameter() -> Bool{

@@ -17,7 +17,8 @@ protocol SelectUnregisteredExhibitionViewDelegate{
 
 class SelectUnregisteredExhibitionViewController: UIViewController {
     //MARK: - Properties
-    let dummyTitles: [String] = ["무슨전시","무슨 전시", "무슨 전시"]
+    let viewModel = SelectUnregisteredExhibitionViewModel()
+    var delegate: CalendarViewDelegate?
     
     //MARK: - UI Components
     lazy var opaBgView = UIView().then{
@@ -72,12 +73,15 @@ class SelectUnregisteredExhibitionViewController: UIViewController {
     
     @objc func completeBtnPressed(_ sender: UIButton){
         //TODO: 설정한 시간 값 넘기고, 화면 dismiss
-//        self.delegate?.getSelectedTime(time: self.viewModel.getSelectedTime(), type: self.timeSelectType!)
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false) {
+            guard let selectedExhibition = self.viewModel.getSelectedExhibition() else { return }
+            
+            self.delegate?.moveToAddExhibitionSchedule(selectedSchedule: selectedExhibition)
+        }
     }
     
     func setBind(){
-        exhibitionPickerView.selectExhibitionViewConfig(titles: self.dummyTitles)
+        exhibitionPickerView.selectExhibitionViewConfig(titles: self.viewModel.getUnregistedScheduleTitles())
     }
     
     func setUI(){
@@ -127,6 +131,6 @@ class SelectUnregisteredExhibitionViewController: UIViewController {
 extension SelectUnregisteredExhibitionViewController: SelectUnregisteredExhibitionViewDelegate{
     func setSelectedExhibition(title: String){
         //TODO: pickerView에서 설정한 값 뷰모델에 저장하기
-        print("pickerView selected title -> \(title)")
+        self.viewModel.setSelectedTitle(title: title)
     }
 }

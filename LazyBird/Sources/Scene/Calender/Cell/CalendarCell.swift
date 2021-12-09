@@ -79,13 +79,13 @@ class CalendarCell: UITableViewCell {
         }
     }
     
-    func config(title: String, num: String){
-        self.dayTitleLabel.text = title
-        self.dayNumberLabel.text = num
+    func config(title: String, dayOfWeek: String, dayOfWeekNum: String, station: String, time: String){
+        self.dayTitleLabel.text = dayOfWeek
+        self.dayNumberLabel.text = dayOfWeekNum
         self.stickView.backgroundColor = .white
-        self.exhibitTitleLabel.text = "숭인이 전시 컬렉션"
-        self.stationLabel.text = "숭인이 집"
-        self.reservationTimeLabel.text = "11:30 ~ 12:30"
+        self.exhibitTitleLabel.text = title
+        self.stationLabel.text = station
+        self.reservationTimeLabel.text = time
     }
     
     func setUI(){
@@ -124,7 +124,8 @@ class CalendarCell: UITableViewCell {
         
         exhibitTitleLabel.snp.makeConstraints{
             $0.top.leading.equalToSuperview().offset(11.0)
-            $0.trailing.equalTo(reservationTimeLabel.snp.leading).offset(-6.0)
+            $0.trailing.lessThanOrEqualTo(reservationTimeLabel.snp.leading).offset(-6.0)
+            $0.width.equalTo(140.0)
         }
         
         reservationTimeLabel.snp.makeConstraints{

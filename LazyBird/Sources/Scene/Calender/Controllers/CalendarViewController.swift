@@ -12,6 +12,7 @@ import FSCalendar
 
 protocol CalendarViewDelegate{
     func moveToSelectUnregisteredExhibition() // 캘린더에 저장되지 않은 예약 전시 리스트 선택 화면으로 이동
+    func moveToAddExhibitionSchedule(selectedSchedule: Schedule)
 }
 
 class CalendarViewController: UIViewController {
@@ -26,7 +27,7 @@ class CalendarViewController: UIViewController {
     
     let dateFormatterForAPI: DateFormatter = DateFormatter().then{
         $0.locale = Locale(identifier: "ko_KR")
-        $0.dateFormat = "yyyymm"
+        $0.dateFormat = "yyyyMM"
     }
     
     //MARK: - UI Components
@@ -109,6 +110,8 @@ class CalendarViewController: UIViewController {
         
         /* 예약이 된 전시지만 캘린더에 등록이 안된 리스트를 출력하는 API */
         self.viewModel.requestUnregistedSchedules()
+        /* 캘린더에 저장된 전시 예약 정보 (월별) + 개인 전시 일정 리스트 (월별) Request */
+        self.viewModel.requestMonthlySchedules(reser_dt: dateFormatterForAPI.string(from: self.calender.currentPage))
     }
     
     //MARK: - Functions
@@ -123,6 +126,7 @@ class CalendarViewController: UIViewController {
     @objc func scheduleBtnPressed(_ sender: UIButton){
         //TODO: 전시 추가 일정으로 이동
         let addExhibitionScheduleVC = AddExhibitionScheduleViewController()
+        addExhibitionScheduleVC.additionalType = .custom
         addExhibitionScheduleVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(addExhibitionScheduleVC, animated: true)
     }
@@ -156,7 +160,7 @@ class CalendarViewController: UIViewController {
             print("monthlySchedules bind called")
             self.tableView.reloadData()
         }
-        self.viewModel.requestSchedules(reser_dt: dateFormatterForAPI.string(from: self.calender.currentPage)) // 현재 달의 스케줄 리스트 세팅
+        self.viewModel.requestMonthlySchedules(reser_dt: dateFormatterForAPI.string(from: self.calender.currentPage)) // 현재 달의 스케줄 리스트 세팅
         
         // 예약이 된 전시지만 캘린더에 등록이 안된 전시 수 정보 바인딩
         self.viewModel.unregistedSchedules.bind { schedules in
@@ -253,7 +257,7 @@ extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.viewModel.setCurrentPage(currentPage: calendar.currentPage) // 현재 페이지에서 넘겼을때, 페이지 set
-        self.viewModel.requestSchedules(reser_dt: dateFormatterForAPI.string(from: calendar.currentPage)) // 현재 달의 리스트 정보들을 request
+        self.viewModel.requestMonthlySchedules(reser_dt: dateFormatterForAPI.string(from: self.calender.currentPage)) // 현재 달의 리스트 정보들을 request
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -265,14 +269,26 @@ extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.viewModel.monthlySchedules.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarCell.identifier, for: indexPath) as? CalendarCell else {
             return UITableViewCell()
         }
-        cell.config(title: "Wed", num: "10")
+        //TODO: 날짜 받아서 -  1. 요일 / 2. OO 일 구하기
+        let title = self.viewModel.monthlySchedules.value[indexPath.row].exhbt_nm
+        let day = self.viewModel.monthlySchedules.value[indexPath.row].reser_dt
+        let dayOfWeek = self.viewModel.getDayOfTheWeek(date: day)
+        let dayOfWeekNum = self.viewModel.getDayOfTheWeekNum(date: day)
+        let station = self.viewModel.monthlySchedules.value[indexPath.row].exhbt_lct
+        let time = "\(self.viewModel.monthlySchedules.value[indexPath.row].start_time) ~ \(self.viewModel.monthlySchedules.value[indexPath.row].end_time)"
+        
+        cell.config(title: title,
+                    dayOfWeek: dayOfWeek,
+                    dayOfWeekNum: dayOfWeekNum,
+                    station: station,
+                    time: time)
         
         return cell
     }
@@ -289,7 +305,19 @@ extension CalendarViewController: CalendarViewDelegate{
         //TODO: 화면 이동
         let selectUnregisteredExhibitionVC = SelectUnregisteredExhibitionViewController()
         selectUnregisteredExhibitionVC.modalPresentationStyle = .overFullScreen
+        selectUnregisteredExhibitionVC.delegate = self
+        selectUnregisteredExhibitionVC.viewModel.setUnregistedSchedules(schedule: self.viewModel.unregistedSchedules.value)
         
         self.present(selectUnregisteredExhibitionVC, animated: true, completion: nil)
     }
+    
+    func moveToAddExhibitionSchedule(selectedSchedule: Schedule){
+        print("선택된 스케쥴 정보 =--> \(selectedSchedule)")
+        let addExhibitionScheduleVC = AddExhibitionScheduleViewController()
+        addExhibitionScheduleVC.hidesBottomBarWhenPushed = true
+        addExhibitionScheduleVC.additionalType = .bookedExhibition
+        addExhibitionScheduleVC.viewModel.setCurrentExhibition(exhibition: selectedSchedule)
+        self.navigationController?.pushViewController(addExhibitionScheduleVC, animated: true)
+    }
+    
 }
