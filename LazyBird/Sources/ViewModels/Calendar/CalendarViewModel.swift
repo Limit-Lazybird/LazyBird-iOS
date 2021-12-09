@@ -13,8 +13,15 @@ class CalendarViewModel {
     let calendarManager = CalendarManager.shared // 캘린더 api manager
     
     var monthlySchedules: Observable<[Schedule]> = Observable(value: [Schedule]()) // 캘린더에 저장된 전시 예약 정보(스케쥴)
+    var dummyMonthlySchedules: Observable<[Schedule]> = Observable(value: [Schedule]())
+    
     var customMonthlySchedules: Observable<[Schedule]> = Observable(value: [Schedule]()) //
     var unregistedSchedules: Observable<[Schedule]> = Observable(value: [Schedule]()) //예약이 된 전시지만 캘린더에 등록이 안된 전시
+    
+    lazy var dateFormatter: DateFormatter = DateFormatter().then{
+        $0.locale = Locale(identifier: "ko_KR")
+        $0.dateFormat = "yyyyMMdd"
+    }
     
     func setCurrentPage(currentPage: Date){
         self.currentPage.value = currentPage
@@ -27,33 +34,19 @@ class CalendarViewModel {
         let replaceReser_dt = reser_dt.replacingOccurrences(of: "-", with: "")
         //TODO: 캘린더 + 커스텀 일정 불러와서 하나로 합치고 -> 그 뒤에 정렬해서 뿌려주자
         calendarManager.requestSchedules(reser_dt: replaceReser_dt) { schedules in
-            self.monthlySchedules.value.removeAll()
-            self.monthlySchedules.value.append(contentsOf: schedules.calList)
+            self.dummyMonthlySchedules.value.removeAll()
+            self.dummyMonthlySchedules.value.append(contentsOf: schedules.calList)
             self.calendarManager.requestCustomSchedules(reser_dt: replaceReser_dt) { schedules in
-                self.monthlySchedules.value.append(contentsOf: schedules.calList)
+                self.dummyMonthlySchedules.value.append(contentsOf: schedules.calList)
+                //TODO: monthlySchedules 의 아이템들을 날짜순으로 정렬
+                self.monthlySchedules.value = self.dummyMonthlySchedules.value.sorted(by: {
+                    self.strToDate(str: $0.reser_dt)! < self.strToDate(str: $1.reser_dt)!
+                })
             }
         }
         
         
     }
-    
-    
-//    func requestSchedules(reser_dt: String){
-//        let replaceReser_dt = reser_dt.replacingOccurrences(of: "-", with: "")
-//        calendarManager.requestSchedules(reser_dt: replaceReser_dt) { schedules in
-//            self.monthlySchedules.value.removeAll()
-//            self.monthlySchedules.value.append(contentsOf: schedules.calList)
-//        }
-//    }
-//
-    
-//    func requestCustomSchedules(reser_dt: String){
-//        let replaceReser_dt = reser_dt.replacingOccurrences(of: "-", with: "")
-//        calendarManager.requestCustomSchedules(reser_dt: replaceReser_dt) { schedules in
-//            self.customMonthlySchedules.value.removeAll()
-//            self.customMonthlySchedules.value.append(contentsOf: schedules.calList)
-//        }
-//    }
     
     /* 예약이 된 전시지만 캘린더에 등록이 안된 리스트를 출력하는 API입니다. */
     func requestUnregistedSchedules(){
@@ -69,6 +62,7 @@ class CalendarViewModel {
             print("CalendarViewModel getDayOfTheWeek date is nil")
             return ""
         }
+        
         let parseDict: [String:String] = ["월":"Mon","화":"Tue",
                                           "수":"Wed","목":"Thu",
                                           "금":"Fri","토":"Sat",

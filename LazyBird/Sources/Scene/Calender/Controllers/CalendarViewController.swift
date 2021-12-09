@@ -241,6 +241,17 @@ class CalendarViewController: UIViewController {
         }
         return image
     }
+    
+    /* monthlySchedules의 앞 schedule과 비교해서  */
+    private func checkDuplicateDate(indexPath: IndexPath) -> Bool{
+        if indexPath.row > 0{
+            //TODO: 두번째 녀석부터 내 앞녀석이랑 날짜 문자열이 같다면 빈 문자열 보내기 ->true return
+            if self.viewModel.monthlySchedules.value[indexPath.row].reser_dt == self.viewModel.monthlySchedules.value[indexPath.row - 1].reser_dt {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 //MARK: Calendar Extension
@@ -276,19 +287,21 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarCell.identifier, for: indexPath) as? CalendarCell else {
             return UITableViewCell()
         }
-        //TODO: 날짜 받아서 -  1. 요일 / 2. OO 일 구하기
-        let title = self.viewModel.monthlySchedules.value[indexPath.row].exhbt_nm
-        let day = self.viewModel.monthlySchedules.value[indexPath.row].reser_dt
-        let dayOfWeek = self.viewModel.getDayOfTheWeek(date: day)
-        let dayOfWeekNum = self.viewModel.getDayOfTheWeekNum(date: day)
-        let station = self.viewModel.monthlySchedules.value[indexPath.row].exhbt_lct
-        let time = "\(self.viewModel.monthlySchedules.value[indexPath.row].start_time) ~ \(self.viewModel.monthlySchedules.value[indexPath.row].end_time)"
-        
-        cell.config(title: title,
-                    dayOfWeek: dayOfWeek,
-                    dayOfWeekNum: dayOfWeekNum,
-                    station: station,
-                    time: time)
+
+        //TODO: 중복 날짜 체크
+        if checkDuplicateDate(indexPath: indexPath){
+            //TODO: 날짜 빈 문자열로 보내주기
+            cell.config(schedule: self.viewModel.monthlySchedules.value[indexPath.row],
+                        dayOfWeek: "",
+                        dayOfWeekNum: "")
+        }else{
+            //TODO: 제대로 된 날짜 보내주기 -  1. 요일 / 2. OO 일 구하기
+            let day = self.viewModel.monthlySchedules.value[indexPath.row].reser_dt
+            
+            cell.config(schedule: self.viewModel.monthlySchedules.value[indexPath.row],
+                        dayOfWeek: self.viewModel.getDayOfTheWeek(date: day),
+                        dayOfWeekNum: self.viewModel.getDayOfTheWeekNum(date: day))
+        }
         
         return cell
     }

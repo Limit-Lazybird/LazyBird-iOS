@@ -49,7 +49,7 @@ class OnboardingAPIManager {
             switch response.result {
             case .success:
                 do{
-                    let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
+                    let _ = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
                     
 //                    let json = try JSONDecoder().decode(AnalysisQuestions.self, from: jsonData)
 //                    completion(json)

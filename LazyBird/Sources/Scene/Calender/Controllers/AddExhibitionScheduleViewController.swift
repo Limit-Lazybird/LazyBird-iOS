@@ -358,7 +358,6 @@ class AddExhibitionScheduleViewController: UIViewController {
                                   start_time: startTimeBtn.titleLabel?.text ?? "",
                                   end_time: endTimeBtn.titleLabel?.text ?? "")
             
-            print("여기 테스트 어어어어어어어어어어어엉")
             self.viewModel.requestSaveCustomSchedule(customSchedule: customInfo)
         }
         

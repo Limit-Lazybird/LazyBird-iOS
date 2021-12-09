@@ -29,7 +29,7 @@ class CalendarManager {
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
                     let json = try JSONDecoder().decode(Schedules.self, from: jsonData)
                     let jsonToString = String(data: jsonData, encoding: .utf8)
-                    print("requestSchedules response --> \(jsonToString)")
+                    print("requestSchedules response --> \(String(describing: jsonToString))")
                     completion(json)
                 }catch let error {
                     print("parsing error -> \(error.localizedDescription)")
@@ -57,7 +57,7 @@ class CalendarManager {
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
                     let json = try JSONDecoder().decode(Schedules.self, from: jsonData)
                     let jsonToString = String(data: jsonData, encoding: .utf8)
-                    print("requestCustomSchedules response --> \(jsonToString)")
+                    print("requestCustomSchedules response --> \(String(describing: jsonToString))")
                     completion(json)
                 }catch let error {
                     print("parsing error -> \(error.localizedDescription)")

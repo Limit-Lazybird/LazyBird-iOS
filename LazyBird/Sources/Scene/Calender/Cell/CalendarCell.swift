@@ -79,13 +79,13 @@ class CalendarCell: UITableViewCell {
         }
     }
     
-    func config(title: String, dayOfWeek: String, dayOfWeekNum: String, station: String, time: String){
+    func config(schedule: Schedule, dayOfWeek: String, dayOfWeekNum: String){
         self.dayTitleLabel.text = dayOfWeek
         self.dayNumberLabel.text = dayOfWeekNum
         self.stickView.backgroundColor = .white
-        self.exhibitTitleLabel.text = title
-        self.stationLabel.text = station
-        self.reservationTimeLabel.text = time
+        self.exhibitTitleLabel.text = schedule.exhbt_nm
+        self.stationLabel.text = schedule.exhbt_lct
+        self.reservationTimeLabel.text = "\(schedule.start_time) ~ \(schedule.end_time)"
     }
     
     func setUI(){
@@ -143,7 +143,5 @@ class CalendarCell: UITableViewCell {
             $0.trailing.equalToSuperview().offset(-8.0)
             $0.centerY.equalTo(stationLabel.snp.centerY)
         }
-        
-        
     }
 }
