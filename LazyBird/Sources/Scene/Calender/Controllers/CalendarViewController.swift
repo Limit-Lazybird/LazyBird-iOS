@@ -14,6 +14,7 @@ protocol CalendarViewDelegate{
     func moveToSelectUnregisteredExhibition() // 캘린더에 저장되지 않은 예약 전시 리스트 선택 화면으로 이동
     func moveToAddExhibitionSchedule(selectedSchedule: Schedule)
     func moveToExhibitionVisitAlert(currentSchedule: Schedule, indexPath: Int) // alert view 띄우기
+    func moveToEditOrDeleteAlert(currentSchedule: Schedule) // 수정, 삭제 알림 화면으로 이동
     func cancelBtnPressed(currentSchedule: Schedule, indexPath: Int) // 전시 방문 취소
     func completeBtnPressed(currentSchedule: Schedule, indexPath: Int) // 전시 방문
 }
@@ -423,5 +424,16 @@ extension CalendarViewController: CalendarViewDelegate{
             print("전시회 방문 처리")
             self.viewModel.monthlySchedules.value[indexPath].setVisitStateToTrue()
         }
+    }
+    
+    /* 수정, 삭제 알림 화면으로 이동 */
+    func moveToEditOrDeleteAlert(currentSchedule: Schedule){
+        let exhibitionEditOrDeleteVC = ExhibitionEditOrDeleteViewController()
+        exhibitionEditOrDeleteVC.modalPresentationStyle = .overFullScreen
+        exhibitionEditOrDeleteVC.delegate = self
+        exhibitionEditOrDeleteVC.currentSchedule = currentSchedule
+//        exhibitionVisitAlertVC.currentIndex = indexPath
+        
+        self.present(exhibitionEditOrDeleteVC, animated: false, completion: nil)
     }
 }

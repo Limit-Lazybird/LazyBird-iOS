@@ -29,6 +29,7 @@
 		A8518516274137240029B541 /* ExhibitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8518515274137240029B541 /* ExhibitViewController.swift */; };
 		A851851A2741615B0029B541 /* CustomExhibitToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85185192741615B0029B541 /* CustomExhibitToggleView.swift */; };
 		A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541BA527411588003C7F19 /* UIFontExtension.swift */; };
+		A8673A4027668FDA0045DAD0 /* ExhibitionEditOrDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A3F27668FDA0045DAD0 /* ExhibitionEditOrDeleteViewController.swift */; };
 		A86DB6122747A02E000C9A6E /* ExhibitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6112747A02E000C9A6E /* ExhibitDetailViewModel.swift */; };
 		A86DB6142747F976000C9A6E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6132747F976000C9A6E /* UIImageExtension.swift */; };
 		A8841305275A0B6200DC764B /* AddExhibitionScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */; };
@@ -158,6 +159,7 @@
 		A8518515274137240029B541 /* ExhibitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitViewController.swift; sourceTree = "<group>"; };
 		A85185192741615B0029B541 /* CustomExhibitToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExhibitToggleView.swift; sourceTree = "<group>"; };
 		A8541BA527411588003C7F19 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		A8673A3F27668FDA0045DAD0 /* ExhibitionEditOrDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionEditOrDeleteViewController.swift; sourceTree = "<group>"; };
 		A86DB6112747A02E000C9A6E /* ExhibitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitDetailViewModel.swift; sourceTree = "<group>"; };
 		A86DB6132747F976000C9A6E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExhibitionScheduleViewController.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				A81D0731275A6F1B00740276 /* ExhibitionDateSelectViewController.swift */,
 				A8844DEB275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift */,
 				A80E8F8B27663FD200E457FD /* ExhibitionVisitAlertViewController.swift */,
+				A8673A3F27668FDA0045DAD0 /* ExhibitionEditOrDeleteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1298,6 +1301,7 @@
 				A8EAC5052750E6CC00FC5562 /* ExhibitConfirmViewModel.swift in Sources */,
 				A8EAC51627511A3B00FC5562 /* UserInfo.swift in Sources */,
 				A8A44FBF272D5FE600807BD2 /* StartOnboardingViewController.swift in Sources */,
+				A8673A4027668FDA0045DAD0 /* ExhibitionEditOrDeleteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

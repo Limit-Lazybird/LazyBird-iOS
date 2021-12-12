@@ -56,6 +56,8 @@ class CalendarCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.backgroundColor = UIColor.Background.black02
+        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self,
+                                                               action: #selector(longPressGesture(_:))))
         
         setUI()
     }
@@ -72,6 +74,11 @@ class CalendarCell: UITableViewCell {
     }
     
     //MARK: - Functions
+    @objc func longPressGesture(_ sender: Any){
+        //TODO: 수정, 삭제 alert 띄우기 - delegate 만들자
+        delegate?.moveToEditOrDeleteAlert(currentSchedule: self.currentSchedule!)
+    }
+    
     @objc func visitBtnPressed(_ sender: UIButton){
         delegate?.moveToExhibitionVisitAlert(currentSchedule: self.currentSchedule!,
                                              indexPath: self.currentIndex ?? 0)
