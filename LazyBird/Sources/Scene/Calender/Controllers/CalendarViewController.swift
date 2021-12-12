@@ -174,6 +174,8 @@ class CalendarViewController: UIViewController {
         self.viewModel.unregistedSchedules.bind { schedules in
             print("unregistedSchedules bind called")
             self.unregisteredExhibitionAlertView.config(alertCnt: "\(schedules.count)")
+            /* 캘린더에 등록되지 않은 전시회 개수 0개일때 layout 변경 */
+            self.updateLayoutUnregisteredExhibitionAlertView()
         }
     }
     
@@ -206,6 +208,7 @@ class CalendarViewController: UIViewController {
             $0.trailing.equalTo(nextBtn.snp.leading).offset(-8.0)
         }
         
+        
         unregisteredExhibitionAlertView.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
@@ -231,7 +234,25 @@ class CalendarViewController: UIViewController {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
-    
+
+    private func updateLayoutUnregisteredExhibitionAlertView(){
+        if self.viewModel.unregistedSchedules.value.count == 0{
+            print("count = 0")
+            unregisteredExhibitionAlertView.snp.remakeConstraints{
+                $0.top.equalTo(self.view.safeAreaLayoutGuide)
+                $0.leading.trailing.equalToSuperview()
+                $0.height.equalTo(0.0)
+            }
+        }else{
+            print("count > 0")
+            unregisteredExhibitionAlertView.snp.remakeConstraints{
+                $0.top.equalTo(self.view.safeAreaLayoutGuide)
+                $0.leading.trailing.equalToSuperview()
+                $0.height.equalTo(55.0)
+            }
+        }
+    }
+
     private func scrollCurrentPage(isPrev: Bool) {
         let cal = Calendar.current
         var dateComponents = DateComponents()
