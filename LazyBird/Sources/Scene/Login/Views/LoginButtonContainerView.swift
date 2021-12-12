@@ -58,13 +58,13 @@ class LoginButtonContainerView: UIView {
                 switch response{
                 case .y: // 성향분석이 완료 된 유저
                     let tabbarVC = TabBarViewController()
-                    tabbarVC.modalPresentationStyle = .overFullScreen
+                    tabbarVC.modalPresentationStyle = .fullScreen
                     
                     vc.present(tabbarVC, animated: true, completion: nil)
                     break
                 case .n: // 성향분석이 완료되지 않은 유저
                     let onboardVC = UINavigationController(rootViewController: StartOnboardingViewController()) 
-                    onboardVC.modalPresentationStyle = .overFullScreen
+                    onboardVC.modalPresentationStyle = .fullScreen
                     
                     vc.present(onboardVC, animated: true, completion: nil)
                     break

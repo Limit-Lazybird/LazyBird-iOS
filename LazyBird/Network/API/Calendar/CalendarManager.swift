@@ -149,4 +149,32 @@ class CalendarManager {
             }
         }
     }
+    
+    /* 전시회 방문, 방문취소 */
+    func requestExhibitionVisit(exhibitionVisit: ExhibitionVisitRequest, completion: @escaping ()->(Void)){
+        guard let token = TokenUtils.shared.read(account: .access_token) else{
+            print("requestLike  token read is nil")
+            return
+        }
+        let requestURL = "https://limit-lazybird.com/calender/visitUpdate"
+        var requestModel = exhibitionVisit
+        requestModel.updateDict(token: token)
+        let parameter = requestModel.toDict
+        
+        AF.request(requestURL, method: .post, parameters: parameter, encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
+            switch response.result {
+            case .success:
+                do{
+                    let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
+                    let jsonToString = String(data: jsonData, encoding: .utf8)
+                    print("requestSaveCustomSchedule result -> \(jsonToString ?? "")")
+                    completion()
+                }catch let error {
+                    print("parsing error -> \(error.localizedDescription)")
+                }
+            case .failure:
+                print("fail , statusCode --> \(response.result)")
+            }
+        }
+    }
 }

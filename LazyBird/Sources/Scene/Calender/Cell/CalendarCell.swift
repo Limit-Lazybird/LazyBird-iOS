@@ -12,6 +12,9 @@ import Then
 class CalendarCell: UITableViewCell {
     //MARK: properties
     static let identifier: String = "calendarCell"
+    var delegate: CalendarViewDelegate?
+    var currentSchedule: Schedule?
+    var currentIndex: Int?
     
     //MARK: - UI Components
     let dayTitleLabel = UILabel().then{
@@ -70,22 +73,28 @@ class CalendarCell: UITableViewCell {
     
     //MARK: - Functions
     @objc func visitBtnPressed(_ sender: UIButton){
-        self.visitBtn.isSelected = !self.visitBtn.isSelected
-        
-        if visitBtn.isSelected{
-            self.stickView.backgroundColor = UIColor.Point.green01
-        }else{
-            self.stickView.backgroundColor = .white
-        }
+        delegate?.moveToExhibitionVisitAlert(currentSchedule: self.currentSchedule!,
+                                             indexPath: self.currentIndex ?? 0)
     }
     
-    func config(schedule: Schedule, dayOfWeek: String, dayOfWeekNum: String){
+    func config(schedule: Schedule, dayOfWeek: String, dayOfWeekNum: String, indexPath: Int){
+        self.currentSchedule = schedule // current schedule setting
+        self.currentIndex = indexPath
+        
         self.dayTitleLabel.text = dayOfWeek
         self.dayNumberLabel.text = dayOfWeekNum
         self.stickView.backgroundColor = .white
         self.exhibitTitleLabel.text = schedule.exhbt_nm
         self.stationLabel.text = schedule.exhbt_lct
         self.reservationTimeLabel.text = "\(schedule.start_time) ~ \(schedule.end_time)"
+        
+        if schedule.visit_yn == "Y"{
+            visitBtn.isSelected = true
+            self.stickView.backgroundColor = UIColor.Point.green01
+        }else{
+            visitBtn.isSelected = false
+            self.stickView.backgroundColor = .white
+        }
     }
     
     func setUI(){

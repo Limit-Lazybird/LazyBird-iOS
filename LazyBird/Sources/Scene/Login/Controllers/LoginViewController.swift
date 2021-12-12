@@ -85,13 +85,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 switch response {
                 case .y:  // 이미 성향 분석이 되어있다면
                     let tabbarVC = TabBarViewController()
-                    tabbarVC.modalPresentationStyle = .overFullScreen
+                    tabbarVC.modalPresentationStyle = .fullScreen
                     
                     self.present(tabbarVC, animated: true, completion: nil)
                     break
                 case .n: // 성향 분석이 되어있지 않다면
                     let onboardVC = UINavigationController(rootViewController: StartOnboardingViewController())
-                    onboardVC.modalPresentationStyle = .overFullScreen
+                    onboardVC.modalPresentationStyle = .fullScreen
                     
                     self.present(onboardVC, animated: true, completion: nil)
                     break

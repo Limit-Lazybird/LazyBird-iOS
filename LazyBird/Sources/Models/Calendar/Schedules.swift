@@ -8,7 +8,7 @@
 import UIKit
 
 struct Schedules: Codable {
-    let calList: [Schedule]
+    var calList: [Schedule]
 }
 
 struct Schedule: Codable{
@@ -21,12 +21,12 @@ struct Schedule: Codable{
     var visit_yn: String // 방문 여부 바꿀거임.
     var isCustom: Bool?
     
-    mutating func updateVisitState(){
-        if visit_yn == "Y"{
-            self.visit_yn = "N"
-        }else{
-            self.visit_yn = "Y"
-        }
+    mutating func setVisitStateToTrue(){
+        self.visit_yn = "Y"
+    }
+    
+    mutating func setVisitStateToFalse(){
+        self.visit_yn = "N"
     }
     
     mutating func setIsCustom(isCustom: Bool){

@@ -10,6 +10,8 @@
 		A806261D274162EB00B562A6 /* ExhibitContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806261C274162EB00B562A6 /* ExhibitContainerView.swift */; };
 		A806262027416DC300B562A6 /* CategoryCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806261F27416DC300B562A6 /* CategoryCollectionHeaderView.swift */; };
 		A806262327418F3B00B562A6 /* ExhibitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806262227418F3B00B562A6 /* ExhibitCell.swift */; };
+		A80E8F8A276632B100E457FD /* ExhibitionVisitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80E8F89276632B100E457FD /* ExhibitionVisitRequest.swift */; };
+		A80E8F8C27663FD200E457FD /* ExhibitionVisitAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80E8F8B27663FD200E457FD /* ExhibitionVisitAlertViewController.swift */; };
 		A813977F272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813977E272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift */; };
 		A8139783272F073B00C3A4B8 /* QuestionBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139782272F073B00C3A4B8 /* QuestionBtnView.swift */; };
 		A8139787272F127D00C3A4B8 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */; };
@@ -137,6 +139,8 @@
 		A806261C274162EB00B562A6 /* ExhibitContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitContainerView.swift; sourceTree = "<group>"; };
 		A806261F27416DC300B562A6 /* CategoryCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A806262227418F3B00B562A6 /* ExhibitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitCell.swift; sourceTree = "<group>"; };
+		A80E8F89276632B100E457FD /* ExhibitionVisitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionVisitRequest.swift; sourceTree = "<group>"; };
+		A80E8F8B27663FD200E457FD /* ExhibitionVisitAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionVisitAlertViewController.swift; sourceTree = "<group>"; };
 		A813977E272ED6FB00C3A4B8 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
 		A8139782272F073B00C3A4B8 /* QuestionBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBtnView.swift; sourceTree = "<group>"; };
 		A8139786272F127D00C3A4B8 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				A8A203A1275954770068FBB7 /* Schedules.swift */,
 				A8844DF1275CF51D0092A71A /* CustomInfoSaveRequest.swift */,
 				A8844DF9275E35BD0092A71A /* BookedInfoSaveRequest.swift */,
+				A80E8F89276632B100E457FD /* ExhibitionVisitRequest.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				A8844DF5275D194B0092A71A /* SelectUnregisteredExhibitionViewController.swift */,
 				A81D0731275A6F1B00740276 /* ExhibitionDateSelectViewController.swift */,
 				A8844DEB275CC02B0092A71A /* ExhibitionTimeSelectViewController.swift */,
+				A80E8F8B27663FD200E457FD /* ExhibitionVisitAlertViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1264,6 +1270,7 @@
 				A8EAC50D2750F72900FC5562 /* WithdrawalViewController.swift in Sources */,
 				A83AF0A327299CAC00768224 /* EarlyBirdCell.swift in Sources */,
 				A8EAC4C2274EA50900FC5562 /* OnboardManager.swift in Sources */,
+				A80E8F8C27663FD200E457FD /* ExhibitionVisitAlertViewController.swift in Sources */,
 				A8DA7EC8271F383A009976CF /* KakaoLoginManager.swift in Sources */,
 				A8EAC4CC274EC5EE00FC5562 /* QuestionInsertRequest.swift in Sources */,
 				A8EAC4FC27503D7900FC5562 /* SettingItemView.swift in Sources */,
@@ -1286,6 +1293,7 @@
 				A8844DF8275E1FB70092A71A /* SelectUnregisteredExhibitionViewModel.swift in Sources */,
 				A8B8E8C12758DE590008E4C1 /* CalendarCell.swift in Sources */,
 				A8EAC4A9274E39B600FC5562 /* ResetOnboardAlertViewController.swift in Sources */,
+				A80E8F8A276632B100E457FD /* ExhibitionVisitRequest.swift in Sources */,
 				A8844DFA275E35BD0092A71A /* BookedInfoSaveRequest.swift in Sources */,
 				A8EAC5052750E6CC00FC5562 /* ExhibitConfirmViewModel.swift in Sources */,
 				A8EAC51627511A3B00FC5562 /* UserInfo.swift in Sources */,

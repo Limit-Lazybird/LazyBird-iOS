@@ -13,6 +13,9 @@ import FSCalendar
 protocol CalendarViewDelegate{
     func moveToSelectUnregisteredExhibition() // 캘린더에 저장되지 않은 예약 전시 리스트 선택 화면으로 이동
     func moveToAddExhibitionSchedule(selectedSchedule: Schedule)
+    func moveToExhibitionVisitAlert(currentSchedule: Schedule, indexPath: Int) // alert view 띄우기
+    func cancelBtnPressed(currentSchedule: Schedule, indexPath: Int) // 전시 방문 취소
+    func completeBtnPressed(currentSchedule: Schedule, indexPath: Int) // 전시 방문
 }
 
 class CalendarViewController: UIViewController {
@@ -109,6 +112,7 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        print("e다시 그려지는거십니가?")
         
         /* 예약이 된 전시지만 캘린더에 등록이 안된 리스트를 출력하는 API */
         self.viewModel.requestUnregistedSchedules()
@@ -160,6 +164,7 @@ class CalendarViewController: UIViewController {
         // 월별 스케쥴 리스트 정보 바인딩
         self.viewModel.monthlySchedules.bind { schedules in
             print("monthlySchedules bind called")
+            print("-=-=-=-=-=-=-=- \(schedules) -=-=-=-=-=-=-==")
             self.tableView.reloadData()
             self.calender.reloadData()
         }
@@ -255,6 +260,34 @@ class CalendarViewController: UIViewController {
         }
         return false
     }
+    
+    private func getCompleteRequestParameter(currentSchedule: Schedule) -> ExhibitionVisitRequest{
+        if currentSchedule.isCustom!{
+            let paremeter = ExhibitionVisitRequest(exhbt_cd: currentSchedule.exhbt_cd,
+                                                   visit_yn: "Y",
+                                                   exhbt_type: "custom")
+            return paremeter
+        }else{
+            let paremeter = ExhibitionVisitRequest(exhbt_cd: currentSchedule.exhbt_cd,
+                                                   visit_yn: "Y",
+                                                   exhbt_type: nil)
+            return paremeter
+        }
+    }
+    
+    private func getCancelRequestParameter(currentSchedule: Schedule) -> ExhibitionVisitRequest{
+        if currentSchedule.isCustom!{
+            let paremeter = ExhibitionVisitRequest(exhbt_cd: currentSchedule.exhbt_cd,
+                                                   visit_yn: "N",
+                                                   exhbt_type: "custom")
+            return paremeter
+        }else{
+            let paremeter = ExhibitionVisitRequest(exhbt_cd: currentSchedule.exhbt_cd,
+                                                   visit_yn: "N",
+                                                   exhbt_type: nil)
+            return paremeter
+        }
+    }
 }
 
 //MARK: Calendar Extension
@@ -297,15 +330,19 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
             //TODO: 날짜 빈 문자열로 보내주기
             cell.config(schedule: self.viewModel.monthlySchedules.value[indexPath.row],
                         dayOfWeek: "",
-                        dayOfWeekNum: "")
+                        dayOfWeekNum: "",
+                        indexPath: indexPath.row)
         }else{
             //TODO: 제대로 된 날짜 보내주기 -  1. 요일 / 2. OO 일 구하기
             let day = self.viewModel.monthlySchedules.value[indexPath.row].reser_dt
             
             cell.config(schedule: self.viewModel.monthlySchedules.value[indexPath.row],
                         dayOfWeek: self.viewModel.getDayOfTheWeek(date: day),
-                        dayOfWeekNum: self.viewModel.getDayOfTheWeekNum(date: day))
+                        dayOfWeekNum: self.viewModel.getDayOfTheWeekNum(date: day),
+                        indexPath: indexPath.row)
         }
+        
+        cell.delegate = self
         
         return cell
     }
@@ -336,5 +373,34 @@ extension CalendarViewController: CalendarViewDelegate{
         addExhibitionScheduleVC.viewModel.setCurrentExhibition(exhibition: selectedSchedule)
         self.navigationController?.pushViewController(addExhibitionScheduleVC, animated: true)
     }
+        
+    func moveToExhibitionVisitAlert(currentSchedule: Schedule, indexPath: Int){  // alert view 띄우기
+        let exhibitionVisitAlertVC = ExhibitionVisitAlertViewController()
+        exhibitionVisitAlertVC.modalPresentationStyle = .overFullScreen
+        exhibitionVisitAlertVC.delegate = self
+        exhibitionVisitAlertVC.currentSchedule = currentSchedule
+        exhibitionVisitAlertVC.currentIndex = indexPath
+        
+        self.present(exhibitionVisitAlertVC, animated: false, completion: nil)
+    }
     
+    func cancelBtnPressed(currentSchedule: Schedule, indexPath: Int){
+        let parameter = getCancelRequestParameter(currentSchedule: currentSchedule)
+        
+        self.viewModel.requestExhibitionVisit(exhibitionVisit: parameter) {
+            //TODO: 전시회 방문 취소
+            print("전시회 방문 취소")
+            self.viewModel.monthlySchedules.value[indexPath].setVisitStateToFalse()
+        }
+    }
+    
+    func completeBtnPressed(currentSchedule: Schedule, indexPath: Int){
+        let parameter = getCompleteRequestParameter(currentSchedule: currentSchedule)
+        
+        self.viewModel.requestExhibitionVisit(exhibitionVisit: parameter) {
+            //TODO: 전시회 방문 처리
+            print("전시회 방문 처리")
+            self.viewModel.monthlySchedules.value[indexPath].setVisitStateToTrue()
+        }
+    }
 }

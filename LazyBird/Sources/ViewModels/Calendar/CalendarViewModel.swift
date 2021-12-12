@@ -33,12 +33,18 @@ class CalendarViewModel {
     /* 2. 개인 전시 일정 리스트 (월별) Request */
     func requestMonthlySchedules(reser_dt: String){
         let replaceReser_dt = reser_dt.replacingOccurrences(of: "-", with: "")
+        
         //TODO: 캘린더 + 커스텀 일정 불러와서 하나로 합치고 -> 그 뒤에 정렬해서 뿌려주자
         calendarManager.requestSchedules(reser_dt: replaceReser_dt) { schedules in
             self.dummyMonthlySchedules.value.removeAll()
-            self.dummyMonthlySchedules.value.append(contentsOf: schedules.calList)
+            
+            let changedSchedules = self.getChangedSchedules(schedules: schedules , isCustom: false)
+            
+            self.dummyMonthlySchedules.value.append(contentsOf: changedSchedules.calList)
             self.calendarManager.requestCustomSchedules(reser_dt: replaceReser_dt) { schedules in
-                self.dummyMonthlySchedules.value.append(contentsOf: schedules.calList)
+                let changedSchedules = self.getChangedSchedules(schedules: schedules, isCustom: true)
+                
+                self.dummyMonthlySchedules.value.append(contentsOf: changedSchedules.calList)
                 //TODO: monthlySchedules 의 아이템들을 날짜순으로 정렬
                 self.monthlySchedules.value = self.dummyMonthlySchedules.value.sorted(by: {
                     self.strToDate(str: $0.reser_dt)! < self.strToDate(str: $1.reser_dt)!
@@ -48,9 +54,7 @@ class CalendarViewModel {
                     self.strToDate(str: $0.reser_dt) ?? Date()
                 }
             }
-        }
-        
-        
+        } // item 변경 끝.
     }
     
     /* 예약이 된 전시지만 캘린더에 등록이 안된 리스트를 출력하는 API입니다. */
@@ -60,6 +64,14 @@ class CalendarViewModel {
             self.unregistedSchedules.value.append(contentsOf: schedules.calList)
         }
     }
+    
+    /* 전시회 방문, 방문취소 API */
+    func requestExhibitionVisit(exhibitionVisit: ExhibitionVisitRequest, completion: @escaping ()->(Void)){
+        calendarManager.requestExhibitionVisit(exhibitionVisit: exhibitionVisit){
+            completion()
+        }
+    }
+    
     
     /* 요일 return */
     func getDayOfTheWeek(date: String) -> String{
@@ -102,5 +114,15 @@ class CalendarViewModel {
             $0.dateFormat = "yyyyMMdd"
         }
         return dateFormatter.date(from: str)
+    }
+    
+    private func getChangedSchedules(schedules: Schedules, isCustom: Bool) -> Schedules{
+        var dummyList = schedules
+        
+        for index in 0..<dummyList.calList.count{
+            dummyList.calList[index].setIsCustom(isCustom: isCustom)
+        }
+        
+        return dummyList
     }
 }
