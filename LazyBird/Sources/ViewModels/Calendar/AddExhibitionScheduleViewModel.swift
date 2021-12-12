@@ -18,7 +18,9 @@ class AddExhibitionScheduleViewModel {
     
     /* 예약한 전시 캘린더에 등록 */
     func requestSaveBookedSchedule(bookedSchedule: BookedInfoSaveRequest){
-        calendarManager.requestSaveBookedSchedule(bookedSchedule: bookedSchedule)
+        calendarManager.requestSaveBookedSchedule(bookedSchedule: bookedSchedule){
+            
+        }
     }
     
     func setCurrentExhibition(exhibition: Schedule){

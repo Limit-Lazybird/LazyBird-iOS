@@ -17,6 +17,8 @@ protocol CalendarViewDelegate{
     func moveToEditOrDeleteAlert(currentSchedule: Schedule) // 수정, 삭제 알림 화면으로 이동
     func cancelBtnPressed(currentSchedule: Schedule, indexPath: Int) // 전시 방문 취소
     func completeBtnPressed(currentSchedule: Schedule, indexPath: Int) // 전시 방문
+    func deleteCustomSchedule(schedule: Schedule) // 커스텀 전시 일정 삭제
+    func deleteBookedSchedule(schedule: Schedule) // 예매된 전시 일정 삭제
 }
 
 class CalendarViewController: UIViewController {
@@ -432,8 +434,26 @@ extension CalendarViewController: CalendarViewDelegate{
         exhibitionEditOrDeleteVC.modalPresentationStyle = .overFullScreen
         exhibitionEditOrDeleteVC.delegate = self
         exhibitionEditOrDeleteVC.currentSchedule = currentSchedule
-//        exhibitionVisitAlertVC.currentIndex = indexPath
         
         self.present(exhibitionEditOrDeleteVC, animated: false, completion: nil)
+    }
+    
+    /* 커스텀 전시 일정 삭제 */
+    func deleteCustomSchedule(schedule: Schedule){
+        //TODO: request
+        self.viewModel.requestCustomScheduleDelete(exhbt_cd: schedule.exhbt_cd){
+            self.viewModel.requestMonthlySchedules(reser_dt: self.dateFormatterForAPI.string(from: self.calender.currentPage))
+        }
+    }
+    
+    /* 예매된 전시 일정 삭제 */
+    func deleteBookedSchedule(schedule: Schedule){
+        let parameter = BookedInfoSaveRequest(exhbt_cd: schedule.exhbt_cd,
+                                              reser_dt: nil,
+                                              start_time: nil,
+                                              end_time: nil)
+        self.viewModel.requestBookedScheduleDelete(bookedSchedule: parameter){
+            self.viewModel.requestMonthlySchedules(reser_dt: self.dateFormatterForAPI.string(from: self.calender.currentPage))
+        }
     }
 }

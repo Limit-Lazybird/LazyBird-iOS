@@ -124,7 +124,7 @@ class CalendarManager {
     }
     
     /* 예약한 전시 캘린더에 등록 */
-    func requestSaveBookedSchedule(bookedSchedule: BookedInfoSaveRequest){
+    func requestSaveBookedSchedule(bookedSchedule: BookedInfoSaveRequest, completion: @escaping ()->(Void)){
         guard let token = TokenUtils.shared.read(account: .access_token) else{
             print("requestLike  token read is nil")
             return
@@ -141,6 +141,7 @@ class CalendarManager {
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
                     let jsonToString = String(data: jsonData, encoding: .utf8)
                     print("requestSaveCustomSchedule result -> \(jsonToString ?? "")")
+                    completion()
                 }catch let error {
                     print("parsing error -> \(error.localizedDescription)")
                 }
@@ -160,6 +161,33 @@ class CalendarManager {
         var requestModel = exhibitionVisit
         requestModel.updateDict(token: token)
         let parameter = requestModel.toDict
+        
+        AF.request(requestURL, method: .post, parameters: parameter, encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
+            switch response.result {
+            case .success:
+                do{
+                    let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
+                    let jsonToString = String(data: jsonData, encoding: .utf8)
+                    print("requestSaveCustomSchedule result -> \(jsonToString ?? "")")
+                    completion()
+                }catch let error {
+                    print("parsing error -> \(error.localizedDescription)")
+                }
+            case .failure:
+                print("fail , statusCode --> \(response.result)")
+            }
+        }
+    }
+    
+    func requestCustomScheduleDelete(exhbt_cd: String, completion: @escaping ()->(Void)){
+        guard let token = TokenUtils.shared.read(account: .access_token) else{
+            print("requestLike  token read is nil")
+            return
+        }
+        
+        let requestURL = "https://limit-lazybird.com/calender/customInfoDel"
+        let parameter = ["token": token,
+                         "exhbt_cd":exhbt_cd]
         
         AF.request(requestURL, method: .post, parameters: parameter, encoding: JSONEncoding.default).validate(statusCode: 100..<600).responseJSON { response in
             switch response.result {

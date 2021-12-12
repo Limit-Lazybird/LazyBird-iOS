@@ -72,6 +72,19 @@ class CalendarViewModel {
         }
     }
     
+    /* 커스텀 일정 삭제 */
+    func requestCustomScheduleDelete(exhbt_cd: String,completion: @escaping ()->(Void)){
+        calendarManager.requestCustomScheduleDelete(exhbt_cd: exhbt_cd) {
+            completion()
+        }
+    }
+    
+    func requestBookedScheduleDelete(bookedSchedule: BookedInfoSaveRequest, completion: @escaping ()->(Void)){
+        calendarManager.requestSaveBookedSchedule(bookedSchedule: bookedSchedule){
+            completion()
+        }
+    }
+    
     
     /* 요일 return */
     func getDayOfTheWeek(date: String) -> String{

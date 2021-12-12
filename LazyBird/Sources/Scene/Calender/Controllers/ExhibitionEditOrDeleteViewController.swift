@@ -62,9 +62,19 @@ class ExhibitionEditOrDeleteViewController: UIViewController {
     }
     
     @objc func deleteBtnPressed(_ sender: UIButton){
-        //TODO: 화면 dismiss
+        //TODO: 일정 삭제 request
         print("delete")
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false){
+            //TODO: 일정 삭제 request 하기
+            if self.currentSchedule!.isCustom!{
+                print("커스텀 삭제지롱 0--=-")
+                self.delegate?.deleteCustomSchedule(schedule: self.currentSchedule!)
+            }else{
+                print("예약된 전시 삭제지롱 0--=-")
+                self.delegate?.deleteBookedSchedule(schedule: self.currentSchedule!)
+            }
+            
+        }
     }
     
     func setUI(){
