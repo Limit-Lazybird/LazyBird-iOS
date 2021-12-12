@@ -16,6 +16,12 @@ class ExhibitionVisitAlertViewController: UIViewController {
     var delegate: CalendarViewDelegate?
     
     //MARK: - UI Components
+    lazy var bgView = UIView().then{
+        $0.backgroundColor = UIColor.Opacity.black80
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                       action: #selector(dismissBtnPressed(_:))))
+    }
+    
     let alertBgView = UIView().then{
         $0.backgroundColor = UIColor.Background.darkGray02
         $0.layer.cornerRadius = 10
@@ -53,7 +59,7 @@ class ExhibitionVisitAlertViewController: UIViewController {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.Opacity.black80
+        self.view.backgroundColor = .clear
         
         setUI()
     }
@@ -85,12 +91,22 @@ class ExhibitionVisitAlertViewController: UIViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
+    @objc func dismissBtnPressed(_ sender: UIButton){
+        //TODO: 화면 dismiss
+        self.dismiss(animated: false, completion: nil)
+    }
+    
     func setUI(){
+        self.view.addSubview(bgView)
         self.view.addSubview(alertBgView)
         alertBgView.addSubview(alertTitleLabel)
         alertBgView.addSubview(alertContentLabel)
         alertBgView.addSubview(cancelBtn)
         alertBgView.addSubview(completeBtn)
+        
+        bgView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
         
         alertBgView.snp.makeConstraints{
             $0.centerY.equalTo(self.view.safeAreaLayoutGuide)
