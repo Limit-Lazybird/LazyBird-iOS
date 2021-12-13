@@ -204,7 +204,7 @@ class EarlyCardDetailViewController: UIViewController {
             $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(26.0)
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-26.0)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-26.0)
-            $0.height.equalTo(610.0)
+            $0.height.equalTo(self.view.frame.height * 0.7)
         }
         
         thumbnailImageView.snp.makeConstraints{

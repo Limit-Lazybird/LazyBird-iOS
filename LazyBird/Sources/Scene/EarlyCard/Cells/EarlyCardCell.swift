@@ -141,13 +141,13 @@ class EarlyCardCell: UICollectionViewCell {
         }
         
         exhibitTitleLabel.snp.makeConstraints{
-            $0.top.equalTo(numberLabel.snp.bottom).offset(8.0)
+            $0.top.equalTo(numberLabel.snp.bottom).offset(4.0)
             $0.leading.equalTo(cardBgView.snp.leading).offset(21.0)
             $0.trailing.equalTo(cardBgView.snp.trailing).offset(-21.0)
         }
         
         visitAlertLabel.snp.makeConstraints{
-            $0.top.equalTo(exhibitTitleLabel.snp.bottom).offset(8.0)
+            $0.top.equalTo(exhibitTitleLabel.snp.bottom).offset(6.0)
             $0.leading.equalTo(cardBgView.snp.leading).offset(21.0)
         }
         

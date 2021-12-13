@@ -65,7 +65,7 @@ class EarlyCardListViewController: UIViewController {
         self.view.addSubview(collectionView)
         
         alertLabel.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(32.0)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(24.0)
         }
         

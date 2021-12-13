@@ -11,6 +11,7 @@ import Then
 
 protocol ExhibitSearchViewControllerDelegate{
     func moveToDetail(indexPath: IndexPath)  // detail view로 이동
+    func willEndEditing() // end edit
 }
 
 class ExhibitSearchViewController: UIViewController {
@@ -275,6 +276,10 @@ extension ExhibitSearchViewController: ExhibitSearchViewControllerDelegate{
         exhibitDetailVC.exhibitDetailViewModel.setExhibit(self.viewModel.getExhibits().value[indexPath.row])
         
         self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
+    }
+    
+    func willEndEditing(){
+        self.view.endEditing(true)
     }
 }
 

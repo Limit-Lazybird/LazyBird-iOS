@@ -29,6 +29,18 @@ class ExhibitSearchResultContainerView: UIView {
         $0.register(ExhibitCell.self, forCellWithReuseIdentifier: ExhibitCell.identifier)
     }
     
+    lazy var noResultView = UIView().then{
+        $0.backgroundColor = .clear
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                       action: #selector(emptyViewTapped(_:))))
+    }
+    
+    let noResultLabel = UILabel().then{
+        $0.text = "검색 결과가 존재하지 않습니다."
+        $0.textColor = UIColor.Basic.gray03
+        $0.font = UIFont.TTFont(type: .SDBold, size: 17)
+    }
+    
     //MARK: - Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,18 +53,41 @@ class ExhibitSearchResultContainerView: UIView {
     }
     
     //MARK: - Functions
+    @objc func emptyViewTapped(_ sender: Any){
+        self.delegate?.willEndEditing()
+    }
+    
     func config(viewModel: ExhibitSearchViewModel){
         //TODO: 데이터 바인딩 (in CollectionView)
         self.viewModel = viewModel
         
         viewModel.exhibits.bind { searchedExhibits in
             print("bind 호출됨")
+            if self.viewModel?.exhibits.value.count == 0{
+                //TODO: 검색결과 없음
+                self.noResultView.isHidden = false
+                self.collectionView.isHidden = true
+            }else{
+                //TODO: 검색결과 있음
+                self.noResultView.isHidden = true
+                self.collectionView.isHidden = false
+            }
             self.collectionView.reloadData()
         }
     }
     
     func setUI(){
         self.addSubview(collectionView)
+        self.addSubview(noResultView)
+        noResultView.addSubview(noResultLabel)
+        
+        noResultView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+        
+        noResultLabel.snp.makeConstraints{
+            $0.centerX.centerY.equalToSuperview()
+        }
         
         collectionView.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -82,8 +117,12 @@ extension ExhibitSearchResultContainerView: UICollectionViewDataSource{
         
         return cell
     }
-    
-    
+}
+
+extension ExhibitSearchResultContainerView: UIScrollViewDelegate{
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        self.delegate?.willEndEditing()
+    }
 }
 
 extension ExhibitSearchResultContainerView: UICollectionViewDelegate{
