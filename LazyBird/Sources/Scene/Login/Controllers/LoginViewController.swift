@@ -18,11 +18,7 @@ class LoginViewController: UIViewController {
     let loginViewModel = LoginViewModel()
     
     lazy var logoContainerView: LogoContainerView = LogoContainerView(frame: .zero).then{
-        $0.layer.cornerRadius = 30
-        $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        $0.layer.borderWidth = 1.0
-        $0.layer.backgroundColor = UIColor.Opacity.black30.cgColor
-        $0.layer.borderColor = UIColor.Basic.gray01.cgColor
+        $0.backgroundColor = UIColor.Background.black02
     }
     
     lazy var loginButtonContainerView: LoginButtonContainerView = LoginButtonContainerView(frame: .zero)

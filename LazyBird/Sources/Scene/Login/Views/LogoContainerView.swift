@@ -11,13 +11,21 @@ import Then
 
 class LogoContainerView: UIView {
     let welcomLogoImageView = UIImageView().then{
-        $0.image = UIImage(named: "welcomeLogo")
+        $0.image = UIImage(named: "logo_big")
         $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
-    let logoImageView = UIImageView().then{
-        $0.image = UIImage(named: "loginLogo")
-        $0.contentMode = .scaleAspectFill
+    let titleLabel = UILabel().then{
+        $0.text = "Lazybird"
+        $0.textColor = .white
+        $0.font = UIFont.TTFont(type: .MontBold, size: 50)
+    }
+    
+    let subTitleLabel = UILabel().then{
+        $0.text = "당신을 위한 전시 큐레이터"
+        $0.textColor = .white
+        $0.font = UIFont.TTFont(type: .SDBold, size: 16)
     }
     
     override init(frame: CGRect) {
@@ -33,21 +41,24 @@ class LogoContainerView: UIView {
     
     func setUI(){
         self.addSubview(welcomLogoImageView)
-        self.addSubview(logoImageView)
+        self.addSubview(titleLabel)
+        self.addSubview(subTitleLabel)
         
         welcomLogoImageView.snp.makeConstraints{
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(160.0)
             $0.centerX.equalTo(self.safeAreaLayoutGuide)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(63.0)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(63.0)
-            $0.height.equalTo(welcomLogoImageView.snp.width).multipliedBy(0.252)
+            $0.width.equalTo(139.0)
+            $0.height.equalTo(146.0)
         }
         
-        logoImageView.snp.makeConstraints{
-            $0.top.equalTo(welcomLogoImageView.snp.bottom).offset(70.0)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(118.0)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(118.0)
-            $0.height.equalTo(logoImageView.snp.width).multipliedBy(1.05)
-            $0.centerY.equalTo(self.safeAreaLayoutGuide).multipliedBy(1.2)
+        titleLabel.snp.makeConstraints{
+            $0.top.equalTo(welcomLogoImageView.snp.bottom).offset(10.0)
+            $0.centerX.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        subTitleLabel.snp.makeConstraints{
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10.0)
+            $0.centerX.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
