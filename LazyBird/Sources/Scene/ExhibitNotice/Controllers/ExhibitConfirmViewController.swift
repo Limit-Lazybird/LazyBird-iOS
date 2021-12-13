@@ -76,6 +76,12 @@ class ExhibitConfirmViewController: UIViewController {
         $0.addTarget(self, action: #selector(backBtnPressed(_:)), for: .touchUpInside)
     }
     
+    let bubbleImageView = UIImageView().then{
+        $0.image = UIImage(named: "bubble")
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+    }
+    
     lazy var completeBtn = UIButton().then{
         $0.setTitle("예매 완료", for: .normal)
         $0.backgroundColor = UIColor.Point.or01
@@ -96,10 +102,17 @@ class ExhibitConfirmViewController: UIViewController {
     
     //MARK: - Functions
     @objc func completeBtnPressed(_ sender: UIButton){
-        //TODO: root  VC 로 가자
-        print("completeBtnPressed 호출 , 데이터 -> \(self.currentExhibit?.exhbt_cd ?? "")")
-        self.viewModel.requestReserve(exhbt_cd: self.currentExhibit?.exhbt_cd ?? "")
-        self.navigationController?.popToRootViewController(animated: true)
+        //TODO: 얼리카드 발급, 예약하는거 다시 추가하자
+//        self.viewModel.requestReserve(exhbt_cd: self.currentExhibit?.exhbt_cd ?? "")
+        
+        
+        let takeEarlyCardVC = TakeEarlyCardViewController()
+        takeEarlyCardVC.bookedExhibition = self.currentExhibit
+        takeEarlyCardVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(takeEarlyCardVC, animated: true) {
+            self.navigationController?.popToRootViewController(animated: false)
+        }
     }
     
     @objc func backBtnPressed(_ sender: UIButton){
@@ -130,6 +143,7 @@ class ExhibitConfirmViewController: UIViewController {
     func setNavigationItem(){
         self.navigationItem.title = "예매확인"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     func setUI(){
@@ -144,6 +158,7 @@ class ExhibitConfirmViewController: UIViewController {
         self.view.addSubview(exhibitImageView)
         self.view.addSubview(backBtn)
         self.view.addSubview(completeBtn)
+        self.view.addSubview(bubbleImageView)
         
         exhibitTypeLabel.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(110.0)
@@ -201,6 +216,13 @@ class ExhibitConfirmViewController: UIViewController {
             $0.bottom.equalToSuperview().offset(-64.0)
             $0.width.equalTo(completeBtn.snp.width)
             $0.height.equalTo(48.0)
+        }
+        
+        bubbleImageView.snp.makeConstraints{
+            $0.centerX.equalTo(completeBtn.snp.centerX)
+            $0.bottom.equalTo(completeBtn.snp.top).offset(-5.0)
+            $0.width.equalTo(131.0)
+            $0.height.equalTo(33.0)
         }
         
         completeBtn.snp.makeConstraints{
