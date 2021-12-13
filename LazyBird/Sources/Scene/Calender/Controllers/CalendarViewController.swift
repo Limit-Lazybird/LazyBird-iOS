@@ -13,6 +13,7 @@ import FSCalendar
 protocol CalendarViewDelegate{
     func moveToSelectUnregisteredExhibition() // 캘린더에 저장되지 않은 예약 전시 리스트 선택 화면으로 이동
     func moveToAddExhibitionSchedule(selectedSchedule: Schedule)
+    func moveToAddExhibitionScheduleForEdit(schedule: Schedule) // 캘린더 등록된 일정 수정
     func moveToExhibitionVisitAlert(currentSchedule: Schedule, indexPath: Int) // alert view 띄우기
     func moveToEditOrDeleteAlert(currentSchedule: Schedule) // 수정, 삭제 알림 화면으로 이동
     func cancelBtnPressed(currentSchedule: Schedule, indexPath: Int) // 전시 방문 취소
@@ -436,6 +437,22 @@ extension CalendarViewController: CalendarViewDelegate{
         exhibitionEditOrDeleteVC.currentSchedule = currentSchedule
         
         self.present(exhibitionEditOrDeleteVC, animated: false, completion: nil)
+    }
+    
+    /* 캘린더 등록된 일정 수정화면 */
+    func moveToAddExhibitionScheduleForEdit(schedule: Schedule){
+        let addExhibitionScheduleVC = AddExhibitionScheduleViewController()
+        addExhibitionScheduleVC.hidesBottomBarWhenPushed = true
+        addExhibitionScheduleVC.isEdit = true
+        addExhibitionScheduleVC.viewModel.setCurrentExhibition(exhibition: schedule)
+        
+        if schedule.isCustom!{
+            addExhibitionScheduleVC.additionalType = .custom
+        }else{
+            addExhibitionScheduleVC.additionalType = .bookedExhibition
+        }
+        
+        self.navigationController?.pushViewController(addExhibitionScheduleVC, animated: true)
     }
     
     /* 커스텀 전시 일정 삭제 */

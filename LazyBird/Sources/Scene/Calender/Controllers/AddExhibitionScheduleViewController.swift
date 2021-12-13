@@ -21,6 +21,7 @@ class AddExhibitionScheduleViewController: UIViewController {
     //MARK: - Properties
     let viewModel = AddExhibitionScheduleViewModel()
     var additionalType: AdditionalTypesOfExhibition?
+    var isEdit: Bool = false
     
     //MARK: - UI Components
     let alertLabel = UILabel().then{
@@ -157,10 +158,22 @@ class AddExhibitionScheduleViewController: UIViewController {
     @objc func registBtnPressed(_ sender: UIButton){
         //TODO: 서버로 일정 등록 api 전송하기
         //TODO: 필요한 정보 - 1. 이름 / 2. 장소 / 3. 날짜 / 4. 시작시간 / 5. 끝시간
+        guard let currentExhibition = self.viewModel.currentExhibition else{
+            print("registBtnPressed registBtnPressed is nil")
+            return
+        }
+        
         if checkRequestParameter(){ // parameter 유효한지 check
             //TODO: request
-            requestSaveSchedule() // 스케줄 저장 request
-            
+            if currentExhibition.isCustom ?? false && isEdit{ // 커스텀 일정 수정 request
+                print("커스텀 일정 수정 request")
+                let parameter = getCustomEditParameter()
+                self.viewModel.requestCustomScheduleEdit(customEdit: parameter)
+            }else{
+                print("예약 전시 일정 저장/수정 request")
+                requestSaveSchedule() // 예약 전시 스케줄 저장/수정 request
+            }
+                
             self.navigationController?.popViewController(animated: true)
         }else{
             //TODO: 경고창 띄우거나 request 안함
@@ -198,7 +211,12 @@ class AddExhibitionScheduleViewController: UIViewController {
     }
     
     func setNavigationItem(){
-        self.navigationItem.title = "전시 일정 추가"
+        if isEdit{
+            self.navigationItem.title = "전시 일정 수정"
+        }else{
+            self.navigationItem.title = "전시 일정 추가"
+        }
+        
         // Title 설정
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.barTintColor = UIColor.Background.darkGray02
@@ -219,6 +237,29 @@ class AddExhibitionScheduleViewController: UIViewController {
         
         self.exhibitionInputTextField.text = currentExhibition.exhbt_nm
         self.stationInputTextField.text = currentExhibition.exhbt_lct
+        
+        //TODO: 텍스트 필드 수정 못하게 막기
+        switch self.additionalType{
+        case .custom:
+            self.exhibitionInputTextField.isEnabled = true
+            self.stationInputTextField.isEnabled = true
+            break
+        case .bookedExhibition:
+            self.exhibitionInputTextField.isEnabled = false
+            self.stationInputTextField.isEnabled = false
+            break
+        case .none:
+            break
+        }
+        
+        if isEdit{
+            //TODO: - 버튼 title, action 변경
+            registBtn.setTitle("수정", for: .normal)
+        }else{
+            //TODO: - 버튼 title, action 변경
+            registBtn.setTitle("추가", for: .normal)
+        }
+        
     }
     
     func setUI(){
@@ -310,17 +351,24 @@ class AddExhibitionScheduleViewController: UIViewController {
         }
         
         registBtn.snp.makeConstraints{
-            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-24.0)
+            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(16.0)
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-16.0)
             $0.bottom.equalToSuperview().offset(-38.0)
-            $0.width.equalTo(self.view.frame.width * 0.536)
             $0.height.equalTo(48.0)
+//            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-24.0)
+//            $0.bottom.equalToSuperview().offset(-38.0)
+//            $0.width.equalTo(self.view.frame.width * 0.536)
+            
         }
         
         deleteBtn.snp.makeConstraints{
-            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(24.0)
-            $0.trailing.equalTo(registBtn.snp.leading).offset(-8.0)
+            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(16.0)
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-16.0)
             $0.bottom.equalToSuperview().offset(-38.0)
             $0.height.equalTo(48.0)
+//            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(24.0)
+//            $0.trailing.equalTo(registBtn.snp.leading).offset(-8.0)
+//            $0.bottom.equalToSuperview().offset(-38.0)
         }
     }
     
@@ -331,6 +379,18 @@ class AddExhibitionScheduleViewController: UIViewController {
             context.fill(CGRect(origin: .zero, size: size))
         }
         return image
+    }
+    
+    private func getCustomEditParameter() -> ExhibitionCustomEditRequest{
+        let currentExhibition = self.viewModel.currentExhibition
+        
+        let parameter = ExhibitionCustomEditRequest(exhbt_cd: currentExhibition?.exhbt_cd ?? "",
+                                    exhbt_nm: exhibitionInputTextField.text ?? "",
+                                    exhbt_lct: stationInputTextField.text ?? "" ,
+                                    reser_dt: dateSettingBtn.titleLabel?.text?.replacingOccurrences(of: "-", with: "") ?? "",
+                                    start_time: startTimeBtn.titleLabel?.text ?? "",
+                                    end_time: endTimeBtn.titleLabel?.text ?? "")
+        return parameter
     }
     
     private func requestSaveSchedule(){

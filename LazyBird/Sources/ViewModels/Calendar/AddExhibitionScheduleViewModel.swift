@@ -23,6 +23,13 @@ class AddExhibitionScheduleViewModel {
         }
     }
     
+    func requestCustomScheduleEdit(customEdit: ExhibitionCustomEditRequest){
+        calendarManager.requestCustomScheduleEdit(customEdit: customEdit) {
+            print("수정 완료")
+        }
+    }
+    
+    
     func setCurrentExhibition(exhibition: Schedule){
         self.currentExhibition = exhibition
     }

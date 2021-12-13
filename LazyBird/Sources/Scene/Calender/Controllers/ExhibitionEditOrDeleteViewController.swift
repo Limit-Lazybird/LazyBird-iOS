@@ -58,7 +58,9 @@ class ExhibitionEditOrDeleteViewController: UIViewController {
     @objc func editBtnPressed(_ sender: UIButton){
         //TODO: 화면 dismiss
         print("edit")
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false){
+            self.delegate?.moveToAddExhibitionScheduleForEdit(schedule: self.currentSchedule!)
+        }
     }
     
     @objc func deleteBtnPressed(_ sender: UIButton){

@@ -79,6 +79,7 @@ class CalendarViewModel {
         }
     }
     
+    /* 예약된 전시 일정 삭제 */
     func requestBookedScheduleDelete(bookedSchedule: BookedInfoSaveRequest, completion: @escaping ()->(Void)){
         calendarManager.requestSaveBookedSchedule(bookedSchedule: bookedSchedule){
             completion()

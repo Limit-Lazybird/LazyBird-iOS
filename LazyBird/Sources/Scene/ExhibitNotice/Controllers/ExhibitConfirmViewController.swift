@@ -97,6 +97,7 @@ class ExhibitConfirmViewController: UIViewController {
     //MARK: - Functions
     @objc func completeBtnPressed(_ sender: UIButton){
         //TODO: root  VC 로 가자
+        print("completeBtnPressed 호출 , 데이터 -> \(self.currentExhibit?.exhbt_cd ?? "")")
         self.viewModel.requestReserve(exhbt_cd: self.currentExhibit?.exhbt_cd ?? "")
         self.navigationController?.popToRootViewController(animated: true)
     }
