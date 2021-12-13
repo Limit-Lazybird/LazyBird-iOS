@@ -55,7 +55,7 @@ class ReservedExhibitViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        checkExhibit()
+//        checkExhibit()
     }
     
     //MARK: - Functions
@@ -81,7 +81,7 @@ class ReservedExhibitViewController: UIViewController {
             print("Reserved bind 호출")
             self.collectionView.reloadData()
             
-            if exhibits.count == 0{
+            if self.viewModel?.reservationExhibits.value.count == 0{
                 self.noResultLabel.isHidden = false
             }else{
                 self.noResultLabel.isHidden = true

@@ -86,7 +86,6 @@ class MyBirdReservedExhibitionView: UIView {
     func config(exhibit: [Exhibit]){
         switch exhibit.count{
         case 0:
-            print("값이 하나도 없습니당")
             self.noResultLabel.isHidden = false
             self.leftDDayBtn.isHidden = true
             self.rightDDayBtn.isHidden = true
@@ -113,7 +112,7 @@ class MyBirdReservedExhibitionView: UIView {
         default:
             self.leftDDayBtn.isHidden = false
             self.rightDDayBtn.isHidden = false
-            self.noResultLabel.isHidden = false
+            self.noResultLabel.isHidden = true
             self.leftExhibitPreview.config(exhibit: exhibit[0])
             self.rightExhibitPreview.config(exhibit: exhibit[1])
             self.leftDDayBtn.setTitle(getDDayText(exhbt_to_dt: exhibit[0].exhbt_to_dt ?? ""), for: .normal)

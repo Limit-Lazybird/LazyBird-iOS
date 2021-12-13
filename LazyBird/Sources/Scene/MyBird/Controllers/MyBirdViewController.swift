@@ -63,7 +63,6 @@ class MyBirdViewController: UIViewController {
         self.viewModel.requestFavoriteExhibits()
         self.viewModel.requestReservationExhibits()
         self.viewModel.requestUserInfo()
-//        setConfig()
     }
     
     //MARK: - Functions
