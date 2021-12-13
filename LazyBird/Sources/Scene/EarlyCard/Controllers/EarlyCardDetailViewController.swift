@@ -34,13 +34,13 @@ class EarlyCardDetailViewController: UIViewController {
     }
     
     let circleView = UIView().then{
-        $0.backgroundColor = UIColor.Background.black02
+        $0.backgroundColor = UIColor.Opacity.black80
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 46 / 2
     }
     
     let circleViewTwo = UIView().then{
-        $0.backgroundColor = UIColor.Background.black02
+        $0.backgroundColor = UIColor.Opacity.black80
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 46 / 2
     }
@@ -72,6 +72,12 @@ class EarlyCardDetailViewController: UIViewController {
     let visitLabel = UILabel().then{
         $0.font = UIFont.TTFont(type: .SDReg, size: 24)
         $0.textColor = UIColor.Background.black02
+    }
+    
+    let bubbleImageView = UIImageView().then{
+        $0.image = UIImage(named: "earlycard_bubble")
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     lazy var importBtn = UIButton().then{
@@ -158,6 +164,7 @@ class EarlyCardDetailViewController: UIViewController {
     
     func setUI(){
         self.view.addSubview(bgView)
+        self.view.addSubview(bubbleImageView)
         self.view.addSubview(importBtn)
         self.view.addSubview(closeBtn)
         self.view.addSubview(cardBgView)
@@ -172,6 +179,13 @@ class EarlyCardDetailViewController: UIViewController {
         
         bgView.snp.makeConstraints{
             $0.edges.equalToSuperview()
+        }
+        
+        bubbleImageView.snp.makeConstraints{
+            $0.trailing.equalTo(importBtn.snp.trailing).offset(10.0)
+            $0.bottom.equalTo(importBtn.snp.top).offset(-3.0)
+            $0.width.equalTo(146.0)
+            $0.height.equalTo(33.0)
         }
         
         importBtn.snp.makeConstraints{
