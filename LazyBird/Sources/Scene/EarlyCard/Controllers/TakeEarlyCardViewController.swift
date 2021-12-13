@@ -16,6 +16,11 @@ class TakeEarlyCardViewController: UIViewController {
     //MARK: - Properties
     var bookedExhibition: Exhibit?
     let viewModel = EarlyCardViewModel()
+    lazy var swipeUpGesture = UISwipeGestureRecognizer(target: self,
+                                                  action: #selector(swipeUpCalled(_:))).then{
+        $0.direction = .up
+    }
+    var isSwipe: Bool = true
     
     //MARK: - UI Components
     let alertLabel = UILabel().then{
@@ -23,6 +28,24 @@ class TakeEarlyCardViewController: UIViewController {
         $0.numberOfLines = 0
         $0.font = UIFont.TTFont(type: .MontBold, size: 40)
         $0.textColor = UIColor.Point.or01
+    }
+    
+    let dummyCard = UIView().then{
+        $0.backgroundColor = .white
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        $0.layer.cornerRadius = 20
+    }
+    
+    let swipeLabel = UILabel().then{
+        $0.text = "swipe up"
+        $0.font = UIFont.TTFont(type: .MontReg, size: 28)
+        $0.textColor = UIColor.Basic.gray02
+    }
+    
+    let swipeArrowImageView = UIImageView().then{
+        $0.image = UIImage(named: "swipe_arrow")
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     let cardBgView = UIView().then{
@@ -96,8 +119,11 @@ class TakeEarlyCardViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.Background.black02
         
+        self.view.addGestureRecognizer(self.swipeUpGesture)
+        
         setUI()
         setBind()
+        prepareAnimation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +133,13 @@ class TakeEarlyCardViewController: UIViewController {
     }
     
     //MARK: - Functions
+    @objc func swipeUpCalled(_ sender: Any){
+        //TODO: 한번만 swipe 가능하게
+        if isSwipe {
+            showAnimation()
+        }
+    }
+    
     @objc func completeBtnPressed(_ sender: UIButton){
         self.dismiss(animated: true) {
             //TODO: 화면 닫고, 얼리카드 리스트 페이지로 이동
@@ -143,6 +176,9 @@ class TakeEarlyCardViewController: UIViewController {
         self.view.addSubview(completeBtn)
         self.view.addSubview(btnLabel)
         self.view.addSubview(btnLabelTwo)
+        self.view.addSubview(swipeArrowImageView)
+        self.view.addSubview(swipeLabel)
+        self.view.addSubview(dummyCard)
         cardBgView.addSubview(thumbnailImageView)
         cardBgView.addSubview(circleView)
         cardBgView.addSubview(circleViewTwo)
@@ -150,6 +186,23 @@ class TakeEarlyCardViewController: UIViewController {
         cardBgView.addSubview(numberLabel)
         cardBgView.addSubview(exhibitTitleLabel)
         cardBgView.addSubview(visitAlertLabel)
+        
+        swipeArrowImageView.snp.makeConstraints{
+            $0.centerX.equalTo(self.view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(swipeLabel.snp.top).offset(-6.0)
+        }
+        
+        swipeLabel.snp.makeConstraints{
+            $0.centerX.equalTo(self.view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(dummyCard.snp.top).offset(-38.0)
+        }
+        
+        dummyCard.snp.makeConstraints{
+            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(48.0)
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-48.0)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(112.0)
+        }
         
         alertLabel.snp.makeConstraints{
             $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(48.0)
@@ -221,4 +274,35 @@ class TakeEarlyCardViewController: UIViewController {
             $0.height.equalTo(48.0)
         }
     }
+    
+    private func prepareAnimation(){
+        self.cardBgView.transform = CGAffineTransform(translationX: 0, y: view.bounds.height)
+
+        self.cardBgView.alpha = 0
+        self.completeBtn.alpha = 0
+        self.btnLabel.alpha = 0
+        self.btnLabelTwo.alpha = 0
+    }
+    
+    private func showAnimation(){
+        UIView.animate(
+            withDuration: 4,
+            delay: 0.2,
+            usingSpringWithDamping: 0.6,
+            initialSpringVelocity: 2,
+            options: .allowUserInteraction,
+            animations: {
+                self.cardBgView.transform = CGAffineTransform.identity
+                self.cardBgView.alpha = 1
+                self.completeBtn.alpha = 1
+                self.btnLabel.alpha = 1
+                self.btnLabelTwo.alpha = 1
+                self.dummyCard.alpha = 0
+                self.swipeLabel.alpha = 0
+                self.swipeArrowImageView.alpha = 0
+             
+        },
+            completion: nil)
+    }
+    
 }
