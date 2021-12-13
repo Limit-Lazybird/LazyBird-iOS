@@ -36,6 +36,8 @@
 		A8673A502767C6620045DAD0 /* EarlyCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A4F2767C6620045DAD0 /* EarlyCardManager.swift */; };
 		A8673A532767C71B0045DAD0 /* EarlyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A522767C71B0045DAD0 /* EarlyCardViewModel.swift */; };
 		A8673A562767C8B10045DAD0 /* EarlyCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A552767C8B10045DAD0 /* EarlyCards.swift */; };
+		A8673A582767CBBF0045DAD0 /* EarlyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A572767CBBF0045DAD0 /* EarlyCardCell.swift */; };
+		A8673A5A2767D7E20045DAD0 /* EarlyCardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A592767D7E20045DAD0 /* EarlyCardDetailViewController.swift */; };
 		A86DB6122747A02E000C9A6E /* ExhibitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6112747A02E000C9A6E /* ExhibitDetailViewModel.swift */; };
 		A86DB6142747F976000C9A6E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6132747F976000C9A6E /* UIImageExtension.swift */; };
 		A8841305275A0B6200DC764B /* AddExhibitionScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */; };
@@ -172,6 +174,8 @@
 		A8673A4F2767C6620045DAD0 /* EarlyCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyCardManager.swift; sourceTree = "<group>"; };
 		A8673A522767C71B0045DAD0 /* EarlyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyCardViewModel.swift; sourceTree = "<group>"; };
 		A8673A552767C8B10045DAD0 /* EarlyCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyCards.swift; sourceTree = "<group>"; };
+		A8673A572767CBBF0045DAD0 /* EarlyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyCardCell.swift; sourceTree = "<group>"; };
+		A8673A592767D7E20045DAD0 /* EarlyCardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyCardDetailViewController.swift; sourceTree = "<group>"; };
 		A86DB6112747A02E000C9A6E /* ExhibitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitDetailViewModel.swift; sourceTree = "<group>"; };
 		A86DB6132747F976000C9A6E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExhibitionScheduleViewController.swift; sourceTree = "<group>"; };
@@ -398,6 +402,7 @@
 		A8673A472767A2700045DAD0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A8673A572767CBBF0045DAD0 /* EarlyCardCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 			children = (
 				A8673A4A2767A2960045DAD0 /* EarlyCardListViewController.swift */,
 				A8673A4C2767B3760045DAD0 /* TakeEarlyCardViewController.swift */,
+				A8673A592767D7E20045DAD0 /* EarlyCardDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1260,9 +1266,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8EAC4E1274F93D600FC5562 /* MyBirdFavoriteExhibitionView.swift in Sources */,
+				A8673A582767CBBF0045DAD0 /* EarlyCardCell.swift in Sources */,
 				A8EAC4D5274F7C6F00FC5562 /* ExhibitFilterAPIManager.swift in Sources */,
 				A8FDF1422746B7CF004FB5EE /* LoginViewModel.swift in Sources */,
 				A8EAC4EB274FFEE700FC5562 /* MyBirdAPIManager.swift in Sources */,
+				A8673A5A2767D7E20045DAD0 /* EarlyCardDetailViewController.swift in Sources */,
 				A8E6DF3A2745598D0080137C /* Observable.swift in Sources */,
 				A8DA7EC3271F3413009976CF /* LoginButtonContainerView.swift in Sources */,
 				A806262327418F3B00B562A6 /* ExhibitCell.swift in Sources */,

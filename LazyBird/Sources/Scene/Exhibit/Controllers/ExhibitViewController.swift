@@ -76,6 +76,7 @@ class ExhibitViewController: UIViewController {
     
     @objc func earlyCardPressed(_ sender: Any){
         let earlyCardListVC = EarlyCardListViewController()
+        earlyCardListVC.hidesBottomBarWhenPushed = true
         
         self.navigationController?.pushViewController(earlyCardListVC, animated: true)
     }
