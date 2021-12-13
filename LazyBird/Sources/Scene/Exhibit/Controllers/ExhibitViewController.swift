@@ -75,7 +75,9 @@ class ExhibitViewController: UIViewController {
     }
     
     @objc func earlyCardPressed(_ sender: Any){
-        print("earlyCardBtn pressed")
+        let earlyCardListVC = EarlyCardListViewController()
+        
+        self.navigationController?.pushViewController(earlyCardListVC, animated: true)
     }
     
     func setUI(){
@@ -104,7 +106,7 @@ class ExhibitViewController: UIViewController {
     func setNavigationItem(){
         self.navigationItem.title = "전시"
         self.navigationController?.delegate = self
-//        self.navigationItem.rightBarButtonItems = [alertBtn, earlyCardBtn]
+        self.navigationItem.rightBarButtonItems = [earlyCardBtn]
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.shadowImage = colorToImage()
         // Title 설정

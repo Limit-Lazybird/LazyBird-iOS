@@ -31,6 +31,7 @@
 		A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541BA527411588003C7F19 /* UIFontExtension.swift */; };
 		A8673A4027668FDA0045DAD0 /* ExhibitionEditOrDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A3F27668FDA0045DAD0 /* ExhibitionEditOrDeleteViewController.swift */; };
 		A8673A422766B1910045DAD0 /* ExhibitionCustomEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A412766B1910045DAD0 /* ExhibitionCustomEditRequest.swift */; };
+		A8673A4B2767A2960045DAD0 /* EarlyCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8673A4A2767A2960045DAD0 /* EarlyCardListViewController.swift */; };
 		A86DB6122747A02E000C9A6E /* ExhibitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6112747A02E000C9A6E /* ExhibitDetailViewModel.swift */; };
 		A86DB6142747F976000C9A6E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86DB6132747F976000C9A6E /* UIImageExtension.swift */; };
 		A8841305275A0B6200DC764B /* AddExhibitionScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */; };
@@ -162,6 +163,7 @@
 		A8541BA527411588003C7F19 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		A8673A3F27668FDA0045DAD0 /* ExhibitionEditOrDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionEditOrDeleteViewController.swift; sourceTree = "<group>"; };
 		A8673A412766B1910045DAD0 /* ExhibitionCustomEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionCustomEditRequest.swift; sourceTree = "<group>"; };
+		A8673A4A2767A2960045DAD0 /* EarlyCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyCardListViewController.swift; sourceTree = "<group>"; };
 		A86DB6112747A02E000C9A6E /* ExhibitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitDetailViewModel.swift; sourceTree = "<group>"; };
 		A86DB6132747F976000C9A6E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		A8841304275A0B6200DC764B /* AddExhibitionScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExhibitionScheduleViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				A8A44FBC272D598300807BD2 /* OnBoarding */,
 				A8DA7F30272702D5009976CF /* EarlyBird */,
 				A8518511274136620029B541 /* Exhibit */,
+				A8673A462767A24D0045DAD0 /* EarlyCard */,
 				A8FF870A274297D900EBC16E /* ExhibitFilter */,
 				A8AD0882273AE99A003A793A /* ExhibitDetail */,
 				A8EAC4B3274E79E200FC5562 /* ExhibitSearch */,
@@ -372,6 +375,38 @@
 				A806262227418F3B00B562A6 /* ExhibitCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A8673A462767A24D0045DAD0 /* EarlyCard */ = {
+			isa = PBXGroup;
+			children = (
+				A8673A492767A27D0045DAD0 /* Controllers */,
+				A8673A482767A2770045DAD0 /* Views */,
+				A8673A472767A2700045DAD0 /* Cells */,
+			);
+			path = EarlyCard;
+			sourceTree = "<group>";
+		};
+		A8673A472767A2700045DAD0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A8673A482767A2770045DAD0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8673A492767A27D0045DAD0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8673A4A2767A2960045DAD0 /* EarlyCardListViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A86DB61027479FD3000C9A6E /* ExhibitDetail */ = {
@@ -1283,6 +1318,7 @@
 				A8EAC4FC27503D7900FC5562 /* SettingItemView.swift in Sources */,
 				A8844DF4275CFAA50092A71A /* AddExhibitionScheduleViewModel.swift in Sources */,
 				A8EAC4AC274E4C0300FC5562 /* ExhibitNoticeViewController.swift in Sources */,
+				A8673A4B2767A2960045DAD0 /* EarlyCardListViewController.swift in Sources */,
 				A8EAC4B8274E7A2000FC5562 /* ExhibitSearchViewController.swift in Sources */,
 				A8541BA627411588003C7F19 /* UIFontExtension.swift in Sources */,
 				A8EAC4DB274F908000FC5562 /* MyBirdViewController.swift in Sources */,
