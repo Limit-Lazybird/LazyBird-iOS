@@ -94,9 +94,27 @@ class EarlyCardDetailViewController: UIViewController {
     }
     
     //MARK: - Functions\
+    @objc func setImage(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+           //사진 저장 한후
+           if let error = error {
+               // we got back an error!
+            print("에러처리 아몰랑 ~ \(error.localizedDescription)")
+           } else {
+                // save
+               //TODO: 저장이 완료되어씀니다
+               completeAlert()
+           }
+    }
+    
     @objc func importBtnPressed(_ sender: UIButton){
         print("import Btn pressed")
         //TODO: 사진 캡쳐해야함
+        guard let image = self.cardBgView.transfromToImage() else {
+            print("EarlyCardDetailViewController importBtnPressed image is nil")
+            return
+        }
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(setImage(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     @objc func closeBtnPressed(_ sender: UIButton){
@@ -105,6 +123,16 @@ class EarlyCardDetailViewController: UIViewController {
     
     @objc func bgViewPressed(_ sender: UIButton){
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    func completeAlert(){
+        let alert = UIAlertController(title: "저장 성공", message: "갤러리에 사진을 성공적으로 저장하였습니다.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { (ok) in
+            
+        }
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func setBind(){
