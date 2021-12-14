@@ -51,6 +51,7 @@ class FavoriteExhibitDetailViewController: UIViewController {
         setUI()
         config()
         setObserver()
+        setNavigationItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +64,10 @@ class FavoriteExhibitDetailViewController: UIViewController {
     @objc func likePressedNotification(_ noti: Notification){
         print("TODO: 컬렉션뷰 reload")
         self.viewModel?.requestFavoriteExhibits()
+    }
+    
+    func setNavigationItem(){
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     func setObserver(){
@@ -152,6 +157,14 @@ extension FavoriteExhibitDetailViewController: UICollectionViewDataSource{
 extension FavoriteExhibitDetailViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //TODO: moveToDetail
+        guard let viewModel = self.viewModel else {
+            print("FavoriteExhibitDetailViewController collectionView didSelectItemAt viewModel is nil")
+            return
+        }
+        let exhibitDetailVC = ExhibitDetailViewController()
+        exhibitDetailVC.hidesBottomBarWhenPushed = true
+        exhibitDetailVC.exhibitDetailViewModel.setExhibit(viewModel.favoriteExhibits.value[indexPath.row])
+        self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
     }
 }
 
