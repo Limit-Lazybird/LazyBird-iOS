@@ -49,7 +49,7 @@ class ReservedExhibitViewController: UIViewController {
         self.view.backgroundColor = UIColor.Background.black02
         
         setUI()
-//        config()
+        setNavigationItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +87,10 @@ class ReservedExhibitViewController: UIViewController {
                 self.noResultLabel.isHidden = true
             }
         }
+    }
+    
+    func setNavigationItem(){
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     func setUI(){
@@ -138,7 +142,18 @@ extension ReservedExhibitViewController: UICollectionViewDataSource{
 }
 
 extension ReservedExhibitViewController: UICollectionViewDelegate{
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //TODO: moveToDetail
+        guard let viewModel = self.viewModel else {
+            print("FavoriteExhibitDetailViewController collectionView didSelectItemAt viewModel is nil")
+            return
+        }
+        
+        let exhibitDetailVC = ExhibitDetailViewController()
+        exhibitDetailVC.hidesBottomBarWhenPushed = true
+        exhibitDetailVC.exhibitDetailViewModel.setExhibit(viewModel.reservationExhibits.value[indexPath.row])
+        self.navigationController?.pushViewController(exhibitDetailVC, animated: true)
+    }
 }
 
 extension ReservedExhibitViewController: UICollectionViewDelegateFlowLayout {
