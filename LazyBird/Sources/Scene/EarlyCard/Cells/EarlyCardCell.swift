@@ -86,7 +86,16 @@ class EarlyCardCell: UICollectionViewCell {
         //TODO: number, title, date 바인딩하자
         self.numberLabel.text = "NO.\(count)"
         self.exhibitTitleLabel.text = card.exhbt_nm
-        self.visitLabel.text = card.early_rg_dt
+        
+        if card.reser_dt == "N"{
+            self.visitLabel.text = "-"
+        }else{
+            var tmpReser = card.reser_dt
+            tmpReser.insert("-", at: tmpReser.index(tmpReser.startIndex, offsetBy: 4))
+            tmpReser.insert("-", at: tmpReser.index(tmpReser.endIndex, offsetBy: -2))
+            
+            self.visitLabel.text = tmpReser
+        }
         
         thumbnailImageView.kf.setImage(with: URL(string: card.exhbt_sn)){ result in
             switch result{

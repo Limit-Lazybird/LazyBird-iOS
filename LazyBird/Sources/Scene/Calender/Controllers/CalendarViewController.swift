@@ -95,7 +95,7 @@ class CalendarViewController: UIViewController {
         $0.appearance.todayColor = UIColor.Basic.gray02 // 오늘 컬러
         $0.appearance.todaySelectionColor = UIColor.Point.or01
         $0.appearance.headerMinimumDissolvedAlpha = 0
-        $0.appearance.eventDefaultColor = UIColor.Point.or01 // 이벤트 default color
+        $0.appearance.eventDefaultColor = UIColor.Point.green01 // 이벤트 default color
         $0.appearance.eventSelectionColor = UIColor.Point.green01 // 이벤트 selection Color
         $0.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase // 월화수목금토일 -> S M T ....
         $0.backgroundColor = UIColor.Background.darkGray02

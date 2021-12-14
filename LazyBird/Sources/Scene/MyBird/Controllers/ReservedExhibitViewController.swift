@@ -88,7 +88,6 @@ class ReservedExhibitViewController: UIViewController {
         viewModel.reservationExhibits.bind { exhibits in
             print("Reserved bind 호출")
             self.collectionView.reloadData()
-            print("reserved count --> \(self.viewModel?.reservationExhibits.value.count)")
             
             if self.viewModel?.reservationExhibits.value.count == 0{
                 self.noResultLabel.isHidden = false

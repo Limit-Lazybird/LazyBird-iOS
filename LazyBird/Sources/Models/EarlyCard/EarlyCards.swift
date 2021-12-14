@@ -16,7 +16,7 @@ struct EarlyCard: Codable{
     let exhbt_nm: String
     let exhbt_lct: String
     let early_rg_dt: String
-    let reser_dt: String
+    var reser_dt: String
     let exhbt_sn: String
     let early_num: Int
 }

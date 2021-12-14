@@ -95,7 +95,7 @@ class CalendarManager {
     }
     
     /* 직접 등록하는 일정 전시 캘린더에 등록 */
-    func requestSaveCustomSchedule(customSchedule: CustomInfoSaveRequest){
+    func requestSaveCustomSchedule(customSchedule: CustomInfoSaveRequest, completion: @escaping ()->(Void)){
         guard let token = TokenUtils.shared.read(account: .access_token) else{
             print("requestLike  token read is nil")
             return
@@ -114,6 +114,7 @@ class CalendarManager {
                     let jsonData = try JSONSerialization.data(withJSONObject: response.value!, options: .prettyPrinted)
                     let jsonToString = String(data: jsonData, encoding: .utf8)
                     print("requestSaveCustomSchedule result -> \(jsonToString ?? "")")
+                    completion()
                 }catch let error {
                     print("parsing error -> \(error.localizedDescription)")
                 }

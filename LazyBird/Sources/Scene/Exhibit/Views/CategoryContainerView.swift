@@ -27,7 +27,7 @@ class CategoryContainerView: UIView {
         $0.delegate = self
         $0.backgroundColor = .clear
         $0.showsHorizontalScrollIndicator = false
-        $0.allowsMultipleSelection = true
+        $0.allowsMultipleSelection = false
         $0.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 0, right: 0)
         $0.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }
@@ -83,9 +83,22 @@ extension CategoryContainerView: UICollectionViewDelegate{
         self.viewModel?.requestCategoryFilteredExhibits(category: category)
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+           guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell else {
+               return true
+           }
+           if cell.isSelected {
+               collectionView.deselectItem(at: indexPath, animated: true)
+               self.viewModel?.fetchExhibits()
+               return false
+           } else {
+               return true
+           }
+       }
+    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         //TODO: 원래 리스트로 돌아오기
-        self.viewModel?.fetchExhibits()
+//        self.viewModel?.fetchExhibits()
     }
 }
 

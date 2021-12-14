@@ -12,20 +12,23 @@ class AddExhibitionScheduleViewModel {
     var currentExhibition: Schedule? // 캘린더에 추가할 현재 exhibition 정보
 
     /* 직접 등록하는 일정 전시 캘린더에 등록 */
-    func requestSaveCustomSchedule(customSchedule: CustomInfoSaveRequest){
-        calendarManager.requestSaveCustomSchedule(customSchedule: customSchedule)
-    }
-    
-    /* 예약한 전시 캘린더에 등록 */
-    func requestSaveBookedSchedule(bookedSchedule: BookedInfoSaveRequest){
-        calendarManager.requestSaveBookedSchedule(bookedSchedule: bookedSchedule){
-            
+    func requestSaveCustomSchedule(customSchedule: CustomInfoSaveRequest, completion: @escaping ()->(Void)){
+        calendarManager.requestSaveCustomSchedule(customSchedule: customSchedule){
+            completion()
         }
     }
     
-    func requestCustomScheduleEdit(customEdit: ExhibitionCustomEditRequest){
+    /* 예약한 전시 캘린더에 등록 */
+    func requestSaveBookedSchedule(bookedSchedule: BookedInfoSaveRequest, completion: @escaping ()->(Void)){
+        calendarManager.requestSaveBookedSchedule(bookedSchedule: bookedSchedule){
+            completion()
+        }
+    }
+    
+    func requestCustomScheduleEdit(customEdit: ExhibitionCustomEditRequest, completion: @escaping ()->(Void)){
         calendarManager.requestCustomScheduleEdit(customEdit: customEdit) {
             print("수정 완료")
+            completion()
         }
     }
     

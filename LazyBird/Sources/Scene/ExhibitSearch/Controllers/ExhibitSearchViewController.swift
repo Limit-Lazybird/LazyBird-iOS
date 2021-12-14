@@ -173,7 +173,8 @@ class ExhibitSearchViewController: UIViewController {
     
     func setNavigationItem(){
         self.navigationController?.navigationBar.isHidden = false
-//        self.navigationItem.title = "검색"
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.Background.black02
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     

@@ -158,23 +158,27 @@ class AddExhibitionScheduleViewController: UIViewController {
     @objc func registBtnPressed(_ sender: UIButton){
         //TODO: 서버로 일정 등록 api 전송하기
         //TODO: 필요한 정보 - 1. 이름 / 2. 장소 / 3. 날짜 / 4. 시작시간 / 5. 끝시간
-        guard let currentExhibition = self.viewModel.currentExhibition else{
-            print("registBtnPressed registBtnPressed is nil")
-            return
-        }
+//        guard let currentExhibition = self.viewModel.currentExhibition else{
+//            print("registBtnPressed registBtnPressed is nil")
+//            return
+//        }
         
         if checkRequestParameter(){ // parameter 유효한지 check
             //TODO: request
-            if currentExhibition.isCustom ?? false && isEdit{ // 커스텀 일정 수정 request
+            if self.viewModel.currentExhibition?.isCustom ?? false && isEdit{ // 커스텀 일정 수정 request
                 print("커스텀 일정 수정 request")
                 let parameter = getCustomEditParameter()
-                self.viewModel.requestCustomScheduleEdit(customEdit: parameter)
+                self.viewModel.requestCustomScheduleEdit(customEdit: parameter){
+                    self.navigationController?.popViewController(animated: true)
+                }
             }else{
                 print("예약 전시 일정 저장/수정 request")
-                requestSaveSchedule() // 예약 전시 스케줄 저장/수정 request
+                requestSaveSchedule(){ // 예약 전시 스케줄 저장/수정 request
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
                 
-            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.popViewController(animated: true)
         }else{
             //TODO: 경고창 띄우거나 request 안함
             print("경고 !! parameter가 유효하지 안타!!")
@@ -393,7 +397,7 @@ class AddExhibitionScheduleViewController: UIViewController {
         return parameter
     }
     
-    private func requestSaveSchedule(){
+    private func requestSaveSchedule(completion: @escaping ()->(Void)){
         guard let additionalType = self.additionalType else {
             print("requestSaveSchedule additionalType is nil")
             return
@@ -410,7 +414,9 @@ class AddExhibitionScheduleViewController: UIViewController {
                                                    reser_dt: dateSettingBtn.titleLabel?.text?.replacingOccurrences(of: "-", with: "") ?? "",
                                                    start_time: startTimeBtn.titleLabel?.text ?? "",
                                                    end_time: endTimeBtn.titleLabel?.text ?? "")
-            self.viewModel.requestSaveBookedSchedule(bookedSchedule: bookedInfo)
+            self.viewModel.requestSaveBookedSchedule(bookedSchedule: bookedInfo){
+                completion()
+            }
         case .custom:
             let customInfo = CustomInfoSaveRequest(exhbt_nm: exhibitionInputTextField.text ?? "",
                                   exhbt_lct: stationInputTextField.text ?? "",
@@ -418,9 +424,10 @@ class AddExhibitionScheduleViewController: UIViewController {
                                   start_time: startTimeBtn.titleLabel?.text ?? "",
                                   end_time: endTimeBtn.titleLabel?.text ?? "")
             
-            self.viewModel.requestSaveCustomSchedule(customSchedule: customInfo)
+            self.viewModel.requestSaveCustomSchedule(customSchedule: customInfo){
+                completion()
+            }
         }
-        
     }
     
     private func checkRequestParameter() -> Bool{
