@@ -81,7 +81,10 @@ class EarlyBirdViewController: UIViewController {
     }
     
     @objc func earlyCardPressed(_ sender: Any){
-        print("earlyCardBtn pressed")
+        let earlyCardListVC = EarlyCardListViewController()
+        earlyCardListVC.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(earlyCardListVC, animated: true)
     }
     
     func setNavigationItem(){
@@ -92,7 +95,7 @@ class EarlyBirdViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = colorToImage()
         // navigationbar left, right 버튼 설정
         self.navigationItem.leftBarButtonItem = logoBtn
-//        self.navigationItem.rightBarButtonItems = [alertBtn, earlyCardBtn]
+        self.navigationItem.rightBarButtonItems = [earlyCardBtn]
         // navigationbar backbutton 설정
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationController?.navigationBar.tintColor = .white
