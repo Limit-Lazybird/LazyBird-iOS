@@ -10,6 +10,10 @@ import SnapKit
 import Then
 
 
+protocol ReservedExhibitViewControllerDelegate{
+    func checkReseredExhibitionDeleteAlert(exhbt_cd: String) // 전시회 삭제할건지 물어보는 alert
+}
+
 class ReservedExhibitViewController: UIViewController {
     //MARK: - Properties
     var viewModel: MyBirdViewModel?
@@ -40,7 +44,6 @@ class ReservedExhibitViewController: UIViewController {
         $0.text = "에매한 전시가 없어요."
         $0.font = UIFont.TTFont(type: .SDBold, size: 17)
         $0.textColor = UIColor.Basic.gray03
-        $0.isHidden = true
     }
     
     //MARK: - Life Cycle
@@ -50,12 +53,17 @@ class ReservedExhibitViewController: UIViewController {
         
         setUI()
         setNavigationItem()
+        config()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        guard let viewModel = self.viewModel else {
+            print("FavoriteExhibitDetailViewController viewmodel is nil")
+            return
+        }
         
-//        checkExhibit()
+        viewModel.requestReservationExhibits()
     }
     
     //MARK: - Functions
@@ -80,6 +88,7 @@ class ReservedExhibitViewController: UIViewController {
         viewModel.reservationExhibits.bind { exhibits in
             print("Reserved bind 호출")
             self.collectionView.reloadData()
+            print("reserved count --> \(self.viewModel?.reservationExhibits.value.count)")
             
             if self.viewModel?.reservationExhibits.value.count == 0{
                 self.noResultLabel.isHidden = false
@@ -113,6 +122,35 @@ class ReservedExhibitViewController: UIViewController {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
+    
+    func checkAlert(exhbt_cd: String){
+        let alert = UIAlertController(title: "전시회 삭제", message: "해당 전시회를 삭제하실건가요?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { (ok) in
+            //TODO: 삭제 api 부르면 될듯?
+            self.viewModel?.requestReservedExhibitionRemove(exhbt_cd: exhbt_cd){
+                //TODO: 삭제 완료후 alert 띄우고, tableView data reload
+                self.completeAlert()
+                self.viewModel?.requestReservationExhibits()
+            }
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { cancels in
+            //TODO: 취소니까 아무 작동안해도됨
+        }
+
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func completeAlert(){
+        let alert = UIAlertController(title: "삭제 완료", message: "삭제가 완료되었습니다.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ReservedExhibitViewController: UICollectionViewDataSource{
@@ -135,6 +173,7 @@ extension ReservedExhibitViewController: UICollectionViewDataSource{
             return UICollectionViewCell()
         }
         
+        cell.delegate = self
         cell.config(exhibit: viewModel.reservationExhibits.value[indexPath.row])
         
         return cell
@@ -164,5 +203,13 @@ extension ReservedExhibitViewController: UICollectionViewDelegateFlowLayout {
         let height: CGFloat = width * 0.5730994152
         
         return CGSize(width: width, height: height)
+    }
+}
+
+extension ReservedExhibitViewController: ReservedExhibitViewControllerDelegate{
+    /* 전시회 삭제할건지 물어보는 alert */
+    func checkReseredExhibitionDeleteAlert(exhbt_cd: String){
+        //TODO: 지울건지 안지울건지 여부
+        self.checkAlert(exhbt_cd: exhbt_cd)
     }
 }

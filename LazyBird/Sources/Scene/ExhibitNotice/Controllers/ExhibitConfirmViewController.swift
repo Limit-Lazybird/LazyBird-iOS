@@ -103,8 +103,7 @@ class ExhibitConfirmViewController: UIViewController {
     //MARK: - Functions
     @objc func completeBtnPressed(_ sender: UIButton){
         //TODO: 얼리카드 발급, 예약하는거 다시 추가하자
-//        self.viewModel.requestReserve(exhbt_cd: self.currentExhibit?.exhbt_cd ?? "")
-        
+        self.viewModel.requestReserve(exhbt_cd: self.currentExhibit?.exhbt_cd ?? "")
         
         let takeEarlyCardVC = TakeEarlyCardViewController()
         takeEarlyCardVC.bookedExhibition = self.currentExhibit

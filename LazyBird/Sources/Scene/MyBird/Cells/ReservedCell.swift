@@ -10,7 +10,10 @@ import SnapKit
 import Then
 
 class ReservedCell: UICollectionViewCell {
+    //MARK: - Properties
     static let identifier = "reservedCell"
+    var currentExhibit: Exhibit?
+    var delegate: ReservedExhibitViewControllerDelegate?
     
     //MARK: - UI Components
     let dDayBtn = UIButton().then{
@@ -62,10 +65,12 @@ class ReservedCell: UICollectionViewCell {
     //MARK: - Life Cycle
     override init(frame : CGRect) {
         super.init(frame: frame)
-        
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20.0
         self.backgroundColor = UIColor.Background.darkGray02
+        
+        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self,
+                                                               action: #selector(longPressGesture(_:))))
         
         setUI()
     }
@@ -76,6 +81,22 @@ class ReservedCell: UICollectionViewCell {
     }
     
     //MARK: - Functions
+    @objc func longPressGesture(_ sender: Any){
+        //TODO: 전시회 삭제 alert 띄울까? delegate 로 하자
+        guard let delegate = delegate else {
+            print("ReservedCell longPressGesture delegate is nil")
+            return
+        }
+        
+        guard let currentExhibit = currentExhibit else {
+            print("ReservedCell longPressGesture currentExhibit is nil")
+            return
+        }
+
+
+        delegate.checkReseredExhibitionDeleteAlert(exhbt_cd: currentExhibit.exhbt_cd ?? "")
+    }
+    
     private func getDDayText(exhbt_to_dt: String) -> String{
         //TODO: 전시종료일짜 - 현재날짜 계산해서 return [o]
         let dateFormatter = DateFormatter()
@@ -89,6 +110,8 @@ class ReservedCell: UICollectionViewCell {
     }
     
     func config(exhibit: Exhibit){
+        self.currentExhibit = exhibit
+        
         dDayBtn.setTitle(getDDayText(exhbt_to_dt: exhibit.exhbt_to_dt ?? ""),
                          for: .normal)
         dDayBtn.titleEdgeInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)

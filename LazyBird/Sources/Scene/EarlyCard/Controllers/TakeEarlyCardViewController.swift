@@ -250,6 +250,7 @@ class TakeEarlyCardViewController: UIViewController {
         exhibitTitleLabel.snp.makeConstraints{
             $0.top.equalTo(numberLabel.snp.bottom).offset(10.0)
             $0.leading.equalTo(cardBgView.snp.leading).offset(21.0)
+            $0.trailing.equalTo(cardBgView.snp.trailing).offset(-21.0)
         }
         
         visitAlertLabel.snp.makeConstraints{

@@ -9,6 +9,7 @@ import UIKit
 
 class MyBirdViewModel {
     let apiManager = MyBirdAPIManager.shared
+    let reservedApiManager = ReservedAPIManager.shared
     let userInfoManager = UserInfoAPIManager.shared
     
     var favoriteExhibits: Observable<[Exhibit]> = Observable(value: [])
@@ -34,6 +35,13 @@ class MyBirdViewModel {
             print("re exhibits ----> \(exhibits)")
             self.reservationExhibits.value.removeAll()
             self.reservationExhibits.value.append(contentsOf: exhibits.exhbtList)
+        }
+    }
+    
+    func requestReservedExhibitionRemove(exhbt_cd: String, completion: @escaping ()->(Void)){
+        reservedApiManager.requestReservedExhibitionRemove(exhbt_cd: exhbt_cd) {
+            //TODO: 삭제 완료
+            completion()
         }
     }
     

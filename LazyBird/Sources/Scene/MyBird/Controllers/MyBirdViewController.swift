@@ -59,7 +59,7 @@ class MyBirdViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        print("호풀 되냐?")
         self.viewModel.requestFavoriteExhibits()
         self.viewModel.requestReservationExhibits()
         self.viewModel.requestUserInfo()
