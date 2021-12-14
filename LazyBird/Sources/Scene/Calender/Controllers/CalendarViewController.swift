@@ -119,7 +119,9 @@ class CalendarViewController: UIViewController {
         print("e다시 그려지는거십니가?")
         
         /* 예약이 된 전시지만 캘린더에 등록이 안된 리스트를 출력하는 API */
-        self.viewModel.requestUnregistedSchedules()
+        self.viewModel.requestUnregistedSchedules(){
+            
+        }
         /* 캘린더에 저장된 전시 예약 정보 (월별) + 개인 전시 일정 리스트 (월별) Request */
         self.viewModel.requestMonthlySchedules(reser_dt: dateFormatterForAPI.string(from: self.calender.currentPage))
     }
@@ -459,8 +461,9 @@ extension CalendarViewController: CalendarViewDelegate{
     func deleteCustomSchedule(schedule: Schedule){
         //TODO: request
         self.viewModel.requestCustomScheduleDelete(exhbt_cd: schedule.exhbt_cd){
-            self.viewModel.requestUnregistedSchedules() // 예약했지만 등록되지 않은 전시 리스트 불러오기
-            self.viewModel.requestMonthlySchedules(reser_dt: self.dateFormatterForAPI.string(from: self.calender.currentPage))
+            self.viewModel.requestUnregistedSchedules(){ // 예약했지만 등록되지 않은 전시 리스트 불러오기
+                self.viewModel.requestMonthlySchedules(reser_dt: self.dateFormatterForAPI.string(from: self.calender.currentPage))
+            }
         }
     }
     
@@ -471,8 +474,10 @@ extension CalendarViewController: CalendarViewDelegate{
                                               start_time: nil,
                                               end_time: nil)
         self.viewModel.requestBookedScheduleDelete(bookedSchedule: parameter){
-            self.viewModel.requestUnregistedSchedules() // 예약했지만 등록되지 않은 전시 리스트 불러오기
-            self.viewModel.requestMonthlySchedules(reser_dt: self.dateFormatterForAPI.string(from: self.calender.currentPage))
+            self.viewModel.requestUnregistedSchedules(){ // 예약했지만 등록되지 않은 전시 리스트 불러오기
+                self.viewModel.requestMonthlySchedules(reser_dt: self.dateFormatterForAPI.string(from: self.calender.currentPage))
+            }
+            
         }
     }
 }

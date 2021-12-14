@@ -58,10 +58,11 @@ class CalendarViewModel {
     }
     
     /* 예약이 된 전시지만 캘린더에 등록이 안된 리스트를 출력하는 API입니다. */
-    func requestUnregistedSchedules(){
+    func requestUnregistedSchedules(completion: @escaping ()->(Void)){
         calendarManager.requestUnregistedSchedules { schedules in
             self.unregistedSchedules.value.removeAll()
             self.unregistedSchedules.value.append(contentsOf: schedules.calList)
+            completion()
         }
     }
     
