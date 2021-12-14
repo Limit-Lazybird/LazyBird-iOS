@@ -460,6 +460,7 @@ extension CalendarViewController: CalendarViewDelegate{
         //TODO: request
         self.viewModel.requestCustomScheduleDelete(exhbt_cd: schedule.exhbt_cd){
             self.viewModel.requestMonthlySchedules(reser_dt: self.dateFormatterForAPI.string(from: self.calender.currentPage))
+            self.viewModel.requestUnregistedSchedules() // 예약했지만 등록되지 않은 전시 리스트 불러오기
         }
     }
     
@@ -471,6 +472,7 @@ extension CalendarViewController: CalendarViewDelegate{
                                               end_time: nil)
         self.viewModel.requestBookedScheduleDelete(bookedSchedule: parameter){
             self.viewModel.requestMonthlySchedules(reser_dt: self.dateFormatterForAPI.string(from: self.calender.currentPage))
+            self.viewModel.requestUnregistedSchedules() // 예약했지만 등록되지 않은 전시 리스트 불러오기
         }
     }
 }
