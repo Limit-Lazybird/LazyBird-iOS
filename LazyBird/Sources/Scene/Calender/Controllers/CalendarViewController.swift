@@ -172,7 +172,7 @@ class CalendarViewController: UIViewController {
             self.tableView.reloadData()
             self.calender.reloadData()
         }
-        self.viewModel.requestMonthlySchedules(reser_dt: dateFormatterForAPI.string(from: self.calender.currentPage)) // 현재 달의 스케줄 리스트 세팅
+//        self.viewModel.requestMonthlySchedules(reser_dt: dateFormatterForAPI.string(from: self.calender.currentPage)) // 현재 달의 스케줄 리스트 세팅
         
         // 예약이 된 전시지만 캘린더에 등록이 안된 전시 수 정보 바인딩
         self.viewModel.unregistedSchedules.bind { schedules in
