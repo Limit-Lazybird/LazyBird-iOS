@@ -48,7 +48,6 @@ class ExhibitContainerView: UIView {
     @objc func likePressedNotification(_ noti: Notification){
         print("TODO: 컬렉션뷰 reload")
         self.viewModel?.fetchExhibits()
-//        self.collectionView.reloadData()
     }
     
     func setObserver(){

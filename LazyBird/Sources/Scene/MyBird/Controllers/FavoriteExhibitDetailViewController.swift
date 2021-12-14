@@ -50,6 +50,7 @@ class FavoriteExhibitDetailViewController: UIViewController {
         
         setUI()
         config()
+        setObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +60,18 @@ class FavoriteExhibitDetailViewController: UIViewController {
     }
     
     //MARK: - Functions
+    @objc func likePressedNotification(_ noti: Notification){
+        print("TODO: 컬렉션뷰 reload")
+        self.viewModel?.requestFavoriteExhibits()
+    }
+    
+    func setObserver(){
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(likePressedNotification(_:)),
+                                               name: NSNotification.Name("likePressedNotification"),
+                                               object: nil)
+    }
+    
     func checkExhibit(){
         guard let viewModel = self.viewModel else {
             print("FavoriteExhibitDetailViewController is nil")
@@ -79,6 +92,11 @@ class FavoriteExhibitDetailViewController: UIViewController {
         
         viewModel.favoriteExhibits.bind { exhibits in
             print("favorite bind 호출")
+            if viewModel.favoriteExhibits.value.count == 0{
+                self.noResultLabel.isHidden = false
+            }else{
+                self.noResultLabel.isHidden = true
+            }
             self.collectionView.reloadData()
         }
     }
