@@ -27,6 +27,7 @@ class CategoryContainerView: UIView {
         $0.delegate = self
         $0.backgroundColor = .clear
         $0.showsHorizontalScrollIndicator = false
+        $0.allowsMultipleSelection = true
         $0.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 0, right: 0)
         $0.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }
@@ -81,6 +82,11 @@ extension CategoryContainerView: UICollectionViewDelegate{
         let category = String(indexPath.row + 1)
         print("호출되나?")
         self.viewModel?.requestCategoryFilteredExhibits(category: category)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        //TODO: 원래 리스트로 돌아오기
+        self.viewModel?.fetchExhibits()
     }
 }
 
