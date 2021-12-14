@@ -105,6 +105,7 @@ class EarlyCardDetailViewController: UIViewController {
            if let error = error {
                // we got back an error!
             print("에러처리 아몰랑 ~ \(error.localizedDescription)")
+               exceptionAlert()
            } else {
                 // save
                //TODO: 저장이 완료되어씀니다
@@ -133,6 +134,16 @@ class EarlyCardDetailViewController: UIViewController {
     
     func completeAlert(){
         let alert = UIAlertController(title: "저장 성공", message: "갤러리에 사진을 성공적으로 저장하였습니다.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { (ok) in
+            
+        }
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func exceptionAlert(){
+        let alert = UIAlertController(title: "저장 실패", message: "얼리카드를 저장하기 위해 아래 권한 설정이 필요합니다.\n설정 > Lazybird > 사진 ", preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default) { (ok) in
             
         }
