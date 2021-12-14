@@ -67,10 +67,20 @@ class ExhibitFilterViewModel {
         selectedCategory.append(contentsOf: self.region)
         
         if selectedCategory.count == 0 {
+            print("선택된 카테고리가 존재하지 않습니다.")
             return
         }
         exhibitFilterManager.requestExhibitDTL(searchList: selectedCategory.joined(separator: ",")){ response in
             completion(response)
         }
+    }
+    
+    /* 선택되었던 모든 카테고리 정보 초기화 */
+    func removeDeselectedAllCategory(){
+        self.classification.removeAll()
+        self.additionalInformation.removeAll()
+        self.region.removeAll()
+        
+        selectedCategory.removeAll()
     }
 }

@@ -41,6 +41,7 @@ class ExhibitFilterViewController: UIViewController {
     
     lazy var refreshBtn = UIButton().then{
         $0.setImage(UIImage(named: "refresh"), for: .normal)
+        $0.addTarget(self, action: #selector(refreshBtnTapped(_:)), for: .touchUpInside)
     }
     
     lazy var exhibitClassView = ExhibitFilterContainerView(frame: .zero).then{
@@ -90,6 +91,14 @@ class ExhibitFilterViewController: UIViewController {
     }
     
     //MARK: - Functions
+    @objc func refreshBtnTapped(_ sender: UIButton){
+        //TODO: 3개의 컬렉션뷰 선택 해제, 선택되었던 정보들 초기화
+        exhibitClassView.deselectAllCategory()
+        exhibitAdditionalInfomationView.deselectAllCategory()
+        exhibitRegionView.deselectAllCategory()
+        
+        self.viewModel.removeDeselectedAllCategory()
+    }
     
     @objc func closeBtnTapped(_ sender: UIButton){
         self.dismiss(animated: false, completion: nil)

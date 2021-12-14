@@ -27,12 +27,11 @@ class ExhibitFilterContainerView: UIView {
         $0.minimumInteritemSpacing = 4
     }
     
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
         $0.dataSource = self
         $0.delegate = self
         $0.backgroundColor = .clear
         $0.showsHorizontalScrollIndicator = false
-        $0.allowsMultipleSelection = true
         $0.contentInset = UIEdgeInsets(top: 0, left: 16.0, bottom: 0, right: 16.0)
         $0.allowsMultipleSelection = true
         $0.register(ExhibitFilterTypeCell.self,
@@ -53,6 +52,17 @@ class ExhibitFilterContainerView: UIView {
     }
     
     //MARK: - Functions
+    func deselectAllCategory(){
+        for selectedIndexPath in collectionView.indexPathsForVisibleItems{
+            guard let cell = collectionView.cellForItem(at: selectedIndexPath) as? ExhibitFilterTypeCell else{
+                return
+            }
+            
+            cell.isSelected = false
+        }
+        collectionView.reloadData()
+    }
+    
     func config(typeLabel: String){
         self.filterTypeLabel.text = typeLabel
     }
