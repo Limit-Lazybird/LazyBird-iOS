@@ -112,12 +112,18 @@ class ExhibitCell: UICollectionViewCell {
             return
         }
         if self.likeBtn.isSelected{
-            LikeAPIManager.shared.requestLikeCancel(exhbt_cd: exhibit.exhbt_cd ?? "")
+            LikeAPIManager.shared.requestLikeCancel(exhbt_cd: exhibit.exhbt_cd ?? ""){
+                NotificationCenter.default.post(name: NSNotification.Name("likePressedNotification"), object: nil, userInfo: nil)
+            }
             likeBtn.isSelected = !likeBtn.isSelected
         }else{
-            LikeAPIManager.shared.requestLike(exhbt_cd: exhibit.exhbt_cd ?? "", like_yn: "Y")
+            LikeAPIManager.shared.requestLike(exhbt_cd: exhibit.exhbt_cd ?? "", like_yn: "Y"){
+                NotificationCenter.default.post(name: NSNotification.Name("likePressedNotification"), object: nil, userInfo: nil)
+            }
             likeBtn.isSelected = !likeBtn.isSelected
         }
+        //TODO: noti 날려서 컬렉션뷰 reload 해보자
+        
     }
     
     func config(exhibit: Exhibit){

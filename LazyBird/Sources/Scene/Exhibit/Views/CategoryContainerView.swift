@@ -52,7 +52,6 @@ class CategoryContainerView: UIView {
     }
     
     //MARK: - Functions
-    
     @objc func filterBtnPressed(_ sender: UIButton){
         //TODO: 여기할거 까먹지말자!
         delegate?.moveToExhibitFilter()

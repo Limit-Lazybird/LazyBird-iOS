@@ -126,11 +126,15 @@ class ExhibitInfoContainerView: UIView {
         }
         
         if likeBtn.isSelected{
-            LikeAPIManager.shared.requestLikeCancel(exhbt_cd: viewModel.getExhibit().value.exhbt_cd ?? "")
+            LikeAPIManager.shared.requestLikeCancel(exhbt_cd: viewModel.getExhibit().value.exhbt_cd ?? ""){
+                NotificationCenter.default.post(name: NSNotification.Name("likePressedNotification"), object: nil, userInfo: nil)
+            }
             likeBtn.isSelected = !likeBtn.isSelected
         }else{
             LikeAPIManager.shared.requestLike(exhbt_cd: viewModel.getExhibit().value.exhbt_cd ?? "",
-                                              like_yn: "Y")
+                                              like_yn: "Y"){
+                NotificationCenter.default.post(name: NSNotification.Name("likePressedNotification"), object: nil, userInfo: nil)
+            }
             likeBtn.isSelected = !likeBtn.isSelected
         }
         

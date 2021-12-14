@@ -15,7 +15,7 @@ class LikeAPIManager {
     let tokenUtils = TokenUtils.shared
     
     // 좋아요 요청
-    func requestLike(exhbt_cd: String, like_yn: String){
+    func requestLike(exhbt_cd: String, like_yn: String, completion: @escaping ()->(Void)){
         guard let token = tokenUtils.read(account: .access_token) else{
             print("requestLike  token read is nil")
             return
@@ -30,6 +30,7 @@ class LikeAPIManager {
             switch response.result {
             case .success:
                 print("좋아요 요청 전송 성공")
+                completion()
             case .failure:
                 print("fail , statusCode --> \(response.result)")
             }
@@ -37,7 +38,7 @@ class LikeAPIManager {
     }
     
     // 좋아요 요청
-    func requestLikeCancel(exhbt_cd: String){
+    func requestLikeCancel(exhbt_cd: String, completion: @escaping ()->(Void)){
         guard let token = tokenUtils.read(account: .access_token) else{
             print("requestLike  token read is nil")
             return
@@ -50,6 +51,7 @@ class LikeAPIManager {
             switch response.result {
             case .success:
                 print("좋아요 취소 전송 성공")
+                completion()
             case .failure:
                 print("fail , statusCode --> \(response.result)")
             }

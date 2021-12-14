@@ -47,8 +47,10 @@ class ExhibitViewModel: ExhibitViewModelProtocol {
         self.exhibits.value.append(contentsOf: exhibits.exhbtList)
     }
     
-    func requestLike(exhbt_cd: String, like_yn: String){
-        likeManager.requestLike(exhbt_cd: exhbt_cd, like_yn: like_yn)
+    func requestLike(exhbt_cd: String, like_yn: String, completion: @escaping ()->(Void)){
+        likeManager.requestLike(exhbt_cd: exhbt_cd, like_yn: like_yn){
+            completion()
+        }
     }
     
     func requestCategoryFilteredExhibits(category: String){

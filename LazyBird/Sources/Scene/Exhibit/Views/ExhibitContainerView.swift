@@ -37,6 +37,7 @@ class ExhibitContainerView: UIView {
         self.backgroundColor = UIColor.Background.black02
         
         setUI()
+        setObserver()
     }
     
     required init?(coder: NSCoder) {
@@ -44,6 +45,18 @@ class ExhibitContainerView: UIView {
     }
     
     //MARK: - Functions
+    @objc func likePressedNotification(_ noti: Notification){
+        print("TODO: 컬렉션뷰 reload")
+        self.viewModel?.fetchExhibits()
+//        self.collectionView.reloadData()
+    }
+    
+    func setObserver(){
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(likePressedNotification(_:)),
+                                               name: NSNotification.Name("likePressedNotification"),
+                                               object: nil)
+    }
     
     func config(viewModel: ExhibitViewModel){
         self.viewModel = viewModel

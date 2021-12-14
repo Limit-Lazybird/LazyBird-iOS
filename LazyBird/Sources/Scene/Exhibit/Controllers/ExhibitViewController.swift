@@ -64,7 +64,6 @@ class ExhibitViewController: UIViewController {
     }
     
     //MARK: - Functions
-    
     func configure(){
         self.exhibitContainerView.config(viewModel: self.viewModel)
         self.toggleView.config(viewModel: self.viewModel)
