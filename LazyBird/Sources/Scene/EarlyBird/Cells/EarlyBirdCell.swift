@@ -109,7 +109,7 @@ class EarlyBirdCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints{
             $0.centerY.equalTo(topStickView.safeAreaLayoutGuide)
             $0.leading.equalTo(topStickView.snp.leading).offset(8.0)
-            $0.trailing.equalTo(topStickView.snp.trailing).offset(-8.0)
+            $0.trailing.equalTo(circleView.snp.leading).offset(-8.0)
         }
         
         circleView.snp.makeConstraints{
